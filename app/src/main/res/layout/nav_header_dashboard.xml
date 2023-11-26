@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:theme="@style/ThemeOverlay.AppCompat.Dark" android:gravity="bottom" android:orientation="vertical" android:background="@drawable/bottomcurve_img" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="match_parent" android:layout_height="@dimen/nav_header_height" android:backgroundTint="@color/colorAccent">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@+id/linear_profile" android:paddingLeft="15dp" android:paddingRight="10dp" android:paddingBottom="25dp" android:layout_width="match_parent" android:layout_height="@dimen/nav_header_height" android:layout_marginTop="@dimen/margin20dp">
+        <RelativeLayout android:layout_width="100dp" android:layout_height="100dp">
+        <de.hdodenhof.circleimageview.CircleImageView android:id="@+id/image_profile1" android:padding="5dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="20dp" android:src="@drawable/flash1" android:contentDescription="@string/nav_header_desc" app:civ_border_color="@color/white" app:civ_border_width="2dp"/>
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:padding="20dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textColor="@color/white" android:id="@+id/text_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textColor="@color/white" android:id="@+id/text_mobile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLength="10"   android:inputType="number"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

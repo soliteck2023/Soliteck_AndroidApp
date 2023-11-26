@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:title="">
+            <item android:icon="@mipmap/payin_home" android:title="Home"/>
+            <item android:icon="@mipmap/payin_profile" android:id="@+id/nav_profile" android:title="My Profile"/>
+            <item android:icon="@mipmap/payin_help_support" android:id="@+id/nav_contactus" android:title="Contact Us"/>
+            <item android:icon="@mipmap/payin_change_password" android:id="@+id/nav_password" android:title="Change Password"/>
+            <item android:icon="@mipmap/payin_change_tpin" android:id="@+id/nav_chnagetpin" android:title="Change TPIN"/>
+            <item android:icon="@mipmap/payin_logout" android:id="@+id/nav_logout" android:title="Log Out"/>
+        </item>
+    </group>
+</menu>

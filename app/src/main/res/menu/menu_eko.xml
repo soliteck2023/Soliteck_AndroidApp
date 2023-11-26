@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@mipmap/moneytransfer" android:id="@+id/action_info" android:orderInCategory="600" android:title="History" app:showAsAction="always"/>
+    <item android:icon="@mipmap/history" android:id="@+id/action_history" android:orderInCategory="600" android:title="Info" app:showAsAction="always"/>
+    <item android:icon="@drawable/adduser" android:id="@+id/action_add_ben" android:orderInCategory="600" android:title="Add Beneficiary" app:showAsAction="always"/>
+</menu>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <RelativeLayout android:id="@+id/layout_head" android:background="@color/white" android:paddingTop="15dp" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textSize="16dp" android:textStyle="bold" android:textColor="@color/colorPrimaryDark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Verify Mobile Number" android:layout_centerHorizontal="true"/>
+            <ImageView android:id="@+id/image_cancel" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20dp" android:src="@drawable/ic_cancel_black_24dp" android:layout_alignParentRight="true"/>
+            <LinearLayout android:orientation="vertical" android:padding="20dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/image_cancel">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="30dp">
+                    <ImageView android:layout_gravity="center" android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/color_message" android:layout_toRightOf="@+id/head_mob"/>
+                    <ImageView android:layout_gravity="center" android:id="@+id/head_mob" android:layout_width="55dp" android:layout_height="60dp"
+                        android:layout_marginLeft="30dp" android:layout_marginTop="15dp" android:src="@drawable/mobile" android:scaleType="fitXY"
+                        app:tint="@color/black" />
+                </RelativeLayout>
+                <TextView android:textSize="@dimen/input_text" android:textColor="@color/colorPrimary" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="Otp has been sent to you on your mobile number" android:layout_centerInParent="true"/>
+                <TextView android:textSize="@dimen/input_text" android:textColor="@color/colorPrimary" android:layout_gravity="center" android:id="@+id/text_user" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_centerInParent="true"/>
+                <TextView android:textSize="@dimen/input_text" android:textStyle="bold" android:textColor="@color/colorPrimaryDark" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Enter OTP Code" android:layout_centerInParent="true"/>
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="70dp" android:layout_marginTop="10dp" android:weightSum="6">
+                    <EditText android:textSize="22sp" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:id="@+id/first_num" android:focusable="auto" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="1" android:layout_weight="1" android:layout_below="@+id/layout_head" android:inputType="number"/>
+                    <EditText android:textSize="22sp" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:id="@+id/second_num" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="1" android:layout_weight="1" android:layout_below="@+id/layout_head" android:inputType="number"/>
+                    <EditText android:textSize="22sp" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:id="@+id/third_num" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="1" android:layout_weight="1" android:layout_below="@+id/layout_head" android:inputType="number"/>
+                    <EditText android:textSize="22sp" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:id="@+id/forth_num" android:hint="" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="1" android:layout_weight="1" android:layout_below="@+id/layout_head" android:inputType="number"/>
+                    <EditText android:textSize="22sp" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:id="@+id/fifth_num" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="1" android:layout_weight="1" android:layout_below="@+id/layout_head" android:inputType="number"/>
+                    <EditText android:textSize="22sp" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:id="@+id/sixth_num" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="1" android:layout_weight="1" android:layout_below="@+id/layout_head" android:inputType="number"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp">
+                    <TextView android:textSize="@dimen/input_text" android:textColor="@color/colorPrimary" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:text="Didn&apos;t receive the OTP?" android:layout_centerInParent="true"/>
+                    <TextView android:textSize="@dimen/input_text" android:textStyle="bold" android:textColor="@color/colorAccent" android:layout_gravity="center" android:id="@+id/text_resend" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginTop="5dp" android:text="RESEND OTP" android:layout_centerInParent="true"/>
+                </LinearLayout>
+                <Button android:textSize="17sp" android:textColor="@color/white" android:id="@+id/btn_verify_otp" android:background="@drawable/button_background" android:visibility="visible" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="25dp" android:text="Verify"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

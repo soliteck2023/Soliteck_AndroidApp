@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="banks_payment_request_Payment_type_code">
+        <item>CS</item>
+        <item>CQ</item>
+        <item>RT</item>
+        <item>NT</item>
+    </array>
+    <array name="banks_payment_request_payment_type">
+        <item>Cash</item>
+        <item>Cheque</item>
+        <item>RTGS</item>
+        <item>NEFT</item>
+        <item>Fund Transfer</item>
+        <item>IMPS</item>
+        <item>Credit</item>
+
+
+    </array>
+    <array name="child_type_spinner">
+        <item>FRC</item>
+        <item>MDS</item>
+        <item>DIS</item>
+    </array>
+
+
+    <array name="nepal_gender_spinner">
+        <item>Select</item>
+        <item>MALE</item>
+        <item>FEMALE</item>
+    </array>
+    <array name="oprator">
+        <item>@null</item>
+        <item>1</item>
+        <item>2</item>
+    </array>
+    <array name="payment_request_cash_type">
+        <item>CDM Machine</item>
+        <item>Branch Deposit</item>
+    </array>
+    <array name="raise_complaint_title">
+        <item>Mobile Recharge Dispute</item>
+        <item>Billing Inquiry</item>
+        <item>Sales Inquiry</item>
+        <item>Other Technical Support</item>
+    </array>
+    <array name="transferMode">
+        <item>IMPS</item>
+        <item>NEFT</item>
+        <item>RTGS</item>
+        <item>UPI</item>
+    </array>
+    <array name="transfer_mode">
+        <item>Select</item>
+        <item>IMPS</item>
+        <item>NEFT</item>
+        <item>RTGS</item>
+        <item>UPI</item>
+    </array>
+
+    <string-array name="Category_excel">
+        <item>Office Supplies</item>
+        <item>Stationery</item>
+        <item>Travel and Transportation</item>
+        <item>Advertising and Marketing</item>
+        <item>Professional Services (Consultants, Lawyers, Accountants, etc.)</item>
+        <item>Taxes and Licenses</item>
+        <item>Employee Benefits</item>
+        <item>Credited By- Soliteck</item>
+
+    </string-array>
+</resources>
