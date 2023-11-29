@@ -63,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn_login = findViewById(R.id.btn_login);
-//        this.btn_login = (RelativeLayout) findViewById(R.id.btn_login);
+        this.btn_login = (RelativeLayout) findViewById(R.id.btn_login);
         this.show_password = (CheckBox) findViewById(R.id.show_password);
-        this.edit_password = (EditText) findViewById(R.id.password_login);
+       this.edit_password = (EditText) findViewById(R.id.password_login);
         this.edit_username = (EditText) findViewById(R.id.edit_username);
         this.edit_username = (EditText) findViewById(R.id.edit_username);
-        this.New_user = (TextView) findViewById(R.id.New_user);
+       this.New_user = (TextView) findViewById(R.id.New_user);
         this.text_forgot_password = (TextView) findViewById(R.id.text_forgot_password);
         this.image_logo = (ImageView) findViewById(R.id.image_logo);
         this.Flag_Remember = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.FlagRemember, "");
@@ -81,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
 //            }
 
 
+        New_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Registration_page.class);
+                MainActivity.this.startActivity(intent);
+
+            }
+        });
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,16 +155,23 @@ public class MainActivity extends AppCompatActivity {
                 btn_send_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.3.2
                     @Override // android.view.View.OnClickListener
                     public void onClick(View v2) {
-                        if (!ConstantClass.isNetworkAvailable(MainActivity.this)) {
-                            ConstantClass.displayMessageDialog(MainActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-                        } else if (edit_user_name.getText().toString().isEmpty()) {
+
+                        if (edit_user_name.getText().toString().isEmpty()) {
                             edit_user_name.setError("Enter UserName");
                             edit_user_name.requestFocus();
-                        } else if (!ConstantClass.isNetworkAvailable(MainActivity.this)) {
-                            ConstantClass.displayMessageDialog(MainActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-                        } else {
+                        }  else {
                             MainActivity.this.sendOtpToNumber(edit_user_name.getText().toString());
                         }
+//                        if (!ConstantClass.isNetworkAvailable(MainActivity.this)) {
+//                            ConstantClass.displayMessageDialog(MainActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                        } else if (edit_user_name.getText().toString().isEmpty()) {
+//                            edit_user_name.setError("Enter UserName");
+//                            edit_user_name.requestFocus();
+//                        } else if (!ConstantClass.isNetworkAvailable(MainActivity.this)) {
+//                            ConstantClass.displayMessageDialog(MainActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                        } else {
+//                            MainActivity.this.sendOtpToNumber(edit_user_name.getText().toString());
+//                        }
                     }
                 });
                 if (Build.VERSION.SDK_INT >= 21) {

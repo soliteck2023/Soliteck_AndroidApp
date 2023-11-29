@@ -2,13 +2,291 @@ package com.example.api_call;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class MobileRechargeActivity extends AppCompatActivity {
+import javax.xml.transform.Result;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MobileRechargeActivity extends AppCompatActivity  {
+    private static final int PLANPLANREQUESTCODE = 110;
+    private static final int PLANREQUESTCODE = 101;
+    private Button btn_mobile_Recharge;
+    private EditText edit_amount;
+    private EditText edit_mobile;
+//    private EditText edit_operator;
+    private GetOperatorByNum getOperatorByNum;
+    private RelativeLayout layout_plans;
+    TextView mTxtMobilePlan;
+    TextView mTxtROffer;
+    private EditText medit_tpin;
+//       SearchableSpinner mspinnerCircleListList;
+    private String NUMBER = "";
+    private String AMT = "";
+    private String CALL = "";
+    String opCode = "";
+    Spinner edit_operator;
+    Spinner mspinnerCircleListList;
+    private String ourcode = "";
+    List<OperatorResponseData> MobileoperatorList = new ArrayList();
+    List<String> CircleList = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_recharge);
+        initComponents();
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//       getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setTitle("Mobile Recharge");
     }
+
+    private void initComponents() {
+        this.medit_tpin = (EditText) findViewById(R.id.edit_tpin);
+        this.edit_mobile = (EditText) findViewById(R.id.edit_mobile);
+        this.edit_amount = (EditText) findViewById(R.id.edit_amount);
+        this.edit_operator = (Spinner) findViewById(R.id.edit_operator);
+        this.btn_mobile_Recharge = (Button) findViewById(R.id.btn_mobile_Recharge);
+        this.layout_plans = (RelativeLayout) findViewById(R.id.layout_plans);
+        this.mTxtROffer = (TextView) findViewById(R.id.TxtROffer);
+        this.mTxtMobilePlan = (TextView) findViewById(R.id.TxtMobilePlan);
+          this.mspinnerCircleListList = (Spinner) findViewById(R.id.spinnerCircleListList);
+//        this.mTxtROffer.setOnClickListener(this);
+//        this.mTxtMobilePlan.setOnClickListener(this);
+
+//        this.layout_plans.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.MobileRechargeActivity.1
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View v) {
+//                if (MobileRechargeActivity.this.edit_mobile.getText().toString().trim().isEmpty()) {
+//                    MobileRechargeActivity.this.edit_mobile.setError("Enter number");
+//                    MobileRechargeActivity.this.edit_mobile.requestFocus();
+//                } else if (MobileRechargeActivity.this.edit_operator.getText().toString().trim().isEmpty()) {
+////                    MobileRechargeActivity.this.edit_mobile.setError(null);
+//                    MobileRechargeActivity.this.edit_operator.setError("Enter operator");
+//                    MobileRechargeActivity.this.edit_operator.requestFocus();
+//                } else {
+//                    MobileRechargeActivity.this.edit_operator.setError(null);
+//                    Intent intent = new Intent(MobileRechargeActivity.this, MobileRechargePlansActivity.class);
+//                    intent.putExtra("MOBILE", MobileRechargeActivity.this.edit_mobile.getText().toString());
+//                    intent.putExtra("OPERATOR", MobileRechargeActivity.this.edit_operator.getText().toString());
+//                    intent.putExtra("AMT", MobileRechargeActivity.this.edit_amount.getText().toString());
+//                    intent.putExtra("CALL", "MOBILE");
+//                    MobileRechargeActivity.this.startActivity(intent);
+//                }
+//            }
+//        });
+//        this.edit_operator.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.MobileRechargeActivity.3
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MobileRechargeActivity.this, OperatorsActivity.class);
+//                intent.putExtra("NUMBER", MobileRechargeActivity.this.edit_mobile.getText().toString());
+//                intent.putExtra("AMT", MobileRechargeActivity.this.edit_amount.getText().toString());
+//                intent.putExtra("CALL", "MOBILE");
+//                MobileRechargeActivity.this.startActivityForResult(intent, 1);
+//            }
+//        });
+
+        this.btn_mobile_Recharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MobileRechargeActivity.this.edit_mobile.getText().toString().trim().isEmpty()){
+                    MobileRechargeActivity.this.edit_mobile.setError("Enter number");
+                    MobileRechargeActivity.this.edit_mobile.requestFocus();
+                }else if (MobileRechargeActivity.this.edit_amount.getText().toString().trim().isEmpty()){
+                    MobileRechargeActivity.this.edit_amount.setError("Enter amount");
+                    MobileRechargeActivity.this.edit_amount.requestFocus();
+                    return;
+                }
+                MobileRechargeActivity.this.edit_amount.setError(null);
+                if (TextUtils.isEmpty(MobileRechargeActivity.this.medit_tpin.getText().toString().trim())) {
+                    MobileRechargeActivity.this.medit_tpin.setError("Enter TPIN");
+                    return;
+                }
+                MobileRechargeActivity.this.medit_tpin.setError(null);
+                MobileRechargeActivity mobileRechargeActivity = MobileRechargeActivity.this;
+                mobileRechargeActivity.getMobileConformation(mobileRechargeActivity.edit_amount.getText().toString(), MobileRechargeActivity.this.edit_mobile.getText().toString(),MobileRechargeActivity.this.edit_operator.getSelectedItem().toString());
+
+            }
+        });
+
+//        this.btn_mobile_Recharge.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.MobileRechargeActivity.2
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View v) {
+//                if (MobileRechargeActivity.this.edit_mobile.getText().toString().trim().isEmpty()) {
+//                    MobileRechargeActivity.this.edit_mobile.setError("Enter number");
+//                    MobileRechargeActivity.this.edit_mobile.requestFocus();
+//
+////                } else if (MobileRechargeActivity.this.edit_operator.getText().toString().trim().isEmpty()) {
+////                   MobileRechargeActivity.this.edit_mobile.setError(null);
+////                    MobileRechargeActivity.this.edit_operator.setError("Select operator");
+////                    MobileRechargeActivity.this.edit_operator.requestFocus();
+////                } else {
+////                    MobileRechargeActivity.this.edit_operator.setError(null);
+//                   if (MobileRechargeActivity.this.edit_amount.getText().toString().trim().isEmpty()) {
+//                        MobileRechargeActivity.this.edit_amount.setError("Enter amount");
+//                        MobileRechargeActivity.this.edit_amount.requestFocus();
+//                        return;
+//                    }
+//                    MobileRechargeActivity.this.edit_amount.setError(null);
+//                    if (TextUtils.isEmpty(MobileRechargeActivity.this.medit_tpin.getText().toString().trim())) {
+//                        MobileRechargeActivity.this.medit_tpin.setError("Enter TPIN");
+//                        return;
+//                    }
+//                    MobileRechargeActivity.this.medit_tpin.setError(null);
+//                    MobileRechargeActivity mobileRechargeActivity = MobileRechargeActivity.this;
+//                    mobileRechargeActivity.getMobileConformation(mobileRechargeActivity.edit_amount.getText().toString(), MobileRechargeActivity.this.edit_mobile.getText().toString());
+//                }
+//            }
+//        });
+
+
+//        edit_mobile.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if (MobileRechargeActivity.this.edit_mobile.getText().toString().trim().length() == 10) {
+//                    MobileRechargeActivity mobileRechargeActivity = MobileRechargeActivity.this;
+//                    mobileRechargeActivity.callOperator(mobileRechargeActivity.edit_mobile.getText().toString().trim());
+//                }
+//            }
+//        });
+        getAssetsCircle();
+        callCircleAdapter();
+    }
+
+    private void getMobileConformation(String edit_amount, String edit_mobile,String edit_operator) {   // String edit_operator
+        Intent intent = new Intent(this, RechargeConfirmationActivity.class);
+        intent.putExtra("MOBILE_NO", edit_mobile);
+        intent.putExtra("AMOUNT", edit_amount);
+        intent.putExtra("CALL", "MOBILE");
+        intent.putExtra("OPERATOR", edit_operator);
+        String message = this.medit_tpin.getText().toString().trim();
+        String EncodedTPIN = ApplicationConstant.EncodeStringToHMACSHA256(message);
+        intent.putExtra("TPIN", EncodedTPIN);
+        startActivity(intent);
+    }
+
+    private void getAssetsCircle(){
+        BufferedReader reader = null;
+        try {
+            try {
+                reader = new BufferedReader(new InputStreamReader(getAssets().open("circle.txt"), Key.STRING_CHARSET_NAME));
+                while (true) {
+                    String mLine = reader.readLine();
+                    if (mLine != null) {
+                        this.CircleList.add(mLine);
+                    } else {
+                        reader.close();
+                        return;
+                    }
+                }
+            } catch (IOException e) {
+            }
+        } catch (Throwable th) {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e3) {
+                }
+            }
+            throw th;
+        }
+    }
+
+    @SuppressLint("ResourceType")
+    private void callCircleAdapter() {
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, (int) R.layout.spinner_item, this.CircleList);
+        adapter1.setDropDownViewResource(17367049);
+//        this.mspinnerCircleListList.setAdapter((SpinnerAdapter) adapter1);
+    }
+
+    private void callOperator(String number) {
+        String username = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
+        PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserPassword, "");
+        String device = PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, "");
+        String Token = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, "");
+        HashMap<String, String> body = new HashMap<>();
+        body.put(ConstantClass.PROFILEDETAILS.UserName_, username);
+        body.put("MobileNumber", number);
+        body.put("DeviceId", device);
+        body.put("Token", Token);
+        ApiInterface apiservice = RetrofitHandler.getService();
+        Call<FetchOperator> rechargeress = apiservice.getMobileOPT(body);
+        rechargeress.enqueue(new Callback<FetchOperator>() { // from class: com.uvapay.activities.MobileRechargeActivity.5
+            @Override // retrofit2.Callback
+            public void onResponse(Call<FetchOperator> call, Response<FetchOperator> response) {
+                try {
+                    if (response.body().getStatusCode().intValue() == 1) {
+                        try {
+//                            MobileRechargeActivity.this.edit_operator.setText(response.body().getMessage());
+                        } catch (Exception e) {
+                            ApplicationConstant.DisplayMessageDialog(MobileRechargeActivity.this, "Response", e.getMessage());
+                        }
+                        return;
+                    }
+                    ApplicationConstant.DisplayMessageDialog(MobileRechargeActivity.this, "Response", response.body().getMessage());
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            }
+
+            @Override // retrofit2.Callback
+            public void onFailure(Call<FetchOperator> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(MobileRechargeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
+
+//    @Override
+//    public void onClick(View v) {
+//
+//        switch (v.getId()){
+//            case R.id.TxtMobilePlan:
+//                if (TextUtils.isEmpty(this.edit_operator.getSelectedItem().toString())) {
+//                    this.edit_mobile.setError("Enter Circle");
+//                    return;
+//                }
+//
+//        }
+//    }
 }
+
+
+

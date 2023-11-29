@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="horizontal" android:background="@color/colorPrimary" android:paddingBottom="3dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/image_mobile"
+            android:padding="10dp" android:layout_width="100dp" android:layout_height="100dp" android:layout_marginLeft="5dp" android:layout_marginTop="15dp" android:src="@drawable/dish"
+            app:tint="@color/white" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginTop="35dp" android:layout_centerVertical="true">
+            <TextView android:textSize="20sp" android:textColor="@color/white" android:id="@+id/text_mob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recharge your DTH"/>
+            <TextView android:textSize="15sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="just give few details" android:layout_below="@+id/text_mob"/>
+        </LinearLayout>
+    </LinearLayout>
+    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true">
+        <androidx.cardview.widget.CardView android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="13dp" app:cardCornerRadius="10dp" app:cardElevation="5dp">
+            <LinearLayout android:orientation="vertical" android:background="@color/white" android:padding="15dp" android:layout_width="match_parent" android:layout_height="match_parent">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="10dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                <Spinner android:textSize="16sp" android:entries="@array/dishoperator" android:textColor="@color/black" android:gravity="left" android:layout_gravity="center_vertical" android:id="@+id/edit_dth_operator" android:background="@android:color/transparent" android:padding="5dp" android:focusableInTouchMode="false" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:hint="Operator" android:maxLines="1" android:layout_weight="2.3" android:inputType="textNoSuggestions"/>
+                                <View android:background="@color/colorPrimaryDark" android:visibility="visible" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.01"/>
+                                <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorAccent" android:gravity="center" android:id="@+id/TxtSpecialPlan" android:visibility="visible" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginRight="@dimen/dp_size_10" android:text="S-Plan" android:layout_weight="0.7" android:layout_centerInParent="true"/>
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Select Operator" android:inputType="number"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                <EditText android:id="@+id/edit_consumer_id" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.3" android:inputType="number"/>
+                                <View android:background="@color/colorPrimaryDark" android:visibility="gone" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.01"/>
+                                <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorAccent" android:gravity="center" android:id="@+id/TxtROffer" android:visibility="visible" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginRight="@dimen/dp_size_10" android:text="S-Plan" android:layout_weight="0.7" android:layout_centerInParent="true"/>
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Enter Consumer Id"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/rupaya" android:layout_weight="0.4"/>
+                                <EditText android:textSize="16sp" android:textColor="@color/black" android:gravity="left" android:layout_gravity="center_vertical" android:id="@+id/edit_dth_amount" android:background="@android:color/transparent" android:padding="5dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:maxLines="1" android:layout_weight="2.4" android:inputType="number"/>
+                                <RelativeLayout android:id="@+id/layout_plans" android:visibility="gone" android:layout_width="60dp" android:layout_height="50dp">
+                                    <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/theme_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Details" android:layout_centerInParent="true"/>
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Enter Amount" android:inputType="number"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+
+                                <EditText
+                                    android:id="@+id/EditTPin"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2.3"
+                                    android:background="@android:color/transparent"
+                                    android:inputType="numberPassword"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp" />
+
+                                <View android:background="@color/colorPrimaryDark" android:visibility="gone" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.01"/>
+                                <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorAccent" android:gravity="center" android:id="@+id/TxtDetails" android:visibility="gone" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginRight="@dimen/dp_size_10" android:text="Get Info" android:layout_weight="0.7" android:layout_centerInParent="true"/>
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Enter TPIN"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <LinearLayout android:gravity="right" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+                        <RelativeLayout android:id="@+id/layout_dth_plans" android:background="@drawable/circle_background" android:padding="10dp" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_alignParentRight="true" android:elevation="5dp">
+                            <ImageView android:id="@+id/image_offer" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/details"/>
+                            <TextView android:textSize="15sp" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="Details" android:layout_toRightOf="@+id/image_offer" android:layout_centerVertical="true"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <Button android:textSize="17sp" android:textColor="@color/white" android:id="@+id/btn_mobile_Recharge" android:background="@drawable/violet_button_background" android:visibility="visible" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginTop="20dp" android:text="SUBMIT"/>
+                <FrameLayout android:layout_width="match_parent" android:layout_height="30dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent"/>
+</LinearLayout>

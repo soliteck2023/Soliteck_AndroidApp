@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="13dp" app:cardCornerRadius="10dp" app:cardElevation="5dp">
+                <LinearLayout android:orientation="vertical" android:background="@color/white" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <ImageView android:id="@+id/image_delete" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" app:srcCompat="@drawable/ic_cancel_black_24dp"/>
+                    </RelativeLayout>
+                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                        <FrameLayout android:visibility="gone" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/contact_mobile" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_mobile_no" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="10" android:layout_weight="2.6" android:inputType="number"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Mobile Number"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/bank" android:layout_weight="0.3"/>
+                                    <TextView android:textSize="16sp" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/edit_bank" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:drawablePadding="5dp" android:layout_weight="2.7"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Deposit Bank"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pincode" android:layout_weight="0.3"/>
+                                    <EditText android:textSize="16sp" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/edit_ifsc_code" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:maxLines="1" android:drawablePadding="5dp" android:layout_weight="2.7" android:inputType="text"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="IFSC Code"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <TextView android:textColor="@color/colorPrimaryDark" android:gravity="center" android:id="@+id/text_acc_count" android:padding="@dimen/padding_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_15dp"/>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="5dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/color_account" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_account" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1.9" android:inputType="number"/>
+                                    <Button android:id="@+id/btn_verify" android:visibility="visible" android:layout_width="0dp" android:layout_height="match_parent" android:text="verify" android:layout_weight="0.7"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Account Number"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/owner" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_beneficiary" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="text"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Full Name"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:visibility="gone" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pincode" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_ifsc" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="text"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="IFSC Code"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:visibility="gone" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pan_card" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_remitter" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="text"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="RemitterID"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                    </LinearLayout>
+                    <Button android:textStyle="bold" android:textColor="@color/white" android:id="@+id/btn_add_benef" android:background="@drawable/violet_button_background" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="25dp" android:layout_marginBottom="15dp" android:text="Proceed to add"/>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="20dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

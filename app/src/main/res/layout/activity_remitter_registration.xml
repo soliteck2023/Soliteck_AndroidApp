@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="13dp" app:cardCornerRadius="10dp" app:cardElevation="5dp">
+                <LinearLayout android:orientation="vertical" android:background="@color/white" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <ImageView android:id="@+id/image_delete" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" app:srcCompat="@drawable/ic_cancel_black_24dp"/>
+                    </RelativeLayout>
+                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/owner" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_name" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="text"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="First Name"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/owner" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_last_name" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="text"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Last Name"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/contact_mobile" android:layout_weight="0.4"/>
+                                    <EditText android:textSize="16sp" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/edit_mobile" android:background="@android:color/transparent" android:focusable="false" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:maxLength="10" android:editable="false" android:drawablePadding="5dp" android:layout_weight="2.6" android:inputType="number"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Mobile Number"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pincode" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_pincode" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="6" android:layout_weight="2.6" android:inputType="number"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Pincode"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <FrameLayout android:id="@+id/linear_Otp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pincode" android:layout_weight="0.4"/>
+                                    <EditText android:textSize="16sp" android:id="@+id/edit_otp" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:hint="Enter Otp" android:maxLength="6" android:layout_weight="2.6" android:inputType="number"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Otp (Sent to your mobile)"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                        <LinearLayout android:orientation="horizontal" android:id="@+id/linear_resend" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp">
+                            <TextView android:textSize="@dimen/input_text" android:textColor="@color/colorPrimary" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:text="Didn&apos;t receive the OTP?" android:layout_centerInParent="true"/>
+                            <TextView android:textSize="@dimen/input_text" android:textStyle="bold" android:textColor="@color/colorAccent" android:layout_gravity="center" android:id="@+id/text_resend" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginTop="5dp" android:text="RESEND OTP" android:layout_centerInParent="true"/>
+                        </LinearLayout>
+                        <FrameLayout android:visibility="gone" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pan_card" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_remitter" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="text"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="RemitterID"/>
+                            </RelativeLayout>
+                        </FrameLayout>
+                    </LinearLayout>
+                    <Button android:textColor="@color/white" android:id="@+id/btn_send_otp" android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginTop="25dp" android:layout_marginBottom="15dp" android:text="Proceed for OTP"/>
+                    <Button android:textColor="@color/white" android:id="@+id/btn_register_remitter" android:background="@color/colorPrimary" android:visibility="gone" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginTop="25dp" android:layout_marginBottom="15dp" android:text="Proceed for Registration"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -11,6 +11,8 @@ import androidx.appcompat.app.AlertDialog;
 
 public class ConstantClass {
     public static final String MOBILESERVICEID = "1";
+    public static Operater datum = new Operater();
+    public static String operator = MOBILESERVICEID;
     public static String circle = MOBILESERVICEID;
 
     public static void displayToastMessage(Context mContext, String message) {

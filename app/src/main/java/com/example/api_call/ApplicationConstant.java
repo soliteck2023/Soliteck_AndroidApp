@@ -19,7 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class ApplicationConstant {
 
     public static void displayToastMessage(Context mContext, String message) {
-        Toast.makeText(mContext, message, 1).show();
+        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     }
 
     public static void setEditTextMaxLength(EditText editText, int length) {

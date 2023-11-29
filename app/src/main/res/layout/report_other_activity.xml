@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidDomInspection -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -12,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/rectangle_background"
         android:orientation="vertical"
         android:padding="15dp"
@@ -27,7 +30,7 @@
             <LinearLayout
                 android:id="@+id/llinerpayment1"
                 android:layout_width="match_parent"
-                android:layout_height="109dp"
+                android:layout_height="129dp"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
@@ -48,9 +51,11 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         android:layout_marginTop="5dp"
                         android:text="Transation"
+                        android:gravity="center"
+                        android:padding="5dp"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -73,9 +78,11 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         android:layout_marginTop="5dp"
                         android:text="Ledger"
+                        android:padding="5dp"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -99,7 +106,9 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
+                        android:gravity="center"
+                        android:padding="5dp"
                         android:layout_marginTop="3dp"
                         android:background="@color/light_theme_color"
                         android:text="Earning"
@@ -109,13 +118,14 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_transferreport"
+                    android:id="@+id/linear_transfe_rreport"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:gravity="center"
                     android:orientation="vertical"
+                    android:weightSum="2"
                     android:padding="5dp">
 
                     <ImageView
@@ -126,10 +136,11 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         android:layout_marginTop="5dp"
                         android:paddingLeft="5dp"
-                        android:text="Reports"
+                        android:gravity="center"
+                        android:text="Payment Receive Reports"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -148,7 +159,7 @@
                 android:weightSum="4">
 
                 <LinearLayout
-                    android:id="@+id/linear_latettxn"
+                    android:id="@+id/linear_latettxnReport"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -165,9 +176,11 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         android:layout_marginTop="4dp"
-                        android:text="Transation"
+                        android:text="Latest Report"
+                        android:gravity="center"
+                        android:padding="5dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -192,11 +205,73 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         android:layout_marginTop="4dp"
                         android:paddingLeft="5dp"
+                        android:gravity="center"
                         android:paddingRight="5dp"
                         android:text="Bank list"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@id/linear_compliant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:visibility="visible"
+                    tools:ignore="DuplicateIds">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:src="@drawable/pay_report"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="4dp"
+                        android:paddingLeft="5dp"
+                        android:gravity="center"
+                        android:paddingRight="5dp"
+                        android:text="Complaint History"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_aeps"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:src="@drawable/txn_history"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="4dp"
+                        android:paddingLeft="5dp"
+                        android:gravity="center"
+                        android:paddingRight="5dp"
+                        android:text="AEPS Txn Reports"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />

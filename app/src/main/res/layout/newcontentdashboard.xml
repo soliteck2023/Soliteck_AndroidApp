@@ -54,8 +54,8 @@
                         android:layout_marginTop="5dp"
                         android:text="Mobile"
                         android:padding="2dp"
-                        android:background="@color/colorAccent"
-                        android:textColor="@color/white"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -82,8 +82,8 @@
                         android:layout_marginTop="5dp"
                         android:text="Dth"
                         android:padding="2dp"
-                        android:textColor="@color/white"
-                        android:background="@color/colorAccent"
+                        android:textColor="@color/black"
+                        android:background="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -111,8 +111,8 @@
                         android:layout_marginTop="3dp"
                         android:text="Postpaid"
                         android:padding="2dp"
-                        android:textColor="@color/white"
-                        android:background="@color/colorAccent"
+                        android:textColor="@color/black"
+                        android:background="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         />
@@ -142,8 +142,8 @@
                         android:paddingLeft="5dp"
                         android:text="DMT"
                         android:padding="2dp"
-                        android:textColor="@color/white"
-                        android:background="@color/colorAccent"
+                        android:textColor="@color/black"
+                        android:background="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -186,8 +186,8 @@
                         android:paddingRight="5dp"
                         android:text="BBPS"
                         android:padding="2dp"
-                        android:textColor="@color/white"
-                        android:background="@color/colorAccent"
+                        android:textColor="@color/black"
+                        android:background="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -217,8 +217,8 @@
                         android:paddingRight="5dp"
                         android:text="AEPS"
                         android:padding="2dp"
-                        android:textColor="@color/white"
-                        android:background="@color/colorAccent"
+                        android:textColor="@color/black"
+                        android:background="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>

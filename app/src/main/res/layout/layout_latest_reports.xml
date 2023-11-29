@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" app:cardCornerRadius="5dp" app:cardElevation="5dp">
+        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="13sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_refid" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="right" android:id="@+id/text_date_time_" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="29 Jan 2019, 22 pm"/>
+            </LinearLayout>
+            <TextView android:textColor="@color/colorPrimary" android:id="@+id/text_transid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:hint="" android:layout_alignParentLeft="true"/>
+            <View android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="1.2dp" android:layout_margin="15dp"/>
+            <TextView android:textSize="15sp" android:textColor="@color/black" android:id="@+id/text_mob_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_status_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_5" android:hint="Success"/>
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_paymode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_5" android:hint="mode" android:layout_below="@+id/text_status_"/>
+                <TextView android:textSize="19sp" android:textStyle="bold" android:textColor="@color/dark_green" android:gravity="right" android:id="@+id/text_amount_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="amount" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

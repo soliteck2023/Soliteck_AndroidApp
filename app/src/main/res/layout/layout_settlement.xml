@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" app:cardCornerRadius="5dp" app:cardElevation="5dp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:padding="@dimen/margin20dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/text_ref_id" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/text_rrn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_user" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="bold" android:id="@+id/text_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="15sp" android:textStyle="bold" android:textColor="@color/colorPrimaryDark" android:id="@+id/text_amount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_openbal" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1"/>
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_closebal" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_commAmt" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1"/>
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_chargeAmt" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1"/>
+            </LinearLayout>
+            <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_payment_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_bank_ifsc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_holder_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_account" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_withdrawMode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_transactionMode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_addDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:id="@+id/text_remark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_gravity="right" android:id="@+id/text_replyDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

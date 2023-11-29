@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:ignore="MissingDefaultResource">
 
     <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -93,15 +95,16 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin_5dp"
+                        android:paddingEnd="10dp"
                         android:background="@drawable/rectangle_background"
                         app:cardCornerRadius="15dp"
                         app:cardElevation="10dp">
 
                         <RelativeLayout
                             android:layout_width="363dp"
-                            android:layout_height="174dp"
+                            android:layout_height="120dp"
                             android:gravity="center">
 
                             <LinearLayout
@@ -138,7 +141,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:background="@drawable/violet_button_background"
-                                    android:padding="7dp"
+                                    android:padding="5dp"
+                                    android:layout_marginBottom="10dp"
                                     android:text="Cashout Balance"
                                     android:textColor="@color/white"
                                     android:textStyle="bold" />
@@ -146,22 +150,22 @@
                             </LinearLayout>
 
 
-                            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            <LinearLayout
                                 android:id="@+id/reuest_balance"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginLeft="100dp"
+                                android:layout_marginLeft="110dp"
                                 android:layout_toRightOf="@+id/lliner_mainbalance"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
                                     android:layout_marginTop="5dp"
                                     android:padding="5dp"
                                     android:text="Request"
-                                    android:layout_gravity="center"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="17dp"
                                     android:textStyle="bold"></TextView>
@@ -192,6 +196,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
+
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/curveshape_background">
 
@@ -325,4 +330,4 @@
 
         </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

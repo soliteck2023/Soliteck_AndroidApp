@@ -17,10 +17,18 @@
 
 
     </array>
+
     <array name="child_type_spinner">
         <item>FRC</item>
         <item>MDS</item>
         <item>DIS</item>
+    </array>
+
+    <array name="type">
+        <item>Distributor</item>
+        <item>Master Distributor</item>
+        <item>Super Distributor</item>
+        <item>Retailer</item>
     </array>
 
 
@@ -58,6 +66,24 @@
         <item>UPI</item>
     </array>
 
+    <string-array name="operator">
+        <item>Airtel</item>
+        <item>VI</item>
+        <item>Jio</item>
+        <item>BSNL</item>
+
+    </string-array>
+    <string-array name="dishoperator">
+        <item>Airtel DTH</item>
+        <item>TATA Sky</item>
+        <item>DISH TV</item>
+        <item>SUN DIRECT</item>
+        <item>BIG TV</item>
+        <item>SUN DIRECT</item>
+        <item>Airtel Digital TV</item>
+        <item>VIDEOCON D2h</item>
+
+    </string-array>
     <string-array name="Category_excel">
         <item>Office Supplies</item>
         <item>Stationery</item>
@@ -69,4 +95,39 @@
         <item>Credited By- Soliteck</item>
 
     </string-array>
+
+    <string-array name="circle">
+        <item>Andhra Pradesh (AP) </item>
+        <item>Arunachal Pradesh (AR)</item>
+        <item>Assam (AS)</item>
+        <item>Bihar (BR)</item>
+        <item>Chhattisgarh (CG)</item>
+        <item>Goa (GA)</item>
+        <item>Gujarat <GJ></GJ></item>
+        <item>Haryana (HR)</item>
+        <item>Himachal Pradesh (HP)</item>
+        <item>Jammu and Kashmir (JK</item>
+        <item>Jharkhand (JH)</item>
+        <item>Karnataka (KA)</item>
+        <item>Kerala (KL)</item>
+        <item>Madhya Pradesh (MP)</item>
+        <item>Maharashtra (MH)</item>
+        <item>Manipur (MN)</item>
+        <item>Meghalaya (ML)</item>
+        <item>Mizoram (MZ)</item>
+        <item>Nagaland (NL)</item>
+        <item>Odisha(OR)</item>
+        <item>Punjab (PB)</item>
+        <item>Rajasthan (RJ)</item>
+        <item>Sikkim (SK)</item>
+        <item>Tamil Nadu (TN)</item>
+        <item>Telangana (TS)</item>
+        <item>Tripura (TR)</item>
+        <item>Uttar Pradesh (UP)</item>
+        <item>Uttarakhand (UK)</item>
+        <item>West Bengal (WB)</item>
+
+
+    </string-array>
+
 </resources>

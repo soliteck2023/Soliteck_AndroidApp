@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ContactUsActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="120dp">
+                <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="@color/white" android:layout_gravity="center" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25dp" android:text="Contact Us"/>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginTop="-40dp" android:layout_marginRight="15dp" android:layout_marginBottom="10dp" app:cardCornerRadius="20dp" app:cardElevation="10dp">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp">
+                    <androidx.cardview.widget.CardView android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="8dp" app:cardElevation="12dp">
+                        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp">
+                            <ImageView android:id="@+id/imageContact" android:layout_width="match_parent" android:layout_height="300dp" android:src="@drawable/contact_us_img"/>
+                            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp">
+                                <ImageView android:layout_gravity="center" android:visibility="gone" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/contact_location"/>
+                                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/tv_address" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="Bharat Fert. Ind. Ltd,-Richmond Shiv Sai Paradise,Flat No-1003, Majiwada,Thane Maharashtra - 400601 India"/>
+                            </LinearLayout>
+                            <LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+                                <ImageView android:layout_gravity="center" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/contact_telephone"/>
+                                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/tv_mobile" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text=""/>
+                            </LinearLayout>
+                            <LinearLayout android:orientation="horizontal" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+                                <ImageView android:layout_gravity="center" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/contact_website"/>
+                                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/tv_website" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="https://soliteck.com/"/>
+                            </LinearLayout>
+                            <LinearLayout android:orientation="horizontal" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+                                <ImageView android:layout_gravity="center" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/contact_email"/>
+                                <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp">
+                                    <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/tv_email" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="support@soliteck.com"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="@color/colorPrimaryDark" android:layout_gravity="right" android:id="@+id/TextEnquiry" android:padding="@dimen/dp_size_10" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin20dp" android:text="Enquire now"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

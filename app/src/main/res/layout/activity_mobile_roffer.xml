@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="@color/light_grey_color" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/Recycleview" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/margin_5dp"  android:layout_centerHorizontal="true"/>
+    <TextView android:textStyle="bold" android:gravity="center" android:id="@+id/empty_view" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:text="No Records"/>
+</RelativeLayout>
+
+
+<!--    add in line no 3:android:layout_below="@+id/toolbar"-->

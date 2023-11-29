@@ -1,6 +1,6 @@
 package Name;
 
-interface MARK {
+public interface MARK {
     public static final String LABEL = "class";
     public static final String LENGTH = "length";
     public static final String MARK = "id";

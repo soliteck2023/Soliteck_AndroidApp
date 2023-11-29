@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:background="@color/white" android:padding="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" app:cardCornerRadius="5dp">
+        <RelativeLayout android:padding="10dp" android:layout_width="match_parent" android:layout_height="match_parent">
+            <RelativeLayout android:id="@+id/orderidLayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_orderid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="OrderId"/>
+                <TextView android:textSize="12dp" android:id="@+id/text_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3dp" android:hint="04 Dec 2017 08:36 PM" android:layout_alignParentRight="true"/>
+                <TextView android:textStyle="bold" android:textColor="@color/dark_green" android:id="@+id/text_closing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:hint="Closing" android:layout_below="@+id/text_date"/>
+                <View android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="15dp" android:layout_below="@+id/text_closing"/>
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:layout_below="@+id/orderidLayout">
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_transaction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Transaction"/>
+                    <TextView android:textStyle="bold" android:textColor="@color/dark_green" android:gravity="right" android:id="@+id/text_amount" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:hint="200"/>
+                </LinearLayout>
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_credituser" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:hint="credit User"/>
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_debituser" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:hint="Debit User"/>
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="3dp">
+                    <TextView android:textStyle="normal" android:textColor="@color/colorAccent" android:gravity="right" android:id="@+id/text_opening" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginRight="10dp" android:hint="Opening"/>
+                </LinearLayout>
+                <TextView android:textStyle="normal" android:textColor="@color/medium_grey_color" android:id="@+id/text_remark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:hint="Remark"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

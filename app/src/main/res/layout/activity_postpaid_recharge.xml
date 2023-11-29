@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PostpaidRechargeActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="horizontal" android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/image_mobile"
+            android:padding="10dp" android:layout_width="100dp" android:layout_height="100dp" android:layout_marginLeft="5dp" android:layout_marginTop="15dp" android:src="@drawable/postpaid"
+            app:tint="@color/white" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginTop="35dp">
+            <TextView android:textSize="18sp" android:textColor="@color/white" android:id="@+id/text_mob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recharge Postpaid Plan"/>
+            <TextView android:textSize="15sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="just give few details" android:layout_below="@+id/text_mob"/>
+        </LinearLayout>
+    </LinearLayout>
+    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true">
+        <androidx.cardview.widget.CardView android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="13dp" app:cardCornerRadius="10dp" app:cardElevation="5dp">
+            <LinearLayout android:orientation="vertical" android:background="@color/white" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="10dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                <EditText android:id="@+id/edit_mobile_number" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="number"/>
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Mobile Number" android:inputType="number"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                                <Spinner
+                                    android:id="@+id/edit_postpaid_operator"
+                                    android:background="@android:color/transparent"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="5dp"
+                                    android:padding="5dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:paddingBottom="5dp"
+                                    android:layout_width="0dp"
+                                    android:maxLines="1"
+                                    android:entries="@array/operator"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2.3"
+                                    android:inputType="number"/>
+
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Select Operator" android:inputType="number"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/rupaya" android:layout_weight="0.4"/>
+                                <EditText android:textSize="16sp" android:textColor="@color/black" android:gravity="left" android:layout_gravity="center_vertical" android:id="@+id/edit_postpaid_amt" android:background="@android:color/transparent" android:padding="5dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:maxLines="1" android:layout_weight="2.4" android:inputType="number"/>
+                                <RelativeLayout android:id="@+id/layout_plans" android:layout_width="60dp" android:layout_height="50dp">
+                                    <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/theme_color" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="R-offer" android:layout_centerInParent="true"/>
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Enter Amount" android:inputType="number"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                <EditText android:id="@+id/EditTPin" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="numberPassword"/>
+                            </LinearLayout>
+                            <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Enter TPIN"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+                </LinearLayout>
+                <Button android:textSize="17sp" android:textColor="@color/white" android:id="@+id/btn_postpaid_Recharge" android:background="@drawable/violet_button_background" android:visibility="visible" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginTop="20dp" android:text="SUBMIT"/>
+                <FrameLayout android:layout_width="match_parent" android:layout_height="30dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent"/>
+</LinearLayout>

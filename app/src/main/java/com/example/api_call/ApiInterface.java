@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Url;
@@ -38,6 +40,53 @@ public interface ApiInterface {
     @Headers("Content-Type:application/json")
     @POST("Payment/GetPaymentRequestHistory")
     Call<PaymentRequestHistoryResponse> GetPaymentRequestHistory(@Body HashMap<String, String> hashMap);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("Recharge/GetMobileOperatorName")
+    Call<FetchOperator> getMobileOPT(@Body HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("Recharge/GetMobileSpecialPlan")
+    Call<MobilePlansResponse> getMobileSpecialPlan(@Field("UserName") String str, @Field("Password") String str2, @Field("OperatorId") String str3, @Field("Number") String str4);
+
+    @POST("Recharge/GetOperator")
+    Call<OperatorResponse> getAllOperators();
+
+    @POST("Payment/GetBankList")
+    Call<BankListbaseResponse> GetBankList(@Body HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("Recharge/GetDTHOpt")
+    Call<OperatorWithCircleResponse> getDTHOPT(@Field("UserName") String str, @Field("Password") String str2, @Field("Number") String str3);
+
+    @POST("Recharge/Recharge")
+    Call<RechargeConfirmResponse> getRechargeResponse(@Body HashMap<String, String> hashMap);
+
+
+    @POST("DMT/ValidateRemitter")
+    Call<ValidateRemitter> getValidate(@Body HashMap<String, String> hashMap);
+
+    @POST("Transaction/TransactionReport")
+    Call<TransactionReportBase> GetTransactionReport(@Body HashMap<String, String> hashMap);
+
+    @POST("Transaction/LedgerReport")
+    Call<TransactionReportBase> GetLedgerReport(@Body HashMap<String, String> hashMap);
+
+    @POST("Transaction/MyEarning")
+    Call<MyEarningReportBase> GetMyEarning(@Body HashMap<String, String> hashMap);
+
+    @POST("Payment/GetNetworkPaymentReceivedReport")
+    Call<PaymentReceivedResponse> GetPaymentReceived(@Body HashMap<String, String> hashMap);
+
+    @POST("Transaction/LatestTransationReport")
+    Call<GetLatestReportBase> getLatestReport(@Body HashMap<String, String> hashMap);
+
+    @POST("reports/StatementReport")
+    Call<GetStatementReport> getStatementReport(@Body HashMap<String, String> hashMap);
+
+    @POST("Payment/PaymentRequest")
+    Call<RequestPaymentResponse> GetPaymentRequest(@Body HashMap<String, String> hashMap);
 
 
 

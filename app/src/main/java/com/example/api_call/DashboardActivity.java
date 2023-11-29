@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
@@ -41,7 +42,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{  //implements NavigationView.OnNavigationItemSelectedListener
 
 
     private TextView TextName;
@@ -77,6 +78,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private TextView text_news;
     private TextView textaepsBalance;
     private TextView textbalance;
+
+
 //    private ViewCommissionAdapter viewCommissionAdapter;
 //    private List<CommissionData> list_margin = new ArrayList();
     private String request_type = "";
@@ -88,6 +91,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //    ViewPager pager;
     LinearLayout reuest_balance;
 
+    LinearLayout menuBank;
     private CheckView checkView;
 
 
@@ -98,7 +102,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_dashboard);
 //        pager =  findViewById(R.id.viewpager2);    //viewpager reuestbutton
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         LinearLayout linear_mobile = (LinearLayout) findViewById(R.id.linear_mobile);
         LinearLayout linear_dth = (LinearLayout) findViewById(R.id.linear_dth);
         LinearLayout linear_transfer = (LinearLayout) findViewById(R.id.linear_transferdmt);
@@ -112,12 +116,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         this.linear_transactions = (LinearLayout) findViewById(R.id.linear_txn);
 //        this.linear_payment_received_report = (LinearLayout) findViewById(R.id.linear_payment_received_report);
         LinearLayout linear_request = (LinearLayout) findViewById(R.id.reuest_balance);
-
-        this.linear_payment_transfer_report = (LinearLayout) findViewById(R.id.linear_transferreport);
+        menuBank = findViewById(R.id.first_linear);
+        this.linear_payment_transfer_report = (LinearLayout) findViewById(R.id.linear_transfe_rreport);
         this.linear_Ledger = (LinearLayout) findViewById(R.id.linear_leger);
         this.linear_earning = (LinearLayout) findViewById(R.id.linear_earn);
         this.linear_mobile = (LinearLayout) findViewById(R.id.linear_mobile);
-//        this.linear_latestReport = (LinearLayout) findViewById(R.id.linear_latestReport);
+        this.linear_latestReport = (LinearLayout) findViewById(R.id.linear_latettxnReport);
         this.linear_bbps = (LinearLayout) findViewById(R.id.linear_bbps);
         this.image_mobile = (ImageView) findViewById(R.id.image_mobile);
         this.image_dth = (ImageView) findViewById(R.id.image_dth);
@@ -130,28 +134,62 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //        this.btn_aeps = (ImageView) findViewById(R.id.btn_aeps);
 //        this.btn_bankDetails = (Button) findViewById(R.id.btn_bankDetails);
 //        this.btn_bankSettlement = (Button) findViewById(R.id.btn_bankSettlement);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Dashboard");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerLayout = navigationView.getHeaderView(0);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
+        this.linear_profile = (LinearLayout) headerLayout.findViewById(R.id.linear_profile);
+
+
+
 //        adapter = new MyPagerAdapter(getSupportFragmentManager(),DashboardActivity.this);
 //        pager.setAdapter(adapter);
-
-        this.linear_profile = (LinearLayout) headerLayout.findViewById(R.id.linear_profile);
 //        this.image_profile = (ImageView) headerLayout.findViewById(R.id.image_profile);
         this.text_name = (TextView) headerLayout.findViewById(R.id.text_name);
           this.text_mobile = (TextView) headerLayout.findViewById(R.id.text_mobile);
            this.textbalance = (TextView) findViewById(R.id.view_balance);
            this.textaepsBalance = (TextView) findViewById(R.id.textaepsBalance);
-//        this.image_refresh = (ImageView) findViewById(R.id.image_refresh);
+        this.image_refresh = (ImageView) findViewById(R.id.image_refresh);
 //        this.linear_aeps = (LinearLayout) findViewById(R.id.linear_aeps);
-//        this.linear_settelment = (LinearLayout) findViewById(R.id.linear_settelment);
-//        navigationView.setNavigationItemSelectedListener(this);
-//        navigationView.setItemIconTintList(null);
+        LinearLayout linear_settelment = (LinearLayout) findViewById(R.id.linear_compliant);
+
+
+        linear_settelment.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.17
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, StatementReportActivity.class));
+            }
+        });
+
+
+
+        this.linear_profile.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.20
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+                DashboardActivity.this.startActivity(intent);
+            }
+        });
+        this.image_refresh.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.6
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+//                if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
+//                    ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                    return;
+//                }
+                DashboardActivity dashboardActivity = DashboardActivity.this;
+                dashboardActivity.getUserBalance(dashboardActivity.textbalance, DashboardActivity.this.textaepsBalance);
+            }
+        });
 
 
         linear_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
@@ -162,35 +200,51 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
 
 
+        menuBank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        linear_mobile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        linear_dth.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        linear_postpaid.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        linear_transfer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, CompanyBankListActivity.class));
+
+            }
+        });
+
+        linear_mobile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, MobileRechargeActivity.class);
+                DashboardActivity.this.startActivity(intent);
+
+            }
+        });
+
+        linear_dth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this,DTHRechargeActivity.class);
+                DashboardActivity.this.startActivity(intent);
+
+            }
+        });
+
+        linear_postpaid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, PostpaidRechargeActivity.class);
+                DashboardActivity.this.startActivity(intent);
+
+            }
+        });
+
+        linear_transfer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, MoneyTransferActivity.class);
+                DashboardActivity.this.startActivity(intent);
+
+            }
+        });
+
 //        linear_bbps.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -205,34 +259,68 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //            }
 //        });
 
-//        linear_transactions.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//        linear_Ledger.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        linear_earning.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        linear_Bank.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        linear_transactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, TransactionsReportActivity.class));
+
+            }
+        });
+        linear_Ledger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, LedgerReportActivity.class));
+
+
+            }
+        });
+
+        linear_earning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, MyEarningReportActivity.class));
+
+            }
+        });
+        linear_payment_transfer_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, PaymentReceivedReportActivity.class));
+
+            }
+        });
+
+
+        linear_Bank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, CompanyBankListActivity.class));
+
+            }
+        });
+        linear_latestReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, LatestReportActivity.class));
+
+            }
+        });
 
     }
+
+    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+
 
     private void viewPaymentRequest() {
         View view_types = getLayoutInflater().inflate(R.layout.layout_view_requests, (ViewGroup) null);
@@ -287,15 +375,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
     }
 
-//    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
-//    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
 
     @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     public void onResume() {
@@ -438,160 +517,160 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //    }
 
 
-    @Override // com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_orders) {
-            startActivity(new Intent(this, HistoryTransactionsActivity.class));
-        } else if (id == R.id.nav_mobile) {
-            Intent intent = new Intent(this, MobileRechargeActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_dth) {
-            Intent intent2 = new Intent(this, DTHRechargeActivity.class);
-            startActivity(intent2);
-        } else if (id == R.id.nav_contactus) {
-            Intent intent3 = new Intent(this, ContactUsActivity.class);
-            startActivity(intent3);
-        } else if (id == R.id.nav_transfer) {
-            Intent intent4 = new Intent(this, MoneyTransferActivity.class);
-            startActivity(intent4);
-        } else if (id == R.id.nav_password) {
-            View view = getLayoutInflater().inflate(R.layout.layout_change_password, (ViewGroup) null);
-            ImageView image_cancel = (ImageView) view.findViewById(R.id.image_cancel);
-            final EditText edit_old_password = (EditText) view.findViewById(R.id.edit_old_password);
-            final TextView forgot_tpin = (TextView) view.findViewById(R.id.forgot_tpin);
-            final EditText edit_new_password = (EditText) view.findViewById(R.id.edit_new_password);
-            final EditText edit_confirm_password = (EditText) view.findViewById(R.id.edit_confirm_password);
-            TextView textView = (TextView) view.findViewById(R.id.text_pass_change);
-            Button btn_change_password = (Button) view.findViewById(R.id.btn_change_password);
-            LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_hide);
-//            CheckView checkView = view.findViewById(R.id.check);
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            final AlertDialog alertDialog = builder.create();
-            alertDialog.setView(view);
-            image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.25
-                @Override // android.view.View.OnClickListener
-                public void onClick(View v) {
-                    alertDialog.dismiss();
-                }
-            });
-            btn_change_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.26
-                @Override // android.view.View.OnClickListener
-                public void onClick(View v) {
-                    forgot_tpin.setVisibility(View.VISIBLE);
-                    if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
-                        ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-                    } else if (edit_old_password.getText().toString().isEmpty()) {
-                        edit_old_password.setError("Enter Old Password");
-                        edit_old_password.requestFocus();
-                    } else if (edit_new_password.getText().toString().isEmpty()) {
-                        edit_old_password.setError(null);
-                        edit_new_password.setError("Enter New Password");
-                        edit_new_password.requestFocus();
-                    } else if (edit_confirm_password.getText().toString().isEmpty()) {
-                        edit_new_password.setError(null);
-                        edit_confirm_password.setError("Enter Confirm Password");
-                        edit_confirm_password.requestFocus();
-                    } else if (!edit_confirm_password.getText().toString().trim().equals(edit_new_password.getText().toString().trim())) {
-                        edit_confirm_password.setError("New Password & Confirm should be same");
-                        edit_confirm_password.requestFocus();
-                    } else {
-                        DashboardActivity.this.getChangePassword(edit_old_password.getText().toString(), edit_new_password.getText().toString(), edit_confirm_password.getText().toString(), alertDialog);
-                    }
-                }
-            });
-            if (Build.VERSION.SDK_INT >= 21) {
-                alertDialog.create();
-                alertDialog.show();
-            }
-        } else if (id == R.id.nav_postpaid) {
-            Intent intent5 = new Intent(this, PostpaidRechargeActivity.class);
-            startActivity(intent5);
-        } else if (id != R.id.nav_gateway) {
-            if (id == R.id.nav_datacard) {
-                Intent intent6 = new Intent(this, DataCardRechargeActivity.class);
-                startActivity(intent6);
-            } else if (id != R.id.nav_share) {
-                if (id == R.id.nav_payment_request) {
-                    startActivity(new Intent(this, PaymentRequestActivity.class));
-                } else if (id == R.id.nav_statements) {
-                    startActivity(new Intent(this, StatementReportActivity.class));
-                } else if (id != R.id.nav_send) {
-                    if (id == R.id.nav_logout) {
-                        startActivity(new Intent(this, MainActivity.class));
-                        finish();
-                    } else if (id == R.id.nav_chnagetpin) {
-                        View view2 = getLayoutInflater().inflate(R.layout.layout_change_password, (ViewGroup) null);
-                        TextView forgot_tpin2 = (TextView) view2.findViewById(R.id.forgot_tpin);
-                        forgot_tpin2.setVisibility(View.VISIBLE);
-                        final ImageView image_cancel2 = (ImageView) view2.findViewById(R.id.image_cancel);
-                        final TextView mTxtTitle = (TextView) view2.findViewById(R.id.TxtTitle);
-                        mTxtTitle.setText("Change TPIN");
-                        final EditText edit_old_password2 = (EditText) view2.findViewById(R.id.edit_old_password);
-                        edit_old_password2.setHint("Enter Old TPIN");
-                        final EditText edit_new_password2 = (EditText) view2.findViewById(R.id.edit_new_password);
-                        ApplicationConstant.setEditTextMaxLength(edit_new_password2, 4);
-                        edit_new_password2.setHint("Enter New TPIN");
-                        final EditText edit_confirm_password2 = (EditText) view2.findViewById(R.id.edit_confirm_password);
-                        edit_confirm_password2.setHint("Confirm New TPIN");
-                        ApplicationConstant.setEditTextMaxLength(edit_confirm_password2, 4);
-                        TextView textView2 = (TextView) view2.findViewById(R.id.text_pass_change);
-                        Button btn_change_password2 = (Button) view2.findViewById(R.id.btn_change_password);
-                        final LinearLayout layout_hide = (LinearLayout) view2.findViewById(R.id.layout_hide);
-//                        final CheckView check = (CheckView) view2.findViewById(R.id.checkbox_remember);
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                        final AlertDialog alertDialog2 = builder2.create();
-                        alertDialog2.setView(view2);
-                        image_cancel2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.27
-                            @Override // android.view.View.OnClickListener
-                            public void onClick(View v) {
-                                alertDialog2.dismiss();
-                            }
-                        });
-                        forgot_tpin2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.28
-                            @Override // android.view.View.OnClickListener
-                            public void onClick(View v) {
-                                DashboardActivity.this.getForgotTpin(checkView, mTxtTitle, alertDialog2);
-                                layout_hide.setVisibility(View.VISIBLE);
-                                image_cancel2.setVisibility(View.VISIBLE);
-                            }
-                       });
-                        btn_change_password2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.29
-                            @Override // android.view.View.OnClickListener
-                            public void onClick(View v) {
-                                if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
-                                    ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-                                } else if (edit_old_password2.getText().toString().isEmpty()) {
-                                    edit_old_password2.setError("Enter Old Tpin");
-                                    edit_old_password2.requestFocus();
-                                } else if (edit_new_password2.getText().toString().isEmpty()) {
-                                    edit_old_password2.setError(null);
-                                    edit_new_password2.setError("Enter New Tpin");
-                                    edit_new_password2.requestFocus();
-                                } else if (edit_confirm_password2.getText().toString().isEmpty()) {
-                                    edit_new_password2.setError(null);
-                                    edit_confirm_password2.setError("Enter Confirm Tpin");
-                                    edit_confirm_password2.requestFocus();
-                                } else if (!edit_confirm_password2.getText().toString().trim().equals(edit_new_password2.getText().toString().trim())) {
-                                    edit_confirm_password2.setError("New Tpin & Confirm should be same");
-                                    edit_confirm_password2.requestFocus();
-                                } else {
-                                    DashboardActivity.this.getChangeTpin(edit_old_password2.getText().toString(), edit_new_password2.getText().toString(), edit_confirm_password2.getText().toString(), alertDialog2);
-                                }
-                            }
-                        });
-                        if (Build.VERSION.SDK_INT >= 21) {
-                            alertDialog2.create();
-                            alertDialog2.show();
-                        }
-                    }
-                }
-            }
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
+//    @Override // com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
+//    public boolean onNavigationItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.nav_orders) {
+//            startActivity(new Intent(this, HistoryTransactionsActivity.class));
+//        } else if (id == R.id.nav_mobile) {
+//            Intent intent = new Intent(this, MobileRechargeActivity.class);
+//            startActivity(intent);
+//        } else if (id == R.id.nav_dth) {
+//            Intent intent2 = new Intent(this, DTHRechargeActivity.class);
+//            startActivity(intent2);
+//        } else if (id == R.id.nav_contactus) {
+//            Intent intent3 = new Intent(this, ContactUsActivity.class);
+//            startActivity(intent3);
+//        } else if (id == R.id.nav_transfer) {
+//            Intent intent4 = new Intent(this, MoneyTransferActivity.class);
+//            startActivity(intent4);
+//        } else if (id == R.id.nav_password) {
+//            View view = getLayoutInflater().inflate(R.layout.layout_change_password, (ViewGroup) null);
+//            ImageView image_cancel = (ImageView) view.findViewById(R.id.image_cancel);
+//            final EditText edit_old_password = (EditText) view.findViewById(R.id.edit_old_password);
+//            final TextView forgot_tpin = (TextView) view.findViewById(R.id.forgot_tpin);
+//            final EditText edit_new_password = (EditText) view.findViewById(R.id.edit_new_password);
+//            final EditText edit_confirm_password = (EditText) view.findViewById(R.id.edit_confirm_password);
+//            TextView textView = (TextView) view.findViewById(R.id.text_pass_change);
+//            Button btn_change_password = (Button) view.findViewById(R.id.btn_change_password);
+//            LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_hide);
+////            CheckView checkView = view.findViewById(R.id.check);
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            final AlertDialog alertDialog = builder.create();
+//            alertDialog.setView(view);
+//            image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.25
+//                @Override // android.view.View.OnClickListener
+//                public void onClick(View v) {
+//                    alertDialog.dismiss();
+//                }
+//            });
+//            btn_change_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.26
+//                @Override // android.view.View.OnClickListener
+//                public void onClick(View v) {
+//                    forgot_tpin.setVisibility(View.VISIBLE);
+//                    if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
+//                        ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                    } else if (edit_old_password.getText().toString().isEmpty()) {
+//                        edit_old_password.setError("Enter Old Password");
+//                        edit_old_password.requestFocus();
+//                    } else if (edit_new_password.getText().toString().isEmpty()) {
+//                        edit_old_password.setError(null);
+//                        edit_new_password.setError("Enter New Password");
+//                        edit_new_password.requestFocus();
+//                    } else if (edit_confirm_password.getText().toString().isEmpty()) {
+//                        edit_new_password.setError(null);
+//                        edit_confirm_password.setError("Enter Confirm Password");
+//                        edit_confirm_password.requestFocus();
+//                    } else if (!edit_confirm_password.getText().toString().trim().equals(edit_new_password.getText().toString().trim())) {
+//                        edit_confirm_password.setError("New Password & Confirm should be same");
+//                        edit_confirm_password.requestFocus();
+//                    } else {
+//                        DashboardActivity.this.getChangePassword(edit_old_password.getText().toString(), edit_new_password.getText().toString(), edit_confirm_password.getText().toString(), alertDialog);
+//                    }
+//                }
+//            });
+//            if (Build.VERSION.SDK_INT >= 21) {
+//                alertDialog.create();
+//                alertDialog.show();
+//            }
+//        } else if (id == R.id.nav_postpaid) {
+//            Intent intent5 = new Intent(this, PostpaidRechargeActivity.class);
+//            startActivity(intent5);
+//        } else if (id != R.id.nav_gateway) {
+//            if (id == R.id.nav_datacard) {
+//                Intent intent6 = new Intent(this, DataCardRechargeActivity.class);
+//                startActivity(intent6);
+//            } else if (id != R.id.nav_share) {
+//                if (id == R.id.nav_payment_request) {
+//                    startActivity(new Intent(this, PaymentRequestActivity.class));
+//                } else if (id == R.id.nav_statements) {
+//                    startActivity(new Intent(this, StatementReportActivity.class));
+//                } else if (id != R.id.nav_send) {
+//                    if (id == R.id.nav_logout) {
+//                        startActivity(new Intent(this, MainActivity.class));
+//                        finish();
+//                    } else if (id == R.id.nav_chnagetpin) {
+//                        View view2 = getLayoutInflater().inflate(R.layout.layout_change_password, (ViewGroup) null);
+//                        TextView forgot_tpin2 = (TextView) view2.findViewById(R.id.forgot_tpin);
+//                        forgot_tpin2.setVisibility(View.VISIBLE);
+//                        final ImageView image_cancel2 = (ImageView) view2.findViewById(R.id.image_cancel);
+//                        final TextView mTxtTitle = (TextView) view2.findViewById(R.id.TxtTitle);
+//                        mTxtTitle.setText("Change TPIN");
+//                        final EditText edit_old_password2 = (EditText) view2.findViewById(R.id.edit_old_password);
+//                        edit_old_password2.setHint("Enter Old TPIN");
+//                        final EditText edit_new_password2 = (EditText) view2.findViewById(R.id.edit_new_password);
+//                        ApplicationConstant.setEditTextMaxLength(edit_new_password2, 4);
+//                        edit_new_password2.setHint("Enter New TPIN");
+//                        final EditText edit_confirm_password2 = (EditText) view2.findViewById(R.id.edit_confirm_password);
+//                        edit_confirm_password2.setHint("Confirm New TPIN");
+//                        ApplicationConstant.setEditTextMaxLength(edit_confirm_password2, 4);
+//                        TextView textView2 = (TextView) view2.findViewById(R.id.text_pass_change);
+//                        Button btn_change_password2 = (Button) view2.findViewById(R.id.btn_change_password);
+//                        final LinearLayout layout_hide = (LinearLayout) view2.findViewById(R.id.layout_hide);
+////                        final CheckView check = (CheckView) view2.findViewById(R.id.checkbox_remember);
+//                        AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+//                        final AlertDialog alertDialog2 = builder2.create();
+//                        alertDialog2.setView(view2);
+//                        image_cancel2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.27
+//                            @Override // android.view.View.OnClickListener
+//                            public void onClick(View v) {
+//                                alertDialog2.dismiss();
+//                            }
+//                        });
+//                        forgot_tpin2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.28
+//                            @Override // android.view.View.OnClickListener
+//                            public void onClick(View v) {
+//                                DashboardActivity.this.getForgotTpin(checkView, mTxtTitle, alertDialog2);
+//                                layout_hide.setVisibility(View.VISIBLE);
+//                                image_cancel2.setVisibility(View.VISIBLE);
+//                            }
+//                       });
+//                        btn_change_password2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.29
+//                            @Override // android.view.View.OnClickListener
+//                            public void onClick(View v) {
+//                                if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
+//                                    ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                                } else if (edit_old_password2.getText().toString().isEmpty()) {
+//                                    edit_old_password2.setError("Enter Old Tpin");
+//                                    edit_old_password2.requestFocus();
+//                                } else if (edit_new_password2.getText().toString().isEmpty()) {
+//                                    edit_old_password2.setError(null);
+//                                    edit_new_password2.setError("Enter New Tpin");
+//                                    edit_new_password2.requestFocus();
+//                                } else if (edit_confirm_password2.getText().toString().isEmpty()) {
+//                                    edit_new_password2.setError(null);
+//                                    edit_confirm_password2.setError("Enter Confirm Tpin");
+//                                    edit_confirm_password2.requestFocus();
+//                                } else if (!edit_confirm_password2.getText().toString().trim().equals(edit_new_password2.getText().toString().trim())) {
+//                                    edit_confirm_password2.setError("New Tpin & Confirm should be same");
+//                                    edit_confirm_password2.requestFocus();
+//                                } else {
+//                                    DashboardActivity.this.getChangeTpin(edit_old_password2.getText().toString(), edit_new_password2.getText().toString(), edit_confirm_password2.getText().toString(), alertDialog2);
+//                                }
+//                            }
+//                        });
+//                        if (Build.VERSION.SDK_INT >= 21) {
+//                            alertDialog2.create();
+//                            alertDialog2.show();
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
 
     private void getChangeTpin(String oldTpin, String newTpin, String confirm, final AlertDialog alertDialog) {
         String username = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
@@ -649,7 +728,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
     }
 
-    private void getForgotTpin(final CheckView check, final TextView mTxtTitle, AlertDialog alertDialog) {
+    private void getForgotTpin( final TextView mTxtTitle, AlertDialog alertDialog) {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
@@ -670,9 +749,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     if (DashboardActivity.this.progressDialog != null && DashboardActivity.this.progressDialog.isShowing()) {
                         DashboardActivity.this.progressDialog.dismiss();
                     }
-                    check.setVisibility(View.VISIBLE);
-                    mTxtTitle.setText(response.body().getMessage());
-                    check.check();
+//                    check.setVisibility(View.VISIBLE);
+//                    mTxtTitle.setText(response.body().getMessage());
+//                    check.check();
                     ConstantClass.displayToastMessage(DashboardActivity.this, response.body().getMessage());
                 } else if (DashboardActivity.this.progressDialog != null && DashboardActivity.this.progressDialog.isShowing()) {
                     DashboardActivity.this.progressDialog.dismiss();
@@ -746,5 +825,175 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        Fragment fragment = null;
+        int id = item.getItemId();
+        if (id == R.id.nav_password){
+//            startActivity(new Intent(this, LoginActivity.class));
+//            finish();
+           Intent intent3 = new Intent(DashboardActivity.this, ContactUsActivity.class);
+           startActivity(intent3);
 
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
+//    @Override
+//    public boolean onNavigationItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.nav_orders) {
+//            startActivity(new Intent(this, HistoryTransactionsActivity.class));
+//        } else if (id == R.id.nav_mobile) {
+//            Intent intent = new Intent(this, MobileRechargeActivity.class);
+//            startActivity(intent);
+//        } else if (id == R.id.nav_dth) {
+//            Intent intent2 = new Intent(this, DTHRechargeActivity.class);
+//            startActivity(intent2);
+//        } else if (id == R.id.nav_contactus) {
+//            Intent intent3 = new Intent(this, ContactUsActivity.class);
+//            startActivity(intent3);
+//        } else if (id == R.id.nav_transfer) {
+//            Intent intent4 = new Intent(this, MoneyTransferActivity.class);
+//            startActivity(intent4);
+//        } else if (id == R.id.nav_password) {
+//            View view = getLayoutInflater().inflate(R.layout.layout_change_password, (ViewGroup) null);
+//            ImageView image_cancel = (ImageView) view.findViewById(R.id.image_cancel);
+//            final EditText edit_old_password = (EditText) view.findViewById(R.id.edit_old_password);
+//            final TextView forgot_tpin = (TextView) view.findViewById(R.id.forgot_tpin);
+//            final EditText edit_new_password = (EditText) view.findViewById(R.id.edit_new_password);
+//            final EditText edit_confirm_password = (EditText) view.findViewById(R.id.edit_confirm_password);
+//            TextView textView = (TextView) view.findViewById(R.id.text_pass_change);
+//            Button btn_change_password = (Button) view.findViewById(R.id.btn_change_password);
+//            LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_hide);
+////            CheckView checkView = (CheckView) view.findViewById(R.id.check);
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            final AlertDialog alertDialog = builder.create();
+//            alertDialog.setView(view);
+//            image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.25
+//                @Override // android.view.View.OnClickListener
+//                public void onClick(View v) {
+//                    alertDialog.dismiss();
+//                }
+//            });
+//            btn_change_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.26
+//                @Override // android.view.View.OnClickListener
+//                public void onClick(View v) {
+//                    forgot_tpin.setVisibility(View.INVISIBLE);
+//                    if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
+//                        ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                    } else if (edit_old_password.getText().toString().isEmpty()) {
+//                        edit_old_password.setError("Enter Old Password");
+//                        edit_old_password.requestFocus();
+//                    } else if (edit_new_password.getText().toString().isEmpty()) {
+//                        edit_old_password.setError(null);
+//                        edit_new_password.setError("Enter New Password");
+//                        edit_new_password.requestFocus();
+//                    } else if (edit_confirm_password.getText().toString().isEmpty()) {
+//                        edit_new_password.setError(null);
+//                        edit_confirm_password.setError("Enter Confirm Password");
+//                        edit_confirm_password.requestFocus();
+//                    } else if (!edit_confirm_password.getText().toString().trim().equals(edit_new_password.getText().toString().trim())) {
+//                        edit_confirm_password.setError("New Password & Confirm should be same");
+//                        edit_confirm_password.requestFocus();
+//                    } else {
+//                        DashboardActivity.this.getChangePassword(edit_old_password.getText().toString(), edit_new_password.getText().toString(), edit_confirm_password.getText().toString(), alertDialog);
+//                    }
+//                }
+//            });
+//            if (Build.VERSION.SDK_INT >= 21) {
+//                alertDialog.create();
+//                alertDialog.show();
+//            }
+//        } else if (id == R.id.nav_postpaid) {
+//            Intent intent5 = new Intent(this, PostpaidRechargeActivity.class);
+//            startActivity(intent5);
+//        } else if (id != R.id.nav_gateway) {
+//            if (id == R.id.nav_datacard) {
+//                Intent intent6 = new Intent(this, DataCardRechargeActivity.class);
+//                startActivity(intent6);
+//            } else if (id != R.id.nav_share) {
+//                if (id == R.id.nav_payment_request) {
+//                    startActivity(new Intent(this, PaymentRequestActivity.class));
+//                } else if (id == R.id.nav_statements) {
+//                    startActivity(new Intent(this, StatementReportActivity.class));
+//                } else if (id != R.id.nav_send) {
+//                    if (id == R.id.nav_logout) {
+//                        startActivity(new Intent(this, MainActivity.class));
+//                        finish();
+//                    } else if (id == R.id.nav_chnagetpin) {
+//                        View view2 = getLayoutInflater().inflate(R.layout.layout_change_password, (ViewGroup) null);
+//                        TextView forgot_tpin2 = (TextView) view2.findViewById(R.id.forgot_tpin);
+//                        forgot_tpin2.setVisibility(View.INVISIBLE);
+//                        final ImageView image_cancel2 = (ImageView) view2.findViewById(R.id.image_cancel);
+//                        final TextView mTxtTitle = (TextView) view2.findViewById(R.id.TxtTitle);
+//                        mTxtTitle.setText("Change TPIN");
+//                        final EditText edit_old_password2 = (EditText) view2.findViewById(R.id.edit_old_password);
+//                        edit_old_password2.setHint("Enter Old TPIN");
+//                        final EditText edit_new_password2 = (EditText) view2.findViewById(R.id.edit_new_password);
+//                        ApplicationConstant.setEditTextMaxLength(edit_new_password2, 4);
+//                        edit_new_password2.setHint("Enter New TPIN");
+//                        final EditText edit_confirm_password2 = (EditText) view2.findViewById(R.id.edit_confirm_password);
+//                        edit_confirm_password2.setHint("Confirm New TPIN");
+//                        ApplicationConstant.setEditTextMaxLength(edit_confirm_password2, 4);
+//                        TextView textView2 = (TextView) view2.findViewById(R.id.text_pass_change);
+//                        Button btn_change_password2 = (Button) view2.findViewById(R.id.btn_change_password);
+//                        final LinearLayout layout_hide = (LinearLayout) view2.findViewById(R.id.layout_hide);
+////                        final CheckView check = (CheckView) view2.findViewById(R.id.check);
+//                        AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+//                        final AlertDialog alertDialog2 = builder2.create();
+//                        alertDialog2.setView(view2);
+//                        image_cancel2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.27
+//                            @Override // android.view.View.OnClickListener
+//                            public void onClick(View v) {
+//                                alertDialog2.dismiss();
+//                            }
+//                        });
+////                        forgot_tpin2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.28
+////                            @Override // android.view.View.OnClickListener
+////                            public void onClick(View v) {
+////                                DashboardActivity.this.getForgotTpin(check, mTxtTitle, alertDialog2);
+////                                layout_hide.setVisibility(8);
+////                                image_cancel2.setVisibility(8);
+////                            }
+////                        });
+//                        btn_change_password2.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.29
+//                            @Override // android.view.View.OnClickListener
+//                            public void onClick(View v) {
+//                                if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
+//                                    ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                                } else if (edit_old_password2.getText().toString().isEmpty()) {
+//                                    edit_old_password2.setError("Enter Old Tpin");
+//                                    edit_old_password2.requestFocus();
+//                                } else if (edit_new_password2.getText().toString().isEmpty()) {
+//                                    edit_old_password2.setError(null);
+//                                    edit_new_password2.setError("Enter New Tpin");
+//                                    edit_new_password2.requestFocus();
+//                                } else if (edit_confirm_password2.getText().toString().isEmpty()) {
+//                                    edit_new_password2.setError(null);
+//                                    edit_confirm_password2.setError("Enter Confirm Tpin");
+//                                    edit_confirm_password2.requestFocus();
+//                                } else if (!edit_confirm_password2.getText().toString().trim().equals(edit_new_password2.getText().toString().trim())) {
+//                                    edit_confirm_password2.setError("New Tpin & Confirm should be same");
+//                                    edit_confirm_password2.requestFocus();
+//                                } else {
+//                                    DashboardActivity.this.getChangeTpin(edit_old_password2.getText().toString(), edit_new_password2.getText().toString(), edit_confirm_password2.getText().toString(), alertDialog2);
+//                                }
+//                            }
+//                        });
+//                        if (Build.VERSION.SDK_INT >= 21) {
+//                            alertDialog2.create();
+//                            alertDialog2.show();
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
 }
