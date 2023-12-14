@@ -68,7 +68,7 @@ public class OrderReceiptActivity extends AppCompatActivity {
             this.text_Data.setTextColor(getResources().getColor(R.color.dark_green));
         } else if (this.status.intValue() == 1) {
             this.text_message.setText(this.STATUS_MESSAGE);
-            this.image_failed.setVisibility(View.VISIBLE);
+            this.image_failed.setVisibility(View.INVISIBLE);  //visible to invisible
             this.image_pending.setVisibility(View.INVISIBLE);
 //            this.check.setVisibility(8);
             this.text_OperatorId.setVisibility(View.VISIBLE);

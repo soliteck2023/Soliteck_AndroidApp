@@ -45,7 +45,7 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener, 
         for (int i = 0; i < N; i++) {
             int attr = a.getIndex(i);
 
-//            if (attr == R.styleable.SearchableSpinner_hintText) {
+//            if (attr == R.styleable.SearchableSpinner) {
 //                this._strHintText = a.getString(attr);
 //            }
         }
@@ -112,21 +112,21 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener, 
         }
     }
 
-//    public void setTitle(String strTitle) {
-//        this._searchableListDialog.setTitle(strTitle);
-//    }
+    public void setTitle(String strTitle) {
+        this._searchableListDialog.setTitle(strTitle);
+    }
 
-//    public void setPositiveButton(String strPositiveButtonText) {
-//        this._searchableListDialog.setPositiveButton(strPositiveButtonText);
-//    }
-//
-//    public void setPositiveButton(String strPositiveButtonText, DialogInterface.OnClickListener onClickListener) {
-//        this._searchableListDialog.setPositiveButton(strPositiveButtonText, onClickListener);
-//    }
-//
-//    public void setOnSearchTextChangedListener(SearchableListDialog.OnSearchTextChanged onSearchTextChanged) {
-//        this._searchableListDialog.setOnSearchTextChangedListener(onSearchTextChanged);
-//    }
+    public void setPositiveButton(String strPositiveButtonText) {
+        this._searchableListDialog.setPositiveButton(strPositiveButtonText);
+    }
+
+    public void setPositiveButton(String strPositiveButtonText, DialogInterface.OnClickListener onClickListener) {
+        this._searchableListDialog.setPositiveButton(strPositiveButtonText, onClickListener);
+    }
+
+    public void setOnSearchTextChangedListener(SearchableListDialog.OnSearchTextChanged onSearchTextChanged) {
+        this._searchableListDialog.setOnSearchTextChangedListener(onSearchTextChanged);
+    }
 
     private Activity scanForActivity(Context cont) {
         if (cont == null) {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--suppress AndroidDomInspection -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/ll_user_name"
@@ -51,13 +51,13 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="5dp"
-                        android:text="Transation"
                         android:gravity="center"
                         android:padding="5dp"
+                        android:text="Transation"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -78,13 +78,13 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="5dp"
-                        android:text="Ledger"
-                        android:padding="5dp"
                         android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Ledger"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -101,19 +101,17 @@
                         android:id="@+id/image_earning"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@color/light_theme_color"
                         android:src="@drawable/earnings" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="3dp"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@color/light_theme_color"
                         android:text="Earning"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -125,8 +123,8 @@
                     android:background="@color/white"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:weightSum="2"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    android:weightSum="2">
 
                     <ImageView
                         android:id="@+id/transfer_reports"
@@ -136,13 +134,13 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="5dp"
-                        android:paddingLeft="5dp"
                         android:gravity="center"
+                        android:paddingLeft="5dp"
                         android:text="Payment Receive Reports"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -176,13 +174,13 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="4dp"
-                        android:text="Latest Report"
                         android:gravity="center"
                         android:padding="5dp"
+                        android:text="Latest Report"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -205,14 +203,14 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="4dp"
-                        android:paddingLeft="5dp"
                         android:gravity="center"
+                        android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="Bank list"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -236,14 +234,14 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="4dp"
-                        android:paddingLeft="5dp"
                         android:gravity="center"
+                        android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="Complaint History"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -266,14 +264,14 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="55dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="4dp"
-                        android:paddingLeft="5dp"
                         android:gravity="center"
+                        android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="AEPS Txn Reports"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -281,9 +279,7 @@
             </LinearLayout>
 
 
-
         </RelativeLayout>
-
 
 
     </LinearLayout>
@@ -295,17 +291,17 @@
         android:layout_marginStart="130dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:textSize="14sp"
         android:background="@color/white"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="Reports And Other"
         android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

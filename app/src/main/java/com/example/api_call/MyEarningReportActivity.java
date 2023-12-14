@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -58,49 +61,52 @@ public class MyEarningReportActivity extends AppCompatActivity {
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
         getTransactionReport(this.text_fromdate.getText().toString(), this.Oprator);
 
-        this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LedgerReportActivity.1
+        this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.MyEarningReportActivity.1
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(MyEarningReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.LedgerReportActivity.1.1
+                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(MyEarningReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.MyEarningReportActivity.1.1
                     @Override // android.app.DatePickerDialog.OnDateSetListener
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         MyEarningReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                         MyEarningReportActivity.this.text_fromdate.setError(null);
-                        MyEarningReportActivity.this.getTransactionReport(MyEarningReportActivity.this.text_fromdate.getText().toString(), MyEarningReportActivity.this.text_todate.getText().toString());
 
-//                        if (!LedgerReportActivity.this.text_todate.getText().toString().isEmpty()) {
-//                            if (!ConstantClass.isNetworkAvailable(LedgerReportActivity.this)) {
-//                                ConstantClass.displayMessageDialog(LedgerReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                            } else {
-//                                LedgerReportActivity.this.getTransactionReport(LedgerReportActivity.this.text_fromdate.getText().toString(), LedgerReportActivity.this.text_todate.getText().toString());
-//                            }
-//                        }
-                    }
+                        MyEarningReportActivity.this.getTransactionReport(MyEarningReportActivity.this.text_fromdate.getText().toString(), MyEarningReportActivity.this.Oprator);}
                 }, MyEarningReportActivity.this.mYear, MyEarningReportActivity.this.mMonth, MyEarningReportActivity.this.mDay);
                 datePickerDialog.show();
             }
         });
 
-//        this.text_todate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LedgerReportActivity.2
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-//                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(MyEarningReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.LedgerReportActivity.2.1
-//                    @Override // android.app.DatePickerDialog.OnDateSetListener
-//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                        if (MyEarningReportActivity.this.text_fromdate.getText().toString().isEmpty()) {
-//                            MyEarningReportActivity.this.text_fromdate.setError("Select from date first");
-//                            MyEarningReportActivity.this.text_fromdate.requestFocus();
-//                            return;
-//                        }
-//                        MyEarningReportActivity.this.text_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-//                        MyEarningReportActivity.this.getTransactionReport(MyEarningReportActivity.this.text_fromdate.getText().toString(), MyEarningReportActivity.this.Oprator);
-//
-//                    }
-//                }, MyEarningReportActivity.this.mYear, MyEarningReportActivity.this.mMonth, MyEarningReportActivity.this.mDay);
-//                datePickerDialog.show();
-//                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
-//            }
-//        });
+        this.spinner_oprator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // from class: com.uvapay.activities.MyEarningReportActivity.2
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MyEarningReportActivity myEarningReportActivity = MyEarningReportActivity.this;
+                myEarningReportActivity.Oprator = myEarningReportActivity.spinner_oprator.getSelectedItem().toString();
+                if (!ConstantClass.isNetworkAvailable(MyEarningReportActivity.this)) {
+                    ConstantClass.displayMessageDialog(MyEarningReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+                    return;
+                }
+                MyEarningReportActivity myEarningReportActivity2 = MyEarningReportActivity.this;
+                myEarningReportActivity2.getTransactionReport(myEarningReportActivity2.text_fromdate.getText().toString(), MyEarningReportActivity.this.Oprator);
+            }
+
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        this.text_search.setVisibility(View.GONE);
+        this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.MyEarningReportActivity.3
+            @Override // android.text.TextWatcher
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override // android.text.TextWatcher
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override // android.text.TextWatcher
+            public void afterTextChanged(Editable editable) {
+            }
+        });
 
 
     }

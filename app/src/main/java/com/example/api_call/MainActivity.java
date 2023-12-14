@@ -2,10 +2,13 @@ package com.example.api_call;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -13,7 +16,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Html;
 import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.LinkMovementMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout btn_login;
     private EditText edit_password;
     private EditText edit_username;
+    private int READ_PHONE_REQUEST = 20;
     private ImageView image_logo;
     private String passWord;
     private ProgressDialog progressDialog;
@@ -57,29 +63,36 @@ public class MainActivity extends AppCompatActivity {
     private TextView text_forgot_password;
     private TextView New_user;
     private String userName;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String Privacy = PrefUtils.getFromPrefs(this, ApplicationConstant.PRIVACY_POLICY, "");
+        if (Privacy.trim().isEmpty()) {
+            DisplayPrivacyPolicy();
+        } else {
+            checkAndRequestPermissions();
+        }
+
+//        if (Privacy.trim().isEmpty()){
+//            DisplayPrivacyPolicy();
+//        } else {
+//
+//        }
+
         btn_login = findViewById(R.id.btn_login);
         this.btn_login = (RelativeLayout) findViewById(R.id.btn_login);
         this.show_password = (CheckBox) findViewById(R.id.show_password);
-       this.edit_password = (EditText) findViewById(R.id.password_login);
+        this.edit_password = (EditText) findViewById(R.id.password_login);
         this.edit_username = (EditText) findViewById(R.id.edit_username);
         this.edit_username = (EditText) findViewById(R.id.edit_username);
-       this.New_user = (TextView) findViewById(R.id.New_user);
+        this.New_user = (TextView) findViewById(R.id.New_user);
         this.text_forgot_password = (TextView) findViewById(R.id.text_forgot_password);
         this.image_logo = (ImageView) findViewById(R.id.image_logo);
         this.Flag_Remember = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.FlagRemember, "");
         this.checkbox_remember = (CheckBox) findViewById(R.id.checkbox_remember);
-
-//        this.btn_login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getloinuserdata();
-//            }
-
 
         New_user.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,8 +124,10 @@ public class MainActivity extends AppCompatActivity {
 //                        return;
 //                    }
                     String android_id = Settings.Secure.getString(MainActivity.this.getContentResolver(), "android_id");
+                    String KYC_status = Settings.Secure.getString(MainActivity.this.getContentResolver(),"KYC_status");
                     MainActivity loginActivity = MainActivity.this;
-                    loginActivity.getstoreDeviceId(loginActivity.edit_username.getText().toString(), android_id);
+
+                    loginActivity.getstoreDeviceId(loginActivity.edit_username.getText().toString(), android_id,KYC_status);
                 }
             }
         });
@@ -155,23 +170,8 @@ public class MainActivity extends AppCompatActivity {
                 btn_send_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.3.2
                     @Override // android.view.View.OnClickListener
                     public void onClick(View v2) {
+                        MainActivity.this.sendOtpToNumber(edit_user_name.getText().toString());
 
-                        if (edit_user_name.getText().toString().isEmpty()) {
-                            edit_user_name.setError("Enter UserName");
-                            edit_user_name.requestFocus();
-                        }  else {
-                            MainActivity.this.sendOtpToNumber(edit_user_name.getText().toString());
-                        }
-//                        if (!ConstantClass.isNetworkAvailable(MainActivity.this)) {
-//                            ConstantClass.displayMessageDialog(MainActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                        } else if (edit_user_name.getText().toString().isEmpty()) {
-//                            edit_user_name.setError("Enter UserName");
-//                            edit_user_name.requestFocus();
-//                        } else if (!ConstantClass.isNetworkAvailable(MainActivity.this)) {
-//                            ConstantClass.displayMessageDialog(MainActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                        } else {
-//                            MainActivity.this.sendOtpToNumber(edit_user_name.getText().toString());
-//                        }
                     }
                 });
                 if (Build.VERSION.SDK_INT >= 21) {
@@ -217,12 +217,90 @@ public class MainActivity extends AppCompatActivity {
 //            }
     }
 
+    private void DisplayPrivacyPolicy() {
+        View view = getLayoutInflater().inflate(R.layout.activity_privacy_policy, (ViewGroup) null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog alertDialog = builder.create();
+        ImageView mImage_cancel = (ImageView) view.findViewById(R.id.image_cancel);
+        TextView textView = (TextView) view.findViewById(R.id.text_terms);
+        final CheckBox mCheck_policy = (CheckBox) view.findViewById(R.id.check_policy);
+        TextView mText_policy_link = (TextView) view.findViewById(R.id.text_policy_link);
+        Button mButton_proceed = (Button) view.findViewById(R.id.button_proceed);
+        mText_policy_link.setText(Html.fromHtml("<a href=\"http://www.soliteck.com/\">Privacy Policy Details</a>"));
+        mText_policy_link.setClickable(true);
+        mText_policy_link.setMovementMethod(LinkMovementMethod.getInstance());
+        alertDialog.setView(view);
+        alertDialog.setCanceledOnTouchOutside(false);
+        mImage_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.16
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        mButton_proceed.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.17
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view2) {
+                if (!mCheck_policy.isChecked()) {
+                    ApplicationConstant.DisplayMessageDialog(MainActivity.this, "User Privacy Policy", "Agree to privacy Policy details first");
+                    return;
+                }
+                alertDialog.dismiss();
+                PrefUtils.saveToPrefs(MainActivity.this, ApplicationConstant.PRIVACY_POLICY, "AGREE");
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                builder1.setMessage("Thank you for going through our privacy policy details and accepting it");
+                builder1.setCancelable(true);
+                builder1.setTitle("Privacy Policy");
+                builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.17.1
+                    @Override // android.content.DialogInterface.OnClickListener
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        MainActivity.this.checkAndRequestPermissions();
+                    }
+                });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+        });
+        alertDialog.show();
+    }
+
+    private void checkAndRequestPermissions() {
+        if (ContextCompat.checkSelfPermission(this, "android.permission.CAMERA") != 0 || ContextCompat.checkSelfPermission(this, "android.permission.WRITE_EXTERNAL_STORAGE") != 0 || ContextCompat.checkSelfPermission(this, "android.permission.READ_CONTACTS") != 0 || ContextCompat.checkSelfPermission(this, "android.permission.READ_EXTERNAL_STORAGE") != 0 || ContextCompat.checkSelfPermission(this, "android.permission.READ_PHONE_STATE") != 0) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, "android.permission.CAMERA") && ActivityCompat.shouldShowRequestPermissionRationale(this, "android.permission.WRITE_EXTERNAL_STORAGE") && ActivityCompat.shouldShowRequestPermissionRationale(this, "android.permission.READ_EXTERNAL_STORAGE") && ActivityCompat.shouldShowRequestPermissionRationale(this, "android.permission.READ_PHONE_STATE") && ActivityCompat.shouldShowRequestPermissionRationale(this, "android.permission.READ_CONTACTS")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Permissions Needed");
+                builder.setMessage("Want to access your camera and storage to set your profile");
+                builder.setPositiveButton(HttpHeaders.ALLOW, new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.6
+                    @Override // android.content.DialogInterface.OnClickListener
+                    public void onClick(DialogInterface dialog, int which) {
+                        MainActivity.this.alertDialog.dismiss();
+                        MainActivity loginActivity = MainActivity.this;
+                        ActivityCompat.requestPermissions(loginActivity, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.CAMERA", "android.permission.READ_PHONE_STATE", "android.permission.READ_CONTACTS"},MainActivity.this.READ_PHONE_REQUEST);
+                    }
+                });
+                builder.setNegativeButton("Deny", new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.7
+                    @Override // android.content.DialogInterface.OnClickListener
+                    public void onClick(DialogInterface dialog, int which) {
+                        MainActivity.this.alertDialog.dismiss();
+                    }
+                });
+                AlertDialog create = builder.create();
+                this.alertDialog = create;
+                create.show();
+                this.alertDialog.setCanceledOnTouchOutside(false);
+                this.alertDialog.setCancelable(false);
+                return;
+            }
+            ActivityCompat.requestPermissions(this, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.CAMERA", "android.permission.READ_PHONE_STATE", "android.permission.READ_CONTACTS"}, this.READ_PHONE_REQUEST);
+        }
+    }
+
     private void sendOtpToNumber(final String mobile) {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
         ApiInterface apiInterface = RetrofitHandler.getService();
-        Call<OtpSentResponse> call = apiInterface.forgotPasswordMethod("Authentication/ForgotPassword?username=" + mobile);
+        Call<OtpSentResponse> call = apiInterface.forgotPasswordMethod("ForgotPassword?username=" + mobile);
         call.enqueue(new Callback<OtpSentResponse>() { // from class: com.uvapay.activities.LoginActivity.11
             @Override // retrofit2.Callback
             public void onResponse(Call<OtpSentResponse> call2, Response<OtpSentResponse> response) {
@@ -270,15 +348,17 @@ public class MainActivity extends AppCompatActivity {
                 ConstantClass.displayMessageDialog(loginActivity, loginActivity.getString(R.string.server_problem), t.getMessage().toString());
             }
         });
+
     }
 
-    private void getstoreDeviceId(String username, String android_id) {
+    private void getstoreDeviceId(String username, String android_id,String KYC_status) {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
         HashMap<String, String> body = new HashMap<>();
         body.put(ConstantClass.PROFILEDETAILS.UserName_, username);
         body.put("DeviceId", android_id);
+        body.put("KYCStatus",KYC_status);
         ApiInterface apiInterface = RetrofitHandler.getService();
         Call<DeviceIdResponse> call = apiInterface.getStoreDeviceId(body);
         call.enqueue(new Callback<DeviceIdResponse>() { // from class: com.uvapay.activities.LoginActivity.5
@@ -291,12 +371,17 @@ public class MainActivity extends AppCompatActivity {
                     if (response.body().getResponseStatus().equals(ConstantClass.MOBILESERVICEID)) {
                         String message = MainActivity.this.edit_password.getText().toString().trim();
                         String EncodedPass = ApplicationConstant.EncodeStringToHMACSHA256(message);
-                        MainActivity.this.getloginUser(username, EncodedPass, android_id);
+                        String Kyc_status = ConstantClass.PROFILEDETAILS.KYCStatus.toString().trim();
+                        MainActivity.this.getloginUser(username, EncodedPass, android_id,Kyc_status);
                         return;
                     }
                     ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Response", response.body().getRemarks());
                     return;
                 }
+//                if (response.body().getResponseStatus().equals(0)){
+//                    Intent intent = new Intent(MainActivity.this, Registration_page.class);
+//                    startActivity(intent);
+//                }
                 if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
                     MainActivity.this.progressDialog.dismiss();
                 }
@@ -317,8 +402,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    private void getloginUser(String username, final String password, final String picDeviceID) {
+    private void getloginUser(String username, final String password, final String picDeviceID,final String Kyc_status) {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
@@ -326,6 +410,7 @@ public class MainActivity extends AppCompatActivity {
         body.put("UserName", username);
         body.put("Password", password);
         body.put("DeviceId", picDeviceID);
+        body.put("KYC_status",Kyc_status);
         ApiInterface apiInterface = RetrofitHandler.getService();
         Call<LoginResponse> call = apiInterface.getLoginInfo(body);
 
@@ -339,17 +424,17 @@ public class MainActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     if (!response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
                         if (response.body().getStatusCode().equals("2")) {
-                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Response", response.body().getMessage());
+                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Error", response.body().getMessage());
                             return;
                         } else if (response.body().getData().equals("3")) {
-                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Response", response.body().getMessage());
+                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Error", response.body().getMessage());
                             return;
                         } else {
-                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Response", response.body().getMessage());
+                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Error", response.body().getMessage());
                             return;
                         }
                     }
-                    ApplicationConstant.displayToastMessage(MainActivity.this, response.body().getMessage());
+                    ApplicationConstant.displayToastMessage(MainActivity.this,"Response", response.body().getMessage());
                     String jsonString = response.body().getData();
 
                     try {
@@ -393,6 +478,7 @@ public class MainActivity extends AppCompatActivity {
                                         PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.News, jsonObject.getString(ConstantClass.USERDETAILS.News));
                                         PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.UserType, jsonObject.getString("RoleId"));
                                         Integer roleId = Integer.valueOf(jsonObject.getInt("RoleId"));
+                                        Integer Kyc_status = Integer.valueOf(jsonObject.getInt("KYCStatus"));
                                         if (roleId.intValue() == 2) {
                                             MainActivity.this.startActivity(new Intent(MainActivity.this, DashboardActivity.class));
                                             MainActivity.this.finish();

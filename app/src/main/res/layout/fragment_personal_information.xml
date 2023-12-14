@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Personal_information">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mobile_reg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:padding="5dp"
+                        android:text="Mobile Number"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/enter_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:maxLength="10"
+                        android:phoneNumber="true"
+                        android:inputType="phone"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Mobile number"
+                        android:textColor="@color/black"
+                        android:textColorHint="#636262"
+                        android:padding="5dp"
+                        android:textSize="16sp">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mobile_reg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/userName_reg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:layout_marginTop="30dp"
+                            android:padding="5dp"
+                            android:text="UserName"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/username_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:layout_marginRight="@dimen/dp_size_10"
+                            android:background="@drawable/bacground_black"
+                            android:hint="Enter User Name"
+                            android:maxLength="50"
+                            android:inputType="text"
+                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                            android:padding="5dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="#636262"
+                            android:textSize="16sp">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/userName_reg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/shopname_reg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Gender"
+                        android:maxLength="6"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/shop_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Gender"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                        android:textColorHint="#636262"
+                        android:textColor="@color/black"
+                        android:maxLength="7"
+                        android:padding="5dp"
+                        android:textSize="16sp">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="265dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shopname_reg"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layout_fromdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:maxLength="25"
+                            android:padding="5dp"
+                            android:text="DOB"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/date_format"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:padding="5dp"
+                            android:text="Date format DD-MM-YYYY"
+                            android:textColor="#636262"
+                            android:textSize="16sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        tools:ignore="DuplicateIds">
+
+                        <EditText
+                            android:id="@+id/text_fromdate"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:layout_marginRight="@dimen/dp_size_10"
+                            android:background="@drawable/bacground_black"
+                            android:editable="false"
+                            android:gravity="center"
+                            android:hint="Birth Date"
+                            android:padding="7dp"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/image_fromdate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:background="@drawable/bacground_black"
+                            android:src="@drawable/color_calender" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pinode_reg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Father_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Father_Name"
+                        android:phoneNumber="true"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Father_Name"
+                        android:padding="5dp"
+                        android:maxLength="50"
+                        android:textColor="@color/black"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linermother_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/parent_reg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mother_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Mother_Name"
+                        android:phoneNumber="true"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Mother_Name"
+                        android:padding="5dp"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                        android:maxLength="50"
+                        android:textColor="@color/black"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lineremail_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linermother_Name"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/email_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Email_Id"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Email_Id"
+                        android:padding="5dp"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz1234567890@!#$*"
+                        android:textColor="@color/black"
+                        android:maxLength="50"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linerelternate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linermother_Name"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/alternte_no"
+                        android:layout_width="118dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:phoneNumber="true"
+                        android:text="Alternte_no"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Alternte_no"
+                        android:padding="5dp"
+                        android:digits="0123456789"
+                        android:textColor="@color/black"
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linerparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linermother_Name"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/parentnew_no"
+                        android:layout_width="118dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Parent_no"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Parent_no"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:maxLength="10"
+                        android:inputType="number"
+                        android:digits="0123456789"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/button_registerin"
+                    android:layout_width="120dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:background="@drawable/red_colorbackground"
+                    android:textSize="20dp"
+                    android:textAllCaps="false"
+                    android:text="NEXT">
+
+                </Button>
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

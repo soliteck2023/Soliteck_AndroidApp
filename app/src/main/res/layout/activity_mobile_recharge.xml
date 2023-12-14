@@ -115,7 +115,7 @@
                                 android:orientation="horizontal"
                                 android:weightSum="3">
 
-                                <androidx.appcompat.widget.AppCompatSpinner
+                                <EditText
                                     android:id="@+id/edit_operator"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
@@ -134,6 +134,7 @@
                                     android:textSize="16sp" />
 
                                 <TextView
+                                    android:visibility="gone"
                                     android:id="@+id/textView"
                                     android:layout_width="70dp"
                                     android:layout_height="wrap_content"
@@ -194,17 +195,31 @@
                                 android:orientation="horizontal"
                                 android:weightSum="3">
 
-
-                                <androidx.appcompat.widget.AppCompatSpinner
+                                <Spinner
                                     android:id="@+id/spinnerCircleListList"
-                                    android:layout_width="0dp"
-                                    android:layout_height="48dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
                                     android:layout_marginLeft="15dp"
                                     android:layout_weight="2.8"
                                     android:entries="@array/circle"
-                                    android:dropDownSelector="@drawable/downarrow"
                                     android:textSize="16sp"
                                     tools:ignore="MissingClass" />
+
+
+
+                                <!--                                <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                                    android:id="@+id/spinnerCircleListList"-->
+<!--                                    android:layout_width="0dp"-->
+<!--                                    android:layout_height="48dp"-->
+<!--                                    android:layout_marginLeft="15dp"-->
+<!--                                    android:layout_weight="2.8"-->
+<!--                                    android:entries="@array/circle"-->
+<!--                                    android:dropDownSelector="@drawable/downarrow"-->
+<!--                                    android:textSize="16sp"-->
+<!--                                    tools:ignore="MissingClass" />-->
+
+
+
 
                             </LinearLayout>
 

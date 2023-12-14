@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:padding="20dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:textSize="18sp" android:textColor="@color/black" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Customer Details"/>
+    <View android:background="@color/black" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="5dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin20dp" android:weightSum="2">
+        <TextView android:textSize="15sp" android:textColor="@color/colorPrimaryDark" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="@dimen/padding_5" android:text="Customer Name : " android:layout_weight="1"/>
+        <TextView android:textSize="15sp" android:textColor="@color/black" android:id="@+id/txtCustomerName" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1" android:layout_alignParentRight="true"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin20dp" android:weightSum="2">
+        <TextView android:textSize="15sp" android:textColor="@color/colorPrimaryDark" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="@dimen/padding_5" android:text="Balance : " android:layout_weight="1"/>
+        <TextView android:textSize="15sp" android:textColor="@color/black" android:id="@+id/txtBalance" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1" android:layout_alignParentRight="true"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin20dp" android:weightSum="2">
+        <TextView android:textSize="15sp" android:textColor="@color/colorPrimaryDark" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="@dimen/padding_5" android:text=" Next Recharge Date : " android:layout_weight="1"/>
+        <TextView android:textSize="15sp" android:textColor="@color/black" android:id="@+id/txtNextRechargeDate" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1" android:layout_alignParentRight="true"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin20dp" android:weightSum="2">
+        <TextView android:textSize="15sp" android:textColor="@color/colorPrimaryDark" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="@dimen/padding_5" android:text=" Recharge Last Amount : " android:layout_weight="1"/>
+        <TextView android:textSize="15sp" android:textColor="@color/black" android:id="@+id/TxtLastAmount" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1" android:layout_alignParentRight="true"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin20dp" android:weightSum="2">
+        <TextView android:textSize="15sp" android:textColor="@color/colorPrimaryDark" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="@dimen/padding_5" android:text=" Status : " android:layout_weight="1"/>
+        <TextView android:textSize="15sp" android:textColor="@color/black" android:id="@+id/txtStatus" android:layout_width="0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1" android:layout_alignParentRight="true"/>
+    </LinearLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin20dp" android:layout_marginBottom="@dimen/margin20dp">
+        <TextView android:textSize="15sp" android:textColor="@color/colorPrimaryDark" android:id="@+id/ss" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" Plan :  "/>
+        <TextView android:textSize="15sp" android:textColor="@color/black" android:id="@+id/TxtPlan" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="" android:layout_toRightOf="@+id/ss" android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -7,10 +7,11 @@
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="margin20dp">20dp</dimen>
     <dimen name="size40dp">40dp</dimen>
-    <dimen name="padding_5">5dp</dimen>
     <dimen name="size_20dp">20dp</dimen>
     <dimen name="title_size">16sp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="padding_5">5dp</dimen>
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:id="@+id/card_bank" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="3dp" android:layout_marginRight="10dp" android:layout_marginBottom="9dp" app:cardCornerRadius="10dp" app:cardElevation="5dp">
+        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_bank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bank Name" android:textAllCaps="true"/>
+            <TextView android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_ifsc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="IFsc Code"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

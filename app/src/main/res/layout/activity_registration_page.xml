@@ -12,59 +12,181 @@
         android:layout_height="match_parent"
         android:background="@drawable/uppernew3">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="185dp">
-
-            <ScrollView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="140dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="185dp">
 
-
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="140dp">
+
+
                     <LinearLayout
-                        android:id="@+id/mobile_reg"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="20dp"
                         android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginTop="80dp"
-                            android:padding="5dp"
-                            android:text="Mobile Number"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/enter_mobile"
-                            android:layout_width="250dp"
-                            android:layout_height="48dp"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginRight="@dimen/dp_size_10"
-                            android:background="@drawable/bacgroundcurve_oneside"
-                            android:hint="Enter Mobile number"
-                            android:textColorHint="#636262"
-                            android:padding="5dp"
-                            android:textSize="16sp">
-
-                        </com.google.android.material.textfield.TextInputEditText>
-
                         <LinearLayout
-                            android:id="@+id/userName_reg"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/mobile_reg"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/mobile_reg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginTop="80dp"
+                                android:padding="5dp"
+                                android:text="Mobile Number"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/enter_mobile"
+                                android:layout_width="250dp"
+                                android:layout_height="48dp"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginRight="@dimen/dp_size_10"
+                                android:maxLength="10"
+                                android:phoneNumber="true"
+                                android:background="@drawable/bacgroundcurve_oneside"
+                                android:hint="Enter Mobile number"
+                                android:textColor="@color/white"
+                                android:textColorHint="#636262"
+                                android:padding="5dp"
+                                android:textSize="16sp">
+
+                            </com.google.android.material.textfield.TextInputEditText>
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/mobile_reg"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/userName_reg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginLeft="@dimen/dp_size_10"
+                                    android:layout_marginTop="30dp"
+                                    android:padding="5dp"
+                                    android:text="UserName"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/username_id"
+                                    android:layout_width="250dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginLeft="@dimen/dp_size_10"
+                                    android:layout_marginRight="@dimen/dp_size_10"
+                                    android:background="@drawable/bacgroundcurve_oneside"
+                                    android:hint="Enter User Name"
+                                    android:maxLength="10"
+                                    android:padding="5dp"
+                                    android:textColor="@color/white"
+                                    android:textColorHint="#636262"
+                                    android:textSize="16sp">
+
+                                </com.google.android.material.textfield.TextInputEditText>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/userName_reg"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/shopname_reg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginTop="30dp"
+                                android:padding="5dp"
+                                android:text="Shop Name"
+                                android:maxLength="25"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/shop_id"
+                                android:layout_width="250dp"
+                                android:layout_height="48dp"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginRight="@dimen/dp_size_10"
+                                android:background="@drawable/bacgroundcurve_oneside"
+                                android:hint="Enter Shop Name"
+                                android:textColorHint="#636262"
+                                android:textColor="@color/white"
+                                android:maxLength="10"
+                                android:padding="5dp"
+                                android:textSize="16sp">
+
+                            </com.google.android.material.textfield.TextInputEditText>
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/shopname_reg"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/pin_code"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginTop="30dp"
+                                android:padding="5dp"
+                                android:maxLength="6"
+                                android:phoneNumber="true"
+                                android:text="Pincode"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/pin_id"
+                                android:layout_width="250dp"
+                                android:layout_height="48dp"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginRight="@dimen/dp_size_10"
+                                android:textColorHint="#636262"
+                                android:background="@drawable/bacgroundcurve_oneside"
+                                android:hint="Enter Pin Code"
+                                android:textColor="@color/white"
+                                android:maxLength="10"
+                                android:phoneNumber="true"
+                                android:padding="5dp"
+                                android:textSize="16sp">
+
+                            </com.google.android.material.textfield.TextInputEditText>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/pinode_reg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/role_reg"
                             android:orientation="vertical">
 
                             <TextView
@@ -74,203 +196,145 @@
                                 android:layout_marginLeft="@dimen/dp_size_10"
                                 android:layout_marginTop="30dp"
                                 android:padding="5dp"
-                                android:text="UserName"
+                                android:text="Role"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/spineer"
+                                android:layout_width="250dp"
+                                android:layout_height="48dp"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginRight="@dimen/dp_size_10"
+                                android:textColor="#636262"
+                                android:background="@drawable/bacgroundcurve_oneside"
+                                android:entries="@array/type"
+                                android:padding="5dp"
+                                android:textSize="16sp">
+
+                            </Spinner>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pinode_reg"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/parent_reg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginTop="30dp"
+                                android:padding="5dp"
+                                android:text="Parent No"
+                                android:maxLength="10"
+                                android:phoneNumber="true"
                                 android:textColor="@color/white"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/username_id"
                                 android:layout_width="250dp"
                                 android:layout_height="48dp"
                                 android:layout_marginLeft="@dimen/dp_size_10"
                                 android:layout_marginRight="@dimen/dp_size_10"
                                 android:background="@drawable/bacgroundcurve_oneside"
-                                android:hint="Enter User Name"
+                                android:hint="Enter Parent Number"
                                 android:padding="5dp"
+                                android:maxLength="10"
+                                android:textColor="@color/white"
+                                android:phoneNumber="true"
                                 android:textColorHint="#636262"
                                 android:textSize="16sp">
-
                             </com.google.android.material.textfield.TextInputEditText>
+
+                        </LinearLayout>
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/parent_reg"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/Employ_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginTop="30dp"
+                                android:padding="5dp"
+                                android:text="Employe No"
+                                android:maxLength="10"
+                                android:phoneNumber="true"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="250dp"
+                                android:layout_height="48dp"
+                                android:layout_marginLeft="@dimen/dp_size_10"
+                                android:layout_marginRight="@dimen/dp_size_10"
+                                android:background="@drawable/bacgroundcurve_oneside"
+                                android:hint="Enter Parent Number"
+                                android:padding="5dp"
+                                android:textColor="@color/white"
+                                android:maxLength="10"
+                                android:phoneNumber="true"
+                                android:textColorHint="#636262"
+                                android:textSize="16sp">
+                            </com.google.android.material.textfield.TextInputEditText>
+
                         </LinearLayout>
 
-                    </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/shopname_reg"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/userName_reg"
-                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/button_registerin"
+                            android:layout_width="150dp"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="30dp"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:background="@drawable/red_colorbackground"
+                            android:textSize="20dp"
+                            android:textAllCaps="false"
+                            android:text="Register In !">
+
+                        </Button>
 
                         <TextView
+                            android:id="@+id/exit"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginTop="30dp"
-                            android:padding="5dp"
-                            android:text="Shop Name"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="15dp"
+                            android:text="Exit!!"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="30dp"
+                            android:textColor="@color/blue_attractive"
+                            android:layout_gravity="center_horizontal">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/shop_id"
-                            android:layout_width="250dp"
-                            android:layout_height="48dp"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginRight="@dimen/dp_size_10"
-                            android:background="@drawable/bacgroundcurve_oneside"
-                            android:hint="Enter Shop Name"
-                            android:textColorHint="#636262"
-                            android:padding="5dp"
-                            android:textSize="16sp">
-
-                        </com.google.android.material.textfield.TextInputEditText>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/role_reg"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/shopname_reg"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginTop="30dp"
-                            android:padding="5dp"
-                            android:text="Pin code"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/pin_id"
-                            android:layout_width="250dp"
-                            android:layout_height="48dp"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginRight="@dimen/dp_size_10"
-                            android:textColorHint="#636262"
-                            android:background="@drawable/bacgroundcurve_oneside"
-                            android:hint="Enter Pin Code"
-                            android:padding="5dp"
-                            android:textSize="16sp">
-
-                        </com.google.android.material.textfield.TextInputEditText>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/pinode_reg"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/role_reg"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginTop="30dp"
-                            android:padding="5dp"
-                            android:text="Role"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <Spinner
-                            android:id="@+id/spineer"
-                            android:layout_width="250dp"
-                            android:layout_height="48dp"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginRight="@dimen/dp_size_10"
-                            android:background="@drawable/bacgroundcurve_oneside"
-                            android:entries="@array/type"
-                            android:padding="5dp"
-                            android:textSize="16sp">
-
-                        </Spinner>
+                        </TextView>
 
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/parent_reg"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/pinode_reg"
-                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginTop="30dp"
-                            android:padding="5dp"
-                            android:text="Parent No"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="250dp"
-                            android:layout_height="48dp"
-                            android:layout_marginLeft="@dimen/dp_size_10"
-                            android:layout_marginRight="@dimen/dp_size_10"
-                            android:background="@drawable/bacgroundcurve_oneside"
-                            android:hint="Enter Parent Number"
-                            android:padding="5dp"
-                            android:textColorHint="#636262"
-                            android:textSize="16sp">
-                        </com.google.android.material.textfield.TextInputEditText>
-
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/button_id"
-                        android:layout_width="150dp"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="30dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"
-                        android:background="@drawable/red_colorbackground"
-                        android:textSize="20dp"
-                        android:textAllCaps="false"
-                        android:text="Register In !">
-
-                    </Button>
-
-                    <TextView
-                        android:id="@+id/exit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15dp"
-                        android:text="Exit!!"
-                        android:textSize="18sp"
-                        android:layout_marginBottom="30dp"
-                        android:textColor="@color/blue_attractive"
-                        android:layout_gravity="center_horizontal">
-
-                    </TextView>
-
-
-                </LinearLayout>
-
-
-            </ScrollView>
+                </ScrollView>
 
 
 
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
 
 

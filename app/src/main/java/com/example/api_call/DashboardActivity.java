@@ -79,6 +79,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private TextView textaepsBalance;
     private TextView textbalance;
 
+//    ViewPagerbalanceAdapter ViewPagerbalanceAdapter;
+
+    ViewPagerbalanceAdapter adapter;
+
+    ViewPager Pager;
 
 //    private ViewCommissionAdapter viewCommissionAdapter;
 //    private List<CommissionData> list_margin = new ArrayList();
@@ -94,15 +99,16 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     LinearLayout menuBank;
     private CheckView checkView;
 
+    Intent intent;
+
+
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-//        pager =  findViewById(R.id.viewpager2);    //viewpager reuestbutton
-
-
+        Pager =  findViewById(R.id.viewpager);    //viewpager reuestbutton
         LinearLayout linear_mobile = (LinearLayout) findViewById(R.id.linear_mobile);
         LinearLayout linear_dth = (LinearLayout) findViewById(R.id.linear_dth);
         LinearLayout linear_transfer = (LinearLayout) findViewById(R.id.linear_transferdmt);
@@ -151,24 +157,23 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
-//        adapter = new MyPagerAdapter(getSupportFragmentManager(),DashboardActivity.this);
-//        pager.setAdapter(adapter);
 //        this.image_profile = (ImageView) headerLayout.findViewById(R.id.image_profile);
         this.text_name = (TextView) headerLayout.findViewById(R.id.text_name);
-          this.text_mobile = (TextView) headerLayout.findViewById(R.id.text_mobile);
-           this.textbalance = (TextView) findViewById(R.id.view_balance);
-           this.textaepsBalance = (TextView) findViewById(R.id.textaepsBalance);
+        this.text_mobile = (TextView) headerLayout.findViewById(R.id.text_mobile);
+        this.textbalance = (TextView) findViewById(R.id.view_balance);
+        this.textaepsBalance = (TextView) findViewById(R.id.textaepsBalance);
         this.image_refresh = (ImageView) findViewById(R.id.image_refresh);
 //        this.linear_aeps = (LinearLayout) findViewById(R.id.linear_aeps);
         LinearLayout linear_settelment = (LinearLayout) findViewById(R.id.linear_compliant);
 
 
-        linear_settelment.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.17
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, StatementReportActivity.class));
-            }
-        });
+//        linear_settelment.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.17
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View v) {
+//                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, StatementReportActivity.class));
+//            }
+//        });
+
 
 
 
@@ -192,12 +197,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
 
 
-        linear_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                DashboardActivity.this.viewPaymentRequest();
-            }
-        });
+
+//        linear_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View v) {
+//                DashboardActivity.this.viewPaymentRequest();
+//            }
+//        });
 
 
         menuBank.setOnClickListener(new View.OnClickListener() {
@@ -309,6 +315,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     }
 
+
     @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -318,7 +325,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             super.onBackPressed();
         }
     }
-
 
 
 
@@ -383,7 +389,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //            ConstantClass.displayMessageDialog(this, "No Internet Connection", "Please enable internet connection first to proceed");
 //            return;
 //        }
-        getUserBalance(this.textbalance, this.textaepsBalance);
+       getUserBalance(this.textbalance, this.textaepsBalance);
         String news = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.News, "");
         String name = PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.Name, "");
         String mobile = PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.MobileNo, "");
@@ -428,22 +434,27 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                         String Main = jsonObject.getString(ConstantClass.USERDETAILS.MainBalance);
                         String Aeps = jsonObject.getString(ConstantClass.USERDETAILS.AEPSBalance);
-                        if (Aeps.equals("null")) {
-                            textbalance.setText("M: " + Main);
-                            textaepsBalance.setText("A: 0.00");
-                            PrefUtils.saveToPrefs(DashboardActivity.this, "Wallet_Main_Balance", Main);
-                            PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.AEPSBalance, "0.00");
-                        } else if (Main.equals("null")) {
-                            textbalance.setText("M: 0.00");
-                            textaepsBalance.setText("A: " + Aeps);
-                            PrefUtils.saveToPrefs(DashboardActivity.this, "Wallet_Main_Balance", "0.00");
-                            PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.AEPSBalance, Aeps);
-                        } else {
-                            textbalance.setText("M: " + Main);
-                            textaepsBalance.setText("A: " + Aeps);
-                            PrefUtils.saveToPrefs(DashboardActivity.this, "Wallet_Main_Balance", Main);
-                            PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.AEPSBalance, Aeps);
-                        }
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putString("textbalance",Main);
+                        bundle1.putString("textaepsBalance",Aeps);
+                        adapter = new ViewPagerbalanceAdapter(getSupportFragmentManager(),DashboardActivity.this,bundle1);
+                        Pager.setAdapter(adapter);
+//                        if (Aeps.equals("null")) {
+//                            textbalance.setText("M: " + Main);
+//                            textaepsBalance.setText("A: 0.00");
+//                            PrefUtils.saveToPrefs(DashboardActivity.this, "Wallet_Main_Balance", Main);
+//                            PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.AEPSBalance, "0.00");
+//                        } else if (Main.equals("null")) {
+//                            textbalance.setText("M: 0.00");
+//                            textaepsBalance.setText("A: " + Aeps);
+//                            PrefUtils.saveToPrefs(DashboardActivity.this, "Wallet_Main_Balance", "0.00");
+//                            PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.AEPSBalance, Aeps);
+//                        } else {
+//                            textbalance.setText("M: " + Main);
+//                            textaepsBalance.setText("A: " + Aeps);
+//                            PrefUtils.saveToPrefs(DashboardActivity.this, "Wallet_Main_Balance", Main);
+//                            PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.AEPSBalance, Aeps);
+//                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -462,59 +473,59 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
     }
 
-//    private void getProfileDetails() {
-//        String username = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
-//        String password = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserPassword, "");
-//        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
-//        progressDialog.show();
-//        HashMap<String, String> body = new HashMap<>();
-//        body.put(ConstantClass.PROFILEDETAILS.UserName_, username);
-//        body.put("Password", password);
-//        ProfileApiService apiServiceGenerator = (ProfileApiService) RetrofitHandler.getService();
-//        Call<GetUserProfileDetails> objbanklist = apiServiceGenerator.getUserProfileDetails(body);
-//        objbanklist.enqueue(new Callback<GetUserProfileDetails>() { // from class: com.uvapay.activities.DashboardActivity.33
-//            @Override // retrofit2.Callback
-//            public void onResponse(Call<GetUserProfileDetails> call, Response<GetUserProfileDetails> response) {
-//                ProgressDialog progressDialog2 = progressDialog;
-//                if (progressDialog2 != null && progressDialog2.isShowing()) {
-//                    progressDialog.dismiss();
-//                }
-//                GetUserProfileDetails profileresponse = response.body();
-//                try {
-//                    DashboardActivity.this.text_name.setText(profileresponse.getFirstName());
-//                    DashboardActivity.this.text_mobile.setText(profileresponse.getContactNo());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Name, response.body().getFirstName());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Middle, response.body().getMiddleName());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Last, response.body().getLastName());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.StateName, response.body().getStatesName());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.CityName, response.body().getCityName());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.ShopAddress, response.body().getShopAddress());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.PermanentAddress, response.body().getPermanentAddress());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.PinCode, response.body().getPinCode());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.zipcode, response.body().getZipCode());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.MobileNo, response.body().getContactNo());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.EmailId, response.body().getEmailID());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.PanCard, response.body().getPanCardNo());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Aadhar, response.body().getAadharNo());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.BanksName, response.body().getBanksName());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.AccountNo, response.body().getAccountNo());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.IFSCCode, response.body().getIFSCCode());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.RefrenceNumber, response.body().getRefrenceNumber());
-//                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.WhiteUser, response.body().getWhiteUser());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override // retrofit2.Callback
-//            public void onFailure(Call<GetUserProfileDetails> call, Throwable t) {
-//                ProgressDialog progressDialog2 = progressDialog;
-//                if (progressDialog2 != null && progressDialog2.isShowing()) {
-//                    progressDialog.dismiss();
-//                }
-//            }
-//        });
-//    }
+    private void getProfileDetails() {
+        String username = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
+        String password = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserPassword, "");
+        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
+        progressDialog.show();
+        HashMap<String, String> body = new HashMap<>();
+        body.put(ConstantClass.PROFILEDETAILS.UserName_, username);
+        body.put("Password", password);
+        ProfileApiService apiServiceGenerator = (ProfileApiService) RetrofitHandler.getService();
+        Call<GetUserProfileDetails> objbanklist = apiServiceGenerator.getUserProfileDetails(body);
+        objbanklist.enqueue(new Callback<GetUserProfileDetails>() { // from class: com.uvapay.activities.DashboardActivity.33
+            @Override // retrofit2.Callback
+            public void onResponse(Call<GetUserProfileDetails> call, Response<GetUserProfileDetails> response) {
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                GetUserProfileDetails profileresponse = response.body();
+                try {
+                    DashboardActivity.this.text_name.setText(profileresponse.getFirstName());
+                    DashboardActivity.this.text_mobile.setText(profileresponse.getContactNo());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Name, response.body().getFirstName());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Middle, response.body().getMiddleName());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Last, response.body().getLastName());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.StateName, response.body().getStatesName());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.CityName, response.body().getCityName());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.ShopAddress, response.body().getShopAddress());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.PermanentAddress, response.body().getPermanentAddress());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.PinCode, response.body().getPinCode());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.zipcode, response.body().getZipCode());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.MobileNo, response.body().getContactNo());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.EmailId, response.body().getEmailID());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.PanCard, response.body().getPanCardNo());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.Aadhar, response.body().getAadharNo());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.BanksName, response.body().getBanksName());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.AccountNo, response.body().getAccountNo());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.IFSCCode, response.body().getIFSCCode());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.RefrenceNumber, response.body().getRefrenceNumber());
+                    PrefUtils.saveToPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.WhiteUser, response.body().getWhiteUser());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override // retrofit2.Callback
+            public void onFailure(Call<GetUserProfileDetails> call, Throwable t) {
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+        });
+    }
 
 
 //    @Override // com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
@@ -696,7 +707,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 }
                 if (response.body() != null) {
                     if (response.body().getStatusCode().intValue() == 1) {
-                        ApplicationConstant.displayToastMessage(DashboardActivity.this, response.body().getMessage());
+//                        ApplicationConstant.displayToastMessage(DashboardActivity.this, response.body().getMessage());
                         return;
                     }
                     ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Response", response.body().getMessage());
@@ -793,7 +804,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 }
                 if (response.body() != null) {
                     if (response.body().getStatusCode().intValue() == 1) {
-                        ApplicationConstant.displayToastMessage(DashboardActivity.this, response.body().getMessage());
+//                        ApplicationConstant.displayToastMessage(DashboardActivity.this, response.body().getMessage());
                         DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, MainActivity.class));
                         DashboardActivity.this.finish();
                         return;

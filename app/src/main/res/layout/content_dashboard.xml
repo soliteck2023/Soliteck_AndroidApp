@@ -66,58 +66,39 @@
 
 
 
-<!--                <TextView-->
-<!--                    android:id="@+id/viewid"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="35dp"-->
-<!--                    android:background="@drawable/violet_button_background"-->
-<!--                    android:padding="7dp"-->
-<!--                    android:text="View Balance"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textStyle="bold"></TextView>-->
-
-<!--                <androidx.viewpager.widget.ViewPager-->
-<!--                    android:id="@+id/viewpager2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="130dp"-->
-<!--                    android:layout_alignParentTop="true"-->
-<!--                    android:layout_alignParentEnd="true"-->
-<!--                    android:layout_marginTop="130dp">-->
-
-<!--                </androidx.viewpager.widget.ViewPager>-->
-
                 <LinearLayout
                     android:id="@+id/linear_request"
-                    android:layout_width="397dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="300dp"
                     android:layout_below="@+id/text_news">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="353dp"
+                        android:layout_height="120dp"
                         android:layout_margin="@dimen/margin_5dp"
                         android:paddingEnd="10dp"
                         android:background="@drawable/rectangle_background"
-                        app:cardCornerRadius="15dp"
+                        app:cardCornerRadius="20dp"
                         app:cardElevation="10dp">
 
                         <RelativeLayout
-                            android:layout_width="363dp"
-                            android:layout_height="120dp"
+                            android:layout_width="355dp"
+                            android:layout_height="match_parent"
                             android:gravity="center">
 
                             <LinearLayout
                                 android:id="@+id/lliner_mainbalance"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:weightSum="3">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
+                                    android:layout_weight="1"
                                     android:padding="5dp"
                                     android:text="Main Balance "
                                     android:textColor="@color/colorPrimary"
@@ -129,6 +110,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
+                                    android:layout_weight="1"
                                     android:background="@drawable/violet_button_background"
                                     android:padding="7dp"
                                     android:text="View Balance"
@@ -140,9 +122,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
                                     android:background="@drawable/violet_button_background"
                                     android:padding="5dp"
-                                    android:layout_marginBottom="10dp"
                                     android:text="Cashout Balance"
                                     android:textColor="@color/white"
                                     android:textStyle="bold" />
@@ -215,8 +198,8 @@
 
                     <ImageView
                         android:id="@+id/image_mobile1"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:src="@drawable/bank_account" />
 
                     <TextView
@@ -225,7 +208,7 @@
                         android:layout_marginTop="5dp"
                         android:text="Bank"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"></TextView>
                 </LinearLayout>
 
@@ -245,8 +228,8 @@
 
                     <ImageView
                         android:id="@+id/image_wallet"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:src="@drawable/baseline_settle_wallet_24" />
 
                     <TextView
@@ -255,7 +238,7 @@
                         android:layout_marginTop="5dp"
                         android:text="Wallet"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"></TextView>
                 </LinearLayout>
 
@@ -275,8 +258,8 @@
 
                     <ImageView
                         android:id="@+id/image_account"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:src="@drawable/baseline_account_24" />
 
                     <TextView
@@ -285,7 +268,7 @@
                         android:layout_marginTop="5dp"
                         android:text="Transfer"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"></TextView>
                 </LinearLayout>
 
@@ -305,8 +288,8 @@
 
                     <ImageView
                         android:id="@+id/image_account2"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:src="@drawable/baseline_account_24" />
 
                     <TextView
@@ -315,7 +298,7 @@
                         android:layout_marginTop="5dp"
                         android:text="Account"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"></TextView>
 
 

@@ -22,7 +22,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/content_dashboard"
+        layout="@layout/new_conatentview_dashboard"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="center" />
 

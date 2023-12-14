@@ -95,4 +95,13 @@ public class CompanyBankListActivity extends AppCompatActivity {
         this.recycle_transactions = recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    @Override // androidx.appcompat.app.AppCompatActivity
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+
+
 }

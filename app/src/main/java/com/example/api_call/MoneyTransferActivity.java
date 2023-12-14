@@ -34,25 +34,25 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoneyTransferActivity extends AppCompatActivity {
-    private Button btn_transfer_proceed;
+    private RelativeLayout btn_transfer_proceed;
     private EditText edit_mobile_number;
     private ImageView image_select_contact;
     private ProgressDialog progressDialog;
     private TextView text_bank_downs;
     private StringBuilder stringBuilder = new StringBuilder();
     private List<String> StoreContacts = new ArrayList();
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_transfer);
-
         setTitle("Money Transfer");
         setupWindowAnimations();
-        this.btn_transfer_proceed = (Button) findViewById(R.id.btn_transfer_proceed);
+        this.btn_transfer_proceed = (RelativeLayout) findViewById(R.id.btn_transfer_proceed);
         this.edit_mobile_number = (EditText) findViewById(R.id.edit_mobile_number);
-//        this.text_bank_downs = (TextView) findViewById(R.id.text_bank_downs);
-       this.image_select_contact = (ImageView) findViewById(R.id.image_select_contact);
-//        this.text_bank_downs.setSelected(true);
+        this.text_bank_downs = (TextView) findViewById(R.id.text_bank_downs);
+        this.image_select_contact = (ImageView) findViewById(R.id.image_select_contact);
+        this.text_bank_downs.setSelected(true);
         this.edit_mobile_number.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.1
             @Override // android.text.TextWatcher
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -71,10 +71,26 @@ public class MoneyTransferActivity extends AppCompatActivity {
             }
         });
 
+        this.btn_transfer_proceed.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.2
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                if (MoneyTransferActivity.this.edit_mobile_number.getText().toString().isEmpty()) {
+                    MoneyTransferActivity.this.edit_mobile_number.setError("enter mobile number");
+                } else if (MoneyTransferActivity.this.edit_mobile_number.getText().toString().length() != 10) {
+                    MoneyTransferActivity.this.edit_mobile_number.setError("enter correct mobile number");
+                } else {
+                    MoneyTransferActivity moneyTransferActivity = MoneyTransferActivity.this;
+                    moneyTransferActivity.getRemitterValidate(moneyTransferActivity.edit_mobile_number.getText().toString());
+                }
+            }
+        });
+
+
+
         this.image_select_contact.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.3
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
-//                MoneyTransferActivity.this.GetContactsIntoArrayList();
+                MoneyTransferActivity.this.GetContactsIntoArrayList();
                 View view_recents = MoneyTransferActivity.this.getLayoutInflater().inflate(R.layout.layout_contact_list, (ViewGroup) null);
                 ListView listview1 = (ListView) view_recents.findViewById(R.id.listview1);
                 EditText search_edit = (EditText) view_recents.findViewById(R.id.search_edit);
@@ -116,36 +132,19 @@ public class MoneyTransferActivity extends AppCompatActivity {
             }
         });
 
-        this.btn_transfer_proceed.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                if (MoneyTransferActivity.this.edit_mobile_number.getText().toString().isEmpty()) {
-                    MoneyTransferActivity.this.edit_mobile_number.setError("enter mobile number");
-                } else if (MoneyTransferActivity.this.edit_mobile_number.getText().toString().length() != 10) {
-                    MoneyTransferActivity.this.edit_mobile_number.setError("enter correct mobile number");
-                } else {
-                    MoneyTransferActivity moneyTransferActivity = MoneyTransferActivity.this;
-                    moneyTransferActivity.getRemitterValidate(moneyTransferActivity.edit_mobile_number.getText().toString());
-                }
-            }
-        });
-
 
     }
-//    @SuppressLint("Range")
-//    private void GetContactsIntoArrayList() {
-//
-//        ContentResolver contentResolver = getContentResolver();
-//        Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-//
-////        Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null);
-//        while (cursor.moveToNext()){
-//            String name = cursor.getString(cursor.getColumnIndex("display_name"));
-//            String phonenumber = cursor.getString(cursor.getColumnIndex("data1"));
-//            this.StoreContacts.add(name + " : " + phonenumber);
-//        }
-//        cursor.close();
-//    }
+
+    private void GetContactsIntoArrayList() {
+        Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+        while (cursor.moveToNext()) {
+            @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex("display_name"));
+            @SuppressLint("Range") String phonenumber = cursor.getString(cursor.getColumnIndex("data1"));
+            this.StoreContacts.add(name + " : " + phonenumber);
+        }
+        cursor.close();
+    }
+
 
     private void getRemitterValidate(String userName) {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
