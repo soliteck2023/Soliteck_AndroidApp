@@ -12,7 +12,7 @@ public class CustomProgressDialog extends ProgressDialog {
     public static ProgressDialog getDialogue(Activity activity) {
         CustomProgressDialog dialog = new CustomProgressDialog(activity, R.style.myDialogTheme);
         dialog.setIndeterminate(true);
-        dialog.getWindow().getAttributes().gravity = Gravity.CENTER; //prajakta change 17 to Gravity.CENTER
+        dialog.getWindow().getAttributes().gravity = Gravity.FILL_HORIZONTAL; //prajakta change 17 to Gravity.CENTER
         dialog.setCancelable(false);
         return dialog;
     }

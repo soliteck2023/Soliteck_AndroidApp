@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal" android:padding="10dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:textSize="16sp" android:textColor="@color/dark_green" android:id="@+id/Txtplanname" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="South Silver Lite South India" android:layout_alignParentLeft="true"/>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/First" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_5dp" android:weightSum="3" android:layout_below="@+id/Txtplanname">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/Lin1Month" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 Month : "/>
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/Txt1MonthRs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="182"/>
+        </LinearLayout>
+        <View android:background="@color/colorPrimaryDark" android:layout_width="0.3dp" android:layout_height="@dimen/size_20dp" android:layout_marginRight="@dimen/margin_5dp"/>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/Lin3Month" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 Month : "/>
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/Txt3MonthRs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_5dp" android:text="182"/>
+        </LinearLayout>
+        <View android:background="@color/colorPrimaryDark" android:layout_width="0.3dp" android:layout_height="@dimen/size_20dp" android:layout_marginRight="@dimen/margin_5dp"/>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/Lin6Month" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6 Month : "/>
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/Txt6MonthRs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_5dp" android:text="182"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/Second" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_5dp" android:weightSum="3" android:layout_below="@+id/First">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/Lin9Month" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9 Month : "/>
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/Txt9MonthRs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="182"/>
+        </LinearLayout>
+        <View android:background="@color/colorPrimaryDark" android:layout_width="0.3dp" android:layout_height="@dimen/size_20dp" android:layout_marginRight="@dimen/margin_5dp"/>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/Lin1Year" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 Year "/>
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/Txt1YearRs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_5dp" android:text="182"/>
+        </LinearLayout>
+        <View android:background="@color/colorPrimaryDark" android:layout_width="0.3dp" android:layout_height="@dimen/size_20dp" android:layout_marginRight="@dimen/margin_5dp"/>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/Lin5Year" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5 Year : "/>
+            <TextView android:textSize="14sp" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/Txt5YearRs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_5dp" android:text="182"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@+id/TxtDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="3 Months  + 7 days free,6 Months  + 14 days free,11 Months  + 30 days free,24 Months  + 75 days free,60 Months  + 200 days free" android:layout_below="@+id/Second"/>
+</RelativeLayout>

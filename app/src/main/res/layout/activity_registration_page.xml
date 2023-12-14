@@ -29,13 +29,14 @@
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
                     <LinearLayout
-                        android:id="@+id/mobile_reg"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/mobile_reg"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_marginLeft="@dimen/dp_size_10"
@@ -52,8 +53,11 @@
                             android:layout_height="48dp"
                             android:layout_marginLeft="@dimen/dp_size_10"
                             android:layout_marginRight="@dimen/dp_size_10"
+                            android:maxLength="10"
+                            android:phoneNumber="true"
                             android:background="@drawable/bacgroundcurve_oneside"
                             android:hint="Enter Mobile number"
+                            android:textColor="@color/white"
                             android:textColorHint="#636262"
                             android:padding="5dp"
                             android:textSize="16sp">
@@ -61,13 +65,14 @@
                         </com.google.android.material.textfield.TextInputEditText>
 
                         <LinearLayout
-                            android:id="@+id/userName_reg"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/mobile_reg"
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/userName_reg"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
@@ -87,7 +92,9 @@
                                 android:layout_marginRight="@dimen/dp_size_10"
                                 android:background="@drawable/bacgroundcurve_oneside"
                                 android:hint="Enter User Name"
+                                android:maxLength="10"
                                 android:padding="5dp"
+                                android:textColor="@color/white"
                                 android:textColorHint="#636262"
                                 android:textSize="16sp">
 
@@ -97,13 +104,14 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/shopname_reg"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/userName_reg"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/shopname_reg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -111,6 +119,7 @@
                             android:layout_marginTop="30dp"
                             android:padding="5dp"
                             android:text="Shop Name"
+                            android:maxLength="25"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -124,6 +133,8 @@
                             android:background="@drawable/bacgroundcurve_oneside"
                             android:hint="Enter Shop Name"
                             android:textColorHint="#636262"
+                            android:textColor="@color/white"
+                            android:maxLength="10"
                             android:padding="5dp"
                             android:textSize="16sp">
 
@@ -131,20 +142,23 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/role_reg"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/shopname_reg"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/pin_code"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_marginLeft="@dimen/dp_size_10"
                             android:layout_marginTop="30dp"
                             android:padding="5dp"
-                            android:text="Pin code"
+                            android:maxLength="6"
+                            android:phoneNumber="true"
+                            android:text="Pincode"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -158,6 +172,9 @@
                             android:textColorHint="#636262"
                             android:background="@drawable/bacgroundcurve_oneside"
                             android:hint="Enter Pin Code"
+                            android:textColor="@color/white"
+                            android:maxLength="10"
+                            android:phoneNumber="true"
                             android:padding="5dp"
                             android:textSize="16sp">
 
@@ -190,6 +207,7 @@
                             android:layout_height="48dp"
                             android:layout_marginLeft="@dimen/dp_size_10"
                             android:layout_marginRight="@dimen/dp_size_10"
+                            android:textColor="#636262"
                             android:background="@drawable/bacgroundcurve_oneside"
                             android:entries="@array/type"
                             android:padding="5dp"
@@ -201,13 +219,14 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/parent_reg"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/pinode_reg"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/parent_reg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -215,6 +234,8 @@
                             android:layout_marginTop="30dp"
                             android:padding="5dp"
                             android:text="Parent No"
+                            android:maxLength="10"
+                            android:phoneNumber="true"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -227,14 +248,57 @@
                             android:background="@drawable/bacgroundcurve_oneside"
                             android:hint="Enter Parent Number"
                             android:padding="5dp"
+                            android:maxLength="10"
+                            android:textColor="@color/white"
+                            android:phoneNumber="true"
+                            android:textColorHint="#636262"
+                            android:textSize="16sp">
+                        </com.google.android.material.textfield.TextInputEditText>
+
+                    </LinearLayout>
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/parent_reg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/Employ_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:layout_marginTop="30dp"
+                            android:padding="5dp"
+                            android:text="Employe No"
+                            android:maxLength="10"
+                            android:phoneNumber="true"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="250dp"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:layout_marginRight="@dimen/dp_size_10"
+                            android:background="@drawable/bacgroundcurve_oneside"
+                            android:hint="Enter Parent Number"
+                            android:padding="5dp"
+                            android:textColor="@color/white"
+                            android:maxLength="10"
+                            android:phoneNumber="true"
                             android:textColorHint="#636262"
                             android:textSize="16sp">
                         </com.google.android.material.textfield.TextInputEditText>
 
                     </LinearLayout>
 
+
+
                     <Button
-                        android:id="@+id/button_id"
+                        android:id="@+id/button_registerin"
                         android:layout_width="150dp"
                         android:layout_height="48dp"
                         android:layout_marginTop="30dp"

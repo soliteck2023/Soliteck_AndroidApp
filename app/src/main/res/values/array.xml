@@ -25,10 +25,9 @@
     </array>
 
     <array name="type">
+        <item>Retailer</item>
         <item>Distributor</item>
         <item>Master Distributor</item>
-        <item>Super Distributor</item>
-        <item>Retailer</item>
     </array>
 
 
@@ -67,8 +66,8 @@
     </array>
 
     <string-array name="operator">
-        <item>Airtel</item>
         <item>VI</item>
+        <item>Airtel</item>
         <item>Jio</item>
         <item>BSNL</item>
 

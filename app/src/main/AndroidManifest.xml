@@ -10,13 +10,19 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/card"
+        android:label="Soliteck"
+        android:roundIcon="@drawable/card"
         android:supportsRtl="true"
         android:theme="@style/AppTheme_NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".New_content_dashboard"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".spineer_activity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
@@ -76,9 +82,9 @@
         <activity
             android:name=".PayRequestHistoryActivity"
             android:exported="false" />
-        <activity
-            android:name=".StatementReportActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".StatementReportActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".PaymentRequestActivity"
             android:exported="false" />
@@ -89,7 +95,7 @@
             android:name=".PostpaidRechargeActivity"
             android:exported="false" />
         <activity
-            android:name=".FlashActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ContactUsActivity"
@@ -110,7 +116,7 @@
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".FlashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

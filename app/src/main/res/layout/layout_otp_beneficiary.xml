@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="20dp">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp">
+        <TextView android:textSize="16sp" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true"/>
+        <ImageView android:id="@+id/image_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20dp" android:layout_alignParentRight="true" app:srcCompat="@drawable/ic_cancel_black_24dp"/>
+    </RelativeLayout>
+    <TextView android:textSize="16sp" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/text_pass_change" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Password Changed Successfully"/>
+    <TextView android:textSize="14sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:text="Enter OTP sent to your mobile number" android:layout_centerInParent="true"/>
+    <LinearLayout android:orientation="vertical" android:id="@+id/layout_hide" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/text_view_border" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginRight="20dp">
+            <EditText android:textSize="14sp" android:textColor="@color/black" android:gravity="center" android:id="@+id/edit_otp_number" android:background="@android:color/transparent" android:padding="8dp" android:focusable="auto" android:layout_width="0dp" android:layout_height="wrap_content" android:hint="Enter OTP" android:maxLines="1" android:maxLength="6" android:layout_weight="2.5" android:inputType="number"/>
+        </LinearLayout>
+        <Button android:textSize="17sp" android:textColor="@color/white" android:id="@+id/btn_send_otp" android:background="@color/colorPrimary" android:visibility="visible" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginTop="20dp" android:text="Submit Otp"/>
+    </LinearLayout>
+</LinearLayout>

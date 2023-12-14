@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_above="@+id/LLPrivacy">
+        <RelativeLayout android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16sp"  android:textStyle="bold" android:textColor="@color/white" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="60dp" android:gravity="center" android:text="TERMS AND CONDITIONS AND USER AGREEMENT (AGREEMENT)"
+                android:layout_centerHorizontal="true"/>
+            <ImageView android:id="@+id/image_cancel" android:visibility="gone" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginRight="15dp" android:src="@drawable/ic_cancel_black_24dp" android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+
+            <LinearLayout android:orientation="vertical" android:padding="10dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+<!--                <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Users Personal Information"/>-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
+                <TextView android:textSize="13sp" android:padding="@dimen/padding_5"  android:textColor="@color/black"  android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="THIS AGREEMENT IS AN ELECTRONIC RECORD IN TERMS OF INFORMATION TECHNOLOGY ACT, 200 AND RULES THERE UNDER AS APPLICABLE AND THE AMENDED PROVISIONS PERTAINING TO ELECTRONIC RECORDS/DOCUMENTS IN VARIOUS STATUTES AS AMENDED BY THE INFORMATION TECHNOLOGY ACT, 2000. THIS IS A COMPUTER GENERATED ELECTRONIC RECORD AND DOES NOT REQUIRE ANY PHYSICAL OR DIGITAL SIGNATURES.PLEASE READ THE TERMS AND CONDITIONS OF THIS AGREEMENT CAREFULLY. TERMS AND CONDITIONS MENTIONED IN THE AGREEMENT ARE A BINDING CONTRACT BETWEEN SOLITECK Private Limited. (COMPANY or SOLITECK), REFERRED HEREIN BELOW AND YOU (RETAILER). THE TERMS ARE EFFECTIVE UPON ACCEPTANCE AND WILL GOVERN THE RELATIONSHIP BETWEEN YOU (RETAILER) AND COMPANY." android:textAlignment="textStart"/>
+                <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="A. SOLITECK is a pioneer in the mobile payment business and is a premium mobile payment service provider, money transfer, utility payments with respect to mobile, cable recharges, and other bookings (“Services”)."/>
+                <TextView android:textSize="13sp" android:padding="@dimen/padding_5" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="B. Retailer is availing various Services of SOLITECK and against which SOLITECK charges Service Charges to Retailer.." android:textAlignment="textStart"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="1.SCOPE"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black" />
+
+                </LinearLayout>
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black"  android:padding="@dimen/padding_5" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.1 Retailer shall market, distribute Services offered by SOLITECK as per the terms and conditions of this Agreement on non-exclusive basis." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="1.2 Retailer will directly engage with their customers."/>
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black"android:padding="@dimen/padding_5" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.3 Retailer shall not warranty or commit to any customers and/or third party anything over and above what is committed or warranted by SOLITECK. In case Retailer commits, the concerned Retailer shall be solely responsible for such commitments. In case of any loss or damage incurred by SOLITECK due to non-compliance of such commitments not authorised by SOLITECK, Retailer shall reimburse all such losses and damages without any limitation and SOLITECK shall have right to deduct or set-off all such amount from the money due from SOLITECK to Retailer." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="1.4 In order to promote the business, both the parties shall by mutually consent in the overall interest of the business and the Retailers shall provide better services to the customers./>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</RelativeLayout>
