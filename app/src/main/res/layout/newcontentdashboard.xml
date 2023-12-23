@@ -4,15 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <LinearLayout
         android:id="@+id/ll_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/rectangle_background"
         android:orientation="vertical"
         android:padding="10dp"
@@ -23,12 +21,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/llinerpayment1"
                 android:layout_width="match_parent"
-                android:layout_height="109dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
@@ -43,18 +42,18 @@
 
                     <ImageView
                         android:id="@+id/image_mobile"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/mobile"
-                        app:tint="@color/blue" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="2dp"
+                        android:src="@drawable/colorful_mobile"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Mobile"
                         android:padding="2dp"
-                        android:background="@color/white"
+                        android:text="Mobile"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -71,19 +70,19 @@
 
                     <ImageView
                         android:id="@+id/image_dth"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/dish"
-                        app:tint="@color/blue"/>
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="2dp"
+                        android:src="@drawable/dth_colorfull_img2"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Dth"
                         android:padding="2dp"
+                        android:text="Dth"
                         android:textColor="@color/black"
-                        android:background="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -91,7 +90,7 @@
                 <LinearLayout
                     android:id="@+id/linear_postpaid"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="78dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -99,23 +98,20 @@
 
                     <ImageView
                         android:id="@+id/image_postpaid"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@color/light_theme_color"
-                        android:src="@drawable/postpaid"
-                        app:tint="@color/blue"/>
+                        android:layout_width="35dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/postpaid_mobile"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Postpaid"
+                        android:layout_marginTop="3dp"
                         android:padding="2dp"
+                        android:text="Postpaid"
                         android:textColor="@color/black"
-                        android:background="@color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -129,21 +125,21 @@
                     android:padding="5dp">
 
                     <ImageView
-                        android:id="@+id/image_transfer"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/transfer"
-                        app:tint="@color/blue"/>
+                        android:id="@+id/transfer_image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="2dp"
+                        android:src="@drawable/dmt_new2"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:padding="2dp"
                         android:paddingLeft="5dp"
                         android:text="DMT"
-                        android:padding="2dp"
                         android:textColor="@color/black"
-                        android:background="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -157,7 +153,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/llinerpayment1"
                 android:orientation="horizontal"
-                android:padding="10dp"
                 android:weightSum="4">
 
                 <LinearLayout
@@ -170,24 +165,24 @@
                     android:orientation="vertical"
                     android:padding="5dp"
                     android:visibility="visible">
-<!--src -@mipmap/payin_bbps"-->
+                    <!--src -@mipmap/payin_bbps"-->
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@mipmap/payin_bbps"
-                        ></ImageView>
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:src="@drawable/bbps_logo"></ImageView>
                     />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:padding="2dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="BBPS"
-                        android:padding="2dp"
                         android:textColor="@color/black"
-                        android:background="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -204,21 +199,21 @@
                     android:visibility="visible">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="@dimen/padding_5"
                         android:src="@drawable/ic_baseline_fingerprint_24"
-                        app:tint="@color/colorPrimary" />
+                        app:tint="@color/blue" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:padding="2dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         android:text="AEPS"
-                        android:padding="2dp"
                         android:textColor="@color/black"
-                        android:background="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -229,6 +224,7 @@
         </RelativeLayout>
 
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_user_name_title"

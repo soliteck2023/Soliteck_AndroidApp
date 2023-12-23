@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +7,18 @@
     android:fillViewport="true"
     tools:ignore="MissingDefaultResource">
 
-    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ScrollView
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,169 +27,126 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp">
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:id="@+id/balanceLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="270dp"
+                android:layout_height="244dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/combocolor"
                 android:backgroundTint="@color/colorPrimary"
-                android:elevation="15dp"
-                android:orientation="vertical"
-                android:padding="15dp">
+                android:elevation="@dimen/margin_15dp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/hello"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="45dp"
-                    android:text="Hello, "
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/TextName"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="223dp"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp">
+
+                        <LinearLayout
+                            android:id="@+id/first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+
+                            <ImageView
+                                android:layout_width="170dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.5"
+                                android:padding="3dp"
+                                android:src="@drawable/app_logo1"></ImageView>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/newfirst"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/first"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/TextName1"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:text="Vishal , "
+                                android:textColor="@color/blue"
+                                android:textSize="15dp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:gravity="center"
+                                android:text=" "
+                                android:textColor="@color/blue"
+                                android:textSize="15dp"
+                                android:textStyle="bold"></TextView>
+
+
+                        </LinearLayout>
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/reuqst_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_below="@+id/newfirst">
+
+                        </androidx.viewpager.widget.ViewPager>
+
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginBottom="158dp"
+                            android:layout_weight="0.5"
+                            android:padding="7dp"
+                            android:src="@drawable/refresh_svgviewer"></ImageView>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/simple_border"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerAd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="45dp"
-                    android:text=""
-                    android:layout_toRightOf="@+id/hello"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/text_news"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/hello"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Welcome to soliteck android application."
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-
-                <RelativeLayout
-                    android:id="@+id/linear_request"
-                    android:layout_width="wrap_content"
-                    android:layout_height="300dp"
-                    android:layout_below="@+id/text_news"
                     android:orientation="horizontal">
 
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/viewpager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </androidx.viewpager.widget.ViewPager>
+                </androidx.recyclerview.widget.RecyclerView>
 
 
-                    <!--                    <androidx.cardview.widget.CardView-->
-                    <!--                        android:layout_width="353dp"-->
-                    <!--                        android:layout_height="120dp"-->
-                    <!--                        android:layout_margin="@dimen/margin_5dp"-->
-                    <!--                        android:paddingEnd="10dp"-->
-                    <!--                        android:background="@drawable/rectangle_background"-->
-                    <!--                        app:cardCornerRadius="20dp"-->
-                    <!--                        app:cardElevation="10dp">-->
-
-                    <!--                        <RelativeLayout-->
-                    <!--                            android:layout_width="355dp"-->
-                    <!--                            android:layout_height="match_parent"-->
-                    <!--                            android:gravity="center">-->
-
-                    <!--                            <LinearLayout-->
-                    <!--                                android:id="@+id/lliner_mainbalance"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="match_parent"-->
-                    <!--                                android:layout_marginLeft="5dp"-->
-                    <!--                                android:orientation="vertical"-->
-                    <!--                                android:weightSum="3">-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:layout_width="wrap_content"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginTop="5dp"-->
-                    <!--                                    android:layout_weight="1"-->
-                    <!--                                    android:padding="5dp"-->
-                    <!--                                    android:text="Main Balance "-->
-                    <!--                                    android:textColor="@color/colorPrimary"-->
-                    <!--                                    android:textSize="17dp"-->
-                    <!--                                    android:textStyle="bold"></TextView>-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/view_balance"-->
-                    <!--                                    android:layout_width="wrap_content"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginTop="5dp"-->
-                    <!--                                    android:layout_weight="1"-->
-                    <!--                                    android:background="@drawable/violet_button_background"-->
-                    <!--                                    android:padding="7dp"-->
-                    <!--                                    android:text="View Balance"-->
-                    <!--                                    android:textColor="@color/white"-->
-                    <!--                                    android:textStyle="bold"></TextView>-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/textaepsBalance"-->
-                    <!--                                    android:layout_width="wrap_content"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginTop="5dp"-->
-                    <!--                                    android:layout_marginBottom="10dp"-->
-                    <!--                                    android:layout_weight="1"-->
-                    <!--                                    android:background="@drawable/violet_button_background"-->
-                    <!--                                    android:padding="5dp"-->
-                    <!--                                    android:text="Cashout Balance"-->
-                    <!--                                    android:textColor="@color/white"-->
-                    <!--                                    android:textStyle="bold" />-->
-
-                    <!--                            </LinearLayout>-->
+            </LinearLayout>
 
 
-                    <!--                            <LinearLayout-->
-                    <!--                                android:id="@+id/reuest_balance"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="match_parent"-->
-                    <!--                                android:layout_alignParentRight="true"-->
-                    <!--                                android:layout_marginLeft="110dp"-->
-                    <!--                                android:layout_toRightOf="@+id/lliner_mainbalance"-->
-                    <!--                                android:orientation="vertical">-->
 
-                    <!--                                <TextView-->
-                    <!--                                    android:layout_width="wrap_content"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_gravity="center"-->
-                    <!--                                    android:layout_marginTop="5dp"-->
-                    <!--                                    android:padding="5dp"-->
-                    <!--                                    android:text="Request"-->
-                    <!--                                    android:textColor="@color/colorPrimary"-->
-                    <!--                                    android:textSize="17dp"-->
-                    <!--                                    android:textStyle="bold"></TextView>-->
-
-                    <!--                                <ImageView-->
-                    <!--                                    android:id="@+id/image_request"-->
-                    <!--                                    android:layout_width="50dp"-->
-                    <!--                                    android:layout_height="55dp"-->
-                    <!--                                    android:layout_gravity="center"-->
-                    <!--                                    android:layout_marginLeft="0dp"-->
-                    <!--                                    android:src="@drawable/payment_request"></ImageView>-->
-
-
-                    <!--                            </LinearLayout>-->
-
-
-                    <!--                        </RelativeLayout>-->
-
-                    <!--                    </androidx.cardview.widget.CardView>-->
-                </RelativeLayout>
-            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/cartview1"
@@ -245,7 +213,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Wallet"
+                        android:text="Latest_rpt"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"></TextView>
@@ -275,7 +243,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Transfer"
+                        android:text="Compliant"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"></TextView>
@@ -322,4 +290,7 @@
 
         </LinearLayout>
     </ScrollView>
-</RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

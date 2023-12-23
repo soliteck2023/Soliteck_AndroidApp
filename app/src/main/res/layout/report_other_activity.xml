@@ -4,35 +4,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="30dp">
 
     <LinearLayout
         android:id="@+id/ll_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/rectangle_background"
         android:orientation="vertical"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
+
+
 
             <LinearLayout
                 android:id="@+id/llinerpayment1"
                 android:layout_width="match_parent"
-                android:layout_height="129dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:weightSum="3">
 
                 <LinearLayout
                     android:id="@+id/linear_txn"
@@ -45,24 +48,24 @@
 
                     <ImageView
                         android:id="@+id/image_txn"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/txn_history" />
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:src="@drawable/colorful_txn_reports3" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="65dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Transation"
+                        android:padding="2dp"
+                        android:text="Txn Report"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_leger"
+                    android:id="@+id/linear_paytransfe_rreport"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -71,25 +74,25 @@
                     android:padding="5dp">
 
                     <ImageView
-                        android:id="@+id/image_leger"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/pending_settelment" />
+                        android:id="@+id/commistion"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:src="@drawable/pay2_horizontal" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="65dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Ledger"
+                        android:text="Pay Request"
+                        android:padding="2dp"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_earn"
+                    android:id="@+id/pending_txn_report"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -99,188 +102,237 @@
 
                     <ImageView
                         android:id="@+id/image_earning"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/earnings" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:padding="5dp"
-                        android:text="Earning"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear_transfe_rreport"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="5dp"
-                    android:weightSum="2">
-
-                    <ImageView
-                        android:id="@+id/transfer_reports"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/pay_report" />
+                        android:src="@drawable/colorful_pending_txn_rpt" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="65dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:text="Pending Txn"
+                        android:padding="2dp"
                         android:gravity="center"
-                        android:paddingLeft="5dp"
-                        android:text="Payment Receive Reports"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--     1st cmpt-->
+
+        <LinearLayout
+            android:id="@+id/llinerpayment2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llinerpayment1"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/linear_latetledger"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:src="@drawable/colorful_ledger" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="Ledger"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_cashout_txn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:src="@drawable/colorful_cashout_txn"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="Cashout Txn"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_cashoutledger_txn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="3dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/ledger_report2"
+                    />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:padding="2dp"
+                    android:gravity="center_horizontal"
+                    android:text="Cashout Ledger"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/llinerpayment2"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/linear_earn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp"
+                tools:ignore="DuplicateIds">
+
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="6dp"
+                    android:src="@drawable/colorful_earning"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="Earing"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llinerpayment2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/llinerpayment1"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:weightSum="4">
+                android:id="@+id/network_pay"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                <LinearLayout
-                    android:id="@+id/linear_latettxnReport"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:orientation="vertical"
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:padding="5dp"
-                    android:visibility="visible">
+                    android:src="@drawable/colorful_network_pay"
+                    ></ImageView>
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/latest_txns" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Latest Report"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear_banks"
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="5dp"
-                    android:visibility="visible">
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="Network Pay"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/image_bank"
-                        app:tint="@color/colorPrimary" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="Bank list"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@id/linear_compliant"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="5dp"
-                    android:visibility="visible"
-                    tools:ignore="DuplicateIds">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/pay_report"
-                        app:tint="@color/colorPrimary" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="Complaint History"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear_aeps"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="5dp"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:src="@drawable/txn_history"
-                        app:tint="@color/colorPrimary" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="AEPS Txn Reports"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
 
 
             </LinearLayout>
 
 
-        </RelativeLayout>
 
+
+
+            <LinearLayout
+                android:id="@+id/linear_commisstion"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/cash_out"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:src="@drawable/colorful_commistion" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="Commission"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -289,19 +341,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/white"
-        android:paddingLeft="5dp"
         android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:textSize="14sp"
+        android:background="@color/white"
         android:text="Reports And Other"
         android:textColor="@color/colorPrimary"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

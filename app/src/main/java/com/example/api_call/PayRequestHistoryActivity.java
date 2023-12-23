@@ -60,9 +60,24 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
         this.mImage_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PayRequestHistoryActivity.1
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
+
                 PayRequestHistoryActivity.this.fromDateSelection();
             }
         });
+
+        mText_fromdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fromDateSelection();
+            }
+        });
+
+//        this.mLayout_fromdate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                PayRequestHistoryActivity.this.fromDateSelection();
+//            }
+//        });
 
 
     }
@@ -132,10 +147,31 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+//    public  void fromDateSelection(){
+//        final Calendar calendar = Calendar.getInstance();
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH);
+//        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+//
+//        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+//                new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                        // Do something with the selected date
+//                        String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+//                        mText_fromdate.setText(selectedDate);
+//                    }
+//                }, year, month, dayOfMonth);
+//
+//        datePickerDialog.show();
+//
+//    }
     public void fromDateSelection() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PayRequestHistoryActivity.6
             @Override // android.app.DatePickerDialog.OnDateSetListener
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
                 PayRequestHistoryActivity.this.mText_fromdate.setText(year + "/" + dayOfMonth + "/" + (monthOfYear + 1));
                 PayRequestHistoryActivity.this.mText_fromdate.setError(null);
                 if (!PayRequestHistoryActivity.this.mText_todate.getText().toString().isEmpty()) {

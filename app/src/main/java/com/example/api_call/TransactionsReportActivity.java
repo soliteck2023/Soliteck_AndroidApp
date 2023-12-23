@@ -1,19 +1,24 @@
 package com.example.api_call;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -36,11 +41,20 @@ public class TransactionsReportActivity extends AppCompatActivity {
     private TextView text_no_content;
     private EditText text_search;
     private EditText text_todate;
+
+    private SearchView searchView;
+
+    private ImageView image_fromdate;
+
     private TransactionReportAdapter transactionBillAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions_report);
+
+
+
+
         setTitle("Transaction Report");
         initComponents();
         Calendar calendar = Calendar.getInstance();
@@ -61,8 +75,6 @@ public class TransactionsReportActivity extends AppCompatActivity {
                         TransactionsReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                         TransactionsReportActivity.this.text_fromdate.setError(null);
                         TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
-
-
 //                        if (!TransactionsReportActivity.this.text_todate.getText().toString().isEmpty()) {
 //                            if (!ConstantClass.isNetworkAvailable(TransactionsReportActivity.this)) {
 //                                ConstantClass.displayMessageDialog(TransactionsReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
@@ -73,6 +85,31 @@ public class TransactionsReportActivity extends AppCompatActivity {
                     }
                 }, TransactionsReportActivity.this.mYear, TransactionsReportActivity.this.mMonth, TransactionsReportActivity.this.mDay);
                 datePickerDialog.show();
+            }
+        });
+        image_fromdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(TransactionsReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.TransactionsReportActivity.1.1
+                    @Override // android.app.DatePickerDialog.OnDateSetListener
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        TransactionsReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                        TransactionsReportActivity.this.text_fromdate.setError(null);
+                        TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
+//                        if (!TransactionsReportActivity.this.text_todate.getText().toString().isEmpty()) {
+//                            if (!ConstantClass.isNetworkAvailable(TransactionsReportActivity.this)) {
+//                                ConstantClass.displayMessageDialog(TransactionsReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                            } else {
+//                                TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
+//                            }
+//                        }
+                    }
+                }, TransactionsReportActivity.this.mYear, TransactionsReportActivity.this.mMonth, TransactionsReportActivity.this.mDay);
+                datePickerDialog.show();
+
+
+
             }
         });
 
@@ -101,8 +138,63 @@ public class TransactionsReportActivity extends AppCompatActivity {
             }
         });
 
+        this.text_todate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.TransactionsReportActivity.2
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(TransactionsReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.TransactionsReportActivity.2.1
+                    @Override // android.app.DatePickerDialog.OnDateSetListener
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        if (TransactionsReportActivity.this.text_fromdate.getText().toString().isEmpty()) {
+                            TransactionsReportActivity.this.text_fromdate.setError("Select from date first");
+                            TransactionsReportActivity.this.text_fromdate.requestFocus();
+                            return;
+                        }
+                        TransactionsReportActivity.this.text_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                        if (!ConstantClass.isNetworkAvailable(TransactionsReportActivity.this)) {
+                            ConstantClass.displayMessageDialog(TransactionsReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+                        } else {
+                            TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
+                        }
+                    }
+                }, TransactionsReportActivity.this.mYear, TransactionsReportActivity.this.mMonth, TransactionsReportActivity.this.mDay);
+                datePickerDialog.show();
+                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+            }
+        });
+
+        this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.TransactionsReportActivity.3
+            @Override // android.text.TextWatcher
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override // android.text.TextWatcher
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                TransactionsReportActivity.this.filter(charSequence.toString());
+            }
+
+            @Override // android.text.TextWatcher
+            public void afterTextChanged(Editable editable) {
+            }
+        });
 
 
+
+
+
+    }
+
+    public void filter(String s) {
+        try {
+            List<TransactionReport> listnew_Banks = new ArrayList<>();
+            for (TransactionReport transHistoryData : this.reportList) {
+                if (transHistoryData.getRefNumber() != null && transHistoryData.getStatus() != null && transHistoryData.getRetailerNumber() != null && transHistoryData.getSenderMobile() != null && transHistoryData.getOperatorName() != null && (transHistoryData.getRefNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getStatus().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getRetailerNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getSenderMobile().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getOperatorName().toLowerCase().contains(s.toLowerCase()))) {
+                    listnew_Banks.add(transHistoryData);
+                }
+            }
+            this.transactionBillAdapter.filter(listnew_Banks);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void getTransactionReport(String fromDate, String toDate) {
@@ -168,5 +260,6 @@ public class TransactionsReportActivity extends AppCompatActivity {
         this.text_todate = (EditText) findViewById(R.id.text_todate);
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
+        this.image_fromdate= (ImageView) findViewById(R.id.image_fromdate);
     }
 }

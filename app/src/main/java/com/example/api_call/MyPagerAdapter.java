@@ -13,8 +13,6 @@ import java.util.List;
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
     Context context;
-//    List<Userdeatails> userdeatailsList;
-
 
     public MyPagerAdapter(@NonNull FragmentManager fm, Context context) {
         super(fm);
@@ -28,7 +26,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new main_balance();
             case 1:
-                return new cash_depository();
+                return new menuoptions();
             default:
                 return null;
         }
