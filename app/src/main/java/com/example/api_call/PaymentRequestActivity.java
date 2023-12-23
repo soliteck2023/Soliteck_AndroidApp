@@ -6,6 +6,7 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentActivity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,6 +22,7 @@ import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +30,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -201,6 +204,40 @@ public class PaymentRequestActivity extends AppCompatActivity {
                 PaymentRequestActivity.this.selectImage();
             }
         });
+
+        this.edit_payment_date.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.9
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(PaymentRequestActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentRequestActivity.9.1
+                    @Override // android.app.DatePickerDialog.OnDateSetListener
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        PaymentRequestActivity.this.edit_payment_date.setText((monthOfYear + 1) + "/" + dayOfMonth + "/" + year);
+                    }
+                }, PaymentRequestActivity.this.mYear, PaymentRequestActivity.this.mMonth, PaymentRequestActivity.this.mDay);
+                datePickerDialog.show();
+            }
+        });
+
+        this.layout_userbank.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.10
+            @Override // android.view.View.OnClickListener
+            public void onClick(View view) {
+                PaymentRequestActivity.this.getAllUserBanks();
+            }
+        });
+        this.edit_check_date.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.11
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(PaymentRequestActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentRequestActivity.11.1
+                    @Override // android.app.DatePickerDialog.OnDateSetListener
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        PaymentRequestActivity.this.edit_check_date.setText((monthOfYear + 1) + "/" + dayOfMonth + "/" + year);
+                    }
+                }, PaymentRequestActivity.this.mYear, PaymentRequestActivity.this.mMonth, PaymentRequestActivity.this.mDay);
+                datePickerDialog.show();
+            }
+        });
+
+
 
         this.layout_userbank.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.10
             @Override // android.view.View.OnClickListener

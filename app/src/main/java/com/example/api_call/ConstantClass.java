@@ -11,9 +11,11 @@ import androidx.appcompat.app.AlertDialog;
 
 public class ConstantClass {
 
+    public static final String IMAGEWEBSERVICEURL = "https://payin.co.in/images/Recharge/Operators/";
     public static Operater datum = new  Operater();
     public static final String MOBILESERVICEID = "1";
     public static String circle = MOBILESERVICEID;
+    public static String setType = "";
 
 
     public static void displayToastMessage(Context mContext, String message) {

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sendotp_registernumber">
+
+    <LinearLayout
+        android:id="@+id/mobileotp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Verify Mobile Number"
+            android:textSize="30dp"
+            android:background="@color/blue"
+            android:textColor="@color/white"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Please enter Mobile Number"
+            android:textSize="20dp"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:textStyle="bold"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/enter_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mobileotp1"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:maxLength="10"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
+        android:hint="Enter Mobile No"></EditText>
+
+
+    <!--<RelativeLayout-->
+    <!--    android:layout_below="@+id/mobileotp1"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="90dp">-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="80dp"-->
+    <!--        android:layout_marginStart="@dimen/dp_size_10"-->
+    <!--        android:layout_marginTop="@dimen/dp_size_10"-->
+    <!--        android:layout_marginEnd="@dimen/dp_size_10"-->
+    <!--        android:layout_marginBottom="@dimen/dp_size_10"-->
+    <!--        android:background="@drawable/border_edittext"-->
+    <!--        android:gravity="center_vertical"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:weightSum="3">-->
+
+    <!--        <ImageView-->
+    <!--            android:layout_width="70dp"-->
+    <!--            android:layout_height="80dp"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_weight="0.4"-->
+    <!--            android:src="@drawable/owner" />-->
+
+    <!--        <EditText-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="Enter Mobile no">-->
+    <!--            -->
+    <!--        </EditText>-->
+    <!--        -->
+    <!--    </LinearLayout>-->
+    <!--        <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="First Name"/>-->
+    <!--</RelativeLayout>-->
+
+    <Button
+        android:id="@+id/send_otp"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="266dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:background="@drawable/red_colorbackground"
+        android:text="Send OTP">
+
+    </Button>
+
+</RelativeLayout>

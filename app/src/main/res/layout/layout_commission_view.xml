@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/light_grey_color" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:id="@+id/card_history" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp" android:layout_marginLeft="4dp" android:layout_marginRight="4dp" android:layout_marginBottom="4dp" android:layout_weight="1" app:cardElevation="5dp">
+        <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="match_parent" android:weightSum="3">
+            <ImageView android:layout_gravity="center" android:id="@+id/imge_operator" android:padding="2dp" android:layout_width="45dp" android:layout_height="45dp"/>
+            <TextView android:textSize="15sp" android:textStyle="bold" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center" android:id="@+id/text_operator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:hint=""/>
+            <View android:background="@color/medium_grey_color" android:layout_width="match_parent" android:layout_height="1dp"/>
+            <TextView android:textSize="12sp" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3dp" android:text="Margin"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.98">
+                    <TextView android:textSize="10sp" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="%"/>
+                    <TextView android:textSize="12sp" android:textColor="@color/black" android:gravity="center" android:id="@+id/text_margin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Margin: 3.50"/>
+                </LinearLayout>
+                <View android:background="@color/colorPrimary" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.01"/>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.98">
+                    <ImageView android:layout_width="11dp" android:layout_height="11dp" android:src="@drawable/rupaya"/>
+                    <TextView android:textSize="12sp" android:textColor="@color/black" android:gravity="center" android:id="@+id/text_margin_val" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Margin: 3.50"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="12sp" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3dp" android:text="Surcharge"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.98">
+                    <TextView android:textSize="10sp" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="%"/>
+                    <TextView android:textSize="12sp" android:textColor="@color/black" android:gravity="center" android:id="@+id/text_surcharge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Surcharge: 0.00"/>
+                </LinearLayout>
+                <View android:background="@color/colorPrimary" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.01"/>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.98">
+                    <ImageView android:layout_width="11dp" android:layout_height="11dp" android:src="@drawable/rupaya"/>
+                    <TextView android:textSize="12sp" android:textColor="@color/black" android:gravity="center" android:id="@+id/text_surcharge_val" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Surcharge: 0.00"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
