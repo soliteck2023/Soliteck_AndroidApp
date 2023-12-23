@@ -26,25 +26,30 @@ public class ApplicationConstant {
     public static final String PRIVACY_POLICY = "privacy_agree";
 
 
-    public static void displayToastMessage(Activity activity,String title, String message){
-        if (activity != null){
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-            builder1.setMessage(message);
-            builder1.setCancelable(true);
-            builder1.setTitle(title);
-            builder1.setIcon(R.drawable.card);
-            builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() { // from class: com.uvapay.services.ApplicationConstant.1
-                @Override // android.content.DialogInterface.OnClickListener
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.cancel();
-                }
-            });
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-            alert11.getWindow().setLayout(1000,500);
-
-        }
+    public static void displayToastMessage(Context mContext, String message) {
+        Toast.makeText(mContext, message,Toast.LENGTH_LONG).show();
     }
+
+
+//    public static void displayToastMessage(Activity activity,String title, String message){
+//        if (activity != null){
+//            AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+//            builder1.setMessage(message);
+//            builder1.setCancelable(true);
+//            builder1.setTitle(title);
+//            builder1.setIcon(R.drawable.card);
+//            builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() { // from class: com.uvapay.services.ApplicationConstant.1
+//                @Override // android.content.DialogInterface.OnClickListener
+//                public void onClick(DialogInterface dialog, int id) {
+//                    dialog.cancel();
+//                }
+//            });
+//            AlertDialog alert11 = builder1.create();
+//            alert11.show();
+//            alert11.getWindow().setLayout(1000,500);
+//
+//        }
+//    }
 
 
 

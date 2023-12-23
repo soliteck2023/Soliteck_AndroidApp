@@ -39,6 +39,7 @@ public class main_balance extends Fragment {
 
     LinearLayout linear_request;
     TextView textbalance;
+    TextView textaepsBalance;
     private ProgressDialog progressDialog;
 
     ImageView image_refresh;
@@ -94,18 +95,27 @@ public class main_balance extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_main_balance, container, false);
 
-        linear_request= view.findViewById(R.id.reuest_balance);
+        linear_request= view.findViewById(R.id.linear_request);
         textbalance = view.findViewById(R.id.view_balance);
-        image_refresh = view.findViewById(R.id.image_refresh);
+        textaepsBalance = view.findViewById(R.id.textaepsBalance);
 
-        linear_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPaymentRequest();
-            }
-        });
-        textbalance.setText(getArguments().getString("textbalance"));
-        getUserBalance(textbalance);
+
+//        image_refresh = view.findViewById(R.id.image_refresh);
+
+
+//        linear_request.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                viewPaymentRequest();
+//            }
+//        });
+
+//        textbalance.setText(getArguments().getString("textbalance"));
+//        textaepsBalance.setText(getArguments().getString("textaepsBalance"));
+        getUserBalance(textbalance,textaepsBalance);
+        String name = PrefUtils.getFromPrefs(getContext(), ConstantClass.PROFILEDETAILS.Name, "");
+        String mobile = PrefUtils.getFromPrefs(getContext(), ConstantClass.PROFILEDETAILS.MobileNo, "");
+
         return view;
     }
 
@@ -116,7 +126,7 @@ public class main_balance extends Fragment {
         final TextView text_history = (TextView) view_types.findViewById(R.id.text_history);
         final LinearLayout type_pending = (LinearLayout) view_types.findViewById(R.id.type_pending);
         final TextView text_pending = (TextView) view_types.findViewById(R.id.text_pending);
-        Button mBtn_request = (Button) view_types.findViewById(R.id.btn_request);
+//        Button mBtn_request = (Button) view_types.findViewById(R.id.btn_request);
         mText_remark.setText("Payment Request");
         text_pending.setText("Request Form");
         final BottomSheetDialog dialog = new BottomSheetDialog(getContext());
@@ -131,6 +141,8 @@ public class main_balance extends Fragment {
                     type_pending.setBackground(getContext().getResources().getDrawable(R.drawable.text_view_border));
                     text_pending.setTextColor(ViewCompat.MEASURED_STATE_MASK);
                     request_type = "history";
+                    Intent intent2 = new Intent(getContext(), PayRequestHistoryActivity.class);
+                    getContext().startActivity(intent2);
                 }
             }
         });
@@ -143,26 +155,28 @@ public class main_balance extends Fragment {
                     type_history.setBackground(getContext().getResources().getDrawable(R.drawable.text_view_border));
                     text_history.setTextColor(ViewCompat.MEASURED_STATE_MASK);
                     request_type = "form";
-                }
-            }
-        });
-        mBtn_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.40
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                if (request_type.equals("form")) {
-                    dialog.dismiss();
                     Intent intent = new Intent(getContext(), PaymentRequestActivity.class);
                     getContext().startActivity(intent);
-                } else if (request_type.equals("history")) {
-                    dialog.dismiss();
-                    Intent intent2 = new Intent(getContext(), PayRequestHistoryActivity.class);
-                    getContext().startActivity(intent2);
                 }
             }
         });
+//        mBtn_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.40
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View view) {
+//                if (request_type.equals("form")) {
+//                    dialog.dismiss();
+//                    Intent intent = new Intent(getContext(), PaymentRequestActivity.class);
+//                    getContext().startActivity(intent);
+//                } else if (request_type.equals("history")) {
+//                    dialog.dismiss();
+//                    Intent intent2 = new Intent(getContext(), PayRequestHistoryActivity.class);
+//                    getContext().startActivity(intent2);
+//                }
+//            }
+//        });
     }
 
-    private void getUserBalance(TextView textbalance) {
+    private void getUserBalance(TextView textbalance,TextView textaepsBalance) {
 //        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(getContext().toString());
 //        progressDialog.show();
         String username = PrefUtils.getFromPrefs(getContext(), ConstantClass.USERDETAILS.UserName, "");
@@ -192,18 +206,18 @@ public class main_balance extends Fragment {
                         String Aeps = jsonObject.getString(ConstantClass.USERDETAILS.AEPSBalance);
 
                         if (Aeps.equals("null")) {
-                            textbalance.setText("M: " + Main);
-//                            textaepsBalance.setText("A: 0.00");
+                            textbalance.setText("" + Main); //M: replace with empty
+                            textaepsBalance.setText("A: 0.00");
                             PrefUtils.saveToPrefs(getContext(), "Wallet_Main_Balance", Main);
                             PrefUtils.saveToPrefs(getContext(), ConstantClass.USERDETAILS.AEPSBalance, "0.00");
                         } else if (Main.equals("null")) {
-                            textbalance.setText("M: 0.00");
-//                            textaepsBalance.setText("A: " + Aeps);
+                            textbalance.setText(" 0.00"); //M: replace with empty
+                            textaepsBalance.setText("" + Aeps); //A: replace with empty
                             PrefUtils.saveToPrefs(getContext(), "Wallet_Main_Balance", "0.00");
                             PrefUtils.saveToPrefs(getContext(), ConstantClass.USERDETAILS.AEPSBalance, Aeps);
                         } else {
-                            textbalance.setText("M: " + Main);
-//                            textaepsBalance.setText("A: " + Aeps);
+                            textbalance.setText("" + Main); //M: replace with empty
+                            textaepsBalance.setText("" + Aeps); //A: replace with empty
                             PrefUtils.saveToPrefs(getContext(), "Wallet_Main_Balance", Main);
                             PrefUtils.saveToPrefs(getContext(), ConstantClass.USERDETAILS.AEPSBalance, Aeps);
                         }

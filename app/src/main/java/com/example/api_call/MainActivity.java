@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -69,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String Privacy = PrefUtils.getFromPrefs(this, ApplicationConstant.PRIVACY_POLICY, "");
-        if (Privacy.trim().isEmpty()) {
-            DisplayPrivacyPolicy();
-        } else {
-            checkAndRequestPermissions();
-        }
+//        String Privacy = PrefUtils.getFromPrefs(this, ApplicationConstant.PRIVACY_POLICY, "");
+//        if (Privacy.trim().isEmpty()) {
+//            DisplayPrivacyPolicy();
+//        } else {
+//            checkAndRequestPermissions();
+//        }
 
 //        if (Privacy.trim().isEmpty()){
 //            DisplayPrivacyPolicy();
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         New_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Registration_page.class);
+                Intent intent = new Intent(MainActivity.this, sendotp_registernumber.class);
                 MainActivity.this.startActivity(intent);
 
             }
@@ -180,41 +181,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        edit_password.setTransformationMethod(new PasswordTransformationMethod());
+
         this.show_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: com.uvapay.activities.LoginActivity.4
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (!isChecked) {
-                    MainActivity.this.edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                } else {
-                    MainActivity.this.edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                    edit_password.setTypeface(Typeface.DEFAULT);
+                    edit_password.setTransformationMethod(new PasswordTransformationMethod());
+                }
+                else {
+
+                   MainActivity.this.edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                } else {
+//                   MainActivity.this.edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }
         });
-
-
-//            private void getloinuserdata() {
-//                ApiInterface apiInterface = RetrofitHandler.getnewclient();
-//                HashMap<String, String> body = new HashMap<>();
-//                body.put("UserName","9372879094");
-//                body.put("Password","OGRlMzQxYWQ5YmE4ODFjMDVlNjNjMzQwNGI4OWVkNjNiMDYyZDJiMzYwZmY5NTAxNWZhMmJlNzJlMDRkYmM2NQ==");
-//                body.put("DeviceId","8c3e0df221d385e7");
-//                Call<LoginResponse> call = apiInterface.getLoginInfo(body);
-//                call.enqueue(new Callback<LoginResponse>() {
-//                    @Override
-//                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-//                        Log.e("TAG", "onResponse: "+response.body().data );
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<LoginResponse> call, Throwable t) {
-//                        Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                });
-//
-//
-//            }
     }
 
     private void DisplayPrivacyPolicy() {
@@ -434,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                     }
-                    ApplicationConstant.displayToastMessage(MainActivity.this,"Response", response.body().getMessage());
+                    ApplicationConstant.displayToastMessage(MainActivity.this,response.body().getMessage());
                     String jsonString = response.body().getData();
 
                     try {

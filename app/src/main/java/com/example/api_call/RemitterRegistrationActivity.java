@@ -85,7 +85,7 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 }
                 if (response.body() != null && response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
-                    ApplicationConstant.displayToastMessage(RemitterRegistrationActivity.this,"Response",response.body().getMessage());
+                    ApplicationConstant.displayToastMessage(RemitterRegistrationActivity.this,response.body().getMessage());
                     RemitterRegistrationActivity.this.linear_resend.setVisibility(View.VISIBLE);
                     RemitterRegistrationActivity.this.linear_Otp.setVisibility(View.VISIBLE);
                     RemitterRegistrationActivity.this.btn_register_remitter.setVisibility(View.GONE);

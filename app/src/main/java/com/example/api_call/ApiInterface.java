@@ -28,6 +28,8 @@ public interface ApiInterface {
     @POST("Version/GetVersion")
     Call<SoftVersionResponse> AppVersionCheck(@Body HashMap<String, String> hashMap);
 
+    @POST("UserService/MyCommission")
+    Call<Commision> getCommissionMargin(@Body HashMap<String, String> hashMap);
 
     @Headers("Content-Type:application/json")
     @POST("Balance/Balance")
@@ -43,7 +45,8 @@ public interface ApiInterface {
     Call<PaymentRequestHistoryResponse> GetPaymentRequestHistory(@Body HashMap<String, String> hashMap);
 
 
-    @Headers("Content-Type:application/json")
+
+
     @POST("Recharge/GetMobileOperatorName")
     Call<FetchOperator> getMobileOPT(@Body HashMap<String, String> hashMap);
 
@@ -71,8 +74,14 @@ public interface ApiInterface {
     @POST("Transaction/TransactionReport")
     Call<TransactionReportBase> GetTransactionReport(@Body HashMap<String, String> hashMap);
 
-    @POST("Transaction/LedgerReport")
+
+    @Headers("Content-Type:application/json")
+    @POST("api/DailyNews/OTPONSMS")     //Transaction/LedgerReport
+    Call<OtpSentResponse> getsendOtp(@Body HashMap<String, String> hashMap);
+
+    @POST("Transaction/LedgerReport")     //Transaction/LedgerReport
     Call<TransactionReportBase> GetLedgerReport(@Body HashMap<String, String> hashMap);
+
 
     @POST("Transaction/MyEarning")
     Call<MyEarningReportBase> GetMyEarning(@Body HashMap<String, String> hashMap);

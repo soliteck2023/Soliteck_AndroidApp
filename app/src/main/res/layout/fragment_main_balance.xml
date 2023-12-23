@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,83 +9,283 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         app:cardCornerRadius="15dp"
-        android:layout_margin="@dimen/margin_5dp"
         android:background="@drawable/rectangle_background"
-        app:cardElevation="10dp">
+        app:cardElevation="10dp"
+        tools:ignore="MissingConstraints">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/second"
             android:layout_width="match_parent"
-            android:layout_height="99dp"
-            android:weightSum="2"
-            android:gravity="center">
+            android:layout_height="110dp"
+            android:layout_below="@+id/newfirst"
+            android:orientation="horizontal"
+            android:weightSum="4">
 
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/lliner_mainbalance"
+            <LinearLayout
+                android:id="@+id/relative1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:padding="5dp"
-                    android:text="Main Balance "
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="17dp"
-                    android:textStyle="bold"></TextView>
+                <RelativeLayout
+                    android:layout_width="170dp"
+                    android:layout_height="47dp"
+                    android:layout_marginLeft="@dimen/margin20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/view_balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/violet_button_background"
-                    android:padding="7dp"
-                    android:text="View Balance"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"></TextView>
+
+                    <ImageView
+                        android:id="@+id/image1"
+                        android:layout_width="55dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/main_balance_logo2">
+
+
+                    </ImageView>
+
+
+                    <LinearLayout
+                        android:id="@+id/main_liner1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/image1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Main Balance"
+                            android:textColor="@color/medium_grey_color">
+
+                        </TextView>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/liner1"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/main_liner1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/image1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/rupya_sign"
+                            android:textColor="@color/blue"
+                            android:textStyle="bold"></ImageView>
+
+                        <TextView
+                            android:id="@+id/view_balance"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="left"
+                            android:layout_marginTop="3dp"
+                            android:text="78787. "
+                            android:textColor="@color/blue"
+                            android:textStyle="bold"></TextView>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginLeft="@dimen/margin20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/image2"
+                        android:layout_width="55dp"
+                        android:layout_height="50dp"
+                        android:padding="3dp"
+                        android:src="@drawable/cashout_balance_logo2">
+
+
+                    </ImageView>
+
+                    <LinearLayout
+                        android:id="@+id/main_liner3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/image2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Cashout Bal."
+                            android:textColor="@color/medium_grey_color">
+
+                        </TextView>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/liner2"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/main_liner3"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/image2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/rupya_sign"
+                            android:textColor="@color/blue"
+                            android:textStyle="bold"></ImageView>
+
+                        <TextView
+                            android:id="@+id/textaepsBalance"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="left"
+                            android:text="78787. "
+                            android:layout_marginTop="3dp"
+                            android:textColor="@color/blue"
+                            android:textStyle="bold"></TextView>
+
+                    </LinearLayout>
+
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:id="@+id/liner2"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="30dp"-->
+                    <!--                        android:layout_marginLeft="10dp"-->
+                    <!--                        android:layout_toRightOf="@+id/image2"-->
+                    <!--                        android:orientation="horizontal">-->
+
+
+                    <!--                                                <TextView-->
+                    <!--                                                    android:layout_width="wrap_content"-->
+                    <!--                                                    android:layout_height="match_parent"-->
+                    <!--                                                    android:gravity="center"-->
+                    <!--                                                    android:text="Rs. "-->
+                    <!--                                                    android:textColor="@color/blue"-->
+                    <!--                                                    android:textStyle="bold"></TextView>-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:id="@+id/textaepsBalance"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:text="78787. "-->
+                    <!--                            android:textColor="@color/blue"-->
+                    <!--                            android:textStyle="bold"></TextView>-->
+
+                    <!--                    </LinearLayout>-->
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:layout_below="@+id/liner2"-->
+                    <!--                        android:layout_marginLeft="10dp"-->
+                    <!--                        android:layout_toRightOf="@+id/image2">-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="20dp"-->
+                    <!--                            android:layout_gravity="center"-->
+                    <!--                            android:text="Cashout_Bal.  "-->
+                    <!--                            android:textColor="@color/medium_grey_color">-->
+
+                    <!--                        </TextView>-->
+
+
+                    <!--                    </LinearLayout>-->
+
+
+                </RelativeLayout>
+
 
             </LinearLayout>
 
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/reuest_balance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_weight="1"
-                android:layout_toRightOf="@+id/lliner_mainbalance"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:text="Request Balance"
-                    android:gravity="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="17dp"
-                    android:textStyle="bold"></TextView>
-
-                <ImageView
-                    android:id="@+id/image_request"
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="52dp"
-                    android:src="@drawable/payment_request"></ImageView>
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/linear_request"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="27dp"-->
+            <!--                android:layout_toRightOf="@+id/relative1"-->
+            <!--                android:orientation="vertical">-->
 
 
-            </LinearLayout>
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="30dp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="Request Balance"-->
+            <!--                    android:textColor="@color/blue"-->
+            <!--                    android:textSize="16dp"-->
+            <!--                    android:textStyle="bold">-->
+
+            <!--                </TextView>-->
 
 
-        </LinearLayout>
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/image3"-->
+            <!--                    android:layout_width="45dp"-->
+            <!--                    android:layout_height="45dp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:src="@drawable/pay2_horizontal">-->
+
+            <!--                </ImageView>-->
+
+            <!--            </LinearLayout>-->
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="70dp"
+            android:orientation="horizontal"
+           >
+
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/rectangle_color_background">
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/rectangular_white_shape">
+
+            </ImageView>
+
+
+        </RelativeLayout>
+
+
 
     </androidx.cardview.widget.CardView>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

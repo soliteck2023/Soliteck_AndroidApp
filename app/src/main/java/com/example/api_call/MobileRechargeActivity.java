@@ -2,11 +2,14 @@ package com.example.api_call;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -29,6 +32,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +51,7 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
     TextView mTxtMobilePlan;
     TextView mTxtROffer;
     private EditText medit_tpin;
-    Spinner mspinnerCircleListList;
+    Spinner stateSpinner;
     private String NUMBER = "";
     private String AMT = "";
     private String CALL = "";
@@ -66,16 +71,55 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
     private String Call = "";
     private String Operator = "";
 
+    RecyclerView mobilerecylerview;
+    MyofferAdapter myofferAdapter;
+    private Timer timer;
+    private int currentPage = 0;
 
 
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_recharge);
+//       mobilerecylerview = findViewById(R.id.recycler_mobile);
+
+//        mobilerecylerview.setLayoutManager(new LinearLayoutManager(MobileRechargeActivity.this,RecyclerView.HORIZONTAL,false));
+//        List<add> list =new ArrayList<>();
+//        list.add(new add(R.drawable.mobile_recharge));
+//        list.add(new add(R.drawable.mobile_recharge2));
+//        list.add(new add(R.drawable.mobile_recharge));
+//        myofferAdapter = new MyofferAdapter(list);  //recyclerview_adpter
+//        mobilerecylerview.setAdapter(myofferAdapter);
+//        startAutoScroll();
+
+
         initComponents();
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //       getSupportActionBar().setDisplayShowHomeEnabled(true);
         setTitle("Mobile Recharge");
+
+        Spinner stateSpinner = findViewById(R.id.spinnerCircleListList);
+        String[] states = getResources().getStringArray(R.array.circle);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, states);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        stateSpinner.setAdapter(adapter);
+        stateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle the selected state here
+                String selectedState = states[position];
+                Toast.makeText(MobileRechargeActivity.this, "Selected State: " + selectedState, Toast.LENGTH_SHORT).show();
+                // Do something with the selected state
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing here
+            }
+        });
 
 
         this.mTxtROffer.setOnClickListener(new View.OnClickListener() {
@@ -189,6 +233,29 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
 
     }
 
+    private void startAutoScroll() {
+        final Handler handler = new Handler();
+        final Runnable update = new Runnable() {
+            @Override
+            public void run() {
+//                if (!(currentPage != MyofferAdapter.ImageViewHolder==-1)) {
+//                    currentPage = 0;
+//                }
+                mobilerecylerview.smoothScrollToPosition(++currentPage);
+            }
+        };
+
+        // Set up a timer to scroll the RecyclerView at regular intervals
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(update);
+            }
+        }, 3000, 3000); // Adjust the timing as needed (e.g., every 2000 milliseconds)
+    }{
+    }
+
 
     private void initComponents() {
         this.medit_tpin = (EditText) findViewById(R.id.edit_tpin);
@@ -199,7 +266,7 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
         this.layout_plans = (RelativeLayout) findViewById(R.id.layout_plans);
         this.mTxtROffer = (TextView) findViewById(R.id.TxtROffer);
         this.mTxtMobilePlan = (TextView) findViewById(R.id.TxtMobilePlan);
-        this.mspinnerCircleListList = (Spinner) findViewById(R.id.spinnerCircleListList);
+        this.stateSpinner  = (Spinner) findViewById(R.id.spinnerCircleListList);
         this.edit_mobile.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.MobileRechargeActivity.4
             @Override // android.text.TextWatcher
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -265,7 +332,7 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
     private void callCircleAdapter() {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, (int) R.layout.spinner_item, this.CircleList);
         adapter1.setDropDownViewResource(17367049);
-       this.mspinnerCircleListList.setAdapter((SpinnerAdapter) adapter1);
+       this.stateSpinner.setAdapter((SpinnerAdapter) adapter1);
     }
 
     private void callOperator(String number) {
@@ -449,9 +516,6 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
 //                return;
 //        }
     }
-
-
-
 
 }
 

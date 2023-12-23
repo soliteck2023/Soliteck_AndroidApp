@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".secondmenuoption">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:id="@+id/cartview1"
+        android:layout_width="375dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/balanceLayout1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/curveshape_background"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:id="@+id/first_linear"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/white_border"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/image_mobile1"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/colorful_txn_reports3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="AEPS Settelment"
+                android:textColor="@color/blue"
+                android:textSize="14sp"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/second_linier"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="2dp"-->
+<!--            android:layout_marginLeft="0dp"-->
+<!--            android:layout_marginTop="2dp"-->
+<!--            android:layout_marginEnd="0dp"-->
+<!--            android:layout_marginBottom="2dp"-->
+<!--            android:layout_toRightOf="@id/first_linear"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/white_border"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image_wallet"-->
+<!--                android:layout_marginTop="2dp"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:src="@drawable/transaction_rpt" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="Latest_rpt"-->
+<!--                android:textColor="@color/blue"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textStyle="bold"></TextView>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/third_linear"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="2dp"-->
+<!--            android:layout_marginLeft="0dp"-->
+<!--            android:layout_marginTop="2dp"-->
+<!--            android:layout_marginEnd="0dp"-->
+<!--            android:layout_marginBottom="2dp"-->
+<!--            android:layout_toRightOf="@id/second_linier"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/white_border"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image_account"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:src="@drawable/complaint_img2" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="75dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Compliant"-->
+<!--                android:textColor="@color/blue"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textStyle="bold"></TextView>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/fourth"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="2dp"-->
+<!--            android:layout_marginLeft="0dp"-->
+<!--            android:layout_marginTop="2dp"-->
+<!--            android:layout_marginEnd="2dp"-->
+<!--            android:layout_marginBottom="2dp"-->
+<!--            android:layout_toRightOf="@id/third_linear"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/white_border"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image_account2"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:src="@drawable/download_profile" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="Account"-->
+<!--                android:textColor="@color/blue"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textStyle="bold"></TextView>-->
+
+
+<!--        </LinearLayout>-->
+
+
+        <LinearLayout
+            android:id="@+id/network_linear"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/white_border"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/network_mobile1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/colorful_network_pay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Network Payment"
+                android:textColor="@color/blue"
+                android:textSize="14sp"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
