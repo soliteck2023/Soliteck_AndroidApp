@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_layout" android:layout_width="match_parent" android:layout_height="match_parent">
-    <com.google.android.material.tabs.TabLayout android:id="@+id/tab_layout" android:layout_width="match_parent" android:layout_height="wrap_content"  app:tabBackground="@color/white" app:tabIndicatorColor="@color/colorPrimary" app:tabIndicatorHeight="5dp"  app:tabSelectedTextColor="@color/black"/>
-    <androidx.viewpager.widget.ViewPager android:id="@+id/pager" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@+id/tab_layout"/>
+<!--suppress AndroidDomInspection -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabBackground="@color/white"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorHeight="5dp"
+        app:tabSelectedTextColor="@color/black" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
 
 
-<!-- add on line no 3   android:layout_below="@+id/toolbar"-->

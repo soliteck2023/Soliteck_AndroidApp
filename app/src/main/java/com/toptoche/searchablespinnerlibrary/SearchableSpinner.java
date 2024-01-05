@@ -21,14 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressLint("AppCompatCustomView")
-public class SearchableSpinner extends Spinner implements View.OnTouchListener, SearchableListDialog.SearchableItem{
+public class SearchableSpinner extends Spinner implements View.OnTouchListener{
     public static final int NO_ITEM_SELECTED = -1;
     private ArrayAdapter _arrayAdapter;
     private Context _context;
     private boolean _isDirty;
     private boolean _isFromInit;
     private List _items;
-    private SearchableListDialog _searchableListDialog;
+//    private SearchableListDialog _searchableListDialog;
     private String _strHintText;
 
     public SearchableSpinner(Context context) {
@@ -37,21 +37,7 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener, 
         init();
     }
 
-    public SearchableSpinner(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        this._context = context;
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SearchableSpinner);
-        int N = a.getIndexCount();
-        for (int i = 0; i < N; i++) {
-            int attr = a.getIndex(i);
 
-//            if (attr == R.styleable.SearchableSpinner_hintText) {
-//                this._strHintText = a.getString(attr);
-//            }
-        }
-        a.recycle();
-        init();
-    }
 
     public SearchableSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -62,9 +48,9 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener, 
     private void init() {
         ArrayList arrayList = new ArrayList();
         this._items = arrayList;
-        SearchableListDialog newInstance = SearchableListDialog.newInstance(arrayList);
-        this._searchableListDialog = newInstance;
-        newInstance.setOnSearchableItemClickListener(this);
+//        SearchableListDialog newInstance = SearchableListDialog.newInstance(arrayList);
+//        this._searchableListDialog = newInstance;
+//        newInstance.setOnSearchableItemClickListener(this);
         setOnTouchListener(this);
         this._arrayAdapter = (ArrayAdapter) getAdapter();
         if (!TextUtils.isEmpty(this._strHintText)) {
@@ -81,7 +67,7 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener, 
             for (int i = 0; i < this._arrayAdapter.getCount(); i++) {
                 this._items.add(this._arrayAdapter.getItem(i));
             }
-            this._searchableListDialog.show(scanForActivity(this._context).getFragmentManager(), "TAG");
+//            this._searchableListDialog.show(scanForActivity(this._context).getFragmentManager(), "TAG");
         }
         return true;
     }
@@ -102,15 +88,15 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener, 
         super.setAdapter(adapter);
     }
 
-    @Override // com.toptoche.searchablespinnerlibrary.SearchableListDialog.SearchableItem
-    public void onSearchableItemClicked(Object item, int position) {
-        setSelection(this._items.indexOf(item));
-        if (!this._isDirty) {
-            this._isDirty = true;
-            setAdapter((SpinnerAdapter) this._arrayAdapter);
-            setSelection(this._items.indexOf(item));
-        }
-    }
+//    @Override // com.toptoche.searchablespinnerlibrary.SearchableListDialog.SearchableItem
+//    public void onSearchableItemClicked(Object item, int position) {
+//        setSelection(this._items.indexOf(item));
+//        if (!this._isDirty) {
+//            this._isDirty = true;
+//            setAdapter((SpinnerAdapter) this._arrayAdapter);
+//            setSelection(this._items.indexOf(item));
+//        }
+//    }
 
 //    public void setTitle(String strTitle) {
 //        this._searchableListDialog.setTitle(strTitle);

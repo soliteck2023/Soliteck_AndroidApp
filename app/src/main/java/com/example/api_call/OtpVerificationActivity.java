@@ -54,8 +54,8 @@ public class OtpVerificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_verification);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
         bindView();
 
         this.first_num.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.OtpVerificationActivity.1
@@ -183,6 +183,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
         this.btn_verify_otp.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.OtpVerificationActivity.7
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
+
                 OtpVerificationActivity.this.validate();
             }
         });

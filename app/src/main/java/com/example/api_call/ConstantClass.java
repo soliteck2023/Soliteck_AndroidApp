@@ -10,10 +10,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 public class ConstantClass {
+
+    public static final String IMAGEWEBSERVICEURL = "https://payin.co.in/images/Recharge/Operators/";
+    public static Operater datum = new  Operater();
     public static final String MOBILESERVICEID = "1";
-    public static Operater datum = new Operater();
-    public static String operator = MOBILESERVICEID;
     public static String circle = MOBILESERVICEID;
+    public static String setType = "";
+
 
     public static void displayToastMessage(Context mContext, String message) {
         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
@@ -103,6 +106,7 @@ public class ConstantClass {
         public static final String Token = "token";
         public static final String UserName = "username";
         public static final String UserPassword = "password";
+        public static final String Circle = "Circle";
         public static final String UserType = "usertype";
 
         public USERDETAILS() {

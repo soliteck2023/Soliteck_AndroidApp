@@ -24,6 +24,8 @@ public class RechargeConfirmResponse {
     @SerializedName("remarks")
     @Expose
     private String remarks;
+
+
     @SerializedName("responseStatus")
     @Expose
     private Integer responseStatus;
@@ -77,13 +79,33 @@ public class RechargeConfirmResponse {
         this.amount = amount;
     }
 
+//    public Integer getResponseStatus() {
+//        return this.responseStatus;
+//    }
+
+
+//    public void setResponseStatus(Integer responseStatus) {
+//        this.responseStatus = responseStatus;
+//    }
+
+
+//    public String getResponseStatus() {
+//        return responseStatus;
+//    }
+//
+
     public Integer getResponseStatus() {
-        return this.responseStatus;
+        return responseStatus;
     }
 
     public void setResponseStatus(Integer responseStatus) {
         this.responseStatus = responseStatus;
     }
+
+
+//    public void setResponseStatus(String responseStatus) {
+//        this.responseStatus = responseStatus;
+//    }
 
     public String getStatus() {
         return this.status;

@@ -28,8 +28,8 @@ public class MobileRechargePlansActivity extends AppCompatActivity implements Mo
         setContentView(R.layout.activity_mobile_recharge_plans);
 
         setTitle("Mobile Recharge Plans");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.recycle_plans = (RecyclerView) findViewById(R.id.recycle_transactions);
         this.mob = getIntent().getExtras().getString("MOBILE");
         this.operator = getIntent().getExtras().getString("OPERATOR");
@@ -38,6 +38,11 @@ public class MobileRechargePlansActivity extends AppCompatActivity implements Mo
 
     }
 
+    @Override // androidx.appcompat.app.AppCompatActivity
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     private void getMobilePlans() {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;

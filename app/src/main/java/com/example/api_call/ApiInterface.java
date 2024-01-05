@@ -1,6 +1,7 @@
 package com.example.api_call;
 
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -27,6 +28,8 @@ public interface ApiInterface {
     @POST("Version/GetVersion")
     Call<SoftVersionResponse> AppVersionCheck(@Body HashMap<String, String> hashMap);
 
+    @POST("UserService/MyCommission")
+    Call<Commision> getCommissionMargin(@Body HashMap<String, String> hashMap);
 
     @Headers("Content-Type:application/json")
     @POST("Balance/Balance")
@@ -42,7 +45,8 @@ public interface ApiInterface {
     Call<PaymentRequestHistoryResponse> GetPaymentRequestHistory(@Body HashMap<String, String> hashMap);
 
 
-    @Headers("Content-Type:application/json")
+
+
     @POST("Recharge/GetMobileOperatorName")
     Call<FetchOperator> getMobileOPT(@Body HashMap<String, String> hashMap);
 
@@ -70,8 +74,14 @@ public interface ApiInterface {
     @POST("Transaction/TransactionReport")
     Call<TransactionReportBase> GetTransactionReport(@Body HashMap<String, String> hashMap);
 
-    @POST("Transaction/LedgerReport")
+
+    @Headers("Content-Type:application/json")
+    @POST("api/DailyNews/OTPONSMS")     //Transaction/LedgerReport
+    Call<OtpSentResponse> getsendOtp(@Body HashMap<String, String> hashMap);
+
+    @POST("Transaction/LedgerReport")     //Transaction/LedgerReport
     Call<TransactionReportBase> GetLedgerReport(@Body HashMap<String, String> hashMap);
+
 
     @POST("Transaction/MyEarning")
     Call<MyEarningReportBase> GetMyEarning(@Body HashMap<String, String> hashMap);
@@ -89,5 +99,37 @@ public interface ApiInterface {
     Call<RequestPaymentResponse> GetPaymentRequest(@Body HashMap<String, String> hashMap);
 
 
+    @FormUrlEncoded
+    @POST("Recharge/GetDthCustInfo")
+    Call<DthCustInfo> getInfoDetails(@Field("UserName") String str, @Field("Password") String str2, @Field("OperatorName") String str3, @Field("Number") String str4);
 
+    @FormUrlEncoded
+    @POST("Recharge/GetDthCustInfo")
+    Call<DTHInfoResponse> getDthCustInfo(@Field("UserName") String str, @Field("Password") String str2, @Field("OperatorName") String str3, @Field("Number") String str4);
+
+    @POST("DMT/OTP")
+    Call<OTPResponse> getOtp(@Body HashMap<String, String> hashMap);
+
+    @POST("DMT/AccountVerification")
+    Call<MAccVerify> getVerify(@Body HashMap<String, String> hashMap);
+
+    @POST("Beneficiary/RemoveBeneficiary")
+    Call<MRemoveBene> removeBene(@Body HashMap<String, String> hashMap);
+
+    @POST("Beneficiary/ConfirmRemoveBeneficiary")
+    Call<MConfirmRemoveBene> removeConfirmBene(@Body HashMap<String, String> hashMap);
+
+    @POST("DMT/FundTransfer")
+    Call<List<MTransferFund>> makeTransfer(@Body HashMap<String, String> hashMap);
+
+    @POST("DMT/GetBankList")
+    Call<List<MBankListResponse>> getBanks(@Body HashMap<String, String> hashMap);
+
+    @POST("Beneficiary/AddBeneficiary")
+    Call<MBeneficiary> addBeneficiary(@Body HashMap<String, String> hashMap);
+
+
+    @FormUrlEncoded
+    @POST("Recharge/GetMobilePlan")
+    Call<MobilePlanResponse> getMobilePlan(@Field("UserName") String str, @Field("Password") String str2, @Field("OperatorName") String str3, @Field("Circle") String str4);
 }

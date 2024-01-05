@@ -62,24 +62,24 @@ public class OrderReceiptActivity extends AppCompatActivity {
             this.text_message.setText(this.STATUS_MESSAGE);
 //            this.check.setVisibility(View.VISIBLE);
 //            this.check.check();
-            this.image_failed.setVisibility(View.INVISIBLE);
-            this.image_pending.setVisibility(View.INVISIBLE);
+            this.image_failed.setVisibility(View.GONE);
+            this.image_pending.setVisibility(View.GONE);
             this.text_message.setTextColor(getResources().getColor(R.color.dark_green));
             this.text_Data.setTextColor(getResources().getColor(R.color.dark_green));
         } else if (this.status.intValue() == 1) {
             this.text_message.setText(this.STATUS_MESSAGE);
-            this.image_failed.setVisibility(View.VISIBLE);
-            this.image_pending.setVisibility(View.INVISIBLE);
+            this.image_failed.setVisibility(View.GONE);  //visible to invisible
+            this.image_pending.setVisibility(View.GONE);
 //            this.check.setVisibility(8);
             this.text_OperatorId.setVisibility(View.VISIBLE);
-            this.TextOID.setVisibility(View.INVISIBLE);
+            this.TextOID.setVisibility(View.GONE);
             this.text_Data.setTextColor(getResources().getColor(R.color.colorAccent));
             this.text_message.setTextColor(getResources().getColor(R.color.colorAccent));
         } else {
             this.text_message.setText(this.STATUS_MESSAGE);
-            this.image_pending.setVisibility(View.VISIBLE);
+            this.image_pending.setVisibility(View.GONE);
 //            this.check.setVisibility(8);
-            this.image_failed.setVisibility(View.INVISIBLE);
+            this.image_failed.setVisibility(View.GONE);
             this.text_OperatorId.setVisibility(View.INVISIBLE);
             this.TextOID.setVisibility(View.INVISIBLE);
             this.text_Data.setTextColor(getResources().getColor(R.color.orange));

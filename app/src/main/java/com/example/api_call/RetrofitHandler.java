@@ -17,6 +17,7 @@ public class RetrofitHandler {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("http://royalblueapi.soliteck.com/api/")
                 .baseUrl("http://api.soliteck.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)

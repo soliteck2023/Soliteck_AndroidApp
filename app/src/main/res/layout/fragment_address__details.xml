@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Address_Details">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:padding="5dp"
+                        android:text="Shop Name"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/enter_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:phoneNumber="true"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Shop_Name"
+                        android:maxLength="50"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                        android:textColor="@color/black"
+                        android:textColorHint="#636262"
+                        android:padding="5dp"
+                        android:textSize="16sp">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mobile_reg"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/pincodekyc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:layout_marginTop="30dp"
+                            android:padding="5dp"
+                            android:text="Pincode"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/pin_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:layout_marginRight="@dimen/dp_size_10"
+                            android:background="@drawable/bacground_black"
+                            android:hint="Enter Pin_code"
+                            android:maxLength="6"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:padding="5dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="#636262"
+                            android:textSize="16sp">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="State"
+                        android:maxLength="25"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/state_spineer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:entries="@array/circle"
+                        android:padding="5dp"
+                        android:background="@drawable/bacground_black"
+                        android:layout_marginRight="@dimen/dp_size_10"
+
+                        ></Spinner>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="265dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shopname_reg"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layout_fromdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:maxLength="25"
+                            android:padding="5dp"
+                            android:text="City"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/city_spineer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginLeft="@dimen/dp_size_10"
+                            android:entries="@array/circle"
+                            android:padding="5dp"
+                            android:background="@drawable/bacground_black"
+                            android:layout_marginRight="@dimen/dp_size_10"
+
+                            ></Spinner>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pinode_reg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Father_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Permenent Address"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Permenent Addresse"
+                        android:padding="5dp"
+                        android:maxLength="30"
+                        android:textColor="@color/white"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linershop_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/parent_reg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mother_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Shop Address"
+                        android:phoneNumber="true"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Enter Shop Address"
+                        android:padding="5dp"
+                        android:textColor="@color/white"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lineremail_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linermother_Name"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/email_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Address Proof Type"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/Addressproof_spineer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:entries="@array/Address_proof"
+                        android:padding="5dp"
+                        android:background="@drawable/bacground_black"
+                        android:layout_marginRight="@dimen/dp_size_10"
+
+                        ></Spinner>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linermother_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/parent_reg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/addressproof_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginTop="30dp"
+                        android:padding="5dp"
+                        android:text="Address Proof No"
+                        android:phoneNumber="true"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="@dimen/dp_size_10"
+                        android:layout_marginRight="@dimen/dp_size_10"
+                        android:background="@drawable/bacground_black"
+                        android:hint="Address Proof No"
+                        android:padding="5dp"
+                        android:textColor="@color/white"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz"
+                        android:textColorHint="#636262"
+                        android:textSize="16sp">
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+
+                    <Button
+                        android:id="@+id/button_reviousin"
+                        android:layout_width="120dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:background="@drawable/red_colorbackground"
+                        android:textSize="20dp"
+                        android:textAllCaps="false"
+                        android:text="Previous">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/button_registerin"
+                        android:layout_width="120dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="30dp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:background="@drawable/red_colorbackground"
+                        android:textSize="20dp"
+                        android:textAllCaps="false"
+                        android:text="Next">
+
+                    </Button>
+
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

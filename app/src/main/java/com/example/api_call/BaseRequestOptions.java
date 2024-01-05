@@ -1,11 +1,7 @@
 package com.example.api_call;
 
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-
-import java.util.Map;
 
 public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implements Cloneable {
     private static final int DISK_CACHE_STRATEGY = 4;
@@ -691,5 +687,29 @@ public abstract class BaseRequestOptions<T extends BaseRequestOptions<T>> implem
 
     private T self() {
         return (T) this;
+    }
+
+    public T placeholder(int resourceId) {
+//        if (this.isAutoCloneEnabled) {
+//            return (T) clone().placeholder(resourceId);
+//        }
+        this.placeholderId = resourceId;
+        int i = this.fields | 128;
+        this.fields = i;
+        this.placeholderDrawable = null;
+        this.fields = i & (-65);
+        return selfOrThrowIfLocked();
+    }
+
+    public T error(int resourceId) {
+//        if (this.isAutoCloneEnabled) {
+//            return (T) clone().error(resourceId);
+//        }
+        this.errorId = resourceId;
+        int i = this.fields | 32;
+        this.fields = i;
+        this.errorPlaceholder = null;
+        this.fields = i & (-17);
+        return selfOrThrowIfLocked();
     }
 }
