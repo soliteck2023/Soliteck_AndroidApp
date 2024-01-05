@@ -80,15 +80,7 @@ public class OperatorsActivity extends AppCompatActivity implements OperatorAdap
                    } catch (Exception e) {
                        e.printStackTrace();
                    }
-                   try {
-                        for (Operater datum : OperatorsActivity.this.operatorDataArrayList) {
-                            if (OperatorsActivity.this.Call.equals("MOBILE") && datum.getServiceName() != null && datum.getServiceName().equals("MOBILE")) {
-                                OperatorsActivity.this.sorted_operatorList.add(datum);
-                            }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+
                     try {
                         for (Operater datum2 : OperatorsActivity.this.operatorDataArrayList) {
                             if (OperatorsActivity.this.Call.equals("DTH") && datum2.getServiceName() != null && datum2.getServiceName().equals("DTH")) {

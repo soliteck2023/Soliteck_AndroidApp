@@ -132,7 +132,10 @@
                         android:background="@color/white"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="5dp">
+                        android:padding="5dp"
+                        android:clickable="true"
+                        android:onClick="installSDK"
+                        >
 
                         <ImageView
                             android:id="@+id/AEPS_image"

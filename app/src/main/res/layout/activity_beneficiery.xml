@@ -41,7 +41,7 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <FrameLayout android:id="@+id/add_ben" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/add_beneficiary">
+    <FrameLayout android:id="@+id/add_ben" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/add_beneficiary">
         <include android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/layout_add_beneficiary"/>
     </FrameLayout>
     <ScrollView android:id="@+id/scroll_list" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
