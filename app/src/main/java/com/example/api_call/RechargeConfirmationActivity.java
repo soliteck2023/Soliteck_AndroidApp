@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,9 +33,12 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
     private String Amount = "";
     private String OPERATOR = "";
     private String MobileNumber = "";
-    private String OPTID = "";
+   private String OPTID = "";
     private String Circle = "";
     private String TPIN = "";
+    List<Operater> sorted_operatorList = new ArrayList();
+
+    private String Operator = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +51,8 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
         this.UserName = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
         this.Password = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserPassword, "");
         this.TPIN = getIntent().getStringExtra("TPIN");
-//        this.OPTID = ConstantClass.datum.getId().toString();
-        this.OPTID = ConstantClass.MOBILESERVICEID;
+        this.OPTID = ConstantClass.datum.getId().toString();
+//      this.OPTID = ConstantClass.MOBILESERVICEID;
         this.Circle = ConstantClass.MOBILESERVICEID;
         this.text_wallet_balance.setText(PrefUtils.getFromPrefs(this, "Wallet_Main_Balance", ""));
         this.text_operator.setText(this.OPERATOR);
@@ -60,7 +65,7 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
         this.btn_recharge_topay.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.RechargeConfirmationActivity.1
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
-                getRechargeDone(OPTID,Amount,Circle,TPIN);
+                getRechargeDone(OPTID);
 
 //                if (!ConstantClass.isNetworkAvailable(RechargeConfirmationActivity.this)) {
 //                    ConstantClass.displayMessageDialog(RechargeConfirmationActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
@@ -73,20 +78,20 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
 
     }
 
-    private void getRechargeDone(String Circle,String Amount,String OPTID,String TPIN) {
+    private void getRechargeDone(String OPTID) {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
         HashMap<String, String> body = new HashMap<>();
         body.put(ConstantClass.PROFILEDETAILS.UserName_, this.UserName);
-        body.put("Amount", Amount);
+        body.put("Amount", this.Amount);
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
 //        body.put("OPTID",ConstantClass.datum.getId().toString());
-        body.put("OPTID",OPTID);
-        body.put("Circle",Circle);
-        body.put("TPIN", TPIN);
+        body.put("OPTID", OPTID);
+        body.put("Circle",this.Circle);
+        body.put("TPIN", this.TPIN);
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
-        body.put("Number", MobileNumber);
+        body.put("Number", this.MobileNumber);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<RechargeConfirmResponse> call = apiservice.getRechargeResponse(body);
         call.enqueue(new Callback<RechargeConfirmResponse>() { // from class: com.uvapay.activities.RechargeConfirmationActivity.2
@@ -96,7 +101,7 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
                     RechargeConfirmationActivity.this.progressDialog.dismiss();
                 }
                 if (response != null) {
-                    if (response.body().getResponseStatus().intValue() == 2) {
+                    if (response.body().getResponseStatus().intValue()==2){
                         Intent intent = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
                         intent.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
                         intent.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
@@ -109,7 +114,7 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
                         RechargeConfirmationActivity.this.startActivity(intent);
                         RechargeConfirmationActivity.this.finish();
                     }
-                    if (response.body().getResponseStatus().intValue() == 3) {
+                    if (response.body().getResponseStatus().intValue()==3) {
                         Intent intent2 = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
                         intent2.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
                         intent2.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
@@ -159,6 +164,7 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
         this.btn_recharge_topay = (Button) findViewById(R.id.btn_recharge_topay);
         this.text_datetime = (TextView) findViewById(R.id.text_datetime);
     }
+
 
 
 

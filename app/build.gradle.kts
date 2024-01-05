@@ -44,7 +44,10 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.8.6")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.5.0")
 //    implementation(project(mapOf("path" to ":app")))
+//    implementation ("com.bumptech.glide.request.RequestOptions")
+   implementation ("com.github.bumptech.glide:glide:4.14.2")
     testImplementation("junit:junit:4.13.2")
+    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.23")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

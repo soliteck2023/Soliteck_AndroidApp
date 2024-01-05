@@ -1,5 +1,7 @@
 package com.example.api_call;
 
+import static com.example.api_call.R.drawable.*;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,20 +9,50 @@ import android.text.InputFilter;
 import android.util.Base64;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
-
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 public class ApplicationConstant {
 
+//    public static void displayToastMessage(Context mContext, String message) {
+//
+//
+//        Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+//    }
+
+    public static final String PRIVACY_POLICY = "privacy_agree";
+
+
     public static void displayToastMessage(Context mContext, String message) {
-        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, message,Toast.LENGTH_LONG).show();
     }
+
+
+//    public static void displayToastMessage(Activity activity,String title, String message){
+//        if (activity != null){
+//            AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+//            builder1.setMessage(message);
+//            builder1.setCancelable(true);
+//            builder1.setTitle(title);
+//            builder1.setIcon(R.drawable.card);
+//            builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() { // from class: com.uvapay.services.ApplicationConstant.1
+//                @Override // android.content.DialogInterface.OnClickListener
+//                public void onClick(DialogInterface dialog, int id) {
+//                    dialog.cancel();
+//                }
+//            });
+//            AlertDialog alert11 = builder1.create();
+//            alert11.show();
+//            alert11.getWindow().setLayout(1000,500);
+//
+//        }
+//    }
+
+
+
 
     public static void setEditTextMaxLength(EditText editText, int length) {
         InputFilter[] FilterArray = {new InputFilter.LengthFilter(length)};
@@ -68,6 +100,7 @@ public class ApplicationConstant {
             builder1.setMessage(message);
             builder1.setCancelable(true);
             builder1.setTitle(title);
+            builder1.setIcon(card);
             builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() { // from class: com.uvapay.services.ApplicationConstant.1
                 @Override // android.content.DialogInterface.OnClickListener
                 public void onClick(DialogInterface dialog, int id) {
@@ -76,6 +109,7 @@ public class ApplicationConstant {
             });
             AlertDialog alert11 = builder1.create();
             alert11.show();
+            alert11.getWindow().setLayout(1000,500);
         }
     }
 }

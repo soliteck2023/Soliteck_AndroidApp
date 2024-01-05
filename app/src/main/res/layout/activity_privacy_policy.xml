@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"  >
+        <RelativeLayout android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16sp"  android:textStyle="bold" android:textColor="@color/white" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="60dp" android:gravity="center" android:text="TERMS AND CONDITIONS AND USER AGREEMENT (AGREEMENT)"
+                android:layout_centerHorizontal="true"/>
+            <ImageView android:id="@+id/image_cancel" android:visibility="gone" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginRight="15dp" android:src="@drawable/ic_cancel_black_24dp" android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <LinearLayout android:orientation="vertical" android:padding="10dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+                tools:ignore="ExtraText">
+                <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/medium_grey_color" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="THIS AGREEMENT IS AN ELECTRONIC RECORD IN TERMS OF INFORMATION TECHNOLOGY ACT, 200 AND RULES THERE UNDER AS APPLICABLE AND THE AMENDED PROVISIONS PERTAINING TO ELECTRONIC RECORDS/DOCUMENTS IN VARIOUS STATUTES AS AMENDED BY THE INFORMATION TECHNOLOGY ACT, 2000. THIS IS A COMPUTER GENERATED ELECTRONIC RECORD AND DOES NOT REQUIRE ANY PHYSICAL OR DIGITAL SIGNATURES.
+PLEASE READ THE TERMS AND CONDITIONS OF THIS AGREEMENT CAREFULLY. TERMS AND CONDITIONS MENTIONED IN THE AGREEMENT ARE A BINDING CONTRACT BETWEEN SOLITECK Private Limited. (COMPANY or SOLITECK), REFERRED HEREIN BELOW AND YOU (RETAILER). THE TERMS ARE EFFECTIVE UPON ACCEPTANCE AND WILL GOVERN THE RELATIONSHIP BETWEEN YOU (RETAILER) AND COMPANY."/>
+                <TextView android:textSize="15sp" android:padding="@dimen/padding_5" android:textStyle="normal" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="A. SOLITECK is a pioneer in the mobile payment business and is a premium mobile payment service provider, money transfer, utility payments with respect to mobile, cable recharges, and other bookings (“Services”)." android:textAlignment="textStart"/>
+                <TextView android:textSize="15sp" android:textStyle="normal" android:textColor="@color/medium_grey_color" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="B. Retailer is availing various Services of SOLITECK and against which SOLITECK charges Service Charges to Retailer."/>
+                <TextView android:textSize="16sp"  android:textStyle="bold" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text=" 1.SCOPE." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/medium_grey_color" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="1.1 Retailer shall market, distribute Services offered by SOLITECK as per the terms and conditions of this Agreement on non-exclusive basis."/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.2 Retailer will directly engage with their customers." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.3 Retailer shall not warranty or commit to any customers and/or third party anything over and above what is committed or warranted by SOLITECK. In case Retailer commits, the concerned Retailer shall be solely responsible for such commitments. In case of any loss or damage incurred by SOLITECK due to non-compliance of such commitments not authorised by SOLITECK, Retailer shall reimburse all such losses and damages without any limitation and SOLITECK shall have right to deduct or set-off all such amount from the money due from SOLITECK to Retailer." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.4 In order to promote the business, both the parties shall by mutually consent in the overall interest of the business and the Retailers shall provide better services to the customers." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.5 Retailer shall adhere to all the following documents and needs that may be published or made applicable by SOLITECK from time-to-time:" android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.5.1 Standard Operating Procedure for various activities." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.5.2 Code of ethics to be followed by Retailer." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.6 SOLITECK has presently maintained an Escrow Account with ICICI Bank for money on mobile wallet and reserves the right to change such bank as may be considered appropriate from time-to-time or as per the regulations." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="16sp"  android:textStyle="bold" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.DUTIES OF RETAILER" android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.1 Retailer shall:" android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.1.1. collect payments from Customers" android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.1.2. not run any scheme without prior written permission of SOLITECK.." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.1.3. produce every information or document to SOLITECK as and when necessary to SOLITECK." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.1.4. allow SOLITECK to do random checking and inspection of Retailer premises." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.1.5. pay all taxes including but not limited to income tax, service tax, cess or any such taxes as he is required to pay." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2.1.6. prepare a monthly report and submit the same to SOLITECK as per the format of report that may be prescribed by SOLITECK." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="16sp"  android:textStyle="bold" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="3. FEES AND PAYMENT" android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="3.1 SOLITECK shall charge such Service Charges to Retailer inclusive of Service tax and the Retailer shall agree to pay such amount. SOLITECK shall deduct such applicable Service charge from M-wallet maintained by the Retailer or any other account maintained with SOLITECK." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="16sp"  android:textStyle="bold" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="4. TAXES" android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="4.1 SOLITECK shall charge all such taxes as may be applicable at the prevalent rate from time-to-time and the Retailer shall pay." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="4.2 SOLITECK shall deduct all such charges and taxes from any payments due to Retailer." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="16sp"  android:textStyle="bold" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="5. TERM AND TERMINATION" android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="5.1 This Agreement may be terminated by the parties with or without cause upon thirty (30) days written notice. In case of any violation of material terms of this Agreement and failure of defaulting Party to rectify such default within seven (7) days of notice of such default by other Party, the non-defaulting party can terminate the Agreement." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="5.2 SOLITECK reserves the right to terminate this Agreement in case of any violations committed by the Retailer and such termination may be done without any advance notice." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.2 Retailer will directly engage with their customers." android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="5.3 On termination of this Agreement for whatsoever reason, Retailer shall not represent SOLITECK in any manner. Retailer shall return all the remaining material to SOLITECK including but not limited to brochures, marketing collaterals etc." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="16sp"  android:textStyle="bold" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" android:textColor="@color/black" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="6. CONFIDENTIAL AND PROPRIETARY INFORMATION AND INTELLECTUAL PROPERTY RIGHTS" android:textAlignment="textStart"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="6.1 The Retailer shall treat the details of the Agreement, SOLITECK’s operations and affairs as private and confidential, save in so far as may be necessary for the purposes of the Agreement, and shall not publish or disclose the same to any third party or entity." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="7. COPYRIGHT"/>
+                <TextView android:textSize="14sp" android:padding="@dimen/padding_5" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="7.1 All the materials provided by SOLITECK are owned and copyrighted by the SOLITECK. Retailer shall use such materials during the tenure of this Agreement.
+7.2 Retailer shall not tamper with any markings or nameplates or other indications of the source of origin of the pamphlets, brochures, etc. which may be placed by the SOLITECK on any materials supplied by SOLITECK.." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="8. STATUTORY OBLIGATIONS"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_5"
+                    android:text="8.1 The Parties shall at its own expense comply with all statutes, acts, laws, regulations, local taxes, ordinances.
+8.2 The parties shall keep themselves updated on all laws and regulations applicable to them and ensure compliance to fullest extent.
+8.3 In case due to non-compliance of Retailer, SOLITECK is required to pay any damages, taxes, levies or any compensation in whatsoever manner, the Retailer shall be solely liable to reimburse all such costs and expenses including any costs of engaging counsel, court fees and all such relevant costs."
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp"  android:text="9. EMPLOYMENT"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="9.1 Retailer represents that neither it, nor its employees, are employees of SOLITECK nor they are entitled to any salary, benefits or employment rights at SOLITECK. Retailer alone shall be responsible for any of its employee’s salary, insurance, employee benefits such as health insurance, gratuity, pension and for paying any taxes or contributions required by law.
+" android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="10. WARRANTY"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="10.1 Retailer warrants to SOLITECK that Retailer is:
+10.1.1 capable of undertaking activities as agreed herein.
+10.1.2 not prohibited from performing activities agreed in this Agreement whether due to any legal, statutory, judicial orders or any contractual obligations.
+10.1.3.not undertaking any activity during the tenure of this Agreement which is infringing intellectual property rights of any third party.
+10.1.4 not undertaking any action or Retailer’s inaction is not causing violation of any laws and regulations or breach of any other statutory binding as may be applicable.
+10.1.5 not undertaking any activity which is competing with the business of SOLITECK.
+" android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp"  android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="11. LIABILITY LIMITATIONS"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="11.1 Notwithstanding any other term of this Agreement to the contrary, in no event shall SOLITECK be liable to Retailer or any third party for any indirect, special, incidental, consequential, punitive or exemplary damages or loss of any kind (including but not limited to loss of profit, loss of revenues and the like) howsoever caused.
+" android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="12. INDEMNIFICATION"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1.2 Retailer will directly engage with their customers." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp"  android:text="13. FORCE MAJEURE"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="13.1 In the event either party is delayed or prevented from performing this Agreement any obligations due to any cause beyond its reasonable control, acts of God, (“Force Majeure”) such delay shall be excused during the continuance of delay, and the period of performance shall be extended to such extent as may be reasonable to perform after the cause of delay has been removed. In the event any such delay continues for a period of more than thirty (30) days, either Party may terminate this Agreement under which performance is delayed upon written notice to the other party." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="14. NOTICE"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="14.1 Any and all notices that either Party hereto is required or may desire to give the other hereunder shall be given by addressing the communication to other party shall be given by certified or registered post of other party’s address." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="15. ASSIGNMENT"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="15.1 SOLITECK may assign its rights hereunder without consent of or notice to Retailer. Retailer shall not transfer, assign, sub-license or pledge its rights or obligations hereunder without the written consent of SOLITECK." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="16. NO AGENCY OR PARTNERSHIP"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="16.1 The parties are independent entities and the parties acknowledge and confirm that and there is no Principal and Agent relationship. The Retailer cannot represent, execute any agreements or give any commitment on behalf of SOLITECK.
+" android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="17. ARBITRATION"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="17.1 In case of any disputes arising in relation to this Agreement, the Parties shall appoint one arbitrator appointed by SOLITECK and resolve such dispute as per Arbitration and Conciliation Act, 1996. SOLITECK shall have right to obtain such interim orders or reliefs as may be permissible under the applicable law.
+17.2 The language of Arbitration shall be English and the place of Arbitration shall be in Mumbai." android:textAlignment="textStart"/>
+
+                <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="19. GENERAL"/>
+                <TextView android:textSize="14sp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="19.1 SOLITECK shall provide any modifications to this Agreement and it will be displayed on the Retailer portal. Continued usage of the Retailer shall be considered as deemed acceptance of such modifications.
+19.2 No delay or failure of either Party in exercising any right and no partial or single exercise of any right shall be deemed to constitute a waiver of that right or any other rights under this Agreement.
+19.3 The captions, headings used in this Agreement are for convenience only and are not intended to have any legal effect.
+19.4 If any provision, or portion thereof, of this Agreement is invalid or unenforceable under any applicable statute or rule of law, the Agreement shall be valid except it is to that extent to be deemed omitted.
+19.5 The Parties have read this Agreement and agree to be bound by all its terms. The Parties agree that there is no conditions precedent. The Parties further agree that this Agreement constitutes a complete and exclusive statement of the agreement reached between them and supersedes all proposals, oral or written, and all other communications between them relating to the terms and conditions of this Agreement." android:textAlignment="textStart"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="BY CLICKING I ACCEPT,CHANNEL PARTNER(INCLUDING PERSON ACTING ON BEHALF OF CHANNEL PARTNER)CONFIRMS THAT HE OR ANY OTHER LEGAL ENTITY AS THE CASE MAY BE, HAS NECESSARY AUTHORITY TO ACCEPT THIS AGREEMENT ON ITS BEHALF.
+" android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal"
+                    tools:ignore="MissingPrefix" />
+
+
+                <LinearLayout android:orientation="vertical" android:id="@+id/LLPrivacy" android:background="@color/white" android:padding="10dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_alignParentBottom="true">
+                    <TextView android:textSize="12sp" android:textColor="@color/colorPrimaryDark" android:id="@+id/text_terms" android:visibility="visible" android:layout_width="450dp" android:layout_height="match_parent" android:text="Please go through our privacy policy details before using services." android:inputType="textNoSuggestions"/>
+
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <CheckBox android:id="@+id/check_policy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10dp"/>
+                        <TextView android:textSize="16sp" android:textColor="@color/colorPrimaryDark" android:id="@+id/text_policy_link" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Privacy policy Details"/>
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+                        <Button android:textColor="@color/white" android:background="@drawable/button_background" android:visibility="gone" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="I Decline" android:layout_weight="1"/>
+                        <Button android:textColor="@color/white" android:layout_gravity="center" android:id="@+id/button_proceed" android:background="@drawable/green_button_background" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="I Agree" android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+
+    </LinearLayout>
+</RelativeLayout>

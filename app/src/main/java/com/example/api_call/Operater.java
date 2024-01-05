@@ -10,10 +10,10 @@ public class Operater {
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("Name.MARK")
+    @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("imageUrl")
+     @SerializedName("imageUrl")
     @Expose
     private String imageUrl;
     @SerializedName("name")
@@ -33,6 +33,9 @@ public class Operater {
     public void setId(String id) {
         this.id = id;
     }
+
+
+
 
     public String getName() {
         return this.name;

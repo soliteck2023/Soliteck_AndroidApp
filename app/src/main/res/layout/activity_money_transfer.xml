@@ -1,162 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <LinearLayout  android:background="@color/colorPrimary" android:orientation="horizontal" android:paddingBottom="5dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@+id/image_mobile" android:padding="10dp" android:layout_width="100dp" android:layout_height="100dp" android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp" android:src="@drawable/transfer"
-            app:tint="@color/white" />
-        <LinearLayout   android:orientation="vertical" android:layout_width="match_parent" android:layout_height="70dp" android:layout_marginLeft="@dimen/margin_15dp" android:layout_marginTop="35dp" android:layout_marginRight="35dp">
-
-            <TextView
-                android:id="@+id/text_mob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Transfer Money Quickly"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:fontFamily="sans-serif-black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:fontFamily="sans-serif-black"
-                android:layout_gravity="center_horizontal"
-                android:text="Just give few details"
-                android:layout_below="@+id/text_mob"/>
-        </LinearLayout>
-    </LinearLayout>
-    <!--    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true">-->
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="15dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/border_edittext"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <EditText
-                            android:id="@+id/edit_mobile_number"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2.5"
-                            android:background="@android:color/transparent"
-                            android:inputType="number"
-                            android:hint="Mobile Number"
-                            android:maxLength="10"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.01"
-                            android:background="@color/colorPrimaryDark"
-                            android:visibility="visible" />
-
-                        <ImageView
-                            android:id="@+id/image_select_contact"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="@dimen/margin_5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="0.5"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:inputType="number"
-                            android:src="@drawable/select_contact"
-                            android:textColor="@color/colorAccent"
-                            android:textStyle="bold"
-                            android:visibility="visible" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="horizontal" android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/image_mobile" android:padding="10dp" android:layout_width="100dp" android:layout_height="100dp" android:layout_marginLeft="5dp" android:layout_marginTop="15dp" android:src="@drawable/transfer"
+                    app:tint="@color/white" />
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_15dp" android:layout_marginTop="35dp">
+                    <TextView android:textSize="20sp" android:textColor="@color/white" android:id="@+id/text_mob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Transfer Money Quickly"/>
+                    <TextView android:textSize="15sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="just give few details" android:layout_below="@+id/text_mob"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="15sp" android:textColor="@color/colorAccent" android:ellipsize="marquee" android:gravity="center" android:id="@+id/text_bank_downs" android:paddingLeft="@dimen/margin_15dp" android:paddingTop="@dimen/margin_15dp" android:paddingRight="@dimen/margin_15dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Welcome to Soliteck android application.." android:scrollHorizontally="true" android:singleLine="true" android:layout_below="@+id/linear_money" android:marqueeRepeatLimit="marquee_forever"/>
+            <androidx.cardview.widget.CardView android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="13dp" app:cardCornerRadius="10dp" app:cardElevation="5dp">
+                <LinearLayout android:orientation="vertical" android:background="@color/white" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:layout_gravity="center" android:padding="5dp" android:layout_width="300dp" android:layout_height="150dp" android:layout_marginTop="-20dp" android:src="@drawable/app_logo1"/>
+                        <FrameLayout android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15sp" android:layout_marginBottom="@dimen/dp_size_10">
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/ic_stay_current_portrait_black_24dp" android:layout_weight="0.4"/>
+                                    <EditText android:id="@+id/edit_mobile_number" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:maxLength="10" android:layout_weight="2.2" android:inputType="number"/>
+                                    <ImageView android:id="@+id/image_select_contact" android:layout_width="0dp" android:layout_height="35dp" android:src="@drawable/select_contact" android:layout_weight="0.4" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                                </LinearLayout>
+                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Mobile Number"/>
+                            </RelativeLayout>
+                        </FrameLayout>
                     </LinearLayout>
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="8dp"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginLeft="20dp"
-                        android:background="@color/white"
-                        android:inputType="number"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:text="Mobile Number"
-                        android:textColor="@color/black" />
-                </RelativeLayout>
-            </FrameLayout>
-
+                    <LinearLayout android:gravity="center" android:layout_gravity="center" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="25dp" android:weightSum="2">
+                        <RelativeLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@+id/btn_transfer_proceed" android:background="@drawable/violet_button_background" android:paddingLeft="10dp" android:paddingRight="10dp" android:visibility="visible" android:layout_width="0dp" android:layout_height="45dp" android:layout_marginRight="@dimen/dp_size_10" android:layout_weight="1" android:layout_below="@+id/linear_mobile" android:layout_alignParentRight="true" android:elevation="8dp">
+                            <TextView android:textSize="17sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Money Transfer" android:layout_centerVertical="true"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/black" android:gravity="center" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginBottom="5dp" android:text="Enter mobile number to transfer money"/>
         </LinearLayout>
-
-
-        <Button
-            android:id="@+id/btn_transfer_proceed"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/red_colorbackground"
-            android:text="SUBMIT"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:visibility="visible" />
-
-        <!--            <FrameLayout-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="30dp" />-->
-        <!--            -->
-
-        <ImageView
-            android:layout_marginTop="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:src="@drawable/transfer"
-            ></ImageView>
-
-
-    </LinearLayout>
-
-
-
-    <androidx.recyclerview.widget.RecyclerView android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent"/>
-
+    </ScrollView>
 </LinearLayout>

@@ -12,7 +12,7 @@
     </item>
     <item android:visible="false" android:title="Reports">
         <menu>
-             <item android:icon="@mipmap/payin_transactions" android:id="@+id/nav_orders" android:title="History"/>
+            <item android:icon="@mipmap/payin_transactions" android:id="@+id/nav_orders" android:title="History"/>
             <item android:icon="@drawable/commission" android:visible="false" android:title="Commission"/>
             <item android:icon="@drawable/commission" android:visible="false" android:title="Transaction Report"/>
             <item android:icon="@mipmap/payin_statements" android:id="@+id/nav_statements" android:title="Statement Report"/>

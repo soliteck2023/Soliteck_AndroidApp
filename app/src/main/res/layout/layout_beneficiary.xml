@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:id="@+id/card_transfer" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp" app:cardCornerRadius="10dp" app:cardElevation="3dp">
+        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@+id/delete_beneficiary" android:visibility="visible" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_cancel_black_24dp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+                <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MANIAR ASSOCIATES"/>
+                <ImageView android:layout_gravity="right" android:id="@+id/btn_send" android:visibility="visible" android:layout_width="@dimen/size40dp" android:layout_height="@dimen/size40dp" android:layout_marginRight="0dp" android:src="@drawable/share1" android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_bank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="HDFC Bank"/>
+            </RelativeLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp"/>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
+                <LinearLayout android:gravity="bottom" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.3" android:elevation="5dp">
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/bank"/>
+                    <TextView android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/text_account" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="Acc: 50200016882603"/>
+                    <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delete"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="right" android:visibility="visible" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.7" android:elevation="5dp">
+                    <Button android:textSize="13sp" android:textColor="@color/white" android:id="@+id/btn_verify" android:background="@color/dark_green" android:layout_width="wrap_content" android:layout_height="35dp" android:text="Verify"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

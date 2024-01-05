@@ -143,7 +143,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }
                 if (response.body() != null) {
                     if (response.body().getStatusCode().intValue() == 1) {
-                        ApplicationConstant.displayToastMessage(ProfileActivity.this, response.body().getMessage());
+                        ApplicationConstant.displayToastMessage(ProfileActivity.this,response.body().getMessage());  ///prajakta
                         ProfileActivity.this.startActivity(new Intent(ProfileActivity.this, MainActivity.class));
                         ProfileActivity.this.finish();
                         return;

@@ -25,10 +25,9 @@
     </array>
 
     <array name="type">
+        <item>Retailer</item>
         <item>Distributor</item>
         <item>Master Distributor</item>
-        <item>Super Distributor</item>
-        <item>Retailer</item>
     </array>
 
 
@@ -67,12 +66,21 @@
     </array>
 
     <string-array name="operator">
-        <item>Airtel</item>
         <item>VI</item>
+        <item>Airtel</item>
         <item>Jio</item>
         <item>BSNL</item>
 
     </string-array>
+
+    <string-array name="Address_proof">
+        <item>Aadhaar Card </item>
+        <item>Voter Id Card </item>
+        <item>Driving License</item>
+        <item>Udyam Registration</item>
+
+    </string-array>
+
     <string-array name="dishoperator">
         <item>Airtel DTH</item>
         <item>TATA Sky</item>
