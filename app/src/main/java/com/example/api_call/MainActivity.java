@@ -419,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                     }
-                    ApplicationConstant.displayToastMessage(MainActivity.this,response.body().getMessage());
+//                    ApplicationConstant.displayToastMessage(MainActivity.this,response.body().getMessage());
                     String jsonString = response.body().getData();
 
                     try {

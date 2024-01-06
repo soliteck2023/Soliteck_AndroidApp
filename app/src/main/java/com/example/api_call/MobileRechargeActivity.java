@@ -111,7 +111,7 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Handle the selected state here
                 String selectedState = states[position];
-                Toast.makeText(MobileRechargeActivity.this, "Selected State: " + selectedState, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MobileRechargeActivity.this, "Selected State: " + selectedState, Toast.LENGTH_SHORT).show();
                 // Do something with the selected state
             }
 

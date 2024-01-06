@@ -51,8 +51,9 @@ public class OperatorAdapter extends RecyclerView.Adapter<OperatorAdapter.MyView
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.app_logo);
         requestOptions.error(R.drawable.app_logo);
+
 //        Glide.with(this.context).setDefaultRequestOptions(requestOptions).load(listItem.getImageUrl()).into(holder.operatorImage);
-       Glide.with(this.context).load(operatorDataArrayList.get(position).getImageUrl()).into(holder.operatorImage);
+//       Glide.with(this.context).load(operatorDataArrayList.get(position).getImageUrl()).into(holder.operatorImage);
         holder.operatorname.setText(listItem.getName());
         holder.card_operator.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.adapters.OperatorAdapter.1
             @Override // android.view.View.OnClickListener

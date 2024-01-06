@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -139,6 +140,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private List<CommissionData> list_margin = new ArrayList();
     private ViewCommissionAdapter viewCommissionAdapter;
 
+    LinearLayout linermain_blance,linearcashout_balance;
+
 
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -151,6 +154,48 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         cashoutbalance = findViewById(R.id.hideimge2);
         textbalance = findViewById(R.id.textbalance);
         textaepsBalance = findViewById(R.id.textaepsBalance);
+
+        linermain_blance= findViewById(R.id.main_liner);
+        linearcashout_balance= findViewById(R.id.cashout_liner);
+
+
+        linermain_blance.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                if (mainbalance.getVisibility() == View.VISIBLE) {
+                    mainbalance.setVisibility(View.GONE);
+                    textbalance.setVisibility(View.VISIBLE);
+                } else if (textbalance.getVisibility() == View.VISIBLE) {
+                    // If textbalance is visible, hide it and show mainbalance
+                    textbalance.setVisibility(View.GONE);
+                    mainbalance.setVisibility(View.VISIBLE);
+                } else {
+                    mainbalance.setVisibility(View.VISIBLE);
+                    textbalance.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+        linearcashout_balance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                {
+                    if (cashoutbalance.getVisibility() == View.VISIBLE) {
+                        cashoutbalance.setVisibility(View.GONE);
+                        textaepsBalance.setVisibility(View.VISIBLE);
+                    } else if (textaepsBalance.getVisibility() == View.VISIBLE) {
+                        // If textbalance is visible, hide it and show mainbalance
+                        textaepsBalance.setVisibility(View.GONE);
+                        cashoutbalance.setVisibility(View.VISIBLE);
+                    } else {
+                        cashoutbalance.setVisibility(View.VISIBLE);
+                        textaepsBalance.setVisibility(View.GONE);
+                    }
+
+                }
+
+            }
+        });
 
 
 
@@ -415,7 +460,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         linear_dth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DashboardActivity.this,DTHRechargeActivity.class);
+                Intent intent = new Intent(DashboardActivity.this,new_dth_activity.class);  //DTHRechargeActivity
                 DashboardActivity.this.startActivity(intent);
 
             }
@@ -433,10 +478,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         linear_transfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(DashboardActivity.this, MoneyTransferActivity.class);
-//                DashboardActivity.this.startActivity(intent);
+                Intent intent = new Intent(DashboardActivity.this, MoneyTransferActivity.class);
+                DashboardActivity.this.startActivity(intent);
 
-                DashboardActivity.this.viewdmtRequest();
+//                DashboardActivity.this.viewdmtRequest();
 
             }
         });
@@ -448,12 +493,16 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //            }
 //        });
 
-//        linear_aeps.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        linear_aeps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(DashboardActivity.this, aeps_activity.class);
+                i.putExtra("token","9ixcsmeBl3fJCSO8hq+hJQ==");
+                startActivityForResult(i, 101);
+
+            }
+        });
 
         linear_transactions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -506,32 +555,45 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     }
 
+//    public void installSDK(View view) {
+//        // Replace 'https://example.com/sdk.zip' with the actual URL to your SDK file
+////        String sdkDownloadUrl = "https://example.com/sdk.zip";
+//        String sdkDownloadUrl = "https://apihub.moneyart.in";
+//
+//
+//
+//        // Create an Intent to view the SDK download URL
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setData(Uri.parse(sdkDownloadUrl));
+//        startActivity(intent);
+//    }
 
 
-    public void onImageClick(View view) {
-        // Simulate API call (replace this with your actual API call)
-        // For demonstration purposes, I'm using a simple Runnable to toggle visibility after a delay
-        cashoutbalance.setVisibility(View.GONE) ;
-        mainbalance.setVisibility(View.GONE);
-        textaepsBalance.setVisibility(View.VISIBLE);
-        textaepsBalance.setVisibility(View.VISIBLE);
 
-
-
-        // Simulate API call
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Update UI after API call
-
-
-                cashoutbalance.setVisibility(View.VISIBLE);
-                textaepsBalance.setVisibility(View.GONE);
-                mainbalance.setVisibility(View.VISIBLE);
-                textaepsBalance.setVisibility(View.GONE);
-            }
-        }, 3000); // 2000 milliseconds (2 seconds) delay, replace with your actual API call
-    }
+//    public void onImageClick(View view) {
+//        // Simulate API call (replace this with your actual API call)
+//        // For demonstration purposes, I'm using a simple Runnable to toggle visibility after a delay
+//        cashoutbalance.setVisibility(View.GONE) ;
+//        mainbalance.setVisibility(View.GONE);
+//        textaepsBalance.setVisibility(View.VISIBLE);
+//        textaepsBalance.setVisibility(View.VISIBLE);
+//
+//
+//
+//        // Simulate API call
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                // Update UI after API call
+//
+//
+//                cashoutbalance.setVisibility(View.VISIBLE);
+//                textaepsBalance.setVisibility(View.GONE);
+//                mainbalance.setVisibility(View.VISIBLE);
+//                textaepsBalance.setVisibility(View.GONE);
+//            }
+//        }, 3000); // 2000 milliseconds (2 seconds) delay, replace with your actual API call
+//    }
 
 
 

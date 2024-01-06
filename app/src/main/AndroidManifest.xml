@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,6 +17,16 @@
         android:theme="@style/AppTheme_NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".aeps_activity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".layout_banklist"
+            android:exported="false" />
+        <activity
+            android:name=".new_dth_activity"
+            android:exported="false" />
         <activity
             android:name=".verifymobilenumberActivity"
             android:exported="false" />
