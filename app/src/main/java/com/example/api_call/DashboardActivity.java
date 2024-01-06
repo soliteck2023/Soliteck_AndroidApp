@@ -269,7 +269,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         LinearLayout commisstion_rpt =(LinearLayout)findViewById(R.id.linear_commisstion);
         menuBank = findViewById(R.id.second_linier);
         LinearLayout linear_request = (LinearLayout) findViewById(R.id.first_linear);
-
+        this.linear_payment_received_report = (LinearLayout) findViewById(R.id.third_linear);
 //        linear_latestReport = findViewById(R.id.second_linier);
 //        compliant = findViewById(R.id.third_linear);
 
@@ -372,6 +372,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 DashboardActivity.this.viewPaymentRequest();
+            }
+        });
+
+        linear_payment_received_report.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, PaymentReceivedReportActivity.class));
+
             }
         });
 

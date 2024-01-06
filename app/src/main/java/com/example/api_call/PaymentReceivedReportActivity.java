@@ -111,11 +111,11 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
         progressDialog.show();
         HashMap<String, String> body = new HashMap<>();
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
-        body.put("UniqueCode", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
+        body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
         body.put("FromDateTime", fromDate);
         body.put("ToDateTime", toDate);
-        ApiInterface apiservice = RetrofitHandler.getService();
+        ApiInterface apiservice = RetrofitHandler.getService2();
         Call<PaymentReceivedResponse> result = apiservice.GetPaymentReceived(body);
         result.enqueue(new Callback<PaymentReceivedResponse>() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.4
             @Override // retrofit2.Callback
