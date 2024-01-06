@@ -86,7 +86,8 @@ public interface ApiInterface {
     @POST("Transaction/MyEarning")
     Call<MyEarningReportBase> GetMyEarning(@Body HashMap<String, String> hashMap);
 
-    @POST("Payment/GetNetworkPaymentReceivedReport")
+//    @POST("Payment/GetNetworkPaymentReceivedReport")
+    @POST("MOBNetBalReceived")
     Call<PaymentReceivedResponse> GetPaymentReceived(@Body HashMap<String, String> hashMap);
 
     @POST("Transaction/LatestTransationReport")
