@@ -69,36 +69,47 @@ public class OperatorsActivity extends AppCompatActivity implements OperatorAdap
                     }
                     OperatorsActivity.this.operatorDataArrayList = response.body().getOperaters();
 
-                   try {
-
-                    for(Operater datum :OperatorsActivity.this.operatorDataArrayList) {
-                       if (OperatorsActivity.this.Call.equals("MOBILE") && datum.getServiceName() != null && datum.getServiceName().equals("MOBILE")) {
-                           OperatorsActivity.this.sorted_operatorList.add(datum);
-                       }
-                    }
-
-                   } catch (Exception e) {
-                       e.printStackTrace();
-                   }
-
-                    try {
-                        for (Operater datum2 : OperatorsActivity.this.operatorDataArrayList) {
-                            if (OperatorsActivity.this.Call.equals("DTH") && datum2.getServiceName() != null && datum2.getServiceName().equals("DTH")) {
-                                OperatorsActivity.this.sorted_operatorList.add(datum2);
-                            }
+                    for (Operater datum : OperatorsActivity.this.operatorDataArrayList) {
+                        if (OperatorsActivity.this.Call.equals("MOBILE") && datum.getServiceName() != null && datum.getServiceName().equals("MOBILE")) {
+                            OperatorsActivity.this.sorted_operatorList.add(datum);
+                        } else if (OperatorsActivity.this.Call.equals("DTH") && datum.getServiceName() != null && datum.getServiceName().equals("DTH")) {
+                            OperatorsActivity.this.sorted_operatorList.add(datum);
+                        } else if (OperatorsActivity.this.Call.equals("POSTPAID") && datum.getServiceName() != null && datum.getServiceName().equals("POSTPAID")) {
+                            OperatorsActivity.this.sorted_operatorList.add(datum);
                         }
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
                     }
-                    try {
-                        for (Operater datum3 : OperatorsActivity.this.operatorDataArrayList) {
-                            if (OperatorsActivity.this.Call.equals("POSTPAID") && datum3.getServiceName() != null && datum3.getServiceName().equals("POSTPAID")) {
-                                OperatorsActivity.this.sorted_operatorList.add(datum3);
-                            }
-                        }
-                    } catch (Exception e3) {
-                        e3.printStackTrace();
-                    }
+
+
+//                   try {
+//
+//                    for(Operater datum :OperatorsActivity.this.operatorDataArrayList) {
+//                       if (OperatorsActivity.this.Call.equals("MOBILE") && datum.getServiceName() != null && datum.getServiceName().equals("MOBILE")) {
+//                           OperatorsActivity.this.sorted_operatorList.add(datum);
+//                       }
+//                    }
+//
+//                   } catch (Exception e) {
+//                       e.printStackTrace();
+//                   }
+
+//                    try {
+//                        for (Operater datum2 : OperatorsActivity.this.operatorDataArrayList) {
+//                            if (OperatorsActivity.this.Call.equals("DTH") && datum2.getServiceName() != null && datum2.getServiceName().equals("DTH")) {
+//                                OperatorsActivity.this.sorted_operatorList.add(datum2);
+//                            }
+//                        }
+//                    } catch (Exception e2) {
+//                        e2.printStackTrace();
+//                    }
+//                    try {
+//                        for (Operater datum3 : OperatorsActivity.this.operatorDataArrayList) {
+//                            if (OperatorsActivity.this.Call.equals("POSTPAID") && datum3.getServiceName() != null && datum3.getServiceName().equals("POSTPAID")) {
+//                                OperatorsActivity.this.sorted_operatorList.add(datum3);
+//                            }
+//                        }
+//                    } catch (Exception e3) {
+//                        e3.printStackTrace();
+//                    }
 
                     OperatorsActivity operatorsActivity = OperatorsActivity.this;
                     OperatorAdapter operatorAdapter = new OperatorAdapter(operatorsActivity, (ArrayList) operatorsActivity.sorted_operatorList);

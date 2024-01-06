@@ -10,7 +10,14 @@
             <ImageView android:id="@+id/image_todate" android:layout_width="0dp" android:layout_height="35dp" android:src="@drawable/color_calender" android:layout_weight="0.7"/>
         </LinearLayout>
     </LinearLayout>
-    <EditText android:id="@+id/text_search" android:background="@drawable/rectangle_background" android:padding="@dimen/dp_size_10" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/dp_size_10" android:hint="search" android:drawableLeft="@drawable/ic_search_black_24dp"/>
+    <EditText android:id="@+id/text_search"
+        android:background="@drawable/rectangle_background"
+        android:padding="@dimen/dp_size_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_size_10"
+        android:hint="search"
+        android:drawableLeft="@drawable/ic_search_black_24dp"/>
     <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
         <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_no_content" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No content to display" android:layout_centerInParent="true"/>
         <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycle_transactions" android:background="@color/white" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent"/>

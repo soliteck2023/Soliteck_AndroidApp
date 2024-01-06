@@ -79,6 +79,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private LinearLayout linear_earning;
     private LinearLayout linear_latestReport;
     private LinearLayout linear_payment_received_report;
+
+    private LinearLayout linear_pending_txn_report;
+    private LinearLayout linear_cashout_txn_report;
     private LinearLayout linear_payment_transfer_report;
     private LinearLayout linear_paymentgateway;
     private LinearLayout linear_profile;
@@ -141,6 +144,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private ViewCommissionAdapter viewCommissionAdapter;
 
     LinearLayout linermain_blance,linearcashout_balance;
+
+    LinearLayout linerlayout;
 
 
 
@@ -270,12 +275,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         advertiseing = findViewById(R.id.recyclerAd);  //recyclerview
         advertiseing.setLayoutManager(new LinearLayoutManager(DashboardActivity.this,RecyclerView.HORIZONTAL,false));
         List<add> list =new ArrayList<>();
+        list.add(new add(R.drawable.pravasi_divas_9th_jan));
         list.add(new add(R.drawable.world_braille_day));
+        list.add(new add(R.drawable.pravasi_divas_9th_jan));
 //      list.add(new add(R.drawable.mobile_offeradd));
 //      list.add(new add(R.drawable.banner2));
         myofferAdapter = new MyofferAdapter(list);  //recyclerview_adpter
         advertiseing.setAdapter(myofferAdapter);
         startAutoScroll();
+
 
 //        menupager = findViewById(R.id.menu_option);
 //        adapter2 = new Mymenuotionadpter(getSupportFragmentManager(),DashboardActivity.this);
@@ -314,8 +322,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         LinearLayout commisstion_rpt =(LinearLayout)findViewById(R.id.linear_commisstion);
         menuBank = findViewById(R.id.second_linier);
         LinearLayout linear_request = (LinearLayout) findViewById(R.id.first_linear);
+        this.linear_payment_received_report = (LinearLayout) findViewById(R.id.third_linear);
+        this.linear_pending_txn_report = (LinearLayout) findViewById(R.id.linear_pending);
 
-//        linear_latestReport = findViewById(R.id.second_linier);
+ //        linear_latestReport = findViewById(R.id.second_linier);
 //        compliant = findViewById(R.id.third_linear);
 
 
@@ -420,10 +430,35 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
         });
 
+        linear_payment_received_report.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, PaymentReceivedReportActivity.class));
+
+            }
+        });
+
+        linear_pending_txn_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, pendingReceivedReportActivity.class));
+
+            }
+        });
+
+//        linear_cashout_txn_report.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, Ledger_cashouttxn_ReportActivity.class));
+//
+//            }
+//        });
+
         commisstion_rpt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DashboardActivity.this.viewCommission();
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, viewCommissionActivity.class));
+
 
             }
         });
@@ -452,7 +487,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         linear_dth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DashboardActivity.this,new_dth_activity.class);  //DTHRechargeActivity
+                Intent intent = new Intent(DashboardActivity.this,DTHRechargeActivity.class);  //DTHRechargeActivity
                 DashboardActivity.this.startActivity(intent);
 
             }
@@ -626,60 +661,60 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //            ConstantClass.displayMessageDialog(this, "No Internet Connection", "Please enable internet connection first to proceed");
 //        } else {
 
-        getCommissionMarginList(view_commissionlist);
+//        getCommissionMarginList(view_commissionlist);
 //    }
     }
 
-    private void getCommissionMarginList(final RecyclerView view_commissionlist) {
-        PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, "");
-        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
-        progressDialog.show();
-        HashMap<String, String> body = new HashMap<>();
-        body.put(ConstantClass.PROFILEDETAILS.UserName_, PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
-        body.put("Password", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.EncreptedUserPassword, ""));
-        ApiInterface apiservice =RetrofitHandler.getService();
-        Call<Commision> call = apiservice.getCommissionMargin(body);
-        call.enqueue(new Callback<Commision>() { // from class: com.uvapay.activities.DashboardActivity.37
-            @Override // retrofit2.Callback
-            public void onResponse(Call<Commision> call2, Response<Commision> response) {
-                ProgressDialog progressDialog2 = progressDialog;
-                if (progressDialog2 != null && progressDialog2.isShowing()) {
-                    progressDialog.dismiss();
-                }
-                if (response != null) {
-                    if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
-                        DashboardActivity.this.list_margin = response.body().getData();
-                        DashboardActivity dashboardActivity = DashboardActivity.this;
-                        DashboardActivity dashboardActivity2 = DashboardActivity.this;
-                        dashboardActivity.viewCommissionAdapter = new ViewCommissionAdapter(dashboardActivity2, dashboardActivity2.list_margin);
-                        view_commissionlist.setAdapter(DashboardActivity.this.viewCommissionAdapter);
-                        return;
-                    }
-                    ConstantClass.displayMessageDialog(DashboardActivity.this, "Response", response.body().getMessage());
-                    return;
-                }
-                ConstantClass.displayMessageDialog(DashboardActivity.this, "" + response.code(), response.message());
-            }
-
-            @Override // retrofit2.Callback
-            public void onFailure(Call<Commision> call2, Throwable t) {
-                ProgressDialog progressDialog2 = progressDialog;
-                if (progressDialog2 != null && progressDialog2.isShowing()) {
-                    progressDialog.dismiss();
-                }
-                DashboardActivity dashboardActivity = DashboardActivity.this;
-                ConstantClass.displayMessageDialog(dashboardActivity, dashboardActivity.getString(R.string.server_problem), t.getMessage().toString());
-            }
-        });
-    }
+//    private void getCommissionMarginList(final RecyclerView view_commissionlist) {
+//        PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, "");
+//        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
+//        progressDialog.show();
+//        HashMap<String, String> body = new HashMap<>();
+//        body.put(ConstantClass.PROFILEDETAILS.UserName_, PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
+//        body.put("Password", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.EncreptedUserPassword, ""));
+//        ApiInterface apiservice =RetrofitHandler.getService();
+//        Call<Commision> call = apiservice.getCommissionMargin(body);
+//        call.enqueue(new Callback<Commision>() { // from class: com.uvapay.activities.DashboardActivity.37
+//            @Override // retrofit2.Callback
+//            public void onResponse(Call<Commision> call2, Response<Commision> response) {
+//                ProgressDialog progressDialog2 = progressDialog;
+//                if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                    progressDialog.dismiss();
+//                }
+//                if (response != null && response.body() != null) {
+////                    if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
+////                        DashboardActivity.this.list_margin = response.body().getData();
+////                        DashboardActivity dashboardActivity = DashboardActivity.this;
+////                        DashboardActivity dashboardActivity2 = DashboardActivity.this;
+////                        dashboardActivity.viewCommissionAdapter = new ViewCommissionAdapter(dashboardActivity2, dashboardActivity2.list_margin);
+////                        view_commissionlist.setAdapter(DashboardActivity.this.viewCommissionAdapter);
+////                        return;
+////                    }
+//                    ConstantClass.displayMessageDialog(DashboardActivity.this, "Response", response.body().getMessage());
+//                    return;
+//                }
+//                ConstantClass.displayMessageDialog(DashboardActivity.this, "" + response.code(), response.message());
+//            }
+//
+//            @Override // retrofit2.Callback
+//            public void onFailure(Call<Commision> call2, Throwable t) {
+//                ProgressDialog progressDialog2 = progressDialog;
+//                if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                    progressDialog.dismiss();
+//                }
+//                DashboardActivity dashboardActivity = DashboardActivity.this;
+//                ConstantClass.displayMessageDialog(dashboardActivity, dashboardActivity.getString(R.string.server_problem), t.getMessage().toString());
+//            }
+//        });
+//    }
 
 
     private void filter(String s) {
         List<CommissionData> listnew_Banks = new ArrayList<>();
         for (CommissionData allBankResponse : this.list_margin) {
-            if (allBankResponse.getOperatorName().toLowerCase().contains(s.toLowerCase())) {
-                listnew_Banks.add(allBankResponse);
-            }
+//            if (allBankResponse.getOperatorName().toLowerCase().contains(s.toLowerCase())) {
+//                listnew_Banks.add(allBankResponse);
+//            }
         }
         this.viewCommissionAdapter.filter(listnew_Banks);
     }

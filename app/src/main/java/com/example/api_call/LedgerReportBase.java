@@ -7,17 +7,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Commision {
+public class LedgerReportBase {
 
-    @SerializedName("dataN")
-    @Expose
-    private Object data;
     @SerializedName("errorCode")
     @Expose
     private String errorCode;
-    @SerializedName("data")
-    @Expose
-    private List<CommissionData> CommissionData;
     @SerializedName("message")
     @Expose
     private String remarks;
@@ -27,22 +21,16 @@ public class Commision {
     @SerializedName(NotificationCompat.CATEGORY_STATUS)
     @Expose
     private String status;
+    @SerializedName("data")
+    @Expose
+    private List<ledgerTransactionReport> transaction;
 
-    public Commision(Object data, String errorCode, List<com.example.api_call.CommissionData> commissionData, String remarks, Integer responseStatus, String status) {
-        this.data = data;
+    public LedgerReportBase(String errorCode, String remarks, Integer responseStatus, String status, List<ledgerTransactionReport> transaction) {
         this.errorCode = errorCode;
-        CommissionData = commissionData;
         this.remarks = remarks;
         this.responseStatus = responseStatus;
         this.status = status;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
+        this.transaction = transaction;
     }
 
     public String getErrorCode() {
@@ -51,14 +39,6 @@ public class Commision {
 
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
-    }
-
-    public List<com.example.api_call.CommissionData> getCommissionData() {
-        return CommissionData;
-    }
-
-    public void setCommissionData(List<com.example.api_call.CommissionData> commissionData) {
-        CommissionData = commissionData;
     }
 
     public String getRemarks() {
@@ -83,5 +63,13 @@ public class Commision {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<ledgerTransactionReport> getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(List<ledgerTransactionReport> transaction) {
+        this.transaction = transaction;
     }
 }

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TransactionsReportActivity extends AppCompatActivity {
+public class TransactionsReportActivity extends AppCompatActivity implements ItemClickListener  {
     private LinearLayout layout_fromdate;
     private LinearLayout layout_todate;
     private int mDay;
@@ -213,7 +215,7 @@ public class TransactionsReportActivity extends AppCompatActivity {
                             TransactionsReportActivity.this.reportList = response.body().getTransaction();
                             TransactionsReportActivity transactionsReportActivity = TransactionsReportActivity.this;
                             TransactionsReportActivity transactionsReportActivity2 = TransactionsReportActivity.this;
-                            transactionsReportActivity.transactionBillAdapter = new TransactionReportAdapter(transactionsReportActivity2, transactionsReportActivity2.reportList);
+                            transactionsReportActivity.transactionBillAdapter = new TransactionReportAdapter((Context) transactionsReportActivity2, transactionsReportActivity2.reportList);
                             TransactionsReportActivity.this.recycle_transactions.setAdapter(TransactionsReportActivity.this.transactionBillAdapter);
                             return;
                         }
@@ -247,5 +249,17 @@ public class TransactionsReportActivity extends AppCompatActivity {
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
         this.image_fromdate= (ImageView) findViewById(R.id.image_fromdate);
+    }
+
+    @Override
+    public void onItemClick(String data) {
+        openNewActivity(data);
+    }
+
+    private void openNewActivity(String data) {
+
+        Intent intent = new Intent(this, PaymentReceivedReportActivity.class);
+        intent.putExtra("DATA_KEY", data);
+        startActivity(intent);
     }
 }

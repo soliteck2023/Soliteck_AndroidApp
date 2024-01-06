@@ -14,40 +14,50 @@ import java.util.List;
 public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapter.MyViewHolder>{
 
     private Context context;
-    List<TransactionReport> listSatetments;
+    List<ledgerTransactionReport> listSatetments;
 
-    public LedgerReportAdapter(Context context, List<TransactionReport> listSatetments) {
+    public LedgerReportAdapter(Context context, List<ledgerTransactionReport> listSatetments) {
         this.context = context;
         this.listSatetments = listSatetments;
     }
 
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(this.context).inflate(R.layout.layout_transaction_reports, parent, false);
+        View view = LayoutInflater.from(this.context).inflate(R.layout.layout_ledger_transaction_reports, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        TransactionReport earnData = this.listSatetments.get(position);
+        ledgerTransactionReport earnData = this.listSatetments.get(position);
         try {
-            holder.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
-            holder.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
+
+            holder.text_transid.setText("Txn Id: " + earnData.getTransactionId());
+            holder.text_paymode.setText("Operator Name: " + earnData.getOperator());
             holder.text_status_.setText(earnData.getStatus());
-            holder.text_date_time_.setText(earnData.getTransactionDate());
+            holder.text_date_time_.setText(earnData.getTxnDate());
             holder.text_amount_.setText("Rs " + earnData.getAmount());
             holder.text_refid.setText("Ref No: " + earnData.getRefNumber());
-            holder.text_mob_.setText("" + earnData.getSenderMobile());
-            holder.text_retailerNumber.setText("Retailer Number: " + earnData.getRetailerNumber());
+            holder.text_mob_.setText("" + earnData.getUniqueCode());
+            holder.text_retailerNumber.setText("Receival Details: " + earnData.getReceiverDetails());
             holder.text_commission.setText("Commission: " + earnData.getCommission());
             holder.text_servicecharge.setText("Service charge: " + earnData.getServicecharge());
-            holder.text_gst.setText("GST: " + earnData.getGst());
-            holder.text_tds.setText("TDS: " + earnData.getTds());
-            holder.text_creditAmount.setText("Credit Amount: " + earnData.getCreditAmount());
-            holder.text_debitAmount.setText("Debit Amount: " + earnData.getDebitAmount());
-            holder.text_effecativeBal.setText("Effective Bal.: " + earnData.getEffecativeBal());
+            holder.text_gst.setText("GST: " + earnData.getGST());
+            holder.text_tds.setText("TDS: " + earnData.getTDS());
+            holder.text_creditAmount.setText("Opening Bal: " + earnData.getMBBefore());
+            holder.text_debitAmount.setText("Closing Bal: " + earnData.getMBAfter());
+            if (earnData.getCR() == "true"){
+                holder.credit_debit.setText("Credit");
+                holder.credit_debit.setTextColor(this.context.getResources().getColor(R.color.dark_green));
+
+            }else{
+                holder.credit_debit.setText("Debit");
+                holder.credit_debit.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
+
+            }
+
+//            holder.text_effecativeBal.setText("Effective Bal.: " + earnData.getEffecativeBal());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,13 +66,15 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
         } else {
             holder.text_status_.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
         }
+
+
     }
 
     @Override
     public int getItemCount() {
         return listSatetments.size();
     }
-    public void filter(List<TransactionReport> listnew_banks) {
+    public void filter(List<ledgerTransactionReport> listnew_banks) {
         this.listSatetments = listnew_banks;
         notifyDataSetChanged();
     }
@@ -83,6 +95,7 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
         TextView text_status_;
         TextView text_tds;
         TextView text_transid;
+        TextView credit_debit;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         public MyViewHolder(View itemView) {
@@ -103,6 +116,8 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
             this.text_debitAmount = (TextView) itemView.findViewById(R.id.text_debitAmount);
             this.text_effecativeBal = (TextView) itemView.findViewById(R.id.text_effecativeBal);
             this.text_creditAmount = (TextView) itemView.findViewById(R.id.text_creditAmount);
+            this.credit_debit = (TextView) itemView.findViewById(R.id.text_cr_dr_);
+
         }
     }
 

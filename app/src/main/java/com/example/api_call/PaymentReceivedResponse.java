@@ -8,16 +8,16 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class PaymentReceivedResponse {
-    @SerializedName("data")
+    @SerializedName("dataN")
     @Expose
     private Object data;
     @SerializedName("errorCode")
     @Expose
     private String errorCode;
-    @SerializedName("networkBalanceReceivedReport")
+    @SerializedName("data")
     @Expose
     private List<NetworkBalanceReceivedReport> networkBalanceReceivedReport;
-    @SerializedName("remarks")
+    @SerializedName("message")
     @Expose
     private String remarks;
     @SerializedName("responseStatus")
