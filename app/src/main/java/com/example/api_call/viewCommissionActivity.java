@@ -40,15 +40,16 @@ public class viewCommissionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_commission);
-        this.layout_commission = (RelativeLayout) findViewById(R.id.layout_commission);
 
-//        ImageView image_cancel = findViewById(R.id.image_cancel);
+        // Initialize views
+        this.layout_commission = findViewById(R.id.layout_commission);
         view_commissionlist = findViewById(R.id.view_commissions);
-//        EditText search_operator = findViewById(R.id.search_operator);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.view_commissions);
-        this.view_commissionlist = recyclerView;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        setupRecyclerView();
+
+        // Set up RecyclerView
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        view_commissionlist.setLayoutManager(layoutManager);
+
+        // Call the method to get and display commission data
         getCommissionMarginList(view_commissionlist);
 //        this.layout_commission.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.CommissionActivity.1
 //            @Override // android.view.View.OnClickListener
@@ -115,10 +116,10 @@ public class viewCommissionActivity extends AppCompatActivity {
 
     }
 
-    private void setupRecyclerView() {
-        view_commissionlist = findViewById(R.id.view_commissions);
-        view_commissionlist.setLayoutManager(new LinearLayoutManager(this));
-    }
+//    private void setupRecyclerView() {
+//        view_commissionlist = findViewById(R.id.view_commissions);
+//        view_commissionlist.setLayoutManager(new LinearLayoutManager(this));
+//    }
 
     private void getCommissionMarginList( final RecyclerView view_commissionlist ) {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
@@ -145,14 +146,16 @@ public class viewCommissionActivity extends AppCompatActivity {
                         if (!response.body().getCommissionData().isEmpty()){
                             viewCommissionActivity.this.view_commissionlist.setVisibility(View.VISIBLE);
                             viewCommissionActivity.this.list_margin = response.body().getCommissionData();
-                            viewCommissionActivity viewCommissionActivity = viewCommissionActivity.this;
-                            viewCommissionActivity viewCommissionActivity2 = viewCommissionActivity.this;
-                            viewCommissionActivity.viewCommissionAdapter = new ViewCommissionAdapter(viewCommissionActivity2, viewCommissionActivity2.list_margin);
+                            viewCommissionActivity.this.viewCommissionAdapter = new ViewCommissionAdapter(
+                                    viewCommissionActivity.this,
+                                    viewCommissionActivity.this.list_margin
+                            );
                             viewCommissionActivity.this.view_commissionlist.setAdapter(viewCommissionActivity.this.viewCommissionAdapter);
+//                            viewCommissionActivity.this.view_commissionlist.setAdapter(viewCommissionActivity.this.viewCommissionAdapter);
 
+                        }else{
+                            viewCommissionActivity.this.view_commissionlist.setVisibility(View.INVISIBLE);
                         }
-                        viewCommissionActivity.this.view_commissionlist.setVisibility(View.INVISIBLE);
-
                     }
                 } catch (Exception e) {
 

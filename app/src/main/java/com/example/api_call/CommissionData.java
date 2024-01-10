@@ -16,7 +16,7 @@ public class CommissionData {
     @SerializedName("isFixed")
     @Expose
     private String isfixed;
-    @SerializedName("isapplicable")
+    @SerializedName("isApplicable")
     @Expose
     private String isapplicable;
     @SerializedName("serviceCharge")

@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Commision {
 
-    @SerializedName("dataN")
-    @Expose
-    private Object data;
+//    @SerializedName("dataN")
+//    @Expose
+//    private Object data;
     @SerializedName("errorCode")
     @Expose
     private String errorCode;
@@ -29,7 +29,7 @@ public class Commision {
     private String status;
 
     public Commision(Object data, String errorCode, List<com.example.api_call.CommissionData> commissionData, String remarks, Integer responseStatus, String status) {
-        this.data = data;
+        //this.data = data;
         this.errorCode = errorCode;
         CommissionData = commissionData;
         this.remarks = remarks;
@@ -37,13 +37,13 @@ public class Commision {
         this.status = status;
     }
 
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
+//    public Object getData() {
+//        return data;
+//    }
+//
+//    public void setData(Object data) {
+//        this.data = data;
+//    }
 
     public String getErrorCode() {
         return errorCode;
