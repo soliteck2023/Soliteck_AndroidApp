@@ -45,8 +45,6 @@ public interface ApiInterface {
     Call<PaymentRequestHistoryResponse> GetPaymentRequestHistory(@Body HashMap<String, String> hashMap);
 
 
-
-
     @POST("Recharge/GetMobileOperatorName")
     Call<FetchOperator> getMobileOPT(@Body HashMap<String, String> hashMap);
 
@@ -89,6 +87,20 @@ public interface ApiInterface {
 //    @POST("Payment/GetNetworkPaymentReceivedReport")
     @POST("MOBNetBalReceived")
     Call<PaymentReceivedResponse> GetPaymentReceived(@Body HashMap<String, String> hashMap);
+
+
+    @POST("MOBPendingTxnReport")
+    Call<PaymentReceivedResponse> Getpendingreport(@Body HashMap<String, String> hashMap);
+
+
+    @POST("MOBLedgerReport")     //Transaction/LedgerReport
+    Call<LedgerReportBase> GetLedgerReportnew(@Body HashMap<String, String> hashMap);
+
+    @POST("MOBViewTransaction")     //Transaction/LedgerReport
+    Call<viewPaymentResponse> GetReceiptReport(@Body HashMap<String, String> hashMap);
+
+    @POST("MOBComissionReport")
+    Call<Commision> getCommissionMargin2(@Body HashMap<String, String> hashMap);
 
     @POST("Transaction/LatestTransationReport")
     Call<GetLatestReportBase> getLatestReport(@Body HashMap<String, String> hashMap);

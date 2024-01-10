@@ -9,10 +9,10 @@ public class RequestPaymentResponse {
     @SerializedName("data")
     @Expose
     private Object data;
-    @SerializedName("errorCode")
+    @SerializedName("errorCodeN")
     @Expose
     private String errorCode;
-    @SerializedName("remarks")
+    @SerializedName("remarksN")
     @Expose
     private String remarks;
     @SerializedName("responseStatus")

@@ -85,6 +85,7 @@ public class layout_banklist extends AppCompatActivity implements BankListAdapte
         this.bankListAdapter.setNewList(listnew_Banks);
     }
 
+
     @Override
     public void selectbank(String str, String str2) {
 

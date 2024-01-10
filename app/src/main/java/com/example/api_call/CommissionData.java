@@ -4,81 +4,140 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class CommissionData {
-    @SerializedName("CommPer")
+    @SerializedName("fName")
     @Expose
-    private String commPer;
-    @SerializedName("CommVal")
+    private String fName;
+    @SerializedName("uniqueCode")
     @Expose
-    private String commVal;
-    @SerializedName("ImageUrl")
+    private String uniquecode;
+    @SerializedName("commission")
     @Expose
-    private String imageUrl;
-    @SerializedName("OperatorName")
+    private String commission;
+    @SerializedName("isFixed")
     @Expose
-    private String operatorName;
-    @SerializedName("ServiceChargePer")
+    private String isfixed;
+    @SerializedName("isApplicable")
     @Expose
-    private String serviceChargePer;
-    @SerializedName("ServiceChargeVal")
+    private String isapplicable;
+    @SerializedName("serviceCharge")
     @Expose
-    private String serviceChargeVal;
-    @SerializedName("ServiceName")
+    private String servicecharge;
+    @SerializedName("isServiceFixed")
     @Expose
-    private String serviceName;
+    private String isservicefixed;
 
-    public String getServiceName() {
-        return this.serviceName;
+    @SerializedName("isServiceApplicable")
+    @Expose
+    private String isserviceapplicable;
+    @SerializedName("product")
+    @Expose
+    private String product;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("operator")
+    @Expose
+    private String operator;
+
+    public CommissionData(String fName, String uniquecode, String commission, String isfixed, String isapplicable, String servicecharge, String isservicefixed, String isserviceapplicable, String product, String description, String operator) {
+        this.fName = fName;
+        this.uniquecode = uniquecode;
+        this.commission = commission;
+        this.isfixed = isfixed;
+        this.isapplicable = isapplicable;
+        this.servicecharge = servicecharge;
+        this.isservicefixed = isservicefixed;
+        this.isserviceapplicable = isserviceapplicable;
+        this.product = product;
+        this.description = description;
+        this.operator = operator;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public String getfName() {
+        return fName;
     }
 
-    public String getOperatorName() {
-        return this.operatorName;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    public void setOperatorName(String operatorName) {
-        this.operatorName = operatorName;
+    public String getUniquecode() {
+        return uniquecode;
     }
 
-    public String getCommPer() {
-        return this.commPer;
+    public void setUniquecode(String uniquecode) {
+        this.uniquecode = uniquecode;
     }
 
-    public void setCommPer(String commPer) {
-        this.commPer = commPer;
+    public String getCommission() {
+        return commission;
     }
 
-    public String getCommVal() {
-        return this.commVal;
+    public void setCommission(String commission) {
+        this.commission = commission;
     }
 
-    public void setCommVal(String commVal) {
-        this.commVal = commVal;
+    public String getIsfixed() {
+        return isfixed;
     }
 
-    public String getServiceChargePer() {
-        return this.serviceChargePer;
+    public void setIsfixed(String isfixed) {
+        this.isfixed = isfixed;
     }
 
-    public void setServiceChargePer(String serviceChargePer) {
-        this.serviceChargePer = serviceChargePer;
+    public String getIsapplicable() {
+        return isapplicable;
     }
 
-    public String getServiceChargeVal() {
-        return this.serviceChargeVal;
+    public void setIsapplicable(String isapplicable) {
+        this.isapplicable = isapplicable;
     }
 
-    public void setServiceChargeVal(String serviceChargeVal) {
-        this.serviceChargeVal = serviceChargeVal;
+    public String getServicecharge() {
+        return servicecharge;
     }
 
-    public String getImageUrl() {
-        return this.imageUrl;
+    public void setServicecharge(String servicecharge) {
+        this.servicecharge = servicecharge;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public String getIsservicefixed() {
+        return isservicefixed;
+    }
+
+    public void setIsservicefixed(String isservicefixed) {
+        this.isservicefixed = isservicefixed;
+    }
+
+    public String getIsserviceapplicable() {
+        return isserviceapplicable;
+    }
+
+    public void setIsserviceapplicable(String isserviceapplicable) {
+        this.isserviceapplicable = isserviceapplicable;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 }

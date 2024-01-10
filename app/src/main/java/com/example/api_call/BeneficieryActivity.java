@@ -161,62 +161,64 @@ public class BeneficieryActivity extends AppCompatActivity implements Beneficiar
             }
         });
 
-        this.edit_bank.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(BeneficieryActivity.this,layout_banklist.class);
-//                intent.putExtra("NUMBER", BeneficieryActivity.this.edit_mobile.getText().toString());
-//                intent.putExtra("CALL", "MOBILE");
-                BeneficieryActivity.this.startActivityForResult(intent, 1);
-
-            }
-        });
-//        this.edit_bank.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4
-//            @Override // android.view.View.OnClickListener
+//        this.edit_bank.setOnClickListener(new View.OnClickListener() {
+//            @Override
 //            public void onClick(View v) {
-//                View view = BeneficieryActivity.this.getLayoutInflater().inflate(R.layout.layout_banklist, (ViewGroup) null);
-//                AlertDialog.Builder builder = new AlertDialog.Builder(BeneficieryActivity.this);
-//                BeneficieryActivity.this.alertDialog = builder.create();
-//                BeneficieryActivity.this.alertDialog.setView(view);
-//                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4.1
-//                    @Override // android.content.DialogInterface.OnClickListener
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        BeneficieryActivity.this.alertDialog.dismiss();
-//                    }
-//                });
-//                BeneficieryActivity.this.view_bank_list = (RecyclerView) view.findViewById(R.id.view_bank_list);
-//                ImageView image_delete = (ImageView) view.findViewById(R.id.image_delete);
-//                EditText edit_searchbank = (EditText) view.findViewById(R.id.edit_searchbank);
-//                edit_searchbank.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4.2
-//                    @Override // android.text.TextWatcher
-//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                    }
 //
-//                    @Override // android.text.TextWatcher
-//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                        BeneficieryActivity.this.filter(s.toString());
-//                    }
+//                Intent intent = new Intent(BeneficieryActivity.this,layout_banklist.class);
+//                intent.putExtra("NUMBER", BeneficieryActivity.this.edit_mobile.getText().toString());
+//               intent.putExtra("CALL", "MOBILE");
+//                BeneficieryActivity.this.startActivityForResult(intent, 1);
 //
-//                    @Override // android.text.TextWatcher
-//                    public void afterTextChanged(Editable s) {
-//                    }
-//                });
-//                image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4.3
-//                    @Override // android.view.View.OnClickListener
-//                    public void onClick(View v2) {
-//                        BeneficieryActivity.this.alertDialog.dismiss();
-//                    }
-//                });
-//                BeneficieryActivity beneficieryActivity = BeneficieryActivity.this;
-//                BeneficieryActivity beneficieryActivity2 = BeneficieryActivity.this;
-//                beneficieryActivity.bankListAdapter = new BankListAdapter(beneficieryActivity2, beneficieryActivity2.listBanks);
-//                BeneficieryActivity.this.view_bank_list.setLayoutManager(new LinearLayoutManager(BeneficieryActivity.this));
-//                BeneficieryActivity.this.view_bank_list.setAdapter(BeneficieryActivity.this.bankListAdapter);
-//                BeneficieryActivity.this.bankListAdapter.setBankListener((BankListAdapter.SelectBankFromList) BeneficieryActivity.this);
-//                BeneficieryActivity.this.alertDialog.show();
 //            }
 //        });
+        this.edit_bank.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                View view = BeneficieryActivity.this.getLayoutInflater().inflate(R.layout.layout_banklist, (ViewGroup) null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(BeneficieryActivity.this);
+                BeneficieryActivity.this.alertDialog = builder.create();
+                BeneficieryActivity.this.alertDialog.setView(view);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4.1
+                    @Override // android.content.DialogInterface.OnClickListener
+                    public void onClick(DialogInterface dialog, int which) {
+                        BeneficieryActivity.this.alertDialog.dismiss();
+                    }
+                });
+                BeneficieryActivity.this.view_bank_list = (RecyclerView) view.findViewById(R.id.view_bank_list);
+                ImageView image_delete = (ImageView) view.findViewById(R.id.image_delete);
+                EditText edit_searchbank = (EditText) view.findViewById(R.id.edit_searchbank);
+                edit_searchbank.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4.2
+                    @Override // android.text.TextWatcher
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override // android.text.TextWatcher
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        BeneficieryActivity.this.filter(s.toString());
+                    }
+
+                    @Override // android.text.TextWatcher
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+                image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4.3
+                    @Override // android.view.View.OnClickListener
+                    public void onClick(View v2) {
+                        BeneficieryActivity.this.alertDialog.dismiss();
+
+                    }
+                });
+
+                BeneficieryActivity beneficieryActivity = BeneficieryActivity.this;
+                BeneficieryActivity beneficieryActivity2 = BeneficieryActivity.this;
+                beneficieryActivity.bankListAdapter = new BankListAdapter(beneficieryActivity2, beneficieryActivity2.listBanks);
+                BeneficieryActivity.this.view_bank_list.setLayoutManager(new LinearLayoutManager(BeneficieryActivity.this));
+                BeneficieryActivity.this.view_bank_list.setAdapter(BeneficieryActivity.this.bankListAdapter);
+//                BeneficieryActivity.this.bankListAdapter.setBankListener((BankListAdapter.SelectBankFromList) BeneficieryActivity.this);
+                BeneficieryActivity.this.alertDialog.show();
+            }
+        });
         this.image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.5
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {

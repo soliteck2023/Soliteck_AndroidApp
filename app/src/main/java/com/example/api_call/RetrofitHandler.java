@@ -18,7 +18,7 @@ public class RetrofitHandler {
 
         Retrofit retrofit = new Retrofit.Builder()
 //                .baseUrl("http://royalblueapi.soliteck.com/api/")
-                .baseUrl("http://api.soliteck.com/api/")
+                .baseUrl("http://testapi.soliteck.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
@@ -40,7 +40,8 @@ public class RetrofitHandler {
 
         Retrofit retrofit2 = new Retrofit.Builder()
 //                .baseUrl("http://royalblueapi.soliteck.com/api/")
-                .baseUrl("http://192.168.1.3:13196/")
+//                .baseUrl("http://192.168.1.3:13196/")
+                .baseUrl("http://192.168.1.31:13196/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();

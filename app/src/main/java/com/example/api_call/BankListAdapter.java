@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.MyViewHolder>{
+
     private SelectBankFromList bankListener;
     private Context context;
     private List<MBankListResponse> listBanks;
@@ -26,6 +27,7 @@ public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.MyView
         this.context = context;
         this.listBanks = listBanks;
     }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -66,7 +68,6 @@ public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.MyView
         private TextView text_bank;
         private TextView text_ifsc;
 
-        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         public MyViewHolder(View itemView) {
             super(itemView);
 //            BankListAdapter.this = this$0;
