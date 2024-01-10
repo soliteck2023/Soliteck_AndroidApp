@@ -7,18 +7,17 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Commision {
-
-//    @SerializedName("dataN")
-//    @Expose
-//    private Object data;
+public class newBankListbaseResponse {
+    @SerializedName("data")
+    @Expose
+    private List<BankListResponse> companyBankList;
+    @SerializedName("dataN")
+    @Expose
+    private Object data;
     @SerializedName("errorCode")
     @Expose
     private String errorCode;
-    @SerializedName("data")
-    @Expose
-    private List<CommissionData> CommissionData;
-    @SerializedName("message")
+    @SerializedName("remarks")
     @Expose
     private String remarks;
     @SerializedName("responseStatus")
@@ -28,22 +27,30 @@ public class Commision {
     @Expose
     private String status;
 
-    public Commision(Object data, String errorCode, List<com.example.api_call.CommissionData> commissionData, String remarks, Integer responseStatus, String status) {
-        //this.data = data;
+    public newBankListbaseResponse(List<BankListResponse> companyBankList, Object data, String errorCode, String remarks, Integer responseStatus, String status) {
+        this.companyBankList = companyBankList;
+        this.data = data;
         this.errorCode = errorCode;
-        CommissionData = commissionData;
         this.remarks = remarks;
         this.responseStatus = responseStatus;
         this.status = status;
     }
 
-//    public Object getData() {
-//        return data;
-//    }
-//
-//    public void setData(Object data) {
-//        this.data = data;
-//    }
+    public List<BankListResponse> getCompanyBankList() {
+        return companyBankList;
+    }
+
+    public void setCompanyBankList(List<BankListResponse> companyBankList) {
+        this.companyBankList = companyBankList;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
 
     public String getErrorCode() {
         return errorCode;
@@ -51,14 +58,6 @@ public class Commision {
 
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
-    }
-
-    public List<com.example.api_call.CommissionData> getCommissionData() {
-        return CommissionData;
-    }
-
-    public void setCommissionData(List<com.example.api_call.CommissionData> commissionData) {
-        CommissionData = commissionData;
     }
 
     public String getRemarks() {

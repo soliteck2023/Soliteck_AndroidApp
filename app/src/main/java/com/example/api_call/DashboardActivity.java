@@ -93,6 +93,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private LinearLayout NetworkPay_transcation_rpt;
     private LinearLayout commisstion_transcation_rpt;
 
+    private LinearLayout Cashout_ledger_transaction;
+
 //    PDFView pdf_view;
     private ProgressDialog progressDialog;
     private TextView text_mobile;
@@ -204,42 +206,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
-
-//        mainbalance.setOnClickListener(view -> {
-//           isBalanceVisible[0] = !isBalanceVisible[0];
-//
-//           int imageResource = isBalanceVisible[0] ?
-//                   R.drawable.star : R.drawable.star;
-//           mainbalance.setImageResource(imageResource);
-//            textbalance = findViewById(R.id.textbalance);
-//
-//           if (isBalanceVisible.equals(0)){
-//               getUserBalance(textbalance,textaepsBalance);
-//               mainbalance.setVisibility(View.VISIBLE);
-//               textbalance.setVisibility(View.GONE);
-//           }else {
-//               getUserBalance(textbalance,textaepsBalance);
-//               textbalance.setVisibility(View.VISIBLE);
-//               mainbalance.setVisibility(View.GONE);
-//           }
-//       });
-
-
-//        textbalance.setOnClickListener(view -> {
-//            isBalanceVisible[0] = !isBalanceVisible[0];
-//            if (isBalanceVisible.equals(0)){
-//                mainbalance.setVisibility(View.GONE);
-//                textbalance.setVisibility(View.VISIBLE);
-//            }else {
-//
-//                textbalance.setVisibility(View.GONE);
-//                mainbalance.setVisibility(View.VISIBLE);
-//            }
-//
-//        });
-
-
-
         continuetext = findViewById(R.id.text_news);
 
         Animation animation = new TranslateAnimation(0, -300, 0, 0);
@@ -316,7 +282,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         this.linear_Ledger = (LinearLayout) findViewById(R.id.linear_latetledger);
         this.linear_earning = (LinearLayout) findViewById(R.id.linear_earn);
 
-        LinearLayout Cashout_transaction =(LinearLayout)findViewById(R.id.linear_cashout_txn);
+        LinearLayout linear_cashout_txn_report =(LinearLayout)findViewById(R.id.linear_cashout_txn);
         LinearLayout Cashout_ledger_transaction =(LinearLayout)findViewById(R.id.linear_cashoutledger_txn);
 //        LinearLayout Network_pay_historyrpt =(LinearLayout)findViewById(R.id.network_pay);
         LinearLayout commisstion_rpt =(LinearLayout)findViewById(R.id.linear_commisstion);
@@ -446,13 +412,21 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
         });
 
-//        linear_cashout_txn_report.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, Ledger_cashouttxn_ReportActivity.class));
-//
-//            }
-//        });
+        linear_cashout_txn_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, Ledger_cashouttxn_ReportActivity.class));
+
+            }
+        });
+
+        Cashout_ledger_transaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, Ledger_cashoutLedger_ReportActivity.class));
+
+            }
+        });
 
         commisstion_rpt.setOnClickListener(new View.OnClickListener() {
             @Override

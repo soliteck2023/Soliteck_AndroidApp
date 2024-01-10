@@ -7,17 +7,16 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Commision {
-
-//    @SerializedName("dataN")
-//    @Expose
-//    private Object data;
+public class cashoutbaseResponse {
+    @SerializedName("dataN")
+    @Expose
+    private Object data;
     @SerializedName("errorCode")
     @Expose
     private String errorCode;
     @SerializedName("data")
     @Expose
-    private List<CommissionData> CommissionData;
+    private List<cashoutledgerTransactionReport> cashoutledgerTransactionReports;
     @SerializedName("message")
     @Expose
     private String remarks;
@@ -28,22 +27,22 @@ public class Commision {
     @Expose
     private String status;
 
-    public Commision(Object data, String errorCode, List<com.example.api_call.CommissionData> commissionData, String remarks, Integer responseStatus, String status) {
-        //this.data = data;
+    public cashoutbaseResponse(Object data, String errorCode, List<cashoutledgerTransactionReport> cashoutledgerTransactionReports, String remarks, Integer responseStatus, String status) {
+        this.data = data;
         this.errorCode = errorCode;
-        CommissionData = commissionData;
+        this.cashoutledgerTransactionReports = cashoutledgerTransactionReports;
         this.remarks = remarks;
         this.responseStatus = responseStatus;
         this.status = status;
     }
 
-//    public Object getData() {
-//        return data;
-//    }
-//
-//    public void setData(Object data) {
-//        this.data = data;
-//    }
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
 
     public String getErrorCode() {
         return errorCode;
@@ -53,12 +52,12 @@ public class Commision {
         this.errorCode = errorCode;
     }
 
-    public List<com.example.api_call.CommissionData> getCommissionData() {
-        return CommissionData;
+    public List<cashoutledgerTransactionReport> getCashoutledgerTransactionReports() {
+        return cashoutledgerTransactionReports;
     }
 
-    public void setCommissionData(List<com.example.api_call.CommissionData> commissionData) {
-        CommissionData = commissionData;
+    public void setCashoutledgerTransactionReports(List<cashoutledgerTransactionReport> cashoutledgerTransactionReports) {
+        this.cashoutledgerTransactionReports = cashoutledgerTransactionReports;
     }
 
     public String getRemarks() {

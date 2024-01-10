@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
     private Context context;
     List<TransactionReport> listSatetments;
     private ItemClickListener itemClickListener;
+    private FragmentManager fragmentManager;
 
     public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments) {
         this.context = context;
@@ -81,13 +83,20 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
             holder.text_status_.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
         }
 
-        holder.View.setOnClickListener(new View.OnClickListener() {
+        holder.Raise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Context context = v.getContext();
+                Intent intent = new Intent(context, raisecompliant.class);
+                intent.putExtra("transactionId","earnData.getTransactionNumber()");
+                context.startActivity(intent);
+
+
 //                pendingreceipt_view();
-//                TransactionsReportActivity activity = (TransactionsReportActivity) context;
-//                FragmentTransaction transaction =activity.getSupportFragmentManager().beginTransaction();
-//                Fragment fragment = new layout_view_receipt();
+//                FragmentTransaction transaction = new FragmentTransaction() {
+//                }
+//                Fragment fragment = new fragment_raisecomplianthelp();
 //                Bundle bundle = new Bundle();
 //                bundle.putString("id",earnData.getTransactionNumber().toString());
 //                fragment.setArguments(bundle);
@@ -101,9 +110,10 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
 //                Fragment fragment = new layout_view_receipt();
 //                transaction.add(R.id.frame,fragment);
 
+
             }
         });
-        holder.Raise.setOnClickListener(new View.OnClickListener() {
+        holder.View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
@@ -116,6 +126,8 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         });
 
     }
+
+
 
 //    private void pendingreceipt_view() {
 //        HashMap<String, String> body = new HashMap<>();

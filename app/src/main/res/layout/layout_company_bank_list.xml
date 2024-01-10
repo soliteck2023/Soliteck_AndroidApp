@@ -3,8 +3,44 @@
     <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/padding_5" app:cardCornerRadius="@dimen/padding_5" app:cardElevation="3dp">
         <LinearLayout android:orientation="vertical" android:padding="@dimen/dp_size_10" android:layout_width="match_parent" android:layout_height="match_parent">
             <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/TextBankName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
-            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/TextAccNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_5" android:text=""/>
-            <TextView android:textSize="14sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/TextBranchName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_5" android:text=""/>
+            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/TextAccNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_5" android:text=""/>
+            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/TextBranchName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/padding_5" android:text=""/>
+            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/ifsc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/id" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+
+            <View android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="1.2dp" android:layout_margin="15dp"/>
+            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/iservicetext" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_gravity="center" android:text="Services"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout android:visibility="gone" android:id="@+id/text_IMPS" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" >
+                    <TextView android:id="@+id/type_imps" android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary"  android:layout_width="100dp" android:layout_height="wrap_content"  android:text="" />
+                    <TextView android:id="@+id/type_impscharges" android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_width="100dp" android:layout_height="match_parent" android:text="" />
+                </LinearLayout>
+
+                <LinearLayout android:visibility="gone" android:id="@+id/text_UPI" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" >
+                    <TextView android:id="@+id/serviceName" android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary"  android:layout_width="100dp" android:layout_height="wrap_content"  android:text="" />
+                    <TextView android:id="@+id/charges" android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_width="100dp" android:layout_height="match_parent" android:text="" />
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+<!--            <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/id" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>-->
+<!--            <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/serviceId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>-->
+<!--            <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/serviceName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>-->
+<!--            <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/charges" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>-->
+
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

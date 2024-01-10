@@ -284,55 +284,105 @@ public class MainActivity extends AppCompatActivity {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
-        ApiInterface apiInterface = RetrofitHandler.getService();
-        Call<OtpSentResponse> call = apiInterface.forgotPasswordMethod("ForgotPassword?username=" + mobile);
-        call.enqueue(new Callback<OtpSentResponse>() { // from class: com.uvapay.activities.LoginActivity.11
-            @Override // retrofit2.Callback
-            public void onResponse(Call<OtpSentResponse> call2, Response<OtpSentResponse> response) {
-                if (response.body() != null) {
-                    if (response.body().getStatusCode().toString().equals("0")) {
-                        if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
-                            MainActivity.this.progressDialog.dismiss();
-                        }
-                        ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
-                        return;
-                    } else if (response.body().getStatusCode().toString().equals(ConstantClass.MOBILESERVICEID)) {
-                        if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
-                            MainActivity.this.progressDialog.dismiss();
-                        }
-                        ConstantClass.displayToastMessage(MainActivity.this, response.body().getMessage());
-                        PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.UserName, mobile);
-                        Intent intent = new Intent(MainActivity.this, OtpVerificationActivity.class);
-                        intent.putExtra("control", "forgot_password");
-                        MainActivity.this.startActivity(intent);
-                        return;
-                    } else {
-                        if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
-                            MainActivity.this.progressDialog.dismiss();
-                        }
-                        ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
-                        return;
-                    }
-                }
-                if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
-                    MainActivity.this.progressDialog.dismiss();
-                }
-                try {
-                    ConstantClass.displayMessageDialog(MainActivity.this, "Response", response.errorBody().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        HashMap<String, String> body = new HashMap<>();
+        body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
+        body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+        ApiInterface apiInterface = RetrofitHandler.getService2();
+        Call<OtpSentResponse> call = apiInterface.newforgotPassword("/MOBForgotPassword?username=\" + mobile");
 
-            @Override // retrofit2.Callback
-            public void onFailure(Call<OtpSentResponse> call2, Throwable t) {
-                if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
-                    MainActivity.this.progressDialog.dismiss();
-                }
-                MainActivity loginActivity = MainActivity.this;
-                ConstantClass.displayMessageDialog(loginActivity, loginActivity.getString(R.string.server_problem), t.getMessage().toString());
-            }
-        });
+//        Call<OtpSentResponse> call = apiInterface.forgotPasswordMethod("ForgotPassword?username=" + mobile);
+
+       call.enqueue(new Callback<OtpSentResponse>() {
+           @Override
+           public void onResponse(Call<OtpSentResponse> call, Response<OtpSentResponse> response) {
+               if (response.body() != null) {
+                   if (response.body().getStatusCode().toString().equals("0")) {
+                       if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+                           MainActivity.this.progressDialog.dismiss();
+                       }
+                       ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
+                       return;
+                   } else if (response.body().getStatusCode().toString().equals(ConstantClass.MOBILESERVICEID)) {
+                       if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+                           MainActivity.this.progressDialog.dismiss();
+                       }
+                       ConstantClass.displayToastMessage(MainActivity.this, response.body().getMessage());
+                       PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.UserName,mobile);
+                       Intent intent = new Intent(MainActivity.this, OtpVerificationActivity.class);
+                       intent.putExtra("control", "forgot_password");
+                       MainActivity.this.startActivity(intent);
+                       return;
+                   } else {
+                       if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+                           MainActivity.this.progressDialog.dismiss();
+                       }
+                       ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
+                       return;
+                   }
+               }
+               if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+                   MainActivity.this.progressDialog.dismiss();
+               }
+               try {
+                   ConstantClass.displayMessageDialog(MainActivity.this, "Response", response.errorBody().string());
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+
+           @Override
+           public void onFailure(Call<OtpSentResponse> call, Throwable t) {
+
+           }
+       });
+
+//        call.enqueue(new Callback<OtpSentResponse>() { // from class: com.uvapay.activities.LoginActivity.11
+//            @Override // retrofit2.Callback
+//            public void onResponse(Call<OtpSentResponse> call2, Response<OtpSentResponse> response) {
+//                if (response.body() != null) {
+//                    if (response.body().getStatusCode().toString().equals("0")) {
+//                        if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+//                            MainActivity.this.progressDialog.dismiss();
+//                        }
+//                        ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
+//                        return;
+//                    } else if (response.body().getStatusCode().toString().equals(ConstantClass.MOBILESERVICEID)) {
+//                        if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+//                            MainActivity.this.progressDialog.dismiss();
+//                        }
+//                        ConstantClass.displayToastMessage(MainActivity.this, response.body().getMessage());
+//                        PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.UserName, mobile);
+//                        Intent intent = new Intent(MainActivity.this, OtpVerificationActivity.class);
+//                        intent.putExtra("control", "forgot_password");
+//                        MainActivity.this.startActivity(intent);
+//                        return;
+//                    } else {
+//                        if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+//                            MainActivity.this.progressDialog.dismiss();
+//                        }
+//                        ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
+//                        return;
+//                    }
+//                }
+//                if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+//                    MainActivity.this.progressDialog.dismiss();
+//                }
+//                try {
+//                    ConstantClass.displayMessageDialog(MainActivity.this, "Response", response.errorBody().string());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override // retrofit2.Callback
+//            public void onFailure(Call<OtpSentResponse> call2, Throwable t) {
+//                if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+//                    MainActivity.this.progressDialog.dismiss();
+//                }
+//                MainActivity loginActivity = MainActivity.this;
+//                ConstantClass.displayMessageDialog(loginActivity, loginActivity.getString(R.string.server_problem), t.getMessage().toString());
+//            }
+//        });
 
     }
 
