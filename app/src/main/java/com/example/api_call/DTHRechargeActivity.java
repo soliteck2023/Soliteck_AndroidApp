@@ -63,28 +63,28 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-//        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.1
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-////                DTHRechargeActivity.this.startActivity(new Intent(DTHRechargeActivity.this, DthechargeInfoActivity.class));
-//                if (DTHRechargeActivity.this.edit_dth_operator.getText().toString().trim().isEmpty()) {
-//                    DTHRechargeActivity.this.edit_dth_operator.setError("Select operator");
-//                    DTHRechargeActivity.this.edit_dth_operator.requestFocus();
-//                }else {
-//                    {
-//                        DTHRechargeActivity.this.edit_dth_operator.setError(null);
-//                        Intent intent = new Intent(DTHRechargeActivity.this, DthechargeInfoActivity.class);
-//                        intent.putExtra("MOBILE", DTHRechargeActivity.this.edit_consumer_id.getText().toString());
-//                        intent.putExtra("OPERATOR", DTHRechargeActivity.this.edit_dth_operator.getText().toString());
-//                        intent.putExtra("AMT", DTHRechargeActivity.this.edit_dth_amount.getText().toString());
-//                        intent.putExtra("CALL", "DTH");
-//                        DTHRechargeActivity.this.startActivity(intent);
-//                    }
-//                }
-//
-//
-//            }
-//        });
+        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.1
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+              DTHRechargeActivity.this.startActivity(new Intent(DTHRechargeActivity.this, DthechargeInfoActivity.class));
+                if (DTHRechargeActivity.this.edit_dth_operator.getText().toString().trim().isEmpty()) {
+                    DTHRechargeActivity.this.edit_dth_operator.setError("Select operator");
+                    DTHRechargeActivity.this.edit_dth_operator.requestFocus();
+                }else {
+                    {
+                        DTHRechargeActivity.this.edit_dth_operator.setError(null);
+                        Intent intent = new Intent(DTHRechargeActivity.this, DthechargeInfoActivity.class);
+                        intent.putExtra("MOBILE", DTHRechargeActivity.this.edit_consumer_id.getText().toString());
+                        intent.putExtra("OPERATOR", DTHRechargeActivity.this.edit_dth_operator.getText().toString());
+                        intent.putExtra("AMT", DTHRechargeActivity.this.edit_dth_amount.getText().toString());
+                        intent.putExtra("CALL", "DTH");
+                        DTHRechargeActivity.this.startActivity(intent);
+                    }
+                }
+
+
+            }
+        });
         this.btn_mobile_Recharge.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.2
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
@@ -141,7 +141,7 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
                 intent.putExtra("NUMBER", DTHRechargeActivity.this.edit_consumer_id.getText().toString());
                 intent.putExtra("AMT", DTHRechargeActivity.this.edit_dth_amount.getText().toString());
                 intent.putExtra("CALL", "DTH");
-                DTHRechargeActivity.this.startActivityForResult(intent, 1);
+                DTHRechargeActivity.this.startActivityForResult(intent, 2);
             }
         });
     }

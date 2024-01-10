@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginRight="15dp" android:layout_marginBottom="15dp" app:cardCornerRadius="5dp" app:cardElevation="3dp">
+        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_transid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trxnid"/>
+                <TextView android:textStyle="normal" android:textColor="@color/medium_grey_color" android:gravity="right" android:id="@+id/text_requestdate_" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="29 Jan 2019, 22 pm"/>
+            </LinearLayout>
+            <TextView android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_username_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="UserName" android:layout_alignParentLeft="true"/>
+            <View android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="1.2dp" android:layout_margin="15dp"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_status_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Pending"/>
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_bank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:hint="DepositBank" android:layout_below="@+id/text_status_"/>
+                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_paymode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_5dp" android:hint="PaymentMode" android:layout_below="@+id/text_bank"/>
+                <TextView android:textSize="19sp" android:textStyle="bold" android:textColor="@color/dark_green" android:gravity="right" android:id="@+id/text_amount_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Amount" android:layout_alignParentRight="true"/>
+                <TextView android:textSize="15sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_commission_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView android:textColor="@color/medium_grey_color" android:id="@+id/text_refNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:hint="RefNo" android:layout_alignParentLeft="true"/>
+            <TextView android:textColor="@color/medium_grey_color" android:id="@+id/text_remark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:hint="Remark" android:layout_alignParentLeft="true"/>
+            <LinearLayout android:orientation="horizontal" android:id="@+id/linear_status" android:visibility="gone" android:layout_width="match_parent" android:layout_height="35dp" android:layout_marginTop="10dp" android:weightSum="2">
+                <LinearLayout android:gravity="center" android:id="@+id/btn_reject" android:background="@color/colorAccent" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                    <TextView android:textStyle="bold" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reject"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:id="@+id/btn_approve" android:background="@color/dark_green" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                    <TextView android:textStyle="bold" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Approve"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

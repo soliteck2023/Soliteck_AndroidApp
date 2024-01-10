@@ -1,5 +1,6 @@
 package com.example.api_call;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,21 +10,42 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.HashMap;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionReportAdapter.MyViewHolder> {
 
     private Context context;
     List<TransactionReport> listSatetments;
+    private ItemClickListener itemClickListener;
 
     public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments) {
         this.context = context;
         this.listSatetments = listSatetments;
     }
+
+    public TransactionReportAdapter(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
+    //    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments, ItemClickListener itemClickListener) {
+//        this.context = context;
+//        this.listSatetments = listSatetments;
+//        this.itemClickListener = itemClickListener;
+//    }
+
+    //    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments) {
+//        this.context = context;
+//        this.listSatetments = listSatetments;
+//    }
 
     @NonNull
     @Override
@@ -58,28 +80,67 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         } else {
             holder.text_status_.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
         }
+
+        holder.View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                pendingreceipt_view();
+//                TransactionsReportActivity activity = (TransactionsReportActivity) context;
+//                FragmentTransaction transaction =activity.getSupportFragmentManager().beginTransaction();
+//                Fragment fragment = new layout_view_receipt();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("id",earnData.getTransactionNumber().toString());
+//                fragment.setArguments(bundle);
+//                transaction.add(R.id.freme_soli,fragment);
+//                transaction.commit();
+
+//                itemClickListener.onItemClick(earnData.getTransactionDate());
+//                itemClickListener.onItemClick(earnData.getRefNumber());
+
+//                FragmentTransaction transaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
+//                Fragment fragment = new layout_view_receipt();
+//                transaction.add(R.id.frame,fragment);
+
+            }
+        });
         holder.Raise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                FragmentTransaction transaction = FragmentTransaction.
-//                Fragment fragment = new raisecomplianthelp();
-//                Bundle bundle = new Bundle();
-//                fragment.setArguments(bundle);
-//                transaction.add()
-//
-//                FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
-//                Fragment fragment= new restro_farmfoodfragment();
-//                Bundle bundle =new Bundle();
-//                bundle.putString("Type","Homemade");
-//                fragment.setArguments(bundle);
-//                transaction.add(R.id.frame, fragment);
-//                transaction.commit();
+                Context context = v.getContext();
+                Intent intent = new Intent(context, view_receipt_pending.class);
+                intent.putExtra("transactionId","earnData.getTransactionNumber()");
+                context.startActivity(intent);
 
 
             }
         });
 
     }
+
+//    private void pendingreceipt_view() {
+//        HashMap<String, String> body = new HashMap<>();
+//        body.put("DeviceId", PrefUtils.getFromPrefs(context.getApplicationContext(), ConstantClass.PROFILEDETAILS.DeviceId, ""));
+//        body.put("Token", PrefUtils.getFromPrefs(context.getApplicationContext(), ConstantClass.USERDETAILS.Token, ""));
+//        body.put("UserName", PrefUtils.getFromPrefs(context.getApplicationContext(), ConstantClass.PROFILEDETAILS.UserName_, ""));
+//        body.put("TransactionIds", "");
+//        ApiInterface apiservice = RetrofitHandler.getService2();
+//        Call<LedgerReportBase> result = apiservice.GetReceiptReport(body);
+//
+//        result.enqueue(new Callback<LedgerReportBase>() {
+//            @Override
+//            public void onResponse(Call<LedgerReportBase> call, Response<LedgerReportBase> response) {
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<LedgerReportBase> call, Throwable t) {
+//
+//            }
+//        });
+//
+//
+//    }
 
 
     @Override
@@ -130,6 +191,7 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
             this.text_debitAmount = (TextView) itemView.findViewById(R.id.text_debitAmount);
             this.text_effecativeBal = (TextView) itemView.findViewById(R.id.text_effecativeBal);
             this.text_creditAmount = (TextView) itemView.findViewById(R.id.text_creditAmount);
+
         }
     }
 

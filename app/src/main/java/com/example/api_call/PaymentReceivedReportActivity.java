@@ -1,5 +1,6 @@
 package com.example.api_call;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,8 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
     private EditText text_search;
     private EditText text_todate;
     private PaymentReceivedReportAdapter transactionBillAdapter;
+
+    AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +124,7 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
             @Override // retrofit2.Callback
             public void onResponse(Call<PaymentReceivedResponse> call, Response<PaymentReceivedResponse> response) {
                 ProgressDialog progressDialog2 = progressDialog;
+
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
                     progressDialog.dismiss();
                 }
@@ -139,11 +143,31 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
                         PaymentReceivedReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
                         PaymentReceivedReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
                         return;
+                    } else if (response.body().getResponseStatus().intValue()==201) {      //add from this to prajakta
+                        PaymentReceivedReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
+                        PaymentReceivedReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
+
                     }
-                    PaymentReceivedReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
-                    PaymentReceivedReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
+//                    else if (response.body().getResponseStatus().intValue()==201) {      //add from this to prajakta
+//                        PaymentReceivedReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
+//                        PaymentReceivedReportActivity.this.text_n o_content.setVisibility(View.VISIBLE);
+//                        ApplicationConstant.DisplayMessageDialog(PaymentReceivedReportActivity.this, "Error", response.body().getRemarks());
+//                        alertDialog.dismiss();
+//                    }
+//                    else {
+//                        ApplicationConstant.DisplayMessageDialog(PaymentReceivedReportActivity.this, "Error", response.body().getRemarks());
+//                        alertDialog.dismiss();
+//                        return;
+//                    }    //upto this line add prajakta
+
+//                    //add else and below 2 line add in this
+                    ApplicationConstant.DisplayMessageDialog(PaymentReceivedReportActivity.this, "Error", response.body().getRemarks());
+                      alertDialog.dismiss();
+//                    PaymentReceivedReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
+//                    PaymentReceivedReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                 }
+
             }
 
             @Override // retrofit2.Callback
