@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/simple_border" android:orientation="vertical" android:padding="@dimen/size40dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_remark"
+        android:layout_width="264dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="Please enter Amount And TPIN"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="415dp"
+        android:layout_height="183dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="69dp"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/Amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="25dp" />
+
+        <EditText
+            android:id="@+id/Tpin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Tpin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Amount" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="95dp"
+            android:layout_height="29dp"
+            android:text="SUBMIT"
+            android:background="@drawable/violet_button_background"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:padding="5sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Tpin" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    <Button android:textColor="@color/white" android:id="@+id/btn_request" android:background="@drawable/button_background" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="25dp" android:text="Next"/>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
