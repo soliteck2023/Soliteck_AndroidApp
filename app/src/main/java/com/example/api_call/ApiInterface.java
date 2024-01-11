@@ -96,6 +96,9 @@ public interface ApiInterface {
     @POST("MOBLedgerReport")     //Transaction/LedgerReport
     Call<LedgerReportBase> GetLedgerReportnew(@Body HashMap<String, String> hashMap);
 
+    @POST("MOBAEPSWalletSettelement")     //Transaction/LedgerReport
+    Call<LedgerReportBase> AEPSWalletSettelement(@Body HashMap<String, String> hashMap);
+
     @POST("MOBViewTransaction")     //Transaction/LedgerReport
     Call<viewPaymentResponse> GetReceiptReport(@Body HashMap<String, String> hashMap);
 

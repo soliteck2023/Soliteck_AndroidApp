@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -17,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -59,7 +62,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
     private TextView TextName;
-
+    private EditText amountEditText;
+    private EditText tpinEditText;
+    private Integer Tpin;
     private ImageView btn_aeps;
     private Button btn_bankDetails;
     private Button btn_bankSettlement;
@@ -148,7 +153,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     LinearLayout linermain_blance,linearcashout_balance;
 
     LinearLayout linerlayout;
-
+    AlertDialog alertDialog;
 
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -288,6 +293,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         LinearLayout commisstion_rpt =(LinearLayout)findViewById(R.id.linear_commisstion);
         menuBank = findViewById(R.id.second_linier);
         LinearLayout linear_request = (LinearLayout) findViewById(R.id.first_linear);
+        LinearLayout walletSettelement_Req = (LinearLayout) findViewById(R.id.fourth);
         this.linear_payment_received_report = (LinearLayout) findViewById(R.id.third_linear);
         this.linear_pending_txn_report = (LinearLayout) findViewById(R.id.linear_pending);
 
@@ -393,6 +399,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 DashboardActivity.this.viewPaymentRequest();
+            }
+        });
+
+        walletSettelement_Req.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                DashboardActivity.this.viewSettelmentFragment();
             }
         });
 
@@ -855,7 +868,71 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
 
+    private void viewSettelmentFragment() {
+        View view_types = getLayoutInflater().inflate(R.layout.layout_walletsettelment_fragment, (ViewGroup) null);
+        TextView mText_remark = (TextView) view_types.findViewById(R.id.text_remark);
+        final TextView text_submit = (TextView) view_types.findViewById(R.id.textView4);
+        final BottomSheetDialog dialog = new BottomSheetDialog(this);
+        dialog.setContentView(view_types);
+        dialog.show();
+        text_submit.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.38
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                DashboardActivity.this.amountEditText = view_types.findViewById(R.id.Amount);
+                DashboardActivity.this.tpinEditText = view_types.findViewById(R.id.Tpin);
+                String Amount = null;
+                String Tpin = null;
+                if (amountEditText != null && tpinEditText != null) {
+                    Amount = String.valueOf(amountEditText.getText());
+                    Tpin = String.valueOf(tpinEditText.getText());
+                }
+                if(Amount != null && !Amount.equals("") && Tpin != null && !Tpin.equals("")){
+                    final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(DashboardActivity.this);
+                    progressDialog.show();
+                    HashMap<String, String> body = new HashMap<>();
+                    body.put("DeviceId", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+                    body.put("UniqueCode", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.UserName, ""));
+                    body.put("Token", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.Token, ""));
+                    body.put("Amount", Amount);
+                    body.put("Tpin", Tpin);
+                    ApiInterface apiservice = RetrofitHandler.getService2();
+                    Call<LedgerReportBase> result = apiservice.AEPSWalletSettelement(body);
+                    result.enqueue(new Callback<LedgerReportBase>() {
+                        @Override
+                        public void onResponse(Call<LedgerReportBase> call, Response<LedgerReportBase> response) {
+                            ProgressDialog progressDialog2 = progressDialog;
+                            if (progressDialog2 != null && progressDialog2.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                            if (response.body().getResponseStatus().intValue() == 1) {
+                                ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Success", response.body().getRemarks());
+                            }else {
+                                ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Error", response.body().getRemarks());
+                            }
+                            if (dialog != null) {
+                                dialog.dismiss();
+                            }
+                            if (alertDialog != null) {
+                                alertDialog.dismiss();
+                            }
+                            return;
+                        }
 
+                        @Override
+                        public void onFailure(Call<LedgerReportBase> call, Throwable t) {
+                            ProgressDialog progressDialog2 = progressDialog;
+                            if (progressDialog2 != null && progressDialog2.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        }
+                    });
+                }else{
+                    mText_remark.setText("Please enter the details !!");
+                    mText_remark.setTextColor(Color.RED);
+                }
+            }
+        });
+    }
 
 
     @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
