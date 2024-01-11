@@ -23,8 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Ledger_cashouttxn_ReportActivity extends AppCompatActivity {
-
+public class Ledger_cashoutLedger_ReportActivity extends AppCompatActivity {
     private LinearLayout layout_fromdate;
     private LinearLayout layout_todate;
     private int mDay;
@@ -32,20 +31,20 @@ public class Ledger_cashouttxn_ReportActivity extends AppCompatActivity {
     private int mYear;
     private Calendar myCalendar;
     private RecyclerView recycle_transactions;
-    private List<cashoutledgerTransactionReport> reportList;
+    private List<cashoutledgerTransactionReport2> reportList;
     private EditText text_fromdate;
     private TextView text_no_content;
     private EditText text_search;
     private EditText text_todate;
-    private CashoutReceivedReportAdapter transactionBillAdapter;
+    private CashoutLedgerReceivedReportAdapter transactionBillAdapter;
 
     AlertDialog alertDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ledger_cashouttxn_report);
-        setTitle("Ledger Transcation Received Report");
+        setContentView(R.layout.activity_ledger_cashout_ledger_report);
+
+        setTitle("Cashout Ledger Received Report");
         initComponents();
         Calendar calendar = Calendar.getInstance();
         this.myCalendar = calendar;
@@ -59,12 +58,12 @@ public class Ledger_cashouttxn_ReportActivity extends AppCompatActivity {
         this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(Ledger_cashouttxn_ReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1.1
+                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(Ledger_cashoutLedger_ReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1.1
                     @Override // android.app.DatePickerDialog.OnDateSetListener
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        Ledger_cashouttxn_ReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-                        Ledger_cashouttxn_ReportActivity.this.text_fromdate.setError(null);
-                        Ledger_cashouttxn_ReportActivity.this.getcashoutReceived(Ledger_cashouttxn_ReportActivity.this.text_fromdate.getText().toString(), Ledger_cashouttxn_ReportActivity.this.text_todate.getText().toString());
+                        Ledger_cashoutLedger_ReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                        Ledger_cashoutLedger_ReportActivity.this.text_fromdate.setError(null);
+                        Ledger_cashoutLedger_ReportActivity.this.getledgarcashoutReceived(Ledger_cashoutLedger_ReportActivity.this.text_fromdate.getText().toString(), Ledger_cashoutLedger_ReportActivity.this.text_todate.getText().toString());
 
 //                        if (!PaymentReceivedReportActivity.this.text_todate.getText().toString().isEmpty()) {
 //                            if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
@@ -74,70 +73,73 @@ public class Ledger_cashouttxn_ReportActivity extends AppCompatActivity {
 //                            }
 //                        }
                     }
-                }, Ledger_cashouttxn_ReportActivity.this.mYear, Ledger_cashouttxn_ReportActivity.this.mMonth, Ledger_cashouttxn_ReportActivity.this.mDay);
+                }, Ledger_cashoutLedger_ReportActivity.this.mYear, Ledger_cashoutLedger_ReportActivity.this.mMonth, Ledger_cashoutLedger_ReportActivity.this.mDay);
                 datePickerDialog.show();
 
             }
         });
 
 
-
     }
 
-    private void getcashoutReceived(String fromDate, String toDate) {
+    private void getledgarcashoutReceived(String fromDate, String toDate) {
 
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
         progressDialog.show();
         HashMap<String, String> body = new HashMap<>();
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
-        body.put("UniqueCode", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
+        body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
         body.put("FromDateTime", fromDate);
         body.put("ToDateTime", toDate);
         ApiInterface apiservice = RetrofitHandler.getService2();
-        Call<cashoutbaseResponse> result = apiservice.Getcashout_txnReceived(body);
+        Call<ledgercashoutbaseResponse> result = apiservice.Getcashout_2ndtxnReceived(body);
 
-        result.enqueue(new Callback<cashoutbaseResponse>() {
+        result.enqueue(new Callback<ledgercashoutbaseResponse>() {
             @Override
-            public void onResponse(Call<cashoutbaseResponse> call, Response<cashoutbaseResponse> response) {
+            public void onResponse(Call<ledgercashoutbaseResponse> call, Response<ledgercashoutbaseResponse> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
                     progressDialog.dismiss();
                 }
+
                 try {
                     if (response.body().getResponseStatus().intValue() == 1){
-                        if (!response.body().getCashoutledgerTransactionReports().isEmpty()){
-                            Ledger_cashouttxn_ReportActivity.this.recycle_transactions.setVisibility(View.VISIBLE);
-                            Ledger_cashouttxn_ReportActivity.this.text_no_content.setVisibility(View.INVISIBLE);
-                            Ledger_cashouttxn_ReportActivity.this.reportList = response.body().getCashoutledgerTransactionReports();
-                            Ledger_cashouttxn_ReportActivity ledger_cashouttxn_ReportActivity = Ledger_cashouttxn_ReportActivity.this;
+                        if (!response.body().getCashoutledgerTransactionReport2s().isEmpty()){
+                            Ledger_cashoutLedger_ReportActivity.this.recycle_transactions.setVisibility(View.VISIBLE);
+                            Ledger_cashoutLedger_ReportActivity.this.text_no_content.setVisibility(View.INVISIBLE);
+                            Ledger_cashoutLedger_ReportActivity.this.reportList = response.body().getCashoutledgerTransactionReport2s();
+                            Ledger_cashoutLedger_ReportActivity ledgerCashoutLedgerReportActivity = Ledger_cashoutLedger_ReportActivity.this;
 //                            Ledger_cashouttxn_ReportActivity Ledger_cashouttxn_ReportActivity2 = Ledger_cashouttxn_ReportActivity.this;
-                            ledger_cashouttxn_ReportActivity.transactionBillAdapter = new CashoutReceivedReportAdapter(ledger_cashouttxn_ReportActivity, ledger_cashouttxn_ReportActivity.reportList);
-                            Ledger_cashouttxn_ReportActivity.this.recycle_transactions.setAdapter(Ledger_cashouttxn_ReportActivity.this.transactionBillAdapter);
-                            return;
+                           Ledger_cashoutLedger_ReportActivity.this.transactionBillAdapter = new CashoutLedgerReceivedReportAdapter(ledgerCashoutLedgerReportActivity,ledgerCashoutLedgerReportActivity.reportList);
+                           Ledger_cashoutLedger_ReportActivity.this.recycle_transactions.setAdapter(Ledger_cashoutLedger_ReportActivity.this.transactionBillAdapter);
+
+                        } else {
+                            Ledger_cashoutLedger_ReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
+                            Ledger_cashoutLedger_ReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
+
                         }
-                        Ledger_cashouttxn_ReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
-                        Ledger_cashouttxn_ReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
-                        return;
-                    }
-                    else {
-                        Ledger_cashouttxn_ReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
-                        Ledger_cashouttxn_ReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
 
                     }
+                    else {
+                        Ledger_cashoutLedger_ReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
+                        Ledger_cashoutLedger_ReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
+
+                    }
+                    return;
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
 
 
+
             }
 
             @Override
-            public void onFailure(Call<cashoutbaseResponse> call, Throwable t) {
+            public void onFailure(Call<ledgercashoutbaseResponse> call, Throwable t) {
 
             }
         });
-
     }
 
     private void initComponents() {

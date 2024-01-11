@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blue"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:layout_margin="5dp" app:cardCornerRadius="5dp" app:cardElevation="5dp"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Username"  android:id="@+id/username" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mobileno"  android:id="@+id/mobile_no" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="commission"  android:id="@+id/commission" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="isFixed"  android:id="@+id/isFixed" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="isApplicable"  android:id="@+id/isApplicable" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="serviceCharge"  android:id="@+id/serviceCharge" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="isServiceFixed"  android:id="@+id/isServiceFixed" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="isServiceApplicable"  android:id="@+id/isServiceApplicable"  android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="product"  android:id="@+id/product" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="description"  android:id="@+id/description" android:layout_centerInParent="true"/>
-            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="operator"  android:id="@+id/operator" android:layout_centerInParent="true"/>
-
-
+        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/product_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Product Name"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/operator_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Operator Name"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/discription" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Rs 10 to 1000"/>
+            <View android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="1.2dp" android:layout_margin="15dp"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/commission_charge" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Commission"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/service_charge" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Service charge"/>
 
 
         </LinearLayout>

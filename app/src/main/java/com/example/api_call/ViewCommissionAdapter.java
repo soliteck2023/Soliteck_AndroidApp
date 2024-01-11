@@ -1,6 +1,10 @@
 package com.example.api_call;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -36,14 +41,56 @@ public class ViewCommissionAdapter extends RecyclerView.Adapter<ViewCommissionAd
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         CommissionData c = this.listCommission.get(position);
         try{
-            holder.operator.setText("operator Id: " + c.getOperator());
-            holder.serviceCharge.setText("serviceCharge: " +c.getServicecharge());
-            holder.commission.setText("commission:" +c.getCommission());
-            holder.isFixed.setText("isfixed:" + c.getIsfixed());
-            holder.isApplicable.setText("isapplicable:" +c.getIsapplicable());
-            holder.operator.setText("operator Id: " + c.getOperator());
-            holder.serviceCharge.setText("serviceCharge: " +c.getServicecharge());
+            String productNameText = "Product Name: " + c.getProduct();
+            SpannableString productNameSpannable = new SpannableString(productNameText);
+            productNameSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 13, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            holder.product_name.setText(productNameSpannable);
 
+            holder.product_name.setText("Product Name: "  + c.getProduct());
+
+            holder.operator_name.setText("Operator Name: " + c.getOperator());
+            holder.discription.setTypeface(null, Typeface.BOLD);
+            holder.discription.setText("Discription: " + c.getDescription());
+//            holder.commission_charge.setText("commission: " + c.getCommission());
+            holder.service_charge.setText("service_charge:" + c.getServicecharge());
+
+
+            if (c.getIsfixed()== "true") {
+                holder.commission_charge.setTypeface(null, Typeface.BOLD);
+                holder.commission_charge.setText("commission: Rs"  + c.getCommission());
+                if (c.getIsapplicable() == "true") {
+                    holder.commission_charge.setTextColor(ContextCompat.getColor(context, R.color.dark_green));
+                } else {
+                    holder.commission_charge.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+                }
+
+            } else{
+                holder.commission_charge.setTypeface(null, Typeface.BOLD);
+                holder.commission_charge.setText("Commission: " + c.getCommission() + " %");
+                if (c.getIsapplicable() == "true") {
+                    holder.commission_charge.setTextColor(ContextCompat.getColor(context, R.color.dark_green));
+                } else {
+                    holder.commission_charge.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+                }
+            }
+
+            if (c.getServicecharge()=="true"){
+                holder.service_charge.setText("Service charge: Rs"  + c.getCommission());
+                if (c.getServicecharge() == "true") {
+                    holder.service_charge.setTextColor(ContextCompat.getColor(context, R.color.dark_green));
+                } else {
+                    holder.service_charge.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+                }
+
+            }else{
+                holder.service_charge.setTypeface(null, Typeface.BOLD);
+                holder.service_charge.setText("Service charge: " + c.getCommission() + " %");
+                if (c.getIsapplicable() == "true") {
+                    holder.service_charge.setTextColor(ContextCompat.getColor(context, R.color.dark_green));
+                } else {
+                    holder.service_charge.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+                }
+            }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -73,34 +120,23 @@ public class ViewCommissionAdapter extends RecyclerView.Adapter<ViewCommissionAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-      TextView fName;
-        TextView uniqueCode;
-        TextView commission;
-        TextView isFixed;
-        TextView isApplicable;
-        TextView serviceCharge;
-        TextView isServiceApplicable;
-        TextView isServiceFixed;
-        TextView product;
-        TextView description;
-        TextView operator;
+        TextView product_name;
+        TextView operator_name;
+        TextView discription;
+        TextView commission_charge;
+        TextView service_charge;
 
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         public MyViewHolder(View itemView) {
             super(itemView);
 //            ViewCommissionAdapter.this = this$0;
-            this.fName = (TextView) itemView.findViewById(R.id.username);
-            this.uniqueCode = (TextView) itemView.findViewById(R.id.mobile_no);
-            this.commission = (TextView) itemView.findViewById(R.id.commission);
-            this.isFixed = (TextView) itemView.findViewById(R.id.isFixed);
-            this.isApplicable = (TextView) itemView.findViewById(R.id.isApplicable);
-            this.serviceCharge = (TextView) itemView.findViewById(R.id.serviceCharge);
-            this.isServiceFixed =  (TextView) itemView.findViewById(R.id.isServiceFixed);
-            this.isServiceApplicable = (TextView) itemView.findViewById(R.id.isServiceApplicable);
-            this.product = (TextView) itemView.findViewById(R.id.product);
-            this.description = (TextView) itemView.findViewById(R.id.description);
-            this.operator = (TextView) itemView.findViewById(R.id.operator);
+            this.product_name = (TextView) itemView.findViewById(R.id.product_name);
+            this.operator_name = (TextView) itemView.findViewById(R.id.operator_name);
+            this.discription = (TextView) itemView.findViewById(R.id.discription);
+            this.commission_charge = (TextView) itemView.findViewById(R.id.commission_charge);
+            this.service_charge = (TextView) itemView.findViewById(R.id.service_charge);
+
 
         }
     }
