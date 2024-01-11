@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class viewCommissionActivity extends AppCompatActivity {
     private RelativeLayout layout_commission;
     private ProgressDialog progressDialog;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,75 +53,11 @@ public class viewCommissionActivity extends AppCompatActivity {
 
         // Call the method to get and display commission data
         getCommissionMarginList(view_commissionlist);
-//        this.layout_commission.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.CommissionActivity.1
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-//                View view = viewCommissionActivity.this.getLayoutInflater().inflate(R.layout.layout_commission_list, (ViewGroup) null);
-//                ImageView image_cancel = (ImageView) view.findViewById(R.id.image_cancel);
-//                RecyclerView view_commissionlist = (RecyclerView) view.findViewById(R.id.view_commissionlist);
-//                AlertDialog.Builder builder = new AlertDialog.Builder(viewCommissionActivity.this);
-//                view_commissionlist.setLayoutManager(new GridLayoutManager(viewCommissionActivity.this, 2));
-//                final AlertDialog alertDialog = builder.create();
-//                alertDialog.setView(view);
-//                image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.CommissionActivity.1.1
-//                    @Override // android.view.View.OnClickListener
-//                    public void onClick(View v2) {
-//                        alertDialog.dismiss();
-//                    }
-//                });
-//                if (Build.VERSION.SDK_INT >= 21) {
-//                    alertDialog.create();
-//                    alertDialog.show();
-//                }
-//                if (!ConstantClass.isNetworkAvailable(viewCommissionActivity.this)) {
-//                    ConstantClass.displayMessageDialog(viewCommissionActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                } else {
-//                    viewCommissionActivity.this.getCommissionMarginList(view_commissionlist);
-//                }
-//            }
-//        });
-
-
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        view_commissionlist.setLayoutManager(new GridLayoutManager(this, 2));
-//        final AlertDialog alertDialog = builder.create();
-//        alertDialog.show();
-
-//        image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.35
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-//                alertDialog.dismiss();
-//            }
-//        });
-//        search_operator.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.DashboardActivity.36
-//            @Override // android.text.TextWatcher
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//            }
-//
-//            @Override // android.text.TextWatcher
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-////                viewCommissionActivity.this.filter(charSequence.toString());
-//            }
-//
-//            @Override // android.text.TextWatcher
-//            public void afterTextChanged(Editable editable) {
-//            }
-//        });
-//
-//
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            alertDialog.create();
-//            alertDialog.show();
-//        }
-
 
 
     }
 
-//    private void setupRecyclerView() {
-//        view_commissionlist = findViewById(R.id.view_commissions);
-//        view_commissionlist.setLayoutManager(new LinearLayoutManager(this));
-//    }
+
 
     private void getCommissionMarginList( final RecyclerView view_commissionlist ) {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
@@ -147,8 +85,7 @@ public class viewCommissionActivity extends AppCompatActivity {
                             viewCommissionActivity.this.view_commissionlist.setVisibility(View.VISIBLE);
                             viewCommissionActivity.this.list_margin = response.body().getCommissionData();
                             viewCommissionActivity.this.viewCommissionAdapter = new ViewCommissionAdapter(
-                                    viewCommissionActivity.this,
-                                    viewCommissionActivity.this.list_margin
+                                    viewCommissionActivity.this, viewCommissionActivity.this.list_margin
                             );
                             viewCommissionActivity.this.view_commissionlist.setAdapter(viewCommissionActivity.this.viewCommissionAdapter);
 //                            viewCommissionActivity.this.view_commissionlist.setAdapter(viewCommissionActivity.this.viewCommissionAdapter);

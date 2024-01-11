@@ -105,6 +105,18 @@ public interface ApiInterface {
     @POST("MOBComissionReport")
     Call<Commision> getCommissionMargin2(@Body HashMap<String, String> hashMap);
 
+    @POST("MOBAEPSTxnReport")
+    Call<cashoutbaseResponse> Getcashout_txnReceived(@Body HashMap<String, String> hashMap);
+
+    @POST("MOBAEPSLedgerReport")
+    Call<ledgercashoutbaseResponse> Getcashout_2ndtxnReceived(@Body HashMap<String, String> hashMap);
+
+    @POST("MOBBankServiceChargelist")
+    Call<newBankListbaseResponse> GetnewBankList(@Body HashMap<String, String> hashMap);
+
+    @POST
+    Call<OtpSentResponse> newforgotPassword(@Url String str);
+
     @POST("Transaction/LatestTransationReport")
     Call<GetLatestReportBase> getLatestReport(@Body HashMap<String, String> hashMap);
 

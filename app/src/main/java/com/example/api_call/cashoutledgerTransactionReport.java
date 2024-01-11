@@ -3,7 +3,7 @@ package com.example.api_call;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class receipt_class {
+public class cashoutledgerTransactionReport {
     @SerializedName("retailerNumber")
     @Expose
     private String retailerNumber;
@@ -28,7 +28,6 @@ public class receipt_class {
     @Expose
     private String senderMobile;
 
-
     @SerializedName("transactionDate")
     @Expose
     private String transactionDate;
@@ -41,13 +40,13 @@ public class receipt_class {
     @Expose
     private String commission;
 
-    @SerializedName("gst")
-    @Expose
-    private String gst;
-
     @SerializedName("servicecharge")
     @Expose
     private String servicecharge;
+
+    @SerializedName("gst")
+    @Expose
+    private String gst;
 
     @SerializedName("tds")
     @Expose
@@ -60,34 +59,18 @@ public class receipt_class {
     @SerializedName("creditAmount")
     @Expose
     private String creditAmount;
+
     @SerializedName("effecativeBal")
     @Expose
     private String effecativeBal;
+
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("beneName")
-    @Expose
-    private String beneName;
-    @SerializedName("beneMobileNumber")
-    @Expose
-    private String beneMobileNumber;
 
-    @SerializedName("bankAccountNumber")
+    @SerializedName("transactionMode")
     @Expose
-    private String bankAccountNumber;
-
-    @SerializedName("ifscCode")
-    @Expose
-    private String ifscCode;
-
-    @SerializedName("senderMobileNumber")
-    @Expose
-    private String senderMobileNumber;
-
-    @SerializedName("column1")
-    @Expose
-    private String column1;
+    private String transactionMode;
 
     @SerializedName("retailerName")
     @Expose
@@ -96,11 +79,28 @@ public class receipt_class {
     @SerializedName("vendorName")
     @Expose
     private String vendorName;
+
     @SerializedName("bankName")
     @Expose
     private String bankName;
 
-    public receipt_class(String retailerNumber, String transactionNumber, String refNumber, String status, String operatorName, String senderMobile, String transactionDate, String amount, String commission, String gst, String servicecharge, String tds, String debitAmount, String creditAmount, String effecativeBal, String id, String beneName, String beneMobileNumber, String bankAccountNumber, String ifscCode, String senderMobileNumber, String column1, String retailerName, String vendorName, String bankName) {
+    @SerializedName("adhaarNo")
+    @Expose
+    private String adhaarNo;
+
+    @SerializedName("rrn")
+    @Expose
+    private String rrn;
+
+    @SerializedName("mode")
+    @Expose
+    private String mode;
+
+    @SerializedName("shopName")
+    @Expose
+    private String shopName;
+
+    public cashoutledgerTransactionReport(String retailerNumber, String transactionNumber, String refNumber, String status, String operatorName, String senderMobile, String transactionDate, String amount, String commission, String servicecharge, String gst, String tds, String debitAmount, String creditAmount, String effecativeBal, String id, String transactionMode, String retailerName, String vendorName, String bankName, String adhaarNo, String rrn, String mode, String shopName) {
         this.retailerNumber = retailerNumber;
         this.transactionNumber = transactionNumber;
         this.refNumber = refNumber;
@@ -110,22 +110,21 @@ public class receipt_class {
         this.transactionDate = transactionDate;
         this.amount = amount;
         this.commission = commission;
-        this.gst = gst;
         this.servicecharge = servicecharge;
+        this.gst = gst;
         this.tds = tds;
         this.debitAmount = debitAmount;
         this.creditAmount = creditAmount;
         this.effecativeBal = effecativeBal;
         this.id = id;
-        this.beneName = beneName;
-        this.beneMobileNumber = beneMobileNumber;
-        this.bankAccountNumber = bankAccountNumber;
-        this.ifscCode = ifscCode;
-        this.senderMobileNumber = senderMobileNumber;
-        this.column1 = column1;
+        this.transactionMode = transactionMode;
         this.retailerName = retailerName;
         this.vendorName = vendorName;
         this.bankName = bankName;
+        this.adhaarNo = adhaarNo;
+        this.rrn = rrn;
+        this.mode = mode;
+        this.shopName = shopName;
     }
 
     public String getRetailerNumber() {
@@ -200,20 +199,20 @@ public class receipt_class {
         this.commission = commission;
     }
 
-    public String getGst() {
-        return gst;
-    }
-
-    public void setGst(String gst) {
-        this.gst = gst;
-    }
-
     public String getServicecharge() {
         return servicecharge;
     }
 
     public void setServicecharge(String servicecharge) {
         this.servicecharge = servicecharge;
+    }
+
+    public String getGst() {
+        return gst;
+    }
+
+    public void setGst(String gst) {
+        this.gst = gst;
     }
 
     public String getTds() {
@@ -256,52 +255,12 @@ public class receipt_class {
         this.id = id;
     }
 
-    public String getBeneName() {
-        return beneName;
+    public String getTransactionMode() {
+        return transactionMode;
     }
 
-    public void setBeneName(String beneName) {
-        this.beneName = beneName;
-    }
-
-    public String getBeneMobileNumber() {
-        return beneMobileNumber;
-    }
-
-    public void setBeneMobileNumber(String beneMobileNumber) {
-        this.beneMobileNumber = beneMobileNumber;
-    }
-
-    public String getBankAccountNumber() {
-        return bankAccountNumber;
-    }
-
-    public void setBankAccountNumber(String bankAccountNumber) {
-        this.bankAccountNumber = bankAccountNumber;
-    }
-
-    public String getIfscCode() {
-        return ifscCode;
-    }
-
-    public void setIfscCode(String ifscCode) {
-        this.ifscCode = ifscCode;
-    }
-
-    public String getSenderMobileNumber() {
-        return senderMobileNumber;
-    }
-
-    public void setSenderMobileNumber(String senderMobileNumber) {
-        this.senderMobileNumber = senderMobileNumber;
-    }
-
-    public String getColumn1() {
-        return column1;
-    }
-
-    public void setColumn1(String column1) {
-        this.column1 = column1;
+    public void setTransactionMode(String transactionMode) {
+        this.transactionMode = transactionMode;
     }
 
     public String getRetailerName() {
@@ -326,5 +285,37 @@ public class receipt_class {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public String getAdhaarNo() {
+        return adhaarNo;
+    }
+
+    public void setAdhaarNo(String adhaarNo) {
+        this.adhaarNo = adhaarNo;
+    }
+
+    public String getRrn() {
+        return rrn;
+    }
+
+    public void setRrn(String rrn) {
+        this.rrn = rrn;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 }

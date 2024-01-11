@@ -14,7 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class view_receipt_pending extends AppCompatActivity {
-    List<TransactionReport> listSatetments;
+    List<receipt_class> listSatetments;
     TextView text_amount_;
     TextView Raise,View;
     TextView text_commission;
@@ -65,7 +65,7 @@ public class view_receipt_pending extends AppCompatActivity {
         HashMap<String, String> body = new HashMap<>();
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
-        body.put("TransactionIds","202410050105113702957" );
+        body.put("TransactionIds","" );
         body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         ApiInterface apiservice = RetrofitHandler.getService2();
         Call<viewPaymentResponse> call = apiservice.GetReceiptReport(body);
@@ -76,29 +76,59 @@ public class view_receipt_pending extends AppCompatActivity {
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
                     progressDialog.dismiss();
                 }
-                if (response != null) {
-                    if (response.body().getResponseStatus().intValue() == 1) {
-                        ConstantClass.displayMessageDialog(view_receipt_pending.this, "Response", response.body().getResponseStatus().toString());
-                        TransactionReport earnData = (TransactionReport) view_receipt_pending.this.listSatetments;
-                        view_receipt_pending.this.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
-                        view_receipt_pending.this.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
-                        view_receipt_pending.this.text_status_.setText(earnData.getStatus());
-                        view_receipt_pending.this.text_date_time_.setText(earnData.getTransactionDate());
-                        view_receipt_pending.this.text_amount_.setText("Rs " + earnData.getAmount());
-                        view_receipt_pending.this.text_refid.setText("Ref No: " + earnData.getRefNumber());
-                        view_receipt_pending.this.text_mob_.setText("" + earnData.getSenderMobile());
-                        view_receipt_pending.this.text_retailerNumber.setText("Retailer Number: " + earnData.getRetailerNumber());
-                        view_receipt_pending.this.text_commission.setText("Commission: " + earnData.getCommission());
-                        view_receipt_pending.this.text_servicecharge.setText("Service charge: " + earnData.getServicecharge());
-                        view_receipt_pending.this.text_gst.setText("GST: " + earnData.getGst());
-                        view_receipt_pending.this.text_tds.setText("TDS: " + earnData.getTds());
-                        view_receipt_pending.this.text_creditAmount.setText("Credit Amount: " + earnData.getCreditAmount());
-                        view_receipt_pending.this.text_debitAmount.setText("Debit Amount: " + earnData.getDebitAmount());
-                        view_receipt_pending.this.text_effecativeBal.setText("Effective Bal.: " + earnData.getEffecativeBal());
-                        return;
+
+                if (response.body().getResponseStatus().intValue() == 1){
+                    if (!response.body().getTransaction().isEmpty()){
+                        view_receipt_pending.this.listSatetments = response.body().getTransaction();
+                        List<receipt_class> earnData = listSatetments;
+                        for(int i = 0; i<earnData.size(); i++){
+                            view_receipt_pending.this.text_transid.setText("Txn Id: " + earnData.get(i).getTransactionNumber());
+                            view_receipt_pending.this.text_paymode.setText("Operator Name: " + earnData.get(i).getOperatorName());
+                            view_receipt_pending.this.text_status_.setText(earnData.get(i).getStatus());
+                            view_receipt_pending.this.text_date_time_.setText(earnData.get(i).getTransactionDate());
+                            view_receipt_pending.this.text_amount_.setText("Rs " + earnData.get(i).getAmount());
+                            view_receipt_pending.this.text_refid.setText("Ref No: " + earnData.get(i).getRefNumber());
+                            view_receipt_pending.this.text_mob_.setText("" + earnData.get(i).getSenderMobile());
+                            view_receipt_pending.this.text_retailerNumber.setText("Retailer Number: " + earnData.get(i).getRetailerNumber());
+                            view_receipt_pending.this.text_commission.setText("Commission: " + earnData.get(i).getCommission());
+                            view_receipt_pending.this.text_servicecharge.setText("Service charge: " + earnData.get(i).getServicecharge());
+                            view_receipt_pending.this.text_gst.setText("GST: " + earnData.get(i).getGst());
+                            view_receipt_pending.this.text_tds.setText("TDS: " + earnData.get(i).getTds());
+                            view_receipt_pending.this.text_creditAmount.setText("Credit Amount: " + earnData.get(i).getCreditAmount());
+                            view_receipt_pending.this.text_debitAmount.setText("Debit Amount: " + earnData.get(i).getDebitAmount());
+                            view_receipt_pending.this.text_effecativeBal.setText("Effective Bal.: " + earnData.get(i).getEffecativeBal());
+                        }
+                    } else {
+                       ConstantClass.displayMessageDialog(view_receipt_pending.this, "Response", response.body().getResponseStatus().toString());
                     }
-                    ConstantClass.displayMessageDialog(view_receipt_pending.this, "Response", response.body().getResponseStatus().toString());
-                }
+
+                 }
+                return;
+
+//                if (response != null) {
+//                    if (response.body().getResponseStatus().intValue() == 1) {
+//
+//                        TransactionReport earnData = (TransactionReport) view_receipt_pending.this.listSatetments;
+//                        view_receipt_pending.this.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
+//                        view_receipt_pending.this.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
+//                        view_receipt_pending.this.text_status_.setText(earnData.getStatus());
+//                        view_receipt_pending.this.text_date_time_.setText(earnData.getTransactionDate());
+//                        view_receipt_pending.this.text_amount_.setText("Rs " + earnData.getAmount());
+//                        view_receipt_pending.this.text_refid.setText("Ref No: " + earnData.getRefNumber());
+//                        view_receipt_pending.this.text_mob_.setText("" + earnData.getSenderMobile());
+//                        view_receipt_pending.this.text_retailerNumber.setText("Retailer Number: " + earnData.getRetailerNumber());
+//                        view_receipt_pending.this.text_commission.setText("Commission: " + earnData.getCommission());
+//                        view_receipt_pending.this.text_servicecharge.setText("Service charge: " + earnData.getServicecharge());
+//                        view_receipt_pending.this.text_gst.setText("GST: " + earnData.getGst());
+//                        view_receipt_pending.this.text_tds.setText("TDS: " + earnData.getTds());
+//                        view_receipt_pending.this.text_creditAmount.setText("Credit Amount: " + earnData.getCreditAmount());
+//                        view_receipt_pending.this.text_debitAmount.setText("Debit Amount: " + earnData.getDebitAmount());
+//                        view_receipt_pending.this.text_effecativeBal.setText("Effective Bal.: " + earnData.getEffecativeBal());
+//                        return;
+//                    } else {
+//                        ConstantClass.displayMessageDialog(view_receipt_pending.this, "Response", response.body().getResponseStatus().toString());
+//                    }
+//                }
             }
 
             @Override // retrofit2.Callback

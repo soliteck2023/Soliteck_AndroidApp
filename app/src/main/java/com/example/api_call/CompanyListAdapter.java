@@ -8,11 +8,13 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CompanyListAdapter extends RecyclerView.Adapter<CompanyListAdapter.MyViewHolder>{
     private Context context;
     List<CompanyBankResponse> listSatetments;
+
 
     public CompanyListAdapter(Context context, List<CompanyBankResponse> listSatetments) {
         this.listSatetments = listSatetments;
