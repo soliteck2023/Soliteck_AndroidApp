@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout android:visibility="gone" android:id="@+id/text_IMPS" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" >
+                <LinearLayout android:visibility="visible" android:id="@+id/text_IMPS" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" >
                     <TextView android:id="@+id/type_imps" android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary"  android:layout_width="100dp" android:layout_height="wrap_content"  android:text="" />
                     <TextView android:id="@+id/type_impscharges" android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_width="100dp" android:layout_height="match_parent" android:text="" />
                 </LinearLayout>
