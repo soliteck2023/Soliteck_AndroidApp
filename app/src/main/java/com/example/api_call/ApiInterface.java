@@ -97,13 +97,18 @@ public interface ApiInterface {
     Call<LedgerReportBase> GetLedgerReportnew(@Body HashMap<String, String> hashMap);
 
     @POST("MOBAEPSWalletSettelement")     //Transaction/LedgerReport
-    Call<LedgerReportBase> AEPSWalletSettelement(@Body HashMap<String, String> hashMap);
+    Call<SettlementBase> AEPSWalletSettelement(@Body HashMap<String, String> hashMap);
 
     @POST("MOBViewTransaction")     //Transaction/LedgerReport
     Call<viewPaymentResponse> GetReceiptReport(@Body HashMap<String, String> hashMap);
 
     @POST("MOBComissionReport")
     Call<Commision> getCommissionMargin2(@Body HashMap<String, String> hashMap);
+
+    @POST("MOBComplaintReport")
+    Call<Compaint> getcompaintMargin2(@Body HashMap<String, String> hashMap);
+
+
 
     @POST("MOBAEPSTxnReport")
     Call<cashoutbaseResponse> Getcashout_txnReceived(@Body HashMap<String, String> hashMap);
@@ -114,8 +119,8 @@ public interface ApiInterface {
     @POST("MOBBankServiceChargelist")
     Call<newBankListbaseResponse> GetnewBankList(@Body HashMap<String, String> hashMap);
 
-    @POST
-    Call<OtpSentResponse> newforgotPassword(@Url String str);
+    @POST("MOBForgotPassword")
+    Call<OtpSentResponse> newforgotPassword(@Body HashMap<String, String> hashMap);
 
     @POST("Transaction/LatestTransationReport")
     Call<GetLatestReportBase> getLatestReport(@Body HashMap<String, String> hashMap);

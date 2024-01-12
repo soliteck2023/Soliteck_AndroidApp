@@ -69,39 +69,11 @@ public class CompanyBankListActivity extends AppCompatActivity {
 
                             CompanyBankListActivity.this.recycle_transactions.setVisibility(View.VISIBLE);
                             CompanyBankListActivity.this.text_no_content.setVisibility(View.INVISIBLE);
-                            CompanyBankListActivity.this.listUserBanks = response.body().getCompanyBankList();
+                            List<BankListResponse> modifiedList = BankListResponse.createModifiedList(response.body().getCompanyBankList());
+                            CompanyBankListActivity.this.listUserBanks = modifiedList;
                             CompanyBankListActivity companyBankListActivity = CompanyBankListActivity.this;
                             CompanyBankListActivity.this.transactionBillAdapter = new newCompanyListAdapter(companyBankListActivity,companyBankListActivity.listUserBanks);
                             CompanyBankListActivity.this.recycle_transactions.setAdapter(CompanyBankListActivity.this.transactionBillAdapter);
-
-
-
-//
-//                            List<BankListResponse> earndata = listUserBanks;
-//                            if (earndata != null){
-//                                if (!earndata.isEmpty()){
-//                            CompanyBankListActivity.this.recycle_transactions.setVisibility(View.VISIBLE);
-//                            CompanyBankListActivity.this.text_no_content.setVisibility(View.INVISIBLE);
-//                            CompanyBankListActivity.this.listUserBanks = response.body().getCompanyBankList();
-//                            CompanyBankListActivity companyBankListActivity = CompanyBankListActivity.this;
-//                            CompanyBankListActivity.this.transactionBillAdapter = new newCompanyListAdapter(companyBankListActivity,companyBankListActivity.listUserBanks);
-//                            CompanyBankListActivity.this.recycle_transactions.setAdapter(CompanyBankListActivity.this.transactionBillAdapter);
-//                                } else {
-//                                    CompanyBankListActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
-//                                   CompanyBankListActivity.this.text_no_content.setVisibility(View.VISIBLE);
-//                                }
-//
-//
-//                            }
-//                            else {
-//                                CompanyBankListActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
-//                                CompanyBankListActivity.this.text_no_content.setVisibility(View.VISIBLE);
-//                            }
-////                            for (int i = 0; i<earndata.size(); i++){
-//                                earndata
-//
-//
-//                            }
 
                        }
                         else {

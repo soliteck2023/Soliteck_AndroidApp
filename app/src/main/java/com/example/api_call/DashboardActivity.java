@@ -19,18 +19,24 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -64,6 +70,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private TextView TextName;
     private EditText amountEditText;
     private EditText tpinEditText;
+    private CheckBox show_password;
     private Integer Tpin;
     private ImageView btn_aeps;
     private Button btn_bankDetails;
@@ -150,7 +157,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private List<CommissionData> list_margin = new ArrayList();
     private ViewCommissionAdapter viewCommissionAdapter;
 
-    LinearLayout linermain_blance,linearcashout_balance;
+    LinearLayout linermain_blance,linearcashout_balance,compaint_rpt;
 
     LinearLayout linerlayout;
     AlertDialog alertDialog;
@@ -166,7 +173,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         cashoutbalance = findViewById(R.id.hideimge2);
         textbalance = findViewById(R.id.textbalance);
         textaepsBalance = findViewById(R.id.textaepsBalance);
-
         linermain_blance= findViewById(R.id.main_liner);
         linearcashout_balance= findViewById(R.id.cashout_liner);
 
@@ -209,12 +215,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
         });
 
-
-
         continuetext = findViewById(R.id.text_news);
-
-        Animation animation = new TranslateAnimation(0, -300, 0, 0);
-        animation.setDuration(2500);
+        Animation animation = new TranslateAnimation(-200, 800, 0, 0);
+        animation.setDuration(4500);
         animation.setRepeatMode(Animation.RESTART);
         animation.setRepeatCount(Animation.INFINITE);
         continuetext.setAnimation(animation);
@@ -291,6 +294,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         LinearLayout Cashout_ledger_transaction =(LinearLayout)findViewById(R.id.linear_cashoutledger_txn);
 //        LinearLayout Network_pay_historyrpt =(LinearLayout)findViewById(R.id.network_pay);
         LinearLayout commisstion_rpt =(LinearLayout)findViewById(R.id.linear_commisstion);
+        LinearLayout compaint_rpt =(LinearLayout)findViewById(R.id.linear_cmplaint2);
+
         menuBank = findViewById(R.id.second_linier);
         LinearLayout linear_request = (LinearLayout) findViewById(R.id.first_linear);
         LinearLayout walletSettelement_Req = (LinearLayout) findViewById(R.id.fourth);
@@ -449,6 +454,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
             }
         });
+        compaint_rpt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, viewCompaintActivity.class));
+
+
+            }
+        });
 
 
 
@@ -522,15 +535,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onClick(View v) {
                 DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, TransactionsReportActivity.class));
-
             }
         });
         linear_Ledger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, LedgerReportActivity.class));
-
-
             }
         });
 
@@ -820,9 +830,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //        Button mBtn_request = (Button) view_types.findViewById(R.id.btn_request);
         mText_remark.setText("Payment Request");
         text_pending.setText("Request Form");
-        final BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.setContentView(view_types);
-        dialog.show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.setView(view_types);
+        alertDialog.show();
+
+//        final BottomSheetDialog dialog = new BottomSheetDialog(this);
+//        dialog.setContentView(view_types);
+//        dialog.show();
         type_history.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.38
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
@@ -841,6 +856,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= 16) {
+
                     type_pending.setBackground(DashboardActivity.this.getResources().getDrawable(R.drawable.violet_button_background));
                     text_pending.setTextColor(-1);
                     type_history.setBackground(DashboardActivity.this.getResources().getDrawable(R.drawable.text_view_border));
@@ -848,6 +864,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     DashboardActivity.this.request_type = "form";
                     Intent intent = new Intent(DashboardActivity.this, PaymentRequestActivity.class);
                    DashboardActivity.this.startActivity(intent);
+
                 }
             }
         });
@@ -871,15 +888,38 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private void viewSettelmentFragment() {
         View view_types = getLayoutInflater().inflate(R.layout.layout_walletsettelment_fragment, (ViewGroup) null);
         TextView mText_remark = (TextView) view_types.findViewById(R.id.text_remark);
-        final TextView text_submit = (TextView) view_types.findViewById(R.id.textView4);
+        final TextView text_submit = (TextView) view_types.findViewById(R.id.textView);
         final BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view_types);
         dialog.show();
+
+        DashboardActivity.this.amountEditText = view_types.findViewById(R.id.Amount);
+        DashboardActivity.this.tpinEditText = view_types.findViewById(R.id.Tpin);
+        DashboardActivity.this.show_password = view_types.findViewById(R.id.show_password);
+
+        tpinEditText.setTransformationMethod(new PasswordTransformationMethod());
+
+        show_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: com.uvapay.activities.LoginActivity.4
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked) {
+
+                    tpinEditText.setTypeface(Typeface.DEFAULT);
+                    tpinEditText.setTransformationMethod(new HideReturnsTransformationMethod());
+                }
+                else {
+
+                    DashboardActivity.this.tpinEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+//                } else {
+//                   MainActivity.this.edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
         text_submit.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.38
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
-                DashboardActivity.this.amountEditText = view_types.findViewById(R.id.Amount);
-                DashboardActivity.this.tpinEditText = view_types.findViewById(R.id.Tpin);
+
+
                 String Amount = null;
                 String Tpin = null;
                 if (amountEditText != null && tpinEditText != null) {
@@ -896,10 +936,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     body.put("Amount", Amount);
                     body.put("Tpin", Tpin);
                     ApiInterface apiservice = RetrofitHandler.getService2();
-                    Call<LedgerReportBase> result = apiservice.AEPSWalletSettelement(body);
-                    result.enqueue(new Callback<LedgerReportBase>() {
+                    Call<SettlementBase> result = apiservice.AEPSWalletSettelement(body);
+                    result.enqueue(new Callback<SettlementBase>() {
                         @Override
-                        public void onResponse(Call<LedgerReportBase> call, Response<LedgerReportBase> response) {
+                        public void onResponse(Call<SettlementBase> call, Response<SettlementBase> response) {
                             ProgressDialog progressDialog2 = progressDialog;
                             if (progressDialog2 != null && progressDialog2.isShowing()) {
                                 progressDialog.dismiss();
@@ -919,7 +959,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                         }
 
                         @Override
-                        public void onFailure(Call<LedgerReportBase> call, Throwable t) {
+                        public void onFailure(Call<SettlementBase> call, Throwable t) {
                             ProgressDialog progressDialog2 = progressDialog;
                             if (progressDialog2 != null && progressDialog2.isShowing()) {
                                 progressDialog.dismiss();

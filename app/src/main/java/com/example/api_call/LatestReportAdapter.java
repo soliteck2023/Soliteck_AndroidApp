@@ -32,7 +32,6 @@ public class LatestReportAdapter extends RecyclerView.Adapter<LatestReportAdapte
         LatestTransaction earnData = this.listSatetments.get(position);
         try {
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
-            holder.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
             holder.text_status_.setText(earnData.getStatus());
             holder.text_date_time_.setText(earnData.getDateTime());
             holder.text_amount_.setText("Rs " + earnData.getAmount());
@@ -41,10 +40,17 @@ public class LatestReportAdapter extends RecyclerView.Adapter<LatestReportAdapte
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         if (earnData.getStatus().trim().toLowerCase().equals("success")) {
             holder.text_status_.setTextColor(this.context.getResources().getColor(R.color.dark_green));
         } else {
             holder.text_status_.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
+        }
+        if (earnData.getAmount() == 1){
+            holder.text_paymode.setText("Operator Name: " + "Verification");
+        }else {
+           holder.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
+
         }
     }
 

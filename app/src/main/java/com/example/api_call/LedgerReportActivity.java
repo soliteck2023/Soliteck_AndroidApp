@@ -56,7 +56,7 @@ public class LedgerReportActivity extends AppCompatActivity {
         this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.text_todate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
-//        getTransactionReport(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
+        getTransactionReport(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
 
         this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LedgerReportActivity.1
             @Override // android.view.View.OnClickListener

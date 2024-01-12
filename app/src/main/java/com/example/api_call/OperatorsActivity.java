@@ -61,7 +61,7 @@ public class OperatorsActivity extends AppCompatActivity implements OperatorAdap
                         if (OperatorsActivity.this.progressDialog.isShowing() && OperatorsActivity.this.progressDialog != null) {
                             OperatorsActivity.this.progressDialog.dismiss();
                         }
-                        ConstantClass.displayMessageDialog(OperatorsActivity.this, "" + response.body().getErrorCode(), response.body().getStatus());
+//                        ConstantClass.displayMessageDialog(OperatorsActivity.this, "" + response.body().getErrorCode(), response.body().getStatus());
                         return;
                     }
                     if (OperatorsActivity.this.progressDialog.isShowing() && OperatorsActivity.this.progressDialog != null) {
