@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class newCompanyListAdapter extends RecyclerView.Adapter<newCompanyListAdapter.MyViewHolder> {
 
     private Context context;
     List<BankListResponse> listUserBanks = new ArrayList<>();
-    private List<servicelist> services;
 
     public newCompanyListAdapter(Context context, List<BankListResponse> listUserBanks) {
         this.context = context;
@@ -35,43 +35,43 @@ public class newCompanyListAdapter extends RecyclerView.Adapter<newCompanyListAd
     @Override
     public void onBindViewHolder(@NonNull newCompanyListAdapter.MyViewHolder holder, int position) {
         BankListResponse earndata = this.listUserBanks.get(position);
-        servicelist earndata2 = this.services.get(position);
         try {
             holder.id.setText(" " + earndata.getId());
             holder.bankName.setText("Bank Name: " + earndata.getBankName());
             holder.ifsc.setText("IFSC Code: " + earndata.getIfsc());
             holder.branch.setText("Branch Name " + earndata.getBranch());
             holder.accountName.setText("Account Number: " + earndata.getAccountName());
-            holder.serviceName.setText(" " + earndata.getServiceName());
-            holder.charges.setText(" " + earndata.getCharges());
+            holder.text_IMPS.setVisibility(View.VISIBLE);
+            holder.text_IMPS.removeAllViews(); // Clear previous views
+
+            for (Map.Entry<String, String> entry : earndata.getServices().entrySet()) {
+                String serviceName = entry.getKey();
+                String charges = entry.getValue();
+
+                // Create new LinearLayout to hold service and charges
+                LinearLayout serviceLayout = new LinearLayout(holder.itemView.getContext());
+                serviceLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                // Create new TextViews for service and charges
+                TextView serviceNameTextView = new TextView(holder.itemView.getContext());
+                TextView chargesTextView = new TextView(holder.itemView.getContext());
+
+                // Set text for service and charges
+                serviceNameTextView.setText("Service Name: " + serviceName + "  ");
+                chargesTextView.setText("Charges: " + charges);
+
+                // Add new TextViews to the serviceLayout
+                serviceLayout.addView(serviceNameTextView);
+                serviceLayout.addView(chargesTextView);
+
+                // Add the serviceLayout to the text_IMPS LinearLayout
+                holder.text_IMPS.addView(serviceLayout);
+            }
 
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
-//        try {
-//            holder.serviceName.setText(" " + earndata2.getServiceName());
-//            holder.charges.setText(" " + earndata2.getCharges());
-//
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-
-        if (earndata.getServiceName() == earndata2.getServiceName()){
-
-            holder.serviceName.setText(" " + earndata2.getServiceName());
-            holder.charges.setText(" " + earndata2.getCharges());
-        }
-
-
-//       if (earndata.getId()==1){
-//         holder.text_IMPS.setVisibility(View.VISIBLE);
-//             holder.serviceId.setText("Service Name: " + earndata.getServiceName());
-//            holder.charges.setText("service Charge:  " + earndata.getCharges());
-//
-//       }
 
     }
 

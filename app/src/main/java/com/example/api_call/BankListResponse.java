@@ -3,7 +3,11 @@ package com.example.api_call;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class BankListResponse {
 
@@ -37,7 +41,7 @@ public class BankListResponse {
     @Expose
     private String charges;
 
-    private List<servicelist> services;
+    private Map<String, String> services;
 
     public BankListResponse(Integer id, String bankName, String ifsc, String branch, String accountName, String serviceId, String serviceName, String charges) {
         this.id = id;
@@ -48,6 +52,7 @@ public class BankListResponse {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.charges = charges;
+        this.services = new HashMap<>();
     }
 
     public Integer getId() {
@@ -112,5 +117,48 @@ public class BankListResponse {
 
     public void setCharges(String charges) {
         this.charges = charges;
+    }
+
+    public Map<String, String> getServices() {
+        return services;
+    }
+
+    public void addService(String serviceName, String charge) {
+        services.put(serviceName, charge);
+    }
+
+    public static List<BankListResponse> createModifiedList(List<BankListResponse> originalList) {
+        List<BankListResponse> modifiedList = new ArrayList<>();
+
+        // Group the objects by BankName
+        Map<String, List<BankListResponse>> groupedByBankName = originalList.stream()
+                .collect(Collectors.groupingBy(BankListResponse::getBankName));
+
+        // Create modified objects with common BankName and added services
+        for (Map.Entry<String, List<BankListResponse>> entry : groupedByBankName.entrySet()) {
+            String bankName = entry.getKey();
+            List<BankListResponse> bankResponses = entry.getValue();
+
+            // Create a modified response with the fields from the first item in the group
+            BankListResponse modifiedResponse = new BankListResponse(
+                    bankResponses.get(0).getId(),
+                    bankResponses.get(0).getBankName(),
+                    bankResponses.get(0).getIfsc(),
+                    bankResponses.get(0).getBranch(),
+                    bankResponses.get(0).getAccountName(),
+                    bankResponses.get(0).getServiceId(),
+                    bankResponses.get(0).getServiceName(),
+                    bankResponses.get(0).getCharges()
+            );
+
+            // Add services from all items in the group
+            for (BankListResponse originalResponse : bankResponses) {
+                modifiedResponse.addService(originalResponse.getServiceName(), originalResponse.getCharges());
+            }
+
+            modifiedList.add(modifiedResponse);
+        }
+
+        return modifiedList;
     }
 }
