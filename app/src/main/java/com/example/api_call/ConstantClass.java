@@ -97,6 +97,7 @@ public class ConstantClass {
         public static final String EncreptedUserPassword = "encript_password";
         public static final String First_Time_Login = "true";
         public static final String FlagRemember = "remember";
+        public static final String TransactionIds = "TransactionIds";
         public static final String LastSeen = "LastSeen";
         public static final String LoginPassword = "login_password";
         public static final String MainBalance = "MainBalance";

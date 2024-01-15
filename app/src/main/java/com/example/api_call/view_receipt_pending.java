@@ -2,6 +2,7 @@ package com.example.api_call;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import retrofit2.Response;
 public class view_receipt_pending extends AppCompatActivity {
     List<receipt_class> listSatetments;
     TextView text_amount_;
-    TextView Raise,View;
+    TextView Cancel_button;
     TextView text_commission;
     TextView text_creditAmount;
     TextView text_date_time_;
@@ -34,11 +35,12 @@ public class view_receipt_pending extends AppCompatActivity {
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_receipt_pending);
-//        this.Raise =(TextView) findViewById(R.id.RAISE);
+//       this.Cancel_button =(TextView) findViewById(R.id.cancel_button);
 //        this.View =(TextView) findViewById(R.id.view_raise);
         this.text_transid = (TextView) findViewById(R.id.text_transid);
         this.text_retailerNumber = (TextView)findViewById(R.id.text_retailerNumber);
@@ -55,17 +57,17 @@ public class view_receipt_pending extends AppCompatActivity {
         this.text_debitAmount = (TextView) findViewById(R.id.text_debitAmount);
         this.text_effecativeBal = (TextView)findViewById(R.id.text_effecativeBal);
         this.text_creditAmount = (TextView) findViewById(R.id.text_creditAmount);
-        GetReceiptReport();
+        GetReceiptReport(this.text_transid.getText().toString());
         
     }
 
-    private void GetReceiptReport() {
-        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
+    private void GetReceiptReport(String text_transid) {
+        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(view_receipt_pending.this);
         progressDialog.show();
         HashMap<String, String> body = new HashMap<>();
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
-        body.put("TransactionIds","" );
+        body.put("TransactionIds",text_transid);
         body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         ApiInterface apiservice = RetrofitHandler.getService2();
         Call<viewPaymentResponse> call = apiservice.GetReceiptReport(body);
@@ -98,6 +100,10 @@ public class view_receipt_pending extends AppCompatActivity {
                             view_receipt_pending.this.text_debitAmount.setText("Debit Amount: " + earnData.get(i).getDebitAmount());
                             view_receipt_pending.this.text_effecativeBal.setText("Effective Bal.: " + earnData.get(i).getEffecativeBal());
                         }
+
+
+
+
                     } else {
                        ConstantClass.displayMessageDialog(view_receipt_pending.this, "Response", response.body().getResponseStatus().toString());
                     }

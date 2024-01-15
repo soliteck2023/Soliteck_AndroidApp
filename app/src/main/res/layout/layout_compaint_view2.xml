@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blue"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="5dp" app:cardCornerRadius="5dp" app:cardElevation="5dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textStyle="bold" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="status"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/complaintType" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="complaintType"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/description" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="complaint_id"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/raisedate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="raisedate"/>
+            <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/updatedDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="updatedDate"/>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

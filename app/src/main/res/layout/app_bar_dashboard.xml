@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
     <FrameLayout
         android:id="@+id/freme_soli"
@@ -39,10 +38,9 @@
         <!--       </androidx.appcompat.widget.Toolbar>&ndash;&gt;-->
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <include
         android:id="@+id/include"
-        layout="@layout/new_conatentview_dashboard"
+        layout="@layout/activity_new_content_dashboard"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="center" />
 
@@ -62,7 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-<!--            <TextView-->
+<!--
+
+                     <TextView-->
 <!--                android:id="@+id/continuetext"-->
 <!--                android:layout_width="310dp"-->
 <!--                android:layout_height="match_parent"-->

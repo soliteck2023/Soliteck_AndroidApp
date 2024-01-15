@@ -1,6 +1,7 @@
 package com.example.api_call;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,7 +101,36 @@ public class CashoutReceivedReportAdapter extends  RecyclerView.Adapter<CashoutR
             this.text_debitAmount = (TextView) itemView.findViewById(R.id.text_debitAmount);
             this.text_effecativeBal = (TextView) itemView.findViewById(R.id.text_effecativeBal);
             this.text_creditAmount = (TextView) itemView.findViewById(R.id.text_creditAmount);
+
+            this.View.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(android.view.View v) {
+                    aeps_view_receipt();
+
+                }
+            });
+
+            this.Raise.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(android.view.View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, raisecompliant.class);
+                    intent.putExtra("transactionId","earnData.getTransactionNumber()");
+                    context.startActivity(intent);
+
+                }
+            });
         }
+    }
+
+    private void aeps_view_receipt() {
+
+//        Context context = v.getContext();
+        Intent intent = new Intent(context, view_receipt_pending.class);
+        intent.putExtra("transactionId","earnData.getTransactionNumber()");
+        context.startActivity(intent);
+
+
     }
 
 }

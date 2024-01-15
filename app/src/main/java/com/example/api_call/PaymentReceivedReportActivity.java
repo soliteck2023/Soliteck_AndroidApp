@@ -54,7 +54,7 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
         this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.text_todate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
-//        getPaymentReceived(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
+        getPaymentReceived(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
 
         this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1
             @Override // android.view.View.OnClickListener
@@ -92,11 +92,13 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
                             return;
                         }
                         PaymentReceivedReportActivity.this.text_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-                        if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
-                            ConstantClass.displayMessageDialog(PaymentReceivedReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-                        } else {
-                            PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
-                        }
+                        PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
+
+//
+//                        if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
+//                            ConstantClass.displayMessageDialog(PaymentReceivedReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                        } else {
+//                        }
                     }
                 }, PaymentReceivedReportActivity.this.mYear, PaymentReceivedReportActivity.this.mMonth, PaymentReceivedReportActivity.this.mDay);
                 datePickerDialog.show();
@@ -161,7 +163,7 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
 //                    }    //upto this line add prajakta
 
 //                    //add else and below 2 line add in this
-                    ApplicationConstant.DisplayMessageDialog(PaymentReceivedReportActivity.this, "Error", response.body().getRemarks());
+//                    ApplicationConstant.DisplayMessageDialog(PaymentReceivedReportActivity.this, "Error", response.body().getRemarks());
                       alertDialog.dismiss();
 //                    PaymentReceivedReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
 //                    PaymentReceivedReportActivity.this.text_no_content.setVisibility(View.VISIBLE);

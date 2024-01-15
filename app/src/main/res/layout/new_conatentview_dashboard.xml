@@ -57,7 +57,7 @@
 
 <!--                <View-->
 <!--                    android:id="@+id/view1"-->
-<!--                    android:layout_width="wrap_content"-->
+<!--           led         android:layout_width="wrap_content"-->
 <!--                    android:layout_height="190dp"-->
 <!--                    android:background="@drawable/vertical_line"-->
 <!--                    app:layout_constraintStart_toStartOf="parent"-->
@@ -137,7 +137,7 @@
                                 android:id="@+id/imge11"
                                 android:layout_width="40dp"
                                 android:layout_height="60dp"
-                                android:src="@drawable/main_balance_logo2">
+                                android:src="@drawable/main_balance2">
 
                             </ImageView>
 
@@ -199,7 +199,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="60dp"
                                 android:padding="2dp"
-                                android:src="@drawable/cashout_balance_logo2">
+                                android:src="@drawable/cashout_balance">
 
                             </ImageView>
 
@@ -265,7 +265,10 @@
                 android:textColor="@color/colorAccent"
                 android:layout_height="20dp"
                 android:textStyle="bold"
-                android:text="Welcome To SoliTeck Portal"></TextView>
+                android:scrollHorizontally="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="Welcome To SoliTeck User Portal"></TextView>
 
 
             <!--            <androidx.constraintlayout.widget.ConstraintLayout-->

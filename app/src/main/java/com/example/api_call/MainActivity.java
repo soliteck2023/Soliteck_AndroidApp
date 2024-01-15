@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 btn_send_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.3.2
                     @Override // android.view.View.OnClickListener
                     public void onClick(View v2) {
-                        MainActivity.this.sendOtpToNumber(edit_user_name.getText().toString());
+                        MainActivity.this.sendOtpToNumber();
 
                     }
                 });
@@ -280,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sendOtpToNumber(final String mobile) {
+    private void sendOtpToNumber() {
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
         body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
         ApiInterface apiInterface = RetrofitHandler.getService2();
-        Call<OtpSentResponse> call = apiInterface.newforgotPassword("/MOBForgotPassword?username=\" + mobile");
+        Call<OtpSentResponse> call = apiInterface.newforgotPassword(body);
 
 //        Call<OtpSentResponse> call = apiInterface.forgotPasswordMethod("ForgotPassword?username=" + mobile);
 
@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
                            MainActivity.this.progressDialog.dismiss();
                        }
                        ConstantClass.displayToastMessage(MainActivity.this, response.body().getMessage());
-                       PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.UserName,mobile);
+                       PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.UserName,userName);
                        Intent intent = new Intent(MainActivity.this, OtpVerificationActivity.class);
                        intent.putExtra("control", "forgot_password");
                        MainActivity.this.startActivity(intent);

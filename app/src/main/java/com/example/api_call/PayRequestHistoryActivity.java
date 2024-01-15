@@ -56,6 +56,7 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
         this.mDay = this.myCalendar.get(5);
         this.mText_fromdate.setText(this.mYear + "/" + this.mDay + "/" + (this.mMonth + 1));
         this.mText_todate.setText(this.mYear + "/" + this.mDay + "/" + (this.mMonth + 1));
+        getAllHistoryRequests(mText_fromdate.getText().toString(), PayRequestHistoryActivity.this.mText_todate.getText().toString());
 
         this.mImage_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PayRequestHistoryActivity.1
             @Override // android.view.View.OnClickListener
