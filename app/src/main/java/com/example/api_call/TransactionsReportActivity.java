@@ -30,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TransactionsReportActivity extends AppCompatActivity implements TransactionReportAdapter.ItemClickListener  {
+public class TransactionsReportActivity extends AppCompatActivity implements ItemClickListener  {
     private LinearLayout layout_fromdate;
     private LinearLayout layout_todate;
     private int mDay;
@@ -47,9 +47,6 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
     private SearchView searchView;
 
     private ImageView image_fromdate;
-    private ProgressDialog progressDialog;
-
-    ItemClickListener onItemClick;
 
     private TransactionReportAdapter transactionBillAdapter;
     @Override
@@ -254,19 +251,15 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
         this.image_fromdate= (ImageView) findViewById(R.id.image_fromdate);
     }
 
-
+    @Override
+    public void onItemClick(String data) {
+        openNewActivity(data);
+    }
 
     private void openNewActivity(String data) {
-        ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
-        this.progressDialog = dialogue;
-        dialogue.show();
+
         Intent intent = new Intent(this, PaymentReceivedReportActivity.class);
         intent.putExtra("DATA_KEY", data);
         startActivity(intent);
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        setContentView(R.layout.layout_commission_view);
     }
 }

@@ -32,6 +32,7 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ledgerTransactionReport earnData = this.listSatetments.get(position);
         try {
+
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionId());
             holder.text_paymode.setText("Operator Name: " + earnData.getOperator());
             holder.text_status_.setText(earnData.getStatus());
@@ -44,9 +45,8 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
             holder.text_servicecharge.setText("Service charge: " + earnData.getServicecharge());
             holder.text_gst.setText("GST: " + earnData.getGST());
             holder.text_tds.setText("TDS: " + earnData.getTDS());
-            holder.text_creditAmount.setText("Opening Bal: " + earnData.getMBBefore());
-            holder.text_debitAmount.setText("Closing Bal: " + earnData.getMBAfter());
-
+            holder.text_creditAmount.setText("Closing Bal: " + earnData.getMBBefore());
+            holder.text_debitAmount.setText("Opening Bal: " + earnData.getMBAfter());
 
             if ("true".equals(earnData.getCR())) {
                 holder.credit_debit.setText("Credit");
@@ -55,6 +55,7 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
                 holder.credit_debit.setText("Debit");
                 holder.credit_debit.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
             }
+
 
 
 //            holder.text_effecativeBal.setText("Effective Bal.: " + earnData.getEffecativeBal());
@@ -96,7 +97,6 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
         TextView text_tds;
         TextView text_transid;
         TextView credit_debit;
-        TextView text_Debit;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         public MyViewHolder(View itemView) {
@@ -118,8 +118,6 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
             this.text_effecativeBal = (TextView) itemView.findViewById(R.id.text_effecativeBal);
             this.text_creditAmount = (TextView) itemView.findViewById(R.id.text_creditAmount);
             this.credit_debit = (TextView) itemView.findViewById(R.id.text_cr_dr_);
-            this.text_Debit = (TextView) itemView.findViewById(R.id.text_debituser);
-
 
         }
     }

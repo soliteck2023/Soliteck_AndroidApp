@@ -18,10 +18,7 @@
             <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/raisedate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="raisedate"/>
             <TextView android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="start" android:id="@+id/updatedDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="updatedDate"/>
 
-
         </LinearLayout>
-
-
 
     </androidx.cardview.widget.CardView>
 

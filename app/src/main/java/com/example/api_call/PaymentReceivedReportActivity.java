@@ -92,13 +92,11 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
                             return;
                         }
                         PaymentReceivedReportActivity.this.text_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-                        PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
-
-//
-//                        if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
-//                            ConstantClass.displayMessageDialog(PaymentReceivedReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                        } else {
-//                        }
+                        if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
+                            ConstantClass.displayMessageDialog(PaymentReceivedReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+                        } else {
+                            PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
+                        }
                     }
                 }, PaymentReceivedReportActivity.this.mYear, PaymentReceivedReportActivity.this.mMonth, PaymentReceivedReportActivity.this.mDay);
                 datePickerDialog.show();
@@ -163,7 +161,7 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
 //                    }    //upto this line add prajakta
 
 //                    //add else and below 2 line add in this
-//                    ApplicationConstant.DisplayMessageDialog(PaymentReceivedReportActivity.this, "Error", response.body().getRemarks());
+                    ApplicationConstant.DisplayMessageDialog(PaymentReceivedReportActivity.this, "Error", response.body().getRemarks());
                       alertDialog.dismiss();
 //                    PaymentReceivedReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
 //                    PaymentReceivedReportActivity.this.text_no_content.setVisibility(View.VISIBLE);

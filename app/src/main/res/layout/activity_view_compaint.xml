@@ -14,6 +14,7 @@
         />
     <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
         <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_no_content" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No content to display" android:layout_centerInParent="true"/>
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/view_commissions" android:background="@color/white" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/view_commpaint" android:background="@color/white" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent"/>
     </RelativeLayout>
 </LinearLayout>
+

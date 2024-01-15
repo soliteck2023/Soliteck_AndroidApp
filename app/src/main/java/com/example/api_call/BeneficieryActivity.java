@@ -33,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BeneficieryActivity extends AppCompatActivity implements BankListAdapter.SelectBankFromList, BeneficiaryListAdapter.OnDeleteItemListener {
+public class BeneficieryActivity extends AppCompatActivity implements BeneficiaryListAdapter.OnDeleteItemListener {
     private FrameLayout add_ben;
     private CardView add_beneficiary;
     private AlertDialog alertDialog;
@@ -215,9 +215,8 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 beneficieryActivity.bankListAdapter = new BankListAdapter(beneficieryActivity2, beneficieryActivity2.listBanks);
                 BeneficieryActivity.this.view_bank_list.setLayoutManager(new LinearLayoutManager(BeneficieryActivity.this));
                 BeneficieryActivity.this.view_bank_list.setAdapter(BeneficieryActivity.this.bankListAdapter);
-                BeneficieryActivity.this.bankListAdapter.setBankListener((BankListAdapter.SelectBankFromList) BeneficieryActivity.this);
+//                BeneficieryActivity.this.bankListAdapter.setBankListener((BankListAdapter.SelectBankFromList) BeneficieryActivity.this);
                 BeneficieryActivity.this.alertDialog.show();
-
             }
         });
         this.image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.5
@@ -518,13 +517,5 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
     @Override // com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.OnDeleteItemListener
     public void onDeleteItem() {
         getUserDetails(this.mobile_no);
-    }
-
-    @Override
-    public void selectbank(String bankCode, String ifsc) {
-        this.edit_bank.setText(bankCode);
-        this.edit_ifsc_code.setText(ifsc);
-        this.IFSC = this.edit_ifsc_code.getText().toString().trim();
-        this.alertDialog.dismiss();
     }
 }

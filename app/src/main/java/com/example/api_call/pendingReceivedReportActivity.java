@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class pendingReceivedReportActivity extends AppCompatActivity {
     private RecyclerView recycle_transactions;
     private List<NetworkBalanceReceivedReport> reportList;
     private EditText text_fromdate;
-
     private TextView text_no_content;
     private EditText text_search;
     private EditText text_todate;
@@ -79,29 +77,6 @@ public class pendingReceivedReportActivity extends AppCompatActivity {
 //
 //            }
 //        });
-
-//        this.text_todate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.2
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-//                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(pendingReceivedReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.2.1
-//                    @Override // android.app.DatePickerDialog.OnDateSetListener
-//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                        if (pendingReceivedReportActivity.this.text_fromdate.getText().toString().isEmpty()) {
-//                            pendingReceivedReportActivity.this.text_fromdate.setError("Select from date first");
-//                            pendingReceivedReportActivity.this.text_fromdate.requestFocus();
-//                            return;
-//                        }
-////                        pendingReceivedReportActivity.this.text_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-//                         else {
-//                            pendingReceivedReportActivity.this.getPaymentReceived(pendingReceivedReportActivity.this.text_fromdate.getText().toString(), pendingReceivedReportActivity.this.text_todate.getText().toString());
-//                        }
-//                    }
-//                }, pendingReceivedReportActivity.this.mYear, pendingReceivedReportActivity.this.mMonth, pendingReceivedReportActivity.this.mDay);
-//                datePickerDialog.show();
-//                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
-//            }
-//        });
-
 
 
     }

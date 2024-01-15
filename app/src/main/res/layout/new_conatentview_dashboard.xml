@@ -57,7 +57,7 @@
 
 <!--                <View-->
 <!--                    android:id="@+id/view1"-->
-<!--           led         android:layout_width="wrap_content"-->
+<!--                    android:layout_width="wrap_content"-->
 <!--                    android:layout_height="190dp"-->
 <!--                    android:background="@drawable/vertical_line"-->
 <!--                    app:layout_constraintStart_toStartOf="parent"-->
@@ -137,7 +137,7 @@
                                 android:id="@+id/imge11"
                                 android:layout_width="40dp"
                                 android:layout_height="60dp"
-                                android:src="@drawable/main_balance2">
+                                android:src="@drawable/main_balance_logo2">
 
                             </ImageView>
 
@@ -199,7 +199,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="60dp"
                                 android:padding="2dp"
-                                android:src="@drawable/cashout_balance">
+                                android:src="@drawable/cashout_balance_logo2">
 
                             </ImageView>
 
@@ -265,10 +265,7 @@
                 android:textColor="@color/colorAccent"
                 android:layout_height="20dp"
                 android:textStyle="bold"
-                android:scrollHorizontally="true"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
-                android:text="Welcome To SoliTeck User Portal"></TextView>
+                android:text="Welcome To SoliTeck Portal"></TextView>
 
 
             <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
@@ -729,26 +726,27 @@
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginStart="4dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
 
                     <ImageView
                         android:id="@+id/menu_bank_logo1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/payment_req2" />
-
-                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="Payment
-                        Request"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold"></TextView>
+                        android:layout_height="match_parent"
+                        android:src="@drawable/payment_request_final" />
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="Payment-->
+<!--                        Request"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:textStyle="bold"></TextView>-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -763,20 +761,20 @@
 
                     <ImageView
                         android:id="@+id/image_wallet"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/bank_account" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="Bank
-                        Account"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold"></TextView>
+                        android:src="@drawable/bank_accountfinal" />
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="Bank-->
+<!--                        Account"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:textStyle="bold"></TextView>-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -791,20 +789,20 @@
 
                     <ImageView
                         android:id="@+id/image_account"
-                        android:layout_width="35dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/internal_load2" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="Internal
-                        Load"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold"></TextView>
+                        android:src="@drawable/internaloadfinal" />
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="Internal-->
+<!--                        Load"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:textStyle="bold"></TextView>-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -813,26 +811,27 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/third_linear"
                     android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
 
                     <ImageView
                         android:id="@+id/image_account2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/aeps_settlement" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:text="AEPS
-                        Settlement"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold"></TextView>
+                        android:src="@drawable/aepssettlementfinal" />
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="AEPS-->
+<!--                        Settlement"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:textStyle="bold"></TextView>-->
 
 
                 </LinearLayout>
