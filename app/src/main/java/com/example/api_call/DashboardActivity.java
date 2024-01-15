@@ -173,6 +173,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         cashoutbalance = findViewById(R.id.hideimge2);
         textbalance = findViewById(R.id.textbalance);
         textaepsBalance = findViewById(R.id.textaepsBalance);
+
         linermain_blance= findViewById(R.id.main_liner);
         linearcashout_balance= findViewById(R.id.cashout_liner);
 

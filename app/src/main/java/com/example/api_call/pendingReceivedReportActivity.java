@@ -132,8 +132,7 @@ public class pendingReceivedReportActivity extends AppCompatActivity {
                             pendingReceivedReportActivity.this.text_no_content.setVisibility(View.INVISIBLE);
                             pendingReceivedReportActivity.this.reportList = response.body().getNetworkBalanceReceivedReport();
                             pendingReceivedReportActivity pendingReceivedReportActivity = pendingReceivedReportActivity.this;
-                            pendingReceivedReportActivity paymentReceivedReportActivity2 = pendingReceivedReportActivity.this;
-                            pendingReceivedReportActivity.transactionBillAdapter = new PaymentReceivedReportAdapter(paymentReceivedReportActivity2, paymentReceivedReportActivity2.reportList);
+                            pendingReceivedReportActivity.transactionBillAdapter = new PaymentReceivedReportAdapter(pendingReceivedReportActivity, pendingReceivedReportActivity.reportList);
                             pendingReceivedReportActivity.this.recycle_transactions.setAdapter(pendingReceivedReportActivity.this.transactionBillAdapter);
                             return;
                         }

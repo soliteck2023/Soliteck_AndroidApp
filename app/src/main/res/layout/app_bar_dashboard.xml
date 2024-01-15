@@ -40,7 +40,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/activity_new_content_dashboard"
+        layout="@layout/new_conatentview_dashboard"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="center" />
 
