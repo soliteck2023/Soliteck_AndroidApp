@@ -51,9 +51,6 @@ public class Ledger_cashoutLedger_ReportActivity extends AppCompatActivity {
         this.mYear = calendar.get(1);
         this.mMonth = this.myCalendar.get(2);
         this.mDay = this.myCalendar.get(5);
-//        this.text_fromdate.setText(this.mDay + "/" + (this.mMonth + 1) + "/" + this.mYear);
-//        this.text_todate.setText(this.mDay + "/" + (this.mMonth + 1) + "/" + this.mYear);
-
         this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.text_todate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
@@ -85,7 +82,7 @@ public class Ledger_cashoutLedger_ReportActivity extends AppCompatActivity {
 
     }
 
-    private void getledgarcashoutReceived(String fromdate, String todate) {
+    private void getledgarcashoutReceived(String fromDate, String toDate) {
 
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
         progressDialog.show();
@@ -93,8 +90,8 @@ public class Ledger_cashoutLedger_ReportActivity extends AppCompatActivity {
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
         body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
-        body.put("FromDateTime", fromdate);
-        body.put("ToDateTime", todate);
+        body.put("FromDateTime", fromDate);
+        body.put("ToDateTime", toDate);
         ApiInterface apiservice = RetrofitHandler.getService2();
         Call<ledgercashoutbaseResponse> result = apiservice.Getcashout_2ndtxnReceived(body);
 
@@ -120,6 +117,7 @@ public class Ledger_cashoutLedger_ReportActivity extends AppCompatActivity {
                         } else {
                             Ledger_cashoutLedger_ReportActivity.this.recycle_transactions.setVisibility(View.INVISIBLE);
                             Ledger_cashoutLedger_ReportActivity.this.text_no_content.setVisibility(View.VISIBLE);
+
                         }
 
                     }

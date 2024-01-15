@@ -95,6 +95,7 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
 //        mobilerecylerview.setAdapter(myofferAdapter);
 //        startAutoScroll();
 
+
         initComponents();
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //       getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -351,9 +352,14 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
             public void onResponse(Call<FetchOperator> call, Response<FetchOperator> response) {
                 try {
                     if (response.body().getStatusCode().intValue() == 1) {
-
-                     }
-//                    ApplicationConstant.DisplayMessageDialog(MobileRechargeActivity.this, "Response", response.body().getMessage());
+                        try {
+//                            MobileRechargeActivity.this.edit_operator.setText(response.body().getMessage());
+                        } catch (Exception e) {
+                            ApplicationConstant.DisplayMessageDialog(MobileRechargeActivity.this, "Response", e.getMessage());
+                        }
+                        return;
+                    }
+                    ApplicationConstant.DisplayMessageDialog(MobileRechargeActivity.this, "Response", response.body().getMessage());
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }

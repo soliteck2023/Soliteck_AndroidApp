@@ -1,6 +1,5 @@
 package com.example.api_call;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -29,21 +27,17 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
 
     private Context context;
     List<TransactionReport> listSatetments;
+    private ItemClickListener itemClickListener;
+    private FragmentManager fragmentManager;
 
-
-//    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments, ItemClickListener itemClickListener) {
-//        this.context = context;
-//        this.listSatetments = listSatetments;
-//        this.itemClickListener = itemClickListener;
-//    }
-
-
-        public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments) {
+    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments) {
         this.context = context;
         this.listSatetments = listSatetments;
     }
 
-
+    public TransactionReportAdapter(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
     //    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments, ItemClickListener itemClickListener) {
 //        this.context = context;
 //        this.listSatetments = listSatetments;
@@ -62,7 +56,7 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         return new MyViewHolder(view);    }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         TransactionReport earnData = this.listSatetments.get(position);
         try {
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
@@ -88,7 +82,6 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         } else {
             holder.text_status_.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
         }
-
 
         holder.Raise.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,19 +114,12 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
             }
         });
         holder.View.setOnClickListener(new View.OnClickListener() {
-            private ProgressDialog progressDialog;
-
             @Override
             public void onClick(View v) {
-//                openreceipt();
-//                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-//                final AlertDialog alertDialog = builder.create();
-//                alertDialog.setView(v);
-//                alertDialog.show();
-
-                Intent intent = new Intent(TransactionReportAdapter.this.context, view_receipt_pending.class);
-                intent.putExtra("transactionId",TransactionReportAdapter.this.listSatetments.get(position).getId());
-                TransactionReportAdapter.this.context.startActivity(intent);
+                Context context = v.getContext();
+                Intent intent = new Intent(context, view_receipt_pending.class);
+                intent.putExtra("transactionId","earnData.getTransactionNumber()");
+                context.startActivity(intent);
 
 
             }
@@ -141,16 +127,6 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
 
     }
 
-//    private void openreceipt() {
-//        balance_reuest_fragment balance_reuest_fragment = new balance_reuest_fragment();
-//
-//
-//        ((TransactionsReportActivity) context).getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.freme_soli, balance_reuest_fragment)
-//                .addToBackStack(null) // Optional: Adds the transaction to the back stack
-//                .commit();
-//    }
 
 
 //    private void pendingreceipt_view() {
@@ -188,11 +164,6 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         notifyDataSetChanged();
     }
 
-    public interface ItemClickListener {
-        void onItemClick(int position);
-
-    }
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text_amount_;
         TextView Raise,View;
@@ -210,8 +181,6 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         TextView text_status_;
         TextView text_tds;
         TextView text_transid;
-
-//        private ItemClickListener itemClickListener;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         public MyViewHolder(View itemView) {
@@ -235,13 +204,7 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
             this.text_effecativeBal = (TextView) itemView.findViewById(R.id.text_effecativeBal);
             this.text_creditAmount = (TextView) itemView.findViewById(R.id.text_creditAmount);
 
-
         }
-
-
-
-
     }
-
 
 }
