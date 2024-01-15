@@ -1,126 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout   xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/simple_border" android:orientation="vertical"  android:layout_width="match_parent" android:layout_height="wrap_content">
-
-
-    <LinearLayout
-        android:id="@+id/text_remark2"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="vertical"
-        android:background="@color/blue"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="View Payment Requests "
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.493" />
-
-
-    </LinearLayout>
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_below="@+id/text_remark2"
-        app:layout_constraintBottom_toBottomOf="@+id/text_remark2"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_size_10"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_remark"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@drawable/button_background"
-                android:padding="10dp"
-                android:text="Please Select Payment Mode"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"></TextView>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:weightSum="2">
-                <LinearLayout android:gravity="center" android:id="@+id/type_history" android:background="@drawable/bluebutton_color" android:visibility="visible" android:layout_width="0dp" android:layout_height="35dp" android:layout_marginRight="10dp" android:layout_weight="1">
-                    <TextView android:textColor="@color/white"  android:id="@+id/text_history" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:text="History Requests"/>
-                </LinearLayout>
-
-
-                <LinearLayout android:gravity="center" android:id="@+id/type_pending" android:background="@drawable/bluebutton_color" android:layout_width="0dp" android:layout_height="35dp" android:layout_marginLeft="10dp" android:layout_weight="1">
-                    <TextView android:textColor="@color/white" android:id="@+id/text_pending" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pending Requests"/>
-                </LinearLayout>
-            </LinearLayout>
+<LinearLayout   xmlns:android="http://schemas.android.com/apk/res/android"  android:background="@drawable/simple_border" android:orientation="vertical" android:padding="@dimen/size40dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:textSize="@dimen/title_size" android:textStyle="bold" android:textColor="@color/blue" android:layout_gravity="center" android:id="@+id/text_remark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="View Payment Requests"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:weightSum="2">
+        <LinearLayout android:gravity="center" android:id="@+id/type_history" android:background="@drawable/text_view_border" android:visibility="visible" android:layout_width="0dp" android:layout_height="35dp" android:layout_marginRight="10dp" android:layout_weight="1">
+            <TextView android:textColor="@color/black"  android:id="@+id/text_history" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="History Requests"/>
         </LinearLayout>
-
-
-        <!--            <EditText-->
-<!--                android:id="@+id/Amount"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:ems="10"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:inputType="numberDecimal"-->
-<!--                android:hint="Amount"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                tools:layout_editor_absoluteY="25dp" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/Tpin"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:ems="10"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:inputType="number"-->
-<!--                android:hint="Tpin"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/Amount" />-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:text="SUBMIT"-->
-<!--                android:textStyle="bold"-->
-<!--                android:background="@drawable/button_background"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:gravity="center"-->
-<!--                android:padding="5sp" />-->
-
-
-<!--        </LinearLayout>-->
-
-
-
-
-    </androidx.cardview.widget.CardView>
-
-</RelativeLayout>
-
+        <LinearLayout android:gravity="center" android:id="@+id/type_pending" android:background="@drawable/text_view_border" android:layout_width="0dp" android:layout_height="35dp" android:layout_marginLeft="10dp" android:layout_weight="1">
+            <TextView android:textColor="@color/black" android:id="@+id/text_pending" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pending Requests"/>
+        </LinearLayout>
+    </LinearLayout>
+<!--    <Button android:textColor="@color/white" android:id="@+id/btn_request" android:background="@drawable/button_background" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="25dp" android:text="Next"/>-->
+</LinearLayout>

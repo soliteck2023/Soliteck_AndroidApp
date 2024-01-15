@@ -12,7 +12,6 @@ import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -60,13 +59,8 @@ public class MyEarningReportActivity extends AppCompatActivity {
         this.mDay = this.myCalendar.get(5);
         this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
-//        getTransactionReport(this.text_fromdate.getText().toString(), this.Oprator);
+        getTransactionReport(this.text_fromdate.getText().toString(), this.Oprator);
 
-        Spinner stateSpinner = findViewById(R.id.spinner_oprator);
-        String[] states = getResources().getStringArray(R.array.operator);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, states);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        stateSpinner.setAdapter(adapter);
         this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.MyEarningReportActivity.1
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
@@ -82,23 +76,23 @@ public class MyEarningReportActivity extends AppCompatActivity {
             }
         });
 
-//        this.spinner_oprator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // from class: com.uvapay.activities.MyEarningReportActivity.2
-//            @Override // android.widget.AdapterView.OnItemSelectedListener
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                MyEarningReportActivity myEarningReportActivity = MyEarningReportActivity.this;
-//                myEarningReportActivity.Oprator = myEarningReportActivity.spinner_oprator.getSelectedItem().toString();
-////                if (!ConstantClass.isNetworkAvailable(MyEarningReportActivity.this)) {
-////                    ConstantClass.displayMessageDialog(MyEarningReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-////                    return;
-////                }
-//                MyEarningReportActivity myEarningReportActivity2 = MyEarningReportActivity.this;
-//                myEarningReportActivity2.getTransactionReport(myEarningReportActivity2.text_fromdate.getText().toString(), MyEarningReportActivity.this.Oprator);
-//            }
-//
-//            @Override // android.widget.AdapterView.OnItemSelectedListener
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//            }
-//        });
+        this.spinner_oprator.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // from class: com.uvapay.activities.MyEarningReportActivity.2
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MyEarningReportActivity myEarningReportActivity = MyEarningReportActivity.this;
+                myEarningReportActivity.Oprator = myEarningReportActivity.spinner_oprator.getSelectedItem().toString();
+                if (!ConstantClass.isNetworkAvailable(MyEarningReportActivity.this)) {
+                    ConstantClass.displayMessageDialog(MyEarningReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+                    return;
+                }
+                MyEarningReportActivity myEarningReportActivity2 = MyEarningReportActivity.this;
+                myEarningReportActivity2.getTransactionReport(myEarningReportActivity2.text_fromdate.getText().toString(), MyEarningReportActivity.this.Oprator);
+            }
+
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
         this.text_search.setVisibility(View.GONE);
         this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.MyEarningReportActivity.3
             @Override // android.text.TextWatcher
@@ -143,8 +137,8 @@ public class MyEarningReportActivity extends AppCompatActivity {
                             MyEarningReportActivity.this.text_no_content.setVisibility(View.INVISIBLE);
                             MyEarningReportActivity.this.reportList = response.body().getTransaction();
                             MyEarningReportActivity myEarningReportActivity = MyEarningReportActivity.this;
-//                            MyEarningReportActivity myEarningReportActivity2 = MyEarningReportActivity.this;
-                            myEarningReportActivity.transactionBillAdapter = new EarningReportAdapter(myEarningReportActivity, myEarningReportActivity.reportList);
+                            MyEarningReportActivity myEarningReportActivity2 = MyEarningReportActivity.this;
+                            myEarningReportActivity.transactionBillAdapter = new EarningReportAdapter(myEarningReportActivity2, myEarningReportActivity2.reportList);
                             MyEarningReportActivity.this.recycle_transactions.setAdapter(MyEarningReportActivity.this.transactionBillAdapter);
                             return;
                         }
@@ -175,7 +169,6 @@ public class MyEarningReportActivity extends AppCompatActivity {
         this.text_fromdate = (EditText) findViewById(R.id.text_fromdate);
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
-        this.text_todate = (EditText) findViewById(R.id.text_todate);
         this.spinner_oprator = (Spinner) findViewById(R.id.spinner_oprator);
     }
     @Override // androidx.appcompat.app.AppCompatActivity
