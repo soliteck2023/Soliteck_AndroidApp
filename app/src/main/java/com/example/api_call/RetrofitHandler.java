@@ -46,8 +46,6 @@ public class RetrofitHandler {
                 .client(okHttpClient)
                 .build();
 
-
-
         return retrofit2;
 
     }

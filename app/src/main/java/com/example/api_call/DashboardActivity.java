@@ -153,6 +153,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     LinearLayout linermain_blance,linearcashout_balance;
 
     LinearLayout linerlayout;
+
+    LinearLayout compaint_rpt;
     AlertDialog alertDialog;
 
 
@@ -280,7 +282,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         LinearLayout linear_transfer = (LinearLayout) findViewById(R.id.linear_transferdmt);
         this.linear_bbps = (LinearLayout) findViewById(R.id.linear_bbps);
         this.linear_aeps = (LinearLayout) findViewById(R.id.linear_aeps);
-
+        LinearLayout compaint_rpt =(LinearLayout)findViewById(R.id.linear_cmplaint2);
         this.linear_transactions = (LinearLayout) findViewById(R.id.linear_txn);
 //        this.linear_payment_transfer_report = (LinearLayout) findViewById(R.id.linear_paytransfe_rreport);
         LinearLayout pending_transcation_rpt =(LinearLayout)findViewById(R.id.pending_txn_report);
@@ -296,6 +298,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         LinearLayout walletSettelement_Req = (LinearLayout) findViewById(R.id.fourth);
         this.linear_payment_received_report = (LinearLayout) findViewById(R.id.third_linear);
         this.linear_pending_txn_report = (LinearLayout) findViewById(R.id.linear_pending);
+//        compaint_rpt =(LinearLayout)findViewById();
 
  //        linear_latestReport = findViewById(R.id.second_linier);
 //        compliant = findViewById(R.id.third_linear);
@@ -392,7 +395,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //        });
 
 
+        compaint_rpt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, viewCompaintActivity.class));
 
+
+            }
+        });
 
 
         linear_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
@@ -566,6 +576,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
             }
         });
+
+//        compaint_rpt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, viewCompaintActivity.class));
+//
+//
+//            }
+//        });
 
     }
 
@@ -871,7 +890,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private void viewSettelmentFragment() {
         View view_types = getLayoutInflater().inflate(R.layout.layout_walletsettelment_fragment, (ViewGroup) null);
         TextView mText_remark = (TextView) view_types.findViewById(R.id.text_remark);
-        final TextView text_submit = (TextView) view_types.findViewById(R.id.textView4);
+        final TextView text_submit = (TextView) view_types.findViewById(R.id.textView);
         final BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view_types);
         dialog.show();
@@ -894,9 +913,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     body.put("UniqueCode", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.UserName, ""));
                     body.put("Token", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.Token, ""));
                     body.put("Amount", Amount);
-                    body.put("Tpin", Tpin);
+                    String token = DashboardActivity.this.tpinEditText.getText().toString().trim();
+                    String EncodedPass = ApplicationConstant.EncodeStringToHMACSHA256(token);
+                    body.put("Tpin", EncodedPass);
                     ApiInterface apiservice = RetrofitHandler.getService2();
                     Call<LedgerReportBase> result = apiservice.AEPSWalletSettelement(body);
+
                     result.enqueue(new Callback<LedgerReportBase>() {
                         @Override
                         public void onResponse(Call<LedgerReportBase> call, Response<LedgerReportBase> response) {
@@ -904,8 +926,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                             if (progressDialog2 != null && progressDialog2.isShowing()) {
                                 progressDialog.dismiss();
                             }
-                            if (response.body().getResponseStatus().intValue() == 1) {
-                                ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Success", response.body().getRemarks());
+
+                            if (response.body().getResponseStatus().intValue() == 1){
+                               ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Success", response.body().getRemarks());
                             }else {
                                 ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Error", response.body().getRemarks());
                             }
@@ -916,16 +939,43 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                                 alertDialog.dismiss();
                             }
                             return;
+
                         }
 
                         @Override
                         public void onFailure(Call<LedgerReportBase> call, Throwable t) {
-                            ProgressDialog progressDialog2 = progressDialog;
-                            if (progressDialog2 != null && progressDialog2.isShowing()) {
-                                progressDialog.dismiss();
-                            }
+
                         }
                     });
+//                    result.enqueue(new Callback<LedgerReportBase>() {
+//                        @Override
+//                        public void onResponse(Call<LedgerReportBase> call, Response<LedgerReportBase> response) {
+//                            ProgressDialog progressDialog2 = progressDialog;
+//                            if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                                progressDialog.dismiss();
+//                            }
+//                            if (response.body().getResponseStatus().intValue() == 1) {
+//                                ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Success", response.body().getRemarks());
+//                            }else {
+//                                ApplicationConstant.DisplayMessageDialog(DashboardActivity.this, "Error", response.body().getRemarks());
+//                            }
+//                            if (dialog != null) {
+//                                dialog.dismiss();
+//                            }
+//                            if (alertDialog != null) {
+//                                alertDialog.dismiss();
+//                            }
+//                            return;
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<LedgerReportBase> call, Throwable t) {
+//                            ProgressDialog progressDialog2 = progressDialog;
+//                            if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                                progressDialog.dismiss();
+//                            }
+//                        }
+//                    });
                 }else{
                     mText_remark.setText("Please enter the details !!");
                     mText_remark.setTextColor(Color.RED);

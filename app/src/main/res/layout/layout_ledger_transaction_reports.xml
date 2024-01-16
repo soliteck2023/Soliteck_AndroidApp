@@ -32,6 +32,7 @@
                 <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/text_gst" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
                 <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="right" android:id="@+id/text_tds" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
             </LinearLayout>
+
             <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:weightSum="2">
                 <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/text_debitAmount" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
                 <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="right" android:id="@+id/text_creditAmount" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>

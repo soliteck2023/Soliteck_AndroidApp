@@ -40,22 +40,23 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
             holder.text_amount_.setText("Rs " + earnData.getAmount());
             holder.text_refid.setText("Ref No: " + earnData.getRefNumber());
             holder.text_mob_.setText("" + earnData.getUniqueCode());
-            holder.text_retailerNumber.setText("Receival Details: " + earnData.getReceiverDetails());
+            holder.text_retailerNumber.setText("Receiver Details: " + earnData.getReceiverDetails());
             holder.text_commission.setText("Commission: " + earnData.getCommission());
             holder.text_servicecharge.setText("Service charge: " + earnData.getServicecharge());
             holder.text_gst.setText("GST: " + earnData.getGST());
             holder.text_tds.setText("TDS: " + earnData.getTDS());
-            holder.text_creditAmount.setText("Opening Bal: " + earnData.getMBBefore());
-            holder.text_debitAmount.setText("Closing Bal: " + earnData.getMBAfter());
-            if (earnData.getCR() == "true"){
+            holder.text_creditAmount.setText("Closing Bal: " + earnData.getMBBefore());
+            holder.text_debitAmount.setText("Opening Bal: " + earnData.getMBAfter());
+
+            if ("true".equals(earnData.getCR())) {
                 holder.credit_debit.setText("Credit");
                 holder.credit_debit.setTextColor(this.context.getResources().getColor(R.color.dark_green));
-
-            }else{
+            } else {
                 holder.credit_debit.setText("Debit");
                 holder.credit_debit.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
-
             }
+
+
 
 //            holder.text_effecativeBal.setText("Effective Bal.: " + earnData.getEffecativeBal());
         } catch (Exception e) {

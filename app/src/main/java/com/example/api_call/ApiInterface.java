@@ -105,6 +105,9 @@ public interface ApiInterface {
     @POST("MOBComissionReport")
     Call<Commision> getCommissionMargin2(@Body HashMap<String, String> hashMap);
 
+    @POST("MOBComplaintReport")
+    Call<Compaint> getcompaintMargin2(@Body HashMap<String, String> hashMap);
+
     @POST("MOBAEPSTxnReport")
     Call<cashoutbaseResponse> Getcashout_txnReceived(@Body HashMap<String, String> hashMap);
 

@@ -50,46 +50,46 @@ public class pendingReceivedReportActivity extends AppCompatActivity {
         this.mYear = calendar.get(1);
         this.mMonth = this.myCalendar.get(2);
         this.mDay = this.myCalendar.get(5);
-        this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
-        this.text_todate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
+//        this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
+//        this.text_todate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
-        getPaymentReceived(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
-        this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(pendingReceivedReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1.1
-                    @Override // android.app.DatePickerDialog.OnDateSetListener
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        pendingReceivedReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-                        pendingReceivedReportActivity.this.text_fromdate.setError(null);
-                        pendingReceivedReportActivity.this.getPaymentReceived(pendingReceivedReportActivity.this.text_fromdate.getText().toString(), pendingReceivedReportActivity.this.text_todate.getText().toString());
-
-//                        if (!PaymentReceivedReportActivity.this.text_todate.getText().toString().isEmpty()) {
-//                            if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
-//                                ConstantClass.displayMessageDialog(PaymentReceivedReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                            } else {
-//                                PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
-//                            }
-//                        }
-                    }
-                }, pendingReceivedReportActivity.this.mYear, pendingReceivedReportActivity.this.mMonth, pendingReceivedReportActivity.this.mDay);
-                datePickerDialog.show();
-
-            }
-        });
+        getPaymentReceived();
+//        this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View v) {
+//                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(pendingReceivedReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1.1
+//                    @Override // android.app.DatePickerDialog.OnDateSetListener
+//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                        pendingReceivedReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+//                        pendingReceivedReportActivity.this.text_fromdate.setError(null);
+//                        pendingReceivedReportActivity.this.getPaymentReceived(pendingReceivedReportActivity.this.text_fromdate.getText().toString(), pendingReceivedReportActivity.this.text_todate.getText().toString());
+//
+////                        if (!PaymentReceivedReportActivity.this.text_todate.getText().toString().isEmpty()) {
+////                            if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
+////                                ConstantClass.displayMessageDialog(PaymentReceivedReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+////                            } else {
+////                                PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
+////                            }
+////                        }
+//                    }
+//                }, pendingReceivedReportActivity.this.mYear, pendingReceivedReportActivity.this.mMonth, pendingReceivedReportActivity.this.mDay);
+//                datePickerDialog.show();
+//
+//            }
+//        });
 
 
     }
 
-    private void getPaymentReceived(String fromDate, String toDate) {
+    private void getPaymentReceived() {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
         progressDialog.show();
         HashMap<String, String> body = new HashMap<>();
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
         body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
-        body.put("FromDateTime", fromDate);
-        body.put("ToDateTime", toDate);
+//        body.put("FromDateTime", fromDate);
+//        body.put("ToDateTime", toDate);
         ApiInterface apiservice = RetrofitHandler.getService2();
         Call<PaymentReceivedResponse> result = apiservice.Getpendingreport(body);
         result.enqueue(new Callback<PaymentReceivedResponse>() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.4
