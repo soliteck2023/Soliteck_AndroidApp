@@ -549,7 +549,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onClick(View v) {
 
-                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, MyEarningReportActivity.class));
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, MyEarningReportActivity2.class));
 
             }
         });

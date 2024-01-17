@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +39,7 @@ public class MyEarningReportActivity extends AppCompatActivity {
     private int mYear;
     private Calendar myCalendar;
     private RecyclerView recycle_transactions;
-    private List<MyEarningTransaction> reportList;
+    private List<PaymentMode> reportList;
     Spinner spinner_oprator;
     private EditText text_fromdate;
     private TextView text_no_content;
@@ -51,14 +52,17 @@ public class MyEarningReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_earning_report);
         setTitle("My Earning Report");
+
+//        Calendar calendar = Calendar.getInstance();
+////        this.myCalendar = calendar;
+//        this.mYear = calendar.get(1);
+//        this.mMonth = this.myCalendar.get(2);
+//        this.mDay = this.myCalendar.get(5);
+//        this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
+//        this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
+//       getTransactionReport(this.text_fromdate.getText().toString(), this.Oprator);
+//        getnewoprtaor();
         initComponents();
-        Calendar calendar = Calendar.getInstance();
-        this.myCalendar = calendar;
-        this.mYear = calendar.get(1);
-        this.mMonth = this.myCalendar.get(2);
-        this.mDay = this.myCalendar.get(5);
-        this.text_fromdate.setText(this.mYear + "/" + (this.mMonth + 1) + "/" + this.mDay);
-        this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
 //        getTransactionReport(this.text_fromdate.getText().toString(), this.Oprator);
 
         this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.MyEarningReportActivity.1
@@ -111,6 +115,32 @@ public class MyEarningReportActivity extends AppCompatActivity {
 
     }
 
+    private void getnewoprtaor() {
+        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
+        progressDialog.show();
+        HashMap<String, String> body = new HashMap<>();
+        body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+        body.put("UniqueCode", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
+        body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
+        ApiInterface apiservice =RetrofitHandler.getService2();
+        Call<PaymentModeResponse> result = apiservice.GetopratorEarning(body);
+
+        result.enqueue(new Callback<PaymentModeResponse>() {
+            @Override
+            public void onResponse(Call<PaymentModeResponse> call, Response<PaymentModeResponse> response) {
+                Toast.makeText(MyEarningReportActivity.this, "Response", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<PaymentModeResponse> call, Throwable t) {
+                Toast.makeText(MyEarningReportActivity.this, "Error", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
+
     private void getTransactionReport(String fromDate, String Oprator) {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
         progressDialog.show();
@@ -122,23 +152,23 @@ public class MyEarningReportActivity extends AppCompatActivity {
         body.put("FromDateTime", fromDate);
         body.put("OperaterId", Oprator);
         ApiInterface apiservice =RetrofitHandler.getService();
-        Call<MyEarningReportBase> result = apiservice.GetMyEarning(body);
-        result.enqueue(new Callback<MyEarningReportBase>() { // from class: com.uvapay.activities.MyEarningReportActivity.4
+        Call<PaymentModeResponse> result = apiservice.GetopratorEarning(body);
+        result.enqueue(new Callback<PaymentModeResponse>() { // from class: com.uvapay.activities.MyEarningReportActivity.4
             @Override // retrofit2.Callback
-            public void onResponse(Call<MyEarningReportBase> call, Response<MyEarningReportBase> response) {
+            public void onResponse(Call<PaymentModeResponse> call, Response<PaymentModeResponse> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
                     progressDialog.dismiss();
                 }
                 try {
                     if (response.body().getResponseStatus().intValue() == 1) {
-                        if (!response.body().getTransaction().isEmpty()) {
+                        if (!response.body().getPaymentMode().isEmpty()) {
                             MyEarningReportActivity.this.recycle_transactions.setVisibility(View.VISIBLE);
                             MyEarningReportActivity.this.text_no_content.setVisibility(View.INVISIBLE);
-                            MyEarningReportActivity.this.reportList = response.body().getTransaction();
+                            MyEarningReportActivity.this.reportList = response.body().getPaymentMode();
                             MyEarningReportActivity myEarningReportActivity = MyEarningReportActivity.this;
 //                            MyEarningReportActivity myEarningReportActivity2 = MyEarningReportActivity.this;
-                            myEarningReportActivity.transactionBillAdapter = new EarningReportAdapter(myEarningReportActivity, myEarningReportActivity.reportList);
+//                            myEarningReportActivity.transactionBillAdapter = new EarningReportAdapter(myEarningReportActivity, myEarningReportActivity.reportList);
                             MyEarningReportActivity.this.recycle_transactions.setAdapter(MyEarningReportActivity.this.transactionBillAdapter);
                             return;
                         }
@@ -153,7 +183,7 @@ public class MyEarningReportActivity extends AppCompatActivity {
             }
 
             @Override // retrofit2.Callback
-            public void onFailure(Call<MyEarningReportBase> call, Throwable t) {
+            public void onFailure(Call<PaymentModeResponse> call, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
                     progressDialog.dismiss();
@@ -169,7 +199,7 @@ public class MyEarningReportActivity extends AppCompatActivity {
         this.text_fromdate = (EditText) findViewById(R.id.text_fromdate);
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
-        this.spinner_oprator = (Spinner) findViewById(R.id.spinner_oprator);
+        this.spinner_oprator = (Spinner) findViewById(R.id.oprator_sp);
     }
     @Override // androidx.appcompat.app.AppCompatActivity
     public boolean onSupportNavigateUp() {
@@ -179,10 +209,10 @@ public class MyEarningReportActivity extends AppCompatActivity {
 
     private void filter(String s) {
         try {
-            List<MyEarningTransaction> listnew_Banks = new ArrayList<>();
-            for (MyEarningTransaction myEarningTransaction : this.reportList) {
-            }
-            this.transactionBillAdapter.filter(listnew_Banks);
+            List<PaymentMode> listnew_Banks = new ArrayList<>();
+//            for (MyEarningTransaction myEarningTransaction : this.reportList) {
+//            }
+//            this.transactionBillAdapter.filter(listnew_Banks);
         } catch (Exception e) {
             e.printStackTrace();
         }

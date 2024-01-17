@@ -64,6 +64,28 @@
         <item>RTGS</item>
         <item>UPI</item>
     </array>
+    <string-array name="earningoperator">
+    <item>VI</item>
+    <item>Airtel</item>
+    <item>Jio</item>
+    <item>BSNL</item>
+        <item>Airtel Digital TV</item>
+        <item>Tata Sky</item>
+        <item>"BSNL Topup"</item>
+        <item>BSNL Special</item>
+        <item>DISH TV</item>
+        <item>Tata Sky</item>
+        <item>"BIG TV"</item>
+        <item>SoliteckDMT</item>
+        <item>Maharashtra State Electricity Distbn Co Ltd</item>
+        <item>Assam Power Distribution Company Ltd (NON-RAPDR)</item>
+        <item>"Assam Power Distribution Company Ltd- Smart Prepaid Recharge"</item>
+        <item>"Ajmer Vidyut Vitran Nigam Limited (AVVNL)"</item>
+
+
+
+    </string-array>
+
 
     <string-array name="operator">
         <item>VI</item>
