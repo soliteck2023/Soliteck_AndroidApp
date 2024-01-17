@@ -1,11 +1,17 @@
 package com.example.api_call;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -21,6 +27,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
@@ -39,7 +46,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,9 +56,12 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import kotlin.coroutines.CoroutineContext;
+import kotlinx.coroutines.CoroutineScope;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class PaymentRequestActivity extends AppCompatActivity {
 
@@ -111,6 +123,8 @@ public class PaymentRequestActivity extends AppCompatActivity {
     private String UserId = "";
     private String PayId = "";
     private String BankId = "";
+
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,18 +206,59 @@ public class PaymentRequestActivity extends AppCompatActivity {
             public void onClick(View v) {
             }
         });
+
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == Activity.RESULT_OK){
+                    Intent data = result.getData();
+                    Uri uri = data.getData();
+                    try{
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                        image_slip.setImageBitmap(bitmap);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+
+                }
+            }
+
+        });
         this.btn_payment_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.7
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
+
+//
+//                ByteArrayOutputStream byteArrayOutputStream;
+//                byteArrayOutputStream = new ByteArrayOutputStream();
+//                if (bitmap != null){
+//                    bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+//                    byte [] bytes = byteArrayOutputStream.toByteArray();
+////                    final String base64Image = Base64.encodeToString(bytes, Base64.DEFAULT);
+//                }
+//                else {
+//                    Toast.makeText(PaymentRequestActivity.this, "Select Image FIrst", Toast.LENGTH_SHORT).show();
+//                }
                 PaymentRequestActivity.this.makeMoneyRequest();
             }
         });
-        this.image_slip.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.8
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                PaymentRequestActivity.this.selectImage();
+
+        this.image_slip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                activityResultLauncher.launch(intent);
+
             }
         });
+//        this.image_slip.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.8
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View view) {
+//                PaymentRequestActivity.this.selectImage();
+//            }
+//        });
 
         this.edit_payment_date.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.9
             @Override // android.view.View.OnClickListener
@@ -327,62 +382,62 @@ public class PaymentRequestActivity extends AppCompatActivity {
         handleBackPressed(dialog);
     }
 
-    private void selectImage() {
-        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Photo!");
-        builder.setItems(options, new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.23
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int item) {
-                if (!options[item].equals("Take Photo")) {
-                    if (options[item].equals("Choose from Gallery")) {
-                        Intent intent = new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        PaymentRequestActivity.this.startActivityForResult(intent, 2);
-                        return;
-                    } else if (options[item].equals("Cancel")) {
-                        dialog.dismiss();
-                        return;
-                    } else {
-                        return;
-                    }
-                }
-                Intent takePictureIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-                if (takePictureIntent.resolveActivity(PaymentRequestActivity.this.getPackageManager()) != null) {
-                    File photoFile = null;
-                    try {
-                        photoFile = PaymentRequestActivity.this.createImageFile("payment_slip", "Images");
-                    } catch (IOException e) {
-                    }
-                    if (photoFile != null) {
-                        Uri photoURI = FileProvider.getUriForFile(PaymentRequestActivity.this, "com.payinapp_label.android.fileprovider", photoFile);
-                        takePictureIntent.putExtra("output", photoURI);
-                        PaymentRequestActivity.this.startActivityForResult(takePictureIntent, 1);
-                    }
-                }
-            }
-        });
-        builder.show();
-    }
+//    private void selectImage() {
+//        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Add Photo!");
+//        builder.setItems(options, new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.23
+//            @Override // android.content.DialogInterface.OnClickListener
+//            public void onClick(DialogInterface dialog, int item) {
+//                if (!options[item].equals("Take Photo")) {
+//                    if (options[item].equals("Choose from Gallery")) {
+//                        Intent intent = new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                        PaymentRequestActivity.this.startActivityForResult(intent, 2);
+//                        return;
+//                    } else if (options[item].equals("Cancel")) {
+//                        dialog.dismiss();
+//                        return;
+//                    } else {
+//                        return;
+//                    }
+//                }
+//                Intent takePictureIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+//                if (takePictureIntent.resolveActivity(PaymentRequestActivity.this.getPackageManager()) != null) {
+//                    File photoFile = null;
+//                    try {
+//                        photoFile = PaymentRequestActivity.this.createImageFile("payment_slip", "Images");
+//                    } catch (IOException e) {
+//                    }
+//                    if (photoFile != null) {
+//                        Uri photoURI = FileProvider.getUriForFile(PaymentRequestActivity.this, "com.payinapp_label.android.fileprovider", photoFile);
+//                        takePictureIntent.putExtra("output", photoURI);
+//                        PaymentRequestActivity.this.startActivityForResult(takePictureIntent, 1);
+//                    }
+//                }
+//            }
+//        });
+//        builder.show();
+//    }
 
-    private File createImageFile(String file_image, String subfolder) throws IOException {
-        File f = new File(Environment.getExternalStorageDirectory(), "payinApp");
-        if (!f.exists()) {
-            f.mkdirs();
-        }
-        File sub_folder = new File(f, subfolder);
-        if (!sub_folder.exists()) {
-            sub_folder.mkdirs();
-        }
-        File f1 = new File(sub_folder, file_image + ".png");
-        if (!f1.exists()) {
-            this.photo_1 = f1.getAbsolutePath();
-            return f1;
-        }
-        deleteCache(this, f1);
-        File f1_new = new File(sub_folder, file_image + ".png");
-        this.photo_1 = f1_new.getAbsolutePath();
-        return f1_new;
-    }
+//    private File createImageFile(String file_image, String subfolder) throws IOException {
+//        File f = new File(Environment.getExternalStorageDirectory(), "payinApp");
+//        if (!f.exists()) {
+//            f.mkdirs();
+//        }
+//        File sub_folder = new File(f, subfolder);
+//        if (!sub_folder.exists()) {
+//            sub_folder.mkdirs();
+//        }
+//        File f1 = new File(sub_folder, file_image + ".png");
+//        if (!f1.exists()) {
+//            this.photo_1 = f1.getAbsolutePath();
+//            return f1;
+//        }
+//        deleteCache(this, f1);
+//        File f1_new = new File(sub_folder, file_image + ".png");
+//        this.photo_1 = f1_new.getAbsolutePath();
+//        return f1_new;
+//    }
     public static void deleteCache(Context context, File dir) {
         try {
             File dir2 = context.getCacheDir();
@@ -403,54 +458,64 @@ public class PaymentRequestActivity extends AppCompatActivity {
         body.put("BankId", this.BankId);
         body.put("Amount", this.edit_amount_.getText().toString());
         body.put("BankTransactionNumber", this.edit_transactionno.getText().toString());
-        body.put("ReceiptURL", "vaCFjJEybAZUST6O2142Ew");
+        ByteArrayOutputStream byteArrayOutputStream;
+        byteArrayOutputStream = new ByteArrayOutputStream();
+        if (bitmap != null){
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        }
+        else {
+            Toast.makeText(PaymentRequestActivity.this, "Select Image FIrst", Toast.LENGTH_SHORT).show();
+        }
+        byte [] bytes = byteArrayOutputStream.toByteArray();
+        final String base64Image = Base64.encodeToString(bytes, Base64.DEFAULT);
+        body.put("ReceiptURL",base64Image);
         body.put("UniqueCode", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("Description", this.edit_remarks.getText().toString());
-        ApiInterface apiservice = RetrofitHandler.getService();
-        Call<RequestPaymentResponse> call = apiservice.GetPaymentRequest(body);
-        call.enqueue(new Callback<RequestPaymentResponse>() { // from class: com.uvapay.activities.PaymentRequestActivity.13
-            @Override // retrofit2.Callback
-            public void onResponse(Call<RequestPaymentResponse> call2, Response<RequestPaymentResponse> response) {
-                ProgressDialog progressDialog2 = progressDialog;
-                if (progressDialog2 != null && progressDialog2.isShowing()) {
-                    progressDialog.dismiss();
-                }
-                if (response != null) {
-                    if (response.body().getResponseStatus().intValue() == 1) {
-                        ConstantClass.displayMessageDialog(PaymentRequestActivity.this, "Response", response.body().getRemarks() + " " + response.body().getStatus());
-                        PaymentRequestActivity.this.edit_amount_.setText("");
-                        PaymentRequestActivity.this.edit_check_date.setText("");
-                        PaymentRequestActivity.this.edit_cheque_number.setText("");
-                        PaymentRequestActivity.this.edit_payment_date.setText("");
-                        PaymentRequestActivity.this.edit_bank.setText("");
-                        PaymentRequestActivity.this.edit_paymentmode.setText("");
-                        PaymentRequestActivity.this.edit_cashtype.setText("");
-                        PaymentRequestActivity.this.edit_transactionno.setText("");
-                        PaymentRequestActivity.this.edit_utr_no.setText("");
-                        PaymentRequestActivity.this.edit_user_bank.setText("");
-                        PaymentRequestActivity.this.edit_remarks.setText("");
-                        PaymentRequestActivity.this.strBankCode = "";
-                        PaymentRequestActivity.this.BankId = "";
-                        PaymentRequestActivity.this.PayId = "";
-                        PaymentRequestActivity.this.branchname = "";
-                        PaymentRequestActivity.this.checkCredit.setChecked(false);
-                        PaymentRequestActivity.this.image_slip.setImageBitmap(null);
-                        return;
-                    }
-                    ConstantClass.displayMessageDialog(PaymentRequestActivity.this, "Response", response.body().getRemarks());
-                }
-            }
-
-            @Override // retrofit2.Callback
-            public void onFailure(Call<RequestPaymentResponse> call2, Throwable t) {
-                ProgressDialog progressDialog2 = progressDialog;
-                if (progressDialog2 != null && progressDialog2.isShowing()) {
-                    progressDialog.dismiss();
-                }
-                PaymentRequestActivity paymentRequestActivity = PaymentRequestActivity.this;
-                ConstantClass.displayMessageDialog(paymentRequestActivity, paymentRequestActivity.getString(R.string.server_problem), t.getMessage().toString());
-            }
-        });
+//        ApiInterface apiservice = RetrofitHandler.getService();
+//        Call<RequestPaymentResponse> call = apiservice.GetPaymentRequest(body);
+//        call.enqueue(new Callback<RequestPaymentResponse>() { // from class: com.uvapay.activities.PaymentRequestActivity.13
+//            @Override // retrofit2.Callback
+//            public void onResponse(Call<RequestPaymentResponse> call2, Response<RequestPaymentResponse> response) {
+//                ProgressDialog progressDialog2 = progressDialog;
+//                if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                    progressDialog.dismiss();
+//                }
+//                if (response != null) {
+//                    if (response.body().getResponseStatus().intValue() == 1) {
+//                        ConstantClass.displayMessageDialog(PaymentRequestActivity.this, "Response", response.body().getRemarks() + " " + response.body().getStatus());
+//                        PaymentRequestActivity.this.edit_amount_.setText("");
+//                        PaymentRequestActivity.this.edit_check_date.setText("");
+//                        PaymentRequestActivity.this.edit_cheque_number.setText("");
+//                        PaymentRequestActivity.this.edit_payment_date.setText("");
+//                        PaymentRequestActivity.this.edit_bank.setText("");
+//                        PaymentRequestActivity.this.edit_paymentmode.setText("");
+//                        PaymentRequestActivity.this.edit_cashtype.setText("");
+//                        PaymentRequestActivity.this.edit_transactionno.setText("");
+//                        PaymentRequestActivity.this.edit_utr_no.setText("");
+//                        PaymentRequestActivity.this.edit_user_bank.setText("");
+//                        PaymentRequestActivity.this.edit_remarks.setText("");
+//                        PaymentRequestActivity.this.strBankCode = "";
+//                        PaymentRequestActivity.this.BankId = "";
+//                        PaymentRequestActivity.this.PayId = "";
+//                        PaymentRequestActivity.this.branchname = "";
+//                        PaymentRequestActivity.this.checkCredit.setChecked(false);
+//                        PaymentRequestActivity.this.image_slip.setImageBitmap(null);
+//                        return;
+//                    }
+//                    ConstantClass.displayMessageDialog(PaymentRequestActivity.this, "Response", response.body().getRemarks());
+//                }
+//            }
+//
+//            @Override // retrofit2.Callback
+//            public void onFailure(Call<RequestPaymentResponse> call2, Throwable t) {
+//                ProgressDialog progressDialog2 = progressDialog;
+//                if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                    progressDialog.dismiss();
+//                }
+//                PaymentRequestActivity paymentRequestActivity = PaymentRequestActivity.this;
+//                ConstantClass.displayMessageDialog(paymentRequestActivity, paymentRequestActivity.getString(R.string.server_problem), t.getMessage().toString());
+//            }
+//        });
     }
 
     private void DisplayCashType(String[] paymentType) {

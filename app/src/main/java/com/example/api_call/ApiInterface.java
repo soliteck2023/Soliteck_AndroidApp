@@ -65,6 +65,9 @@ public interface ApiInterface {
     @POST("Recharge/Recharge")
     Call<RechargeConfirmResponse> getRechargeResponse(@Body HashMap<String, String> hashMap);
 
+    @POST("SDGenerateAuthToken")
+    Call<TokenResponse> getSDGenerateAuthToken(@Body HashMap<String, String> hashMap);
+
 
     @POST("DMT/ValidateRemitter")
     Call<ValidateRemitter> getValidate(@Body HashMap<String, String> hashMap);

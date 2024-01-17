@@ -39,9 +39,9 @@ public class RetrofitHandler {
                 .build();
 
         Retrofit retrofit2 = new Retrofit.Builder()
-//                .baseUrl("http://royalblueapi.soliteck.com/")
+                .baseUrl("http://royalblueapi.soliteck.com/")
 //                .baseUrl("http://192.168.1.3:13196/")
-                .baseUrl("http://192.168.1.23:13196/")
+//                .baseUrl("http://192.168.1.23:13196/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
@@ -52,6 +52,27 @@ public class RetrofitHandler {
 
     }
 
+    private static Retrofit getRetrofit3(){
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient okHttpClient = new OkHttpClient
+                .Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
+
+        Retrofit retrofit3 = new Retrofit.Builder()
+
+                .baseUrl("https://apihub.moneyart.in/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build();
+
+        return retrofit3;
+
+    }
+
+
 
     public static ApiInterface getService(){
         ApiInterface userService = getRetrofit().create(ApiInterface.class);
@@ -61,6 +82,11 @@ public class RetrofitHandler {
     public static ApiInterface getService2(){
         ApiInterface userService2 = getRetrofit2().create(ApiInterface.class);
         return userService2;
+    }
+
+    public static ApiInterface getService3(){
+        ApiInterface userService3 = getRetrofit3().create(ApiInterface.class);
+        return userService3;
     }
 
 

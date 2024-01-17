@@ -53,6 +53,8 @@ public class ConstantClass {
         public static final String CityName = "CityName";
         public static final String DIST_PROFILE_IMAGE = "dist_profile_image";
         public static final String DeviceId = "deviceId";
+        public static final String MerchantID = "merchantID";
+
         public static final String EmailId = "EmailId";
         public static final String Firebase_Token = "firebase_token";
         public static final String FirmName = "FirmName";
