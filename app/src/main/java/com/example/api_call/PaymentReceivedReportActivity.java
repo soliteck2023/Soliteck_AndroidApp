@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.DatePicker;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -106,9 +109,36 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
             }
         });
 
+        this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.CompanyBankListActivity.1
+            @Override // android.text.TextWatcher
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override // android.text.TextWatcher
+            public void onTextChanged(CharSequence c, int i, int i1, int i2) {
+                PaymentReceivedReportActivity.this.filter(c.toString());
+            }
+
+            @Override // android.text.TextWatcher
+            public void afterTextChanged(Editable editable) {
+            }
+        });
 
 
+    }
 
+    private void filter(String s) {
+        try {
+            List<NetworkBalanceReceivedReport> list_new = new ArrayList<>();
+            for (NetworkBalanceReceivedReport transHistoryData : this.reportList) {
+                if (transHistoryData.getTransferTo().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getCr().equals(s.toLowerCase())|| transHistoryData.getBalanceAfter().equals(s.toLowerCase()) || transHistoryData.getTransferBy().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getDescription().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getCreateDate().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getCurrentBal().equals(s.toLowerCase()) || transHistoryData.getTransferdByName().toLowerCase().contains(s.toLowerCase())) {
+                    list_new.add(transHistoryData);
+                }
+            }
+            this.transactionBillAdapter.setNewList(list_new);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void getPaymentReceived(String fromDate, String toDate) {

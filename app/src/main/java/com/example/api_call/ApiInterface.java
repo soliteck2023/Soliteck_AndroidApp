@@ -2,13 +2,19 @@ package com.example.api_call;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Url;
 
 public interface ApiInterface {
@@ -48,6 +54,10 @@ public interface ApiInterface {
     @POST("Recharge/GetMobileOperatorName")
     Call<FetchOperator> getMobileOPT(@Body HashMap<String, String> hashMap);
 
+
+    @POST("ApiSupportServices/RaiseComplain")
+    Call<RaiseComplainResponse> RaiseComplain(@Body HashMap<String, String> hashMap);
+
     @FormUrlEncoded
     @POST("Recharge/GetMobileSpecialPlan")
     Call<MobilePlansResponse> getMobileSpecialPlan(@Field("UserName") String str, @Field("Password") String str2, @Field("OperatorId") String str3, @Field("Number") String str4);
@@ -77,10 +87,12 @@ public interface ApiInterface {
 
 
     @Headers("Content-Type:application/json")
-    @POST("api/DailyNews/OTPONSMS")     //Transaction/LedgerReport
+    @POST("api/DailyNews/OTPONSMS")
+        //Transaction/LedgerReport
     Call<OtpSentResponse> getsendOtp(@Body HashMap<String, String> hashMap);
 
-    @POST("Transaction/LedgerReport")     //Transaction/LedgerReport
+    @POST("Transaction/LedgerReport")
+        //Transaction/LedgerReport
     Call<TransactionReportBase> GetLedgerReport(@Body HashMap<String, String> hashMap);
 
 
@@ -97,14 +109,20 @@ public interface ApiInterface {
     @POST("MOBPendingTxnReport")
     Call<PaymentReceivedResponse> Getpendingreport(@Body HashMap<String, String> hashMap);
 
+    @POST("MOBDailyNews")
+    Call<news> getnews(@Body HashMap<String, String> hashMap);
 
-    @POST("MOBLedgerReport")     //Transaction/LedgerReport
+
+    @POST("MOBLedgerReport")
+        //Transaction/LedgerReport
     Call<LedgerReportBase> GetLedgerReportnew(@Body HashMap<String, String> hashMap);
 
-    @POST("MOBAEPSWalletSettelement")     //Transaction/LedgerReport
+    @POST("MOBAEPSWalletSettelement")
+        //Transaction/LedgerReport
     Call<SettlementBase> AEPSWalletSettelement(@Body HashMap<String, String> hashMap);
 
-    @POST("MOBViewTransaction")     //Transaction/LedgerReport
+    @POST("MOBViewTransaction")
+        //Transaction/LedgerReport
     Call<viewPaymentResponse> GetReceiptReport(@Body HashMap<String, String> hashMap);
 
     @POST("MOBComissionReport")
@@ -112,7 +130,6 @@ public interface ApiInterface {
 
     @POST("MOBComplaintReport")
     Call<Compaint> getcompaintMargin2(@Body HashMap<String, String> hashMap);
-
 
 
     @POST("MOBAEPSTxnReport")
@@ -136,6 +153,14 @@ public interface ApiInterface {
     @POST("Payment/PaymentRequest")
     Call<RequestPaymentResponse> GetPaymentRequest(@Body HashMap<String, String> hashMap);
 
+    @POST("MOBUploadFiles")
+    Call<RequestPaymentResponse> getuplodeimage(@Body HashMap<String, String> hashMap);
+//                                                   @Field ("DeviceId")String deviceid,
+//                                                 @Field ("Token")String token,
+//                                                 @Field ("UniqueCode")String uniqueCode,
+//                                                @Field("Base64Encode") String image,
+//                                                @Field ("Flag") String imgFlag
+//                                                );
 
     @FormUrlEncoded
     @POST("Recharge/GetDthCustInfo")

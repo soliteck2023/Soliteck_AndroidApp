@@ -63,6 +63,7 @@ public class MyEarningReportActivity extends AppCompatActivity {
 //       getTransactionReport(this.text_fromdate.getText().toString(), this.Oprator);
 //        getnewoprtaor();
         initComponents();
+
 //        getTransactionReport(this.text_fromdate.getText().toString(), this.Oprator);
 
         this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.MyEarningReportActivity.1

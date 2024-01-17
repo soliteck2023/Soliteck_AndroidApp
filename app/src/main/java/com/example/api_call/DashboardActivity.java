@@ -43,6 +43,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.EnquiryForm;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -217,8 +218,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
 
         continuetext = findViewById(R.id.text_news);
-        Animation animation = new TranslateAnimation(-200, 800, 0, 0);
-        animation.setDuration(4500);
+//        continuetestmethod();
+        Animation animation = new TranslateAnimation(800, -1000, 0, 0);
+        animation.setDuration(9500);
         animation.setRepeatMode(Animation.RESTART);
         animation.setRepeatCount(Animation.INFINITE);
         continuetext.setAnimation(animation);
@@ -260,24 +262,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         startAutoScroll();
 
 
-//        menupager = findViewById(R.id.menu_option);
-//        adapter2 = new Mymenuotionadpter(getSupportFragmentManager(),DashboardActivity.this);
-//        menupager.setAdapter(adapter2);
-
-//        DrawerMenu = findViewById(R.id.menu_option);
-
-//        DrawerMenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(DashboardActivity.this, nav_drawer_layout.class);
-//               DashboardActivity.this.startActivity(intent);
-//
-//            }
-//        });
-
-
-
         LinearLayout linear_mobile = (LinearLayout) findViewById(R.id.linear_mobile);
         LinearLayout linear_dth = (LinearLayout) findViewById(R.id.linear_dth);
         LinearLayout linear_postpaid = (LinearLayout) findViewById(R.id.linear_postpaid);
@@ -303,77 +287,18 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         this.linear_payment_received_report = (LinearLayout) findViewById(R.id.third_linear);
         this.linear_pending_txn_report = (LinearLayout) findViewById(R.id.linear_pending);
 
- //        linear_latestReport = findViewById(R.id.second_linier);
-//        compliant = findViewById(R.id.third_linear);
-
-
-//        request_layout= findViewById(R.id.linear_request);
-
-//        request_layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                viewPaymentRequest();
-//
-//            }
-//        });
-
-
-       FloatingActionButton linear_help = (FloatingActionButton) findViewById(R.id.linear_help);
-//        LinearLayout linear_paymentgateway = (LinearLayout) findViewById(R.id.linear_paymentgateway);
-//        LinearLayout linear_matm = (LinearLayout) findViewById(R.id.linear_matm);
-//        LinearLayout linear_request = (LinearLayout) findViewById(R.id.linear_request);
-//        LinearLayout linear_statements = (LinearLayout) findViewById(R.id.linear_statements);
-//        this.linear_Bank = (LinearLayout) findViewById(R.id.first_linear);
-//        this.linear_payment_received_report = (LinearLayout) findViewById(R.id.linear_payment_received_report);
-
-//        this.linear_payment_transfer_report = (LinearLayout) findViewById(R.id.linear_paytransfe_rreport);
-//        this.linear_mobile = (LinearLayout) findViewById(R.id.linear_mobile);
-
+        FloatingActionButton linear_help = (FloatingActionButton) findViewById(R.id.linear_help);
 
 
        this.linear_latestReport = (LinearLayout) findViewById(R.id.latest_rpt);
         this.image_mobile = (ImageView) findViewById(R.id.image_mobile);
         this.image_dth = (ImageView) findViewById(R.id.image_dth);
-//        this.image_transfer = (ImageView) findViewById(R.id.image_transfer);
-//        this.image_postpaid = (ImageView) findViewById(R.id.image_postpaid);
-//        this.image_request = (ImageView) findViewById(R.id.image_request);
-//        this.image_datacard = (ImageView) findViewById(R.id.image_datacard);
-//       this.text_news = (TextView) findViewById(R.id.text_news);
        this.TextName = (TextView) findViewById(R.id.TextName1);
-//        this.btn_aeps = (ImageView) findViewById(R.id.btn_aeps);
-//        this.btn_bankDetails = (Button) findViewById(R.id.btn_bankDetails);
-//        this.btn_bankSettlement = (Button) findViewById(R.id.btn_bankSettlement);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("Dashboard");
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        View headerLayout = navigationView.getHeaderView(0);
-//        navigationView.setNavigationItemSelectedListener(this);
-//        navigationView.setItemIconTintList(null);
-//        this.linear_profile = (LinearLayout) headerLayout.findViewById(R.id.linear_profile);
-
-//        this.image_profile = (ImageView) headerLayout.findViewById(R.id.image_profile);
-//        this.text_name = (TextView) headerLayout.findViewById(R.id.text_name);
-//        this.text_mobile = (TextView) headerLayout.findViewById(R.id.text_mobile);
-        this.textbalance = (TextView) findViewById(R.id.textbalance);
         this.textaepsBalance = (TextView) findViewById(R.id.textaepsBalance);
-//        this.image_refresh = (ImageView) findViewById(R.id.image_refresh);
+        this.image_refresh = (ImageView) findViewById(R.id.image_refresh1);
         LinearLayout linear_settelment = (LinearLayout) findViewById(R.id.linear_compliant);
 
-
-//        linear_settelment.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.17
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-//                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, StatementReportActivity.class));
-//            }
-//        });
 
 
 
@@ -385,21 +310,26 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //                DashboardActivity.this.startActivity(intent);
 //            }
 //        });
-//        this.image_refresh.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.6
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-////                if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
-////                    ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-////                    return;
-////                }
-//                DashboardActivity dashboardActivity = DashboardActivity.this;
-//                dashboardActivity.getUserBalance(dashboardActivity.textbalance, DashboardActivity.this.textaepsBalance);
-//            }
-//        });
+        this.image_refresh.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.6
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+//                if (!ConstantClass.isNetworkAvailable(DashboardActivity.this)) {
+//                    ConstantClass.displayMessageDialog(DashboardActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
+//                    return;
+//                }
+                DashboardActivity dashboardActivity = DashboardActivity.this;
+                dashboardActivity.getUserBalance(dashboardActivity.textbalance, DashboardActivity.this.textaepsBalance);
+            }
+        });
 
 
 
-
+        linear_help.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.9
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, EnquiryForm.class));
+            }
+        });
 
         linear_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.22
             @Override // android.view.View.OnClickListener
@@ -459,8 +389,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onClick(View v) {
                 DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, viewCompaintActivity.class));
-
-
             }
         });
 
@@ -508,7 +436,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this, MoneyTransferActivity.class);
                 DashboardActivity.this.startActivity(intent);
-
 //                DashboardActivity.this.viewdmtRequest();
 
             }
@@ -526,12 +453,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void onClick(View v) {
 
 //                goturl("https://apihub.moneyart.in/");
+                goturl("https://play.google.com/store/search?q=SmartSDK&c=apps");
 
-//                Intent i = new Intent(DashboardActivity.this, aeps_activity.class);
-//                i.putExtra("token","9ixcsmeBl3fJCSO8hq+hJQ==");
-//                startActivityForResult(i, 101);
-
-                aepsmethod();
+//                aepsmethod();
 
             }
         });
@@ -548,7 +472,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, LedgerReportActivity.class));
             }
         });
-
         linear_earning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -557,23 +480,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
             }
         });
-
-//        linear_payment_transfer_report.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, PaymentReceivedReportActivity.class));
-//
-//            }
-//        });
-
-
-//        linear_Bank.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, CompanyBankListActivity.class));
-//
-//            }
-//        });
         linear_latestReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -642,46 +548,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         startActivity(new Intent(Intent.ACTION_VIEW,uri));
     }
 
-//    public void installSDK(View view) {
-//        // Replace 'https://example.com/sdk.zip' with the actual URL to your SDK file
-////        String sdkDownloadUrl = "https://example.com/sdk.zip";
-//        String sdkDownloadUrl = "https://apihub.moneyart.in";
-//
-//
-//
-//        // Create an Intent to view the SDK download URL
-//        Intent intent = new Intent(Intent.ACTION_VIEW);
-//        intent.setData(Uri.parse(sdkDownloadUrl));
-//        startActivity(intent);
-//    }
-
-
-
-//    public void onImageClick(View view) {
-//        // Simulate API call (replace this with your actual API call)
-//        // For demonstration purposes, I'm using a simple Runnable to toggle visibility after a delay
-//        cashoutbalance.setVisibility(View.GONE) ;
-//        mainbalance.setVisibility(View.GONE);
-//        textaepsBalance.setVisibility(View.VISIBLE);
-//        textaepsBalance.setVisibility(View.VISIBLE);
-//
-//
-//
-//        // Simulate API call
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                // Update UI after API call
-//
-//
-//                cashoutbalance.setVisibility(View.VISIBLE);
-//                textaepsBalance.setVisibility(View.GONE);
-//                mainbalance.setVisibility(View.VISIBLE);
-//                textaepsBalance.setVisibility(View.GONE);
-//            }
-//        }, 3000); // 2000 milliseconds (2 seconds) delay, replace with your actual API call
-//    }
-
 
 
     private void viewCommission() {
@@ -725,48 +591,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //    }
     }
 
-//    private void getCommissionMarginList(final RecyclerView view_commissionlist) {
-//        PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, "");
-//        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
-//        progressDialog.show();
-//        HashMap<String, String> body = new HashMap<>();
-//        body.put(ConstantClass.PROFILEDETAILS.UserName_, PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
-//        body.put("Password", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.EncreptedUserPassword, ""));
-//        ApiInterface apiservice =RetrofitHandler.getService();
-//        Call<Commision> call = apiservice.getCommissionMargin(body);
-//        call.enqueue(new Callback<Commision>() { // from class: com.uvapay.activities.DashboardActivity.37
-//            @Override // retrofit2.Callback
-//            public void onResponse(Call<Commision> call2, Response<Commision> response) {
-//                ProgressDialog progressDialog2 = progressDialog;
-//                if (progressDialog2 != null && progressDialog2.isShowing()) {
-//                    progressDialog.dismiss();
-//                }
-//                if (response != null && response.body() != null) {
-////                    if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
-////                        DashboardActivity.this.list_margin = response.body().getData();
-////                        DashboardActivity dashboardActivity = DashboardActivity.this;
-////                        DashboardActivity dashboardActivity2 = DashboardActivity.this;
-////                        dashboardActivity.viewCommissionAdapter = new ViewCommissionAdapter(dashboardActivity2, dashboardActivity2.list_margin);
-////                        view_commissionlist.setAdapter(DashboardActivity.this.viewCommissionAdapter);
-////                        return;
-////                    }
-//                    ConstantClass.displayMessageDialog(DashboardActivity.this, "Response", response.body().getMessage());
-//                    return;
-//                }
-//                ConstantClass.displayMessageDialog(DashboardActivity.this, "" + response.code(), response.message());
-//            }
-//
-//            @Override // retrofit2.Callback
-//            public void onFailure(Call<Commision> call2, Throwable t) {
-//                ProgressDialog progressDialog2 = progressDialog;
-//                if (progressDialog2 != null && progressDialog2.isShowing()) {
-//                    progressDialog.dismiss();
-//                }
-//                DashboardActivity dashboardActivity = DashboardActivity.this;
-//                ConstantClass.displayMessageDialog(dashboardActivity, dashboardActivity.getString(R.string.server_problem), t.getMessage().toString());
-//            }
-//        });
-//    }
 
 
     private void filter(String s) {
@@ -875,12 +699,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 }
             }
         });
-
-
-
     }
-
-
 
 
     private void viewPaymentRequest() {
@@ -920,10 +739,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= 16) {
 
-                    type_pending.setBackground(DashboardActivity.this.getResources().getDrawable(R.drawable.violet_button_background));
+                    type_pending.setBackground(DashboardActivity.this.getDrawable(R.drawable.violet_button_background));
                     text_pending.setTextColor(-1);
-                    type_history.setBackground(DashboardActivity.this.getResources().getDrawable(R.drawable.text_view_border));
-                    text_history.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+                    type_history.setBackground(DashboardActivity.this.getDrawable(R.drawable.text_view_border));
+                    text_history.setTextColor(View.MEASURED_STATE_MASK);
                     DashboardActivity.this.request_type = "form";
                     Intent intent = new Intent(DashboardActivity.this, PaymentRequestActivity.class);
                    DashboardActivity.this.startActivity(intent);
@@ -931,20 +750,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 }
             }
         });
-//        mBtn_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.40
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View view) {
-//                if (DashboardActivity.this.request_type.equals("form")) {
-//                    dialog.dismiss();
-//                    Intent intent = new Intent(DashboardActivity.this, PaymentRequestActivity.class);
-//                    DashboardActivity.this.startActivity(intent);
-//                } else if (DashboardActivity.this.request_type.equals("history")) {
-//                    dialog.dismiss();
-//                    Intent intent2 = new Intent(DashboardActivity.this, PayRequestHistoryActivity.class);
-//                    DashboardActivity.this.startActivity(intent2);
-//                }
-//            }
-//        });
+
     }
 
 
@@ -970,21 +776,23 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 else {
 
                     DashboardActivity.this.tpinEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-//                } else {
-//                   MainActivity.this.edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }
         });
-        text_submit.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.38
+        text_submit.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
 
                 String Amount = null;
                 String Tpin = null;
+                String Encodetpin = null;
                 if (amountEditText != null && tpinEditText != null) {
                     Amount = String.valueOf(amountEditText.getText());
                     Tpin = String.valueOf(tpinEditText.getText());
+                    String tpin = tpinEditText.getText().toString().trim();
+                    Encodetpin = ApplicationConstant.EncodeStringToHMACSHA256(tpin);
                 }
+
                 if(Amount != null && !Amount.equals("") && Tpin != null && !Tpin.equals("")){
                     final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(DashboardActivity.this);
                     progressDialog.show();
@@ -993,7 +801,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     body.put("UniqueCode", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.UserName, ""));
                     body.put("Token", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.Token, ""));
                     body.put("Amount", Amount);
-                    body.put("Tpin", Tpin);
+                    body.put("Tpin", Encodetpin);
                     ApiInterface apiservice = RetrofitHandler.getService2();
                     Call<SettlementBase> result = apiservice.AEPSWalletSettelement(body);
                     result.enqueue(new Callback<SettlementBase>() {
@@ -1035,7 +843,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
     public void onResume() {
         super.onResume();
 
@@ -1048,6 +856,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         String name = PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.Name, "");
         String mobile = PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.MobileNo, "");
 
+
          if (news.equals("null")) {
             this.continuetext.setText("Welcome to Soliteck application");
             this.continuetext.setSelected(true);
@@ -1059,6 +868,57 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         this.text_name.setText(name);
         this.text_mobile.setText(mobile);
  }
+
+    private void continuetestmethod() {
+//        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
+//        progressDialog.show();
+        HashMap<String, String> body = new HashMap<>();
+        body.put("DeviceId", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+        body.put("UniqueCode", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.UserName, ""));
+        body.put("Token", PrefUtils.getFromPrefs(DashboardActivity.this, ConstantClass.USERDETAILS.Token, ""));
+        ApiInterface apiservice = RetrofitHandler.getService2();
+        Call<news> call = apiservice.getnews(body);
+
+        call.enqueue(new Callback<news>() {
+            @Override
+            public void onResponse(Call<news> call, Response<news> response) {
+//               Toast.makeText(DashboardActivity.this, "Response", Toast.LENGTH_SHORT).show();
+//                ProgressDialog progressDialog2 = progressDialog;
+//                if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                    progressDialog.dismiss();
+//                }
+//                if (response.body().getResponseStatus().intValue() == 1){
+//                    String jsonString = response.body().getData().toString();
+//                    {
+//                        try {
+//                            JSONArray jsonArray = new JSONArray(jsonString);
+//                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+//                            String news = jsonObject.getString(ConstantClass.USERDETAILS.newsPath);
+//                            if (news.equals("null")){
+//                                continuetext.setText("Welcome to Soliteck On User Portal");
+//                            }
+//
+//                        } catch (JSONException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//
+//                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<news> call, Throwable t) {
+                Toast.makeText(DashboardActivity.this, "Error", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+
+    }
 
     private void getUserBalance(final TextView textbalance,final TextView textaepsBalance) {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
@@ -1088,12 +948,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                         String Main = jsonObject.getString(ConstantClass.USERDETAILS.MainBalance);
                         String Aeps = jsonObject.getString(ConstantClass.USERDETAILS.AEPSBalance);
-//                        Bundle bundle1 = new Bundle();
-//                        bundle1.putString("textbalance",Main);
-//                       bundle1.putString("textaepsBalance",Aeps);
-//                        adapter = new ViewPagerbalanceAdapter(getSupportFragmentManager(),DashboardActivity.this,bundle1);
-//                        Pager.setAdapter(adapter);
-                        if (Aeps.equals("null")) {
+                       if (Aeps.equals("null")) {
                             textbalance.setText("" + Main);
                             textaepsBalance.setText("0.00");
                             PrefUtils.saveToPrefs(DashboardActivity.this, "Wallet_Main_Balance", Main);
@@ -1115,7 +970,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<GetBalance> call, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -1171,7 +1026,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<GetUserProfileDetails> call, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -1229,7 +1084,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<ChangePasswordResponse> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {

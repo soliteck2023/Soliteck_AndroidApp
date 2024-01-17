@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,9 +43,38 @@ public class CompanyBankListActivity extends AppCompatActivity {
 //            getBankList();
 //        }
 
+        this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.CompanyBankListActivity.1
+            @Override // android.text.TextWatcher
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override // android.text.TextWatcher
+            public void onTextChanged(CharSequence c, int i, int i1, int i2) {
+                CompanyBankListActivity.this.filter(c.toString());
+            }
+
+            @Override // android.text.TextWatcher
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
 
 
     }
+    public void filter(String s) {
+        try {
+            List<BankListResponse> list_new = new ArrayList<>();
+            for (BankListResponse transHistoryData : this.listUserBanks) {
+                if (transHistoryData.getBranch().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getBankName().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getIfsc().toLowerCase().contains(s.toLowerCase())) {
+                    list_new.add(transHistoryData);
+                }
+            }
+            this.transactionBillAdapter.setNewList(list_new);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void getBankList() {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
@@ -102,6 +133,7 @@ public class CompanyBankListActivity extends AppCompatActivity {
 
             }
         });
+
 
 
 //        call.enqueue(new Callback<BankListbaseResponse>() { // from class: com.uvapay.activities.CompanyBankListActivity.2

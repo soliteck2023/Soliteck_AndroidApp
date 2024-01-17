@@ -54,6 +54,11 @@ public class PaymentReceivedReportAdapter extends RecyclerView.Adapter<PaymentRe
         notifyDataSetChanged();
     }
 
+    public void setNewList(List<NetworkBalanceReceivedReport> list_new) {
+        this.listSatetments = list_new;
+        notifyDataSetChanged();
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text_amount_;
         TextView text_currentBal;
