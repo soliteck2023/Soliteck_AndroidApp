@@ -16,6 +16,8 @@ public class ConstantClass {
     public static final String MOBILESERVICEID = "1";
     public static String circle = MOBILESERVICEID;
     public static String setType = "";
+    public static String PaymentFlag = "PaymentReceipt";
+    public static String SERVER_IMG_NAME = "ReceiptURL";
 
 
     public static void displayToastMessage(Context mContext, String message) {
@@ -100,17 +102,22 @@ public class ConstantClass {
         public static final String First_Time_Login = "true";
         public static final String FlagRemember = "remember";
         public static final String TransactionIds = "TransactionIds";
+        public static final String TransactionIds2 = "TransactionIds2";
         public static final String LastSeen = "LastSeen";
         public static final String LoginPassword = "login_password";
         public static final String MainBalance = "MainBalance";
+        public static final String newsPath = "newsPath";
         public static final String News = "News";
         public static final String OwnerName = "OwnerName";
         public static final String ParentId = "parent_id";
         public static final String Token = "token";
+        public static final String FromDateTime = "FromDateTime";
         public static final String UserName = "username";
+        public static final String type = "type";
         public static final String UserPassword = "password";
         public static final String Circle = "Circle";
         public static final String UserType = "usertype";
+        public static final String discription = "discription";
 
         public USERDETAILS() {
 

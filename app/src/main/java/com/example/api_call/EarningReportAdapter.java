@@ -20,6 +20,8 @@ public class EarningReportAdapter extends RecyclerView.Adapter<EarningReportAdap
         this.listSatetments = listSatetments;
     }
 
+
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

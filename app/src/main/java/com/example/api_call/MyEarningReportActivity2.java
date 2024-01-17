@@ -37,7 +37,7 @@ public class MyEarningReportActivity2 extends AppCompatActivity {
 //    private List<PaymentMode> reportList;
     private List<MyEarningTransaction> reportList;
     Spinner spinner_oprator;
-    private EditText text_fromdate;
+    private TextView text_fromdate;
     private TextView text_no_content;
     private EditText text_search;
     private EditText text_todate;
@@ -91,10 +91,6 @@ public class MyEarningReportActivity2 extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
-
-
-
 
     }
 
@@ -206,7 +202,7 @@ public class MyEarningReportActivity2 extends AppCompatActivity {
     private void initComponents() {
         this.recycle_transactions = (RecyclerView) findViewById(R.id.recycle_transactions);
         this.layout_fromdate = (LinearLayout) findViewById(R.id.layout_fromdate);
-        this.text_fromdate = (EditText) findViewById(R.id.text_fromdate);
+        this.text_fromdate = (TextView) findViewById(R.id.text_fromdate);
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
 //        this.text_search = (EditText) findViewById(R.id.text_search);
         this.spinner_oprator = (Spinner) findViewById(R.id.oprator_sp);

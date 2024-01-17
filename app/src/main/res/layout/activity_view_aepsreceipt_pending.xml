@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_margin="10dp" android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/liner12"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="AEPS Transcation Receipt"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_margin="40dp"
+        android:layout_below="@+id/liner12"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="right"
+                    android:id="@+id/text_date_time_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="29 Jan 2019, 22 pm"/>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:id="@+id/text_refid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_transid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"
+                android:hint=""
+                android:textColor="@color/colorPrimary" />
+
+            <View
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="1.2dp"
+                android:layout_margin="15dp"/>
+            <TextView
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:id="@+id/adhar_no_"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView  android:layout_marginTop="10dp" android:textSize="15sp" android:textColor="@color/black" android:id="@+id/text_senderNumber" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <TextView  android:layout_marginTop="10dp" android:textSize="15sp" android:textColor="@color/black" android:id="@+id/Bank_name" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+            <RelativeLayout  android:layout_marginTop="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView  android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_status_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Success"/>
+                <TextView  android:layout_marginTop="10dp" android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_paymode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="mode" android:layout_below="@+id/text_status_"/>
+                <TextView  android:layout_marginTop="10dp" android:textSize="19sp" android:textStyle="bold" android:textColor="@color/dark_green" android:gravity="right" android:id="@+id/text_amount_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="amount" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <LinearLayout  android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:weightSum="2">
+                <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/text_commission" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+                <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="right" android:id="@+id/text_servicecharge" android:layout_width="0dp" android:layout_height="match_parent" android:text="" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:weightSum="2">
+                <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/text_gst" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+                <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="right" android:id="@+id/text_tds" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:weightSum="2">
+                <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/text_debitAmount" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+                <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="right" android:id="@+id/text_creditAmount" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+            </LinearLayout>
+            <TextView android:textSize="13sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:gravity="center" android:layout_gravity="left" android:id="@+id/text_effecativeBal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp"/>
+            <LinearLayout  android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp">
+                <TextView android:visibility="gone" android:layout_weight="1" android:textSize="13sp" android:background="@drawable/curveshape_background" android:gravity="center" android:textStyle="normal" android:textColor="@color/white" android:id="@+id/RAISE" android:text="PRINT" android:layout_width="170dp" android:layout_height="50dp" />
+                <TextView android:layout_gravity="center" android:textSize="13sp"  android:textStyle="normal" android:textColor="@color/white" android:background="@drawable/red_colorbackground"  android:gravity="center"  android:text="CANCEL" android:id="@+id/cancel_button"  android:layout_width="170dp" android:layout_height="50dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -30,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TransactionsReportActivity extends AppCompatActivity implements TransactionReportAdapter.ItemClickListener  {
+public class TransactionsReportActivity extends AppCompatActivity {
     private LinearLayout layout_fromdate;
     private LinearLayout layout_todate;
     private int mDay;
@@ -39,12 +39,10 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
     private Calendar myCalendar;
     private RecyclerView recycle_transactions;
     private List<TransactionReport> reportList;
-    private EditText text_fromdate;
+    private TextView text_fromdate;
     private TextView text_no_content;
     private EditText text_search;
-    private EditText text_todate;
-
-    private SearchView searchView;
+    private TextView text_todate;
 
     private ImageView image_fromdate;
     private ProgressDialog progressDialog;
@@ -82,13 +80,9 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
 
                         }
 
-//                        if (!TransactionsReportActivity.this.text_todate.getText().toString().isEmpty()) {
-//                            if (!ConstantClass.isNetworkAvailable(TransactionsReportActivity.this)) {
-//                                ConstantClass.displayMessageDialog(TransactionsReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                            } else {
-//                                TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
-//                            }
-//                        }
+                        if (!TransactionsReportActivity.this.text_todate.getText().toString().isEmpty()) {
+                            TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
+                        }
                     }
                 }, TransactionsReportActivity.this.mYear, TransactionsReportActivity.this.mMonth, TransactionsReportActivity.this.mDay);
                 datePickerDialog.show();
@@ -106,7 +100,6 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
                         TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
                         if (!TransactionsReportActivity.this.text_todate.getText().toString().isEmpty()){
                             TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
-
                         }
 
   //                        if (!TransactionsReportActivity.this.text_todate.getText().toString().isEmpty()) {
@@ -140,11 +133,6 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
                         TransactionsReportActivity.this.text_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                         TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
 
-//                        if (!ConstantClass.isNetworkAvailable(TransactionsReportActivity.this)) {
-//                            ConstantClass.displayMessageDialog(TransactionsReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                        } else {
-//                            TransactionsReportActivity.this.getTransactionReport(TransactionsReportActivity.this.text_fromdate.getText().toString(), TransactionsReportActivity.this.text_todate.getText().toString());
-//                        }
                     }
                 }, TransactionsReportActivity.this.mYear, TransactionsReportActivity.this.mMonth, TransactionsReportActivity.this.mDay);
                 datePickerDialog.show();
@@ -167,9 +155,6 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
             public void afterTextChanged(Editable editable) {
             }
         });
-
-
-
 
 
     }
@@ -197,7 +182,7 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
         body.put("UniqueCode", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("MobileNumber", "");
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
-        body.put("FromDateTime", fromDate);
+        body.put("FromDateTime", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.FromDateTime, "" ));
         body.put("ToDateTime", toDate);
         body.put("Amount", "");
         body.put("StatusId", "0");
@@ -247,26 +232,21 @@ public class TransactionsReportActivity extends AppCompatActivity implements Tra
         this.recycle_transactions = (RecyclerView) findViewById(R.id.recycle_transactions);
         this.layout_fromdate = (LinearLayout) findViewById(R.id.layout_fromdate);
         this.layout_todate = (LinearLayout) findViewById(R.id.layout_todate);
-        this.text_fromdate = (EditText) findViewById(R.id.text_fromdate);
-        this.text_todate = (EditText) findViewById(R.id.text_todate);
+        this.text_fromdate = (TextView) findViewById(R.id.text_fromdate);
+        this.text_todate = (TextView) findViewById(R.id.text_todate);
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
         this.image_fromdate= (ImageView) findViewById(R.id.image_fromdate);
     }
 
-
-
-    private void openNewActivity(String data) {
-        ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
-        this.progressDialog = dialogue;
-        dialogue.show();
-        Intent intent = new Intent(this, PaymentReceivedReportActivity.class);
-        intent.putExtra("DATA_KEY", data);
-        startActivity(intent);
-    }
-
     @Override
-    public void onItemClick(int position) {
-        setContentView(R.layout.layout_commission_view);
+    public void onResume() {
+        super.onResume();
+
+
+
+//        getTransactionReport(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
+
+
     }
 }

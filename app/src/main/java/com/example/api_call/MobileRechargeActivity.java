@@ -99,7 +99,6 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //       getSupportActionBar().setDisplayShowHomeEnabled(true);
         setTitle("Mobile Recharge");
-
         Spinner stateSpinner = findViewById(R.id.spinnerCircleListList);
         String[] states = getResources().getStringArray(R.array.circle);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, states);

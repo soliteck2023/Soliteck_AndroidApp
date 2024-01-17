@@ -11,7 +11,6 @@ public class PrefUtils {
         editor.putString(key, value);
         editor.commit();
     }
-
     public static String getFromPrefs(Context context, String key, String defaultValue) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         try {

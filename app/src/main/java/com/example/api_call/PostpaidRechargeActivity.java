@@ -58,8 +58,6 @@ public class PostpaidRechargeActivity extends AppCompatActivity {
                 PostpaidRechargeActivity postpaidRechargeActivity = PostpaidRechargeActivity.this;
                 postpaidRechargeActivity.getMobileConformation(postpaidRechargeActivity.edit_postpaid_amt.getText().toString(), PostpaidRechargeActivity.this.edit_mobile_number.getText().toString(), PostpaidRechargeActivity.this.edit_postpaid_operator.getText().toString());
 
-
-
             }
         });
         this.edit_postpaid_operator.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PostpaidRechargeActivity.2
@@ -132,9 +130,14 @@ public class PostpaidRechargeActivity extends AppCompatActivity {
                     e2.printStackTrace();
                     return;
                 }
+            }else {
+                Toast.makeText(this, "Result Not Ok", Toast.LENGTH_SHORT).show();
             }
-            Toast.makeText(this, "Result Not Ok", Toast.LENGTH_SHORT).show();
         }
+        if (requestCode == 102 && resultCode == -1) {
+            this.edit_postpaid_amt.setText(String.valueOf(data.getStringExtra("DTHROFFERAMT")));
+        }
+
     }
 
 }

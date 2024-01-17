@@ -28,32 +28,14 @@ import retrofit2.Response;
 public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionReportAdapter.MyViewHolder> {
 
     private Context context;
+    String trNum;
     List<TransactionReport> listSatetments;
-
-
-//    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments, ItemClickListener itemClickListener) {
-//        this.context = context;
-//        this.listSatetments = listSatetments;
-//        this.itemClickListener = itemClickListener;
-//    }
-
 
         public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments) {
         this.context = context;
         this.listSatetments = listSatetments;
     }
 
-
-    //    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments, ItemClickListener itemClickListener) {
-//        this.context = context;
-//        this.listSatetments = listSatetments;
-//        this.itemClickListener = itemClickListener;
-//    }
-
-    //    public TransactionReportAdapter(Context context, List<TransactionReport> listSatetments) {
-//        this.context = context;
-//        this.listSatetments = listSatetments;
-//    }
 
     @NonNull
     @Override
@@ -64,11 +46,15 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         TransactionReport earnData = this.listSatetments.get(position);
+        String CreatedDate = earnData.getTransactionDate();
+        String[] part = CreatedDate.split("T");
+        String Date = part[0];
         try {
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
+            trNum = earnData.getTransactionNumber();
             holder.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
             holder.text_status_.setText(earnData.getStatus());
-            holder.text_date_time_.setText(earnData.getTransactionDate());
+            holder.text_date_time_.setText(Date);
             holder.text_amount_.setText("Rs " + earnData.getAmount());
             holder.text_refid.setText("Ref No: " + earnData.getRefNumber());
             holder.text_mob_.setText("" + earnData.getSenderMobile());
@@ -99,25 +85,6 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
                 intent.putExtra("transactionId","earnData.getTransactionNumber()");
                 context.startActivity(intent);
 
-
-//                pendingreceipt_view();
-//                FragmentTransaction transaction = new FragmentTransaction() {
-//                }
-//                Fragment fragment = new fragment_raisecomplianthelp();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("id",earnData.getTransactionNumber().toString());
-//                fragment.setArguments(bundle);
-//                transaction.add(R.id.freme_soli,fragment);
-//                transaction.commit();
-
-//                itemClickListener.onItemClick(earnData.getTransactionDate());
-//                itemClickListener.onItemClick(earnData.getRefNumber());
-
-//                FragmentTransaction transaction = ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction();
-//                Fragment fragment = new layout_view_receipt();
-//                transaction.add(R.id.frame,fragment);
-
-
             }
         });
         holder.View.setOnClickListener(new View.OnClickListener() {
@@ -125,58 +92,16 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
 
             @Override
             public void onClick(View v) {
-//                openreceipt();
-//                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-//                final AlertDialog alertDialog = builder.create();
-//                alertDialog.setView(v);
-//                alertDialog.show();
-
+                PrefUtils.saveToPrefs(context, ConstantClass.USERDETAILS.TransactionIds, earnData.getTransactionNumber());
                 Intent intent = new Intent(TransactionReportAdapter.this.context, view_receipt_pending.class);
-                intent.putExtra("transactionId",TransactionReportAdapter.this.listSatetments.get(position).getId());
                 TransactionReportAdapter.this.context.startActivity(intent);
-
 
             }
         });
 
     }
 
-//    private void openreceipt() {
-//        balance_reuest_fragment balance_reuest_fragment = new balance_reuest_fragment();
-//
-//
-//        ((TransactionsReportActivity) context).getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.freme_soli, balance_reuest_fragment)
-//                .addToBackStack(null) // Optional: Adds the transaction to the back stack
-//                .commit();
-//    }
 
-
-//    private void pendingreceipt_view() {
-//        HashMap<String, String> body = new HashMap<>();
-//        body.put("DeviceId", PrefUtils.getFromPrefs(context.getApplicationContext(), ConstantClass.PROFILEDETAILS.DeviceId, ""));
-//        body.put("Token", PrefUtils.getFromPrefs(context.getApplicationContext(), ConstantClass.USERDETAILS.Token, ""));
-//        body.put("UserName", PrefUtils.getFromPrefs(context.getApplicationContext(), ConstantClass.PROFILEDETAILS.UserName_, ""));
-//        body.put("TransactionIds", "");
-//        ApiInterface apiservice = RetrofitHandler.getService2();
-//        Call<LedgerReportBase> result = apiservice.GetReceiptReport(body);
-//
-//        result.enqueue(new Callback<LedgerReportBase>() {
-//            @Override
-//            public void onResponse(Call<LedgerReportBase> call, Response<LedgerReportBase> response) {
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<LedgerReportBase> call, Throwable t) {
-//
-//            }
-//        });
-//
-//
-//    }
 
 
     @Override
@@ -211,9 +136,7 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         TextView text_tds;
         TextView text_transid;
 
-//        private ItemClickListener itemClickListener;
 
-        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         public MyViewHolder(View itemView) {
             super(itemView);
 //            TransactionReportAdapter.this = this$0;

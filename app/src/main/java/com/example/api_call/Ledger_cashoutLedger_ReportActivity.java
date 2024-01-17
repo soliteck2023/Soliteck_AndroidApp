@@ -32,10 +32,10 @@ public class Ledger_cashoutLedger_ReportActivity extends AppCompatActivity {
     private Calendar myCalendar;
     private RecyclerView recycle_transactions;
     private List<cashoutledgerTransactionReport2> reportList;
-    private EditText text_fromdate;
+    private TextView text_fromdate;
     private TextView text_no_content;
     private EditText text_search;
-    private EditText text_todate;
+    private TextView text_todate;
     private CashoutLedgerReceivedReportAdapter transactionBillAdapter;
 
     AlertDialog alertDialog;
@@ -148,8 +148,8 @@ public class Ledger_cashoutLedger_ReportActivity extends AppCompatActivity {
         this.recycle_transactions = (RecyclerView) findViewById(R.id.recycle_transactions);
         this.layout_fromdate = (LinearLayout) findViewById(R.id.layout_fromdate);
         this.layout_todate = (LinearLayout) findViewById(R.id.layout_todate);
-        this.text_fromdate = (EditText) findViewById(R.id.text_fromdate);
-        this.text_todate = (EditText) findViewById(R.id.text_todate);
+        this.text_fromdate = (TextView) findViewById(R.id.text_fromdate);
+        this.text_todate = (TextView) findViewById(R.id.text_todate);
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
     }

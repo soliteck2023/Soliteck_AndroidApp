@@ -30,7 +30,7 @@ public class PayRequestHistoryAdapter extends RecyclerView.Adapter<PayRequestHis
         this.list_requests = list_requests;
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(this.context).inflate(R.layout.layout_view_request, parent, false);
         return new MyViewHolder(view);
@@ -39,9 +39,13 @@ public class PayRequestHistoryAdapter extends RecyclerView.Adapter<PayRequestHis
     @SuppressLint("WrongConstant")
     public void onBindViewHolder(final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         PaymentRequestHistory allRequests = this.list_requests.get(position);
+
+        String CreatedDate = allRequests.getCreateDate();
+        String[] part = CreatedDate.split("T");
+        String Date = part[0];
         holder.text_transid.setText("ID : " + allRequests.getId());
         holder.text_username_.setText("User : " + allRequests.getUserName());
-        holder.text_requestdate_.setText(allRequests.getCreateDate());
+        holder.text_requestdate_.setText(Date);
         holder.text_amount_.setText("₹ " + allRequests.getAmount());
         holder.text_status_.setText(allRequests.getStatus());
         holder.text_bank.setText(allRequests.getBankName());

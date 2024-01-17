@@ -17,9 +17,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,9 +37,9 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
     private LinearLayout mLayout_todate;
     private int mMonth;
     private RecyclerView mRecycle_transactions;
-    private EditText mText_fromdate;
+    private TextView mText_fromdate;
     private TextView mText_no_content;
-    private EditText mText_todate;
+    private TextView mText_todate;
     private int mYear;
     private Calendar myCalendar;
 
@@ -73,12 +75,7 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
             }
         });
 
-//        this.mLayout_fromdate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                PayRequestHistoryActivity.this.fromDateSelection();
-//            }
-//        });
+
 
 
     }
@@ -132,10 +129,10 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
 
     private void bindViews() {
         this.mLayout_fromdate = (LinearLayout) findViewById(R.id.layout_fromdate);
-        this.mText_fromdate = (EditText) findViewById(R.id.text_fromdate);
+        this.mText_fromdate = (TextView) findViewById(R.id.text_fromdate);
         this.mImage_fromdate = (ImageView) findViewById(R.id.image_fromdate);
         this.mLayout_todate = (LinearLayout) findViewById(R.id.layout_todate);
-        this.mText_todate = (EditText) findViewById(R.id.text_todate);
+        this.mText_todate = (TextView) findViewById(R.id.text_todate);
         this.mImage_todate = (ImageView) findViewById(R.id.image_todate);
         this.mText_no_content = (TextView) findViewById(R.id.text_no_content);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_transactions);
@@ -169,7 +166,7 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
 //
 //    }
     public void fromDateSelection() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PayRequestHistoryActivity.6
+        DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() {
             @Override // android.app.DatePickerDialog.OnDateSetListener
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
@@ -207,7 +204,7 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
             }
         }, this.mYear, this.mMonth, this.mDay);
         datePickerDialog.show();
-        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+//        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
     }
 
 }

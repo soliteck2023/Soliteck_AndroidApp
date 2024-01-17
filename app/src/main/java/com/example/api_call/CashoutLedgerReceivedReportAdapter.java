@@ -33,6 +33,10 @@ public class CashoutLedgerReceivedReportAdapter extends  RecyclerView.Adapter<Ca
     public void onBindViewHolder(@NonNull CashoutLedgerReceivedReportAdapter.MyViewHolder holder, int position) {
 
         cashoutledgerTransactionReport2 earnData = this.reportList.get(position);
+
+        String CreatedDate = earnData.getTransactionDate();
+        String[] part = CreatedDate.split("T");
+        String Date = part[0];
         try {
             holder.adhar_no_.setText("Retailer Number: " + earnData.getRetailerNumber());
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
@@ -40,7 +44,7 @@ public class CashoutLedgerReceivedReportAdapter extends  RecyclerView.Adapter<Ca
             holder.text_status_.setText(earnData.getStatus());
             holder.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
             holder.text_retailerNumber.setText("Sender Number: " + earnData.getSenderMobile());
-            holder.text_date_time_.setText(earnData.getTransactionDate());
+            holder.text_date_time_.setText(Date);
             holder.text_amount_.setText("Rs " + earnData.getAmount());
             holder.text_commission.setText("Commission: " + earnData.getCommission());
             holder.text_servicecharge.setText("Service charge: " + earnData.getServicecharge());

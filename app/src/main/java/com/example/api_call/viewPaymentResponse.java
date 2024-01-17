@@ -8,22 +8,22 @@ import java.util.List;
 public class viewPaymentResponse {
     @SerializedName("data")
     @Expose
-    private List<receipt_class> transaction;
+    private List<TransactionReport> transaction;
 
     @SerializedName("responseStatus")
     @Expose
     private Integer responseStatus;
 
-    public viewPaymentResponse(List<receipt_class> transaction, Integer responseStatus) {
+    public viewPaymentResponse(List<TransactionReport> transaction, Integer responseStatus) {
         this.transaction = transaction;
         this.responseStatus = responseStatus;
     }
 
-    public List<receipt_class> getTransaction() {
+    public List<TransactionReport> getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(List<receipt_class> transaction) {
+    public void setTransaction(List<TransactionReport> transaction) {
         this.transaction = transaction;
     }
 

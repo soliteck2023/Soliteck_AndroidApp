@@ -10,14 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class newCompanyListAdapter extends RecyclerView.Adapter<newCompanyListAdapter.MyViewHolder> {
 
     private Context context;
-    List<BankListResponse> listUserBanks = new ArrayList<>();
+    List<BankListResponse> listUserBanks;
 
     public newCompanyListAdapter(Context context, List<BankListResponse> listUserBanks) {
         this.context = context;
@@ -78,6 +77,16 @@ public class newCompanyListAdapter extends RecyclerView.Adapter<newCompanyListAd
     @Override
     public int getItemCount() {
         return listUserBanks.size();
+    }
+
+    public void filter(List<BankListResponse> listUserBanks) {
+        this.listUserBanks = listUserBanks;
+        notifyDataSetChanged();
+    }
+
+    public void setNewList(List<BankListResponse> list_new) {
+        this.listUserBanks = list_new;
+        notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

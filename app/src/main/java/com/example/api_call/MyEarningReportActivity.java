@@ -165,7 +165,7 @@ public class MyEarningReportActivity extends AppCompatActivity {
                         if (!response.body().getPaymentMode().isEmpty()) {
                             MyEarningReportActivity.this.recycle_transactions.setVisibility(View.VISIBLE);
                             MyEarningReportActivity.this.text_no_content.setVisibility(View.INVISIBLE);
-                            MyEarningReportActivity.this.reportList = response.body().getPaymentMode();
+//                            MyEarningReportActivity.this.reportList = response.body().getPaymentMode();
                             MyEarningReportActivity myEarningReportActivity = MyEarningReportActivity.this;
 //                            MyEarningReportActivity myEarningReportActivity2 = MyEarningReportActivity.this;
 //                            myEarningReportActivity.transactionBillAdapter = new EarningReportAdapter(myEarningReportActivity, myEarningReportActivity.reportList);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <array name="banks_payment_request_Payment_type_code">
         <item>CS</item>
         <item>CQ</item>
@@ -159,5 +159,17 @@
 
 
     </string-array>
+
+
+   <string-array name="drwerpolicy">
+
+       <item>User Agrement</item>
+       <item>Certificate</item>
+       <item>Saftey and Sercurity</item>
+       <item>Terms and Condition</item>
+
+   </string-array>
+
+
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.api_call;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class CashoutReceivedReportAdapter extends  RecyclerView.Adapter<CashoutReceivedReportAdapter.MyViewHolder> {
     private Context context;
+    String trNum;
     private List<cashoutledgerTransactionReport> reportList;
 
     public CashoutReceivedReportAdapter(Context context, List<cashoutledgerTransactionReport> reportList) {
@@ -32,11 +34,15 @@ public class CashoutReceivedReportAdapter extends  RecyclerView.Adapter<CashoutR
     public void onBindViewHolder(@NonNull CashoutReceivedReportAdapter.MyViewHolder holder, int position) {
         cashoutledgerTransactionReport earnData = this.reportList.get(position);
 
+        String CreatedDate = earnData.getTransactionDate();
+        String[] part = CreatedDate.split("T");
+        String Date = part[0];
         try {
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
+            trNum = earnData.getTransactionNumber();
             holder.text_paymode.setText("Operator Name: " + earnData.getOperatorName());
             holder.text_status_.setText(earnData.getStatus());
-            holder.text_date_time_.setText(earnData.getTransactionDate());
+            holder.text_date_time_.setText(Date);
             holder.adhar_no_.setText("Adhar No: " + earnData.getAdhaarNo());
             holder.Bank_name.setText("Bank Name: " + earnData.getBankName());
             holder.text_amount_.setText("Rs " + earnData.getAmount());
@@ -53,12 +59,31 @@ public class CashoutReceivedReportAdapter extends  RecyclerView.Adapter<CashoutR
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        holder.View.setOnClickListener(new View.OnClickListener() {
+            private ProgressDialog progressDialog;
+
+            @Override
+            public void onClick(View v) {
+                PrefUtils.saveToPrefs(context, ConstantClass.USERDETAILS.TransactionIds, earnData.getTransactionNumber());
+                Intent intent = new Intent(CashoutReceivedReportAdapter.this.context, view_AEPSreceipt_pending.class);
+                CashoutReceivedReportAdapter.this.context.startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
         return reportList.size();
     }
+
+    public void filter(List<cashoutledgerTransactionReport> listnew_banks) {
+        this.reportList = listnew_banks;
+        notifyDataSetChanged();
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text_amount_;
@@ -78,7 +103,6 @@ public class CashoutReceivedReportAdapter extends  RecyclerView.Adapter<CashoutR
         TextView text_tds;
         TextView text_transid,adhar_no_,Bank_name;
 
-        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         public MyViewHolder(View itemView) {
             super(itemView);
 
@@ -102,35 +126,18 @@ public class CashoutReceivedReportAdapter extends  RecyclerView.Adapter<CashoutR
             this.text_effecativeBal = (TextView) itemView.findViewById(R.id.text_effecativeBal);
             this.text_creditAmount = (TextView) itemView.findViewById(R.id.text_creditAmount);
 
-            this.View.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(android.view.View v) {
-                    aeps_view_receipt();
 
-                }
-            });
-
-            this.Raise.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(android.view.View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, raisecompliant.class);
-                    intent.putExtra("transactionId","earnData.getTransactionNumber()");
-                    context.startActivity(intent);
-
-                }
-            });
+//            this.Raise.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(android.view.View v) {
+//                    Context context = v.getContext();
+//                    Intent intent = new Intent(context, raisecompliant.class);
+//                    intent.putExtra("transactionId","earnData.getTransactionNumber()");
+//                    context.startActivity(intent);
+//
+//                }
+//            });
         }
-    }
-
-    private void aeps_view_receipt() {
-
-//        Context context = v.getContext();
-        Intent intent = new Intent(context, view_receipt_pending.class);
-        intent.putExtra("transactionId","earnData.getTransactionNumber()");
-        context.startActivity(intent);
-
-
     }
 
 }

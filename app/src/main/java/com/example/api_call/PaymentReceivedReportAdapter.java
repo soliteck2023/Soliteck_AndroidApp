@@ -31,8 +31,12 @@ public class PaymentReceivedReportAdapter extends RecyclerView.Adapter<PaymentRe
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         NetworkBalanceReceivedReport earnData = this.listSatetments.get(position);
+
+        String CreatedDate = earnData.getCreateDate();
+        String[] part = CreatedDate.split("T");
+        String Date = part[0];
         try {
-            holder.text_date_time_.setText(earnData.getCreateDate());
+            holder.text_date_time_.setText(Date);
             holder.text_amount_.setText("Rs " + earnData.getCr());
             holder.text_type.setText("Credit");
             holder.text_currentBal.setText("Rs " + earnData.getCurrentBal());
@@ -51,6 +55,11 @@ public class PaymentReceivedReportAdapter extends RecyclerView.Adapter<PaymentRe
     }
     public void filter(List<NetworkBalanceReceivedReport> listnew_banks) {
         this.listSatetments = listnew_banks;
+        notifyDataSetChanged();
+    }
+
+    public void setNewList(List<NetworkBalanceReceivedReport> list_new) {
+        this.listSatetments = list_new;
         notifyDataSetChanged();
     }
 

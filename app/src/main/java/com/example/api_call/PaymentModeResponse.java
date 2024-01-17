@@ -27,16 +27,40 @@ public class PaymentModeResponse {
     @Expose
     private String status;
 
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
+    }
+
     public List<PaymentMode> getPaymentMode() {
-        return this.paymentMode;
+        return paymentMode;
     }
 
     public void setPaymentMode(List<PaymentMode> paymentMode) {
         this.paymentMode = paymentMode;
     }
 
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     public Integer getResponseStatus() {
-        return this.responseStatus;
+        return responseStatus;
     }
 
     public void setResponseStatus(Integer responseStatus) {
@@ -44,34 +68,10 @@ public class PaymentModeResponse {
     }
 
     public String getStatus() {
-        return this.status;
+        return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public String getErrorCode() {
-        return this.errorCode;
-    }
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public Object getData() {
-        return this.data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
     }
 }
