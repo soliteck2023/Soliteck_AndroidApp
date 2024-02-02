@@ -60,6 +60,7 @@ public class OrderReceiptActivity extends AppCompatActivity {
         this.text_OperatorId.setText(this.OperatorID);
         if (this.status.intValue() == 1) {
             this.text_message.setText(this.STATUS_MESSAGE);
+            this.text_Data.setVisibility(View.GONE);
 //            this.check.setVisibility(View.VISIBLE);
 //            this.check.check();
             this.image_failed.setVisibility(View.GONE);
@@ -79,7 +80,7 @@ public class OrderReceiptActivity extends AppCompatActivity {
             this.text_message.setText(this.STATUS_MESSAGE);
             this.image_pending.setVisibility(View.GONE);
 //            this.check.setVisibility(8);
-            this.image_failed.setVisibility(View.GONE);
+//            this.image_failed.setVisibility(View.GONE);
             this.text_OperatorId.setVisibility(View.INVISIBLE);
             this.TextOID.setVisibility(View.INVISIBLE);
             this.text_Data.setTextColor(getResources().getColor(R.color.orange));

@@ -21,11 +21,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class OtpVerificationActivity extends AppCompatActivity {
     private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})";
@@ -48,6 +53,8 @@ public class OtpVerificationActivity extends AppCompatActivity {
     private String user_;
     private String control = "";
     private String verify_trough = "";
+    private String Mobile_number ="";
+    private String Otp = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,15 +160,15 @@ public class OtpVerificationActivity extends AppCompatActivity {
         });
 
         this.sixth_num.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.OtpVerificationActivity.6
-            @Override // android.text.TextWatcher
+            @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() == 0) {
                     OtpVerificationActivity.this.fifth_num.requestFocus();
@@ -180,28 +187,29 @@ public class OtpVerificationActivity extends AppCompatActivity {
         }
         resendOtpTimer();
 //        showSoftKeyboard(this.first_num);
-        this.btn_verify_otp.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.OtpVerificationActivity.7
+        this.btn_verify_otp.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
 
                 OtpVerificationActivity.this.validate();
             }
         });
-//        this.text_resend.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.OtpVerificationActivity.8
-//            @Override // android.view.View.OnClickListener
-//            public void onClick(View v) {
-//                if (OtpVerificationActivity.this.text_resend.getText().toString().equals("RESEND OTP") && !OtpVerificationActivity.this.control.equals("verification")) {
-//                    if (OtpVerificationActivity.this.control.equals("forgot_password")) {
-//                        String mobile = PrefUtils.getFromPrefs(OtpVerificationActivity.this, ConstantClass.USERDETAILS.UserName, "");
+        this.text_resend.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.OtpVerificationActivity.8
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                if (OtpVerificationActivity.this.text_resend.getText().toString().equals("RESEND OTP") && !OtpVerificationActivity.this.control.equals("verification")) {
+                    if (OtpVerificationActivity.this.control.equals("forgot_password")) {
+                        String mobile = PrefUtils.getFromPrefs(OtpVerificationActivity.this, ConstantClass.USERDETAILS.UserName, "");
 //                        OtpVerificationActivity.this.resendForgotOtp(mobile);
-//                    } else if (OtpVerificationActivity.this.control.equals("kyc")) {
-//                        OtpVerificationActivity otpVerificationActivity = OtpVerificationActivity.this;
+                    } else if (OtpVerificationActivity.this.control.equals("kyc")) {
+                        OtpVerificationActivity otpVerificationActivity = OtpVerificationActivity.this;
 //                        otpVerificationActivity.sendOtpMethod(otpVerificationActivity.verify_trough);
-//                    }
-//                }
-//            }
-//        });
+                    }
+                }
+            }
+        });
     }
+
 
     private void validate() {
         if (this.first_num.getText().toString().isEmpty()) {
@@ -222,13 +230,72 @@ public class OtpVerificationActivity extends AppCompatActivity {
         } else if (this.sixth_num.getText().toString().isEmpty()) {
             this.sixth_num.setError("Enter correct otp");
             this.sixth_num.requestFocus();
-        } else if (this.control.equals("verification")) {
-//            getUserDetailsthroughOtp();
-        } else if (this.control.equals("forgot_password")) {
-            resetNewPassword();
+        } else if (this.control.equals("Registration")) {
+//            ApplicationConstant.DisplayMessageDialog(OtpVerificationActivity.this,"Mobile Number Verify Sucessfully.","");
+            getUserDetailsthroughOtp();
+        }
+        else if (this.control.equals("forgot_password")) {
+//            ApplicationConstant.DisplayMessageDialog(OtpVerificationActivity.this,"Mobile Number Verify Sucessfully.","");
+           getUserDetailsthroughOtp();
         } else if (this.control.equals("kyc")) {
             resetNewPasswordForKYC();
         }
+    }
+
+    private void getUserDetailsthroughOtp() {
+        ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
+        this.progressDialog = dialogue;
+        dialogue.show();
+        String otp = this.first_num.getText().toString() + "" + this.second_num.getText().toString() + "" + this.third_num.getText().toString() + "" + this.forth_num.getText().toString() + "" + this.fifth_num.getText().toString() + "" + this.sixth_num.getText().toString();
+        HashMap<String, String> body = new HashMap<>();
+        String uniqueCode = getIntent().getStringExtra("UniqueCode");
+        body.put("UniqueCode", uniqueCode);
+        body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+        body.put("OtpType", "Registration");
+        body.put("Otp", otp);
+        ApiInterface apiInterface = RetrofitHandler.getService2();
+        Call<OtpverifyResponse> call = apiInterface.otpSendmethod(body);
+        call.enqueue(new Callback<OtpverifyResponse>() {
+            @Override
+            public void onResponse(Call<OtpverifyResponse> call, Response<OtpverifyResponse> response) {
+                if (OtpVerificationActivity.this.progressDialog != null && OtpVerificationActivity.this.progressDialog.isShowing()) {
+                    OtpVerificationActivity.this.progressDialog.dismiss();
+                }
+
+                if (response.body() != null) {
+                    String message = response.body().getMessage();
+                    int responseStatus = response.body().getResponseStatus();
+
+                    if (responseStatus == 0) {
+                        Intent intent = new Intent(OtpVerificationActivity.this, UserRegistration_page.class);
+                        startActivity(intent);
+                    } else {
+                        ConstantClass.displayMessageDialog(OtpVerificationActivity.this, "Response", message);
+                    }
+                } else {
+                    if (OtpVerificationActivity.this.progressDialog != null && OtpVerificationActivity.this.progressDialog.isShowing()) {
+                        OtpVerificationActivity.this.progressDialog.dismiss();
+                    }
+
+                    try {
+                        ConstantClass.displayMessageDialog(OtpVerificationActivity.this, "Response", response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<OtpverifyResponse> call, Throwable t) {
+                if (OtpVerificationActivity.this.progressDialog != null && OtpVerificationActivity.this.progressDialog.isShowing()) {
+                    OtpVerificationActivity.this.progressDialog.dismiss();
+                }
+                OtpVerificationActivity otpVerificationActivity = OtpVerificationActivity.this;
+                ConstantClass.displayMessageDialog(otpVerificationActivity, otpVerificationActivity.getString(R.string.server_problem), t.getMessage().toString());
+
+            }
+        });
+
     }
 
     @SuppressLint("MissingInflatedId")
@@ -294,7 +361,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
         final AlertDialog alertDialog = builder.create();
         alertDialog.setView(view);
 //        edit_old_password.setVisibility(8);
-        image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.OtpVerificationActivity.9
+        image_cancel.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 alertDialog.dismiss();

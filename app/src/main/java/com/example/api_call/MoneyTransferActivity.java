@@ -1,5 +1,6 @@
 package com.example.api_call;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -24,6 +25,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.window.OnBackInvokedDispatcher;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -157,13 +159,12 @@ public class MoneyTransferActivity extends AppCompatActivity {
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<ValidateRemitter> call = apiservice.getValidate(body);
         call.enqueue(new Callback<ValidateRemitter>() {
-            // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.4
-            @Override // retrofit2.Callback
+            @Override
             public void onResponse(Call<ValidateRemitter> call2, Response<ValidateRemitter> response) {
                 if (response.body() != null) {
-//                    if (MoneyTransferActivity.this.progressDialog != null && MoneyTransferActivity.this.progressDialog.isShowing()) {
-//                        MoneyTransferActivity.this.progressDialog.dismiss();
-//                    }
+                    if (MoneyTransferActivity.this.progressDialog != null && MoneyTransferActivity.this.progressDialog.isShowing()) {
+                        MoneyTransferActivity.this.progressDialog.dismiss();
+                    }
                      if (!response.body().getResponse().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
                         if (response.body().getResponse().getStatusCode().equals("2")) {
                             Intent intent = new Intent(MoneyTransferActivity.this, RemitterRegistrationActivity.class);
@@ -203,13 +204,19 @@ public class MoneyTransferActivity extends AppCompatActivity {
         });
     }
 
-    @Override // androidx.appcompat.app.AppCompatActivity
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    @NonNull
+    @Override
+    public OnBackInvokedDispatcher getOnBackInvokedDispatcher() {
+        return super.getOnBackInvokedDispatcher();
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         supportFinishAfterTransition();

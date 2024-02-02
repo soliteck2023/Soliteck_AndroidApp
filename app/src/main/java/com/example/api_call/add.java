@@ -1,17 +1,17 @@
 package com.example.api_call;
 
 public class add {
-    int image;
+    private String gifData;
 
-    public add(int image) {
-        this.image = image;
+    public add(int gifData) {
+        this.gifData = String.valueOf(gifData);
     }
 
-    public int getImage() {
-        return image;
+    public String getGifData() {
+        return gifData;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setGifData(String gifData) {
+        this.gifData = gifData;
     }
 }

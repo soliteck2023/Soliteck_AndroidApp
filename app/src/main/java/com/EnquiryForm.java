@@ -10,6 +10,9 @@ import android.widget.RelativeLayout;
 
 import com.example.api_call.ApiInterface;
 import com.example.api_call.ApplicationConstant;
+import com.example.api_call.ConstantClass;
+import com.example.api_call.CustomProgressDialog;
+import com.example.api_call.PrefUtils;
 import com.example.api_call.R;
 import com.example.api_call.RetrofitHandler;
 
@@ -35,8 +38,8 @@ public class EnquiryForm extends AppCompatActivity {
         setTitle("Enquiry Now");
         bindView();
 
-        this.btn_submit.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.EnquiryForm.1
-            @Override // android.view.View.OnClickListener
+        this.btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 if (EnquiryForm.this.edit_name.getText().toString().isEmpty()) {
                     EnquiryForm.this.edit_name.setError("Please enter name");
@@ -63,7 +66,7 @@ public class EnquiryForm extends AppCompatActivity {
                     EnquiryForm.this.edit_message.requestFocus();
                 } else {
                     EnquiryForm enquiryForm = EnquiryForm.this;
-//                    enquiryForm.getEnquiryNow(enquiryForm.edit_name.getText().toString(), EnquiryForm.this.edit_email.getText().toString(), EnquiryForm.this.edit_mobile.getText().toString(), EnquiryForm.this.edit_subject.getText().toString(), EnquiryForm.this.edit_message.getText().toString());
+                    enquiryForm.getEnquiryNow(enquiryForm.edit_name.getText().toString(), EnquiryForm.this.edit_email.getText().toString(), EnquiryForm.this.edit_mobile.getText().toString(), EnquiryForm.this.edit_subject.getText().toString(), EnquiryForm.this.edit_message.getText().toString());
                 }
             }
         });
@@ -78,53 +81,52 @@ public class EnquiryForm extends AppCompatActivity {
         this.edit_message = (EditText) findViewById(R.id.edit_message);
         this.btn_submit = (RelativeLayout) findViewById(R.id.btn_submit);
     }
-//    public void getEnquiryNow(String name, String email, String mobile, String subject, String message) {
-//        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
-//        progressDialog.show();
-//        String username = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
-//        String password = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserPassword, "");
-//        HashMap<String, String> body = new HashMap<>();
-//        body.put(ConstantClass.PROFILEDETAILS.UserName_, username);
-//        body.put("Password", password);
-//        body.put("EmailID", email);
-//        body.put("ContactNo", mobile);
-//        body.put("Messge", message);
-//        body.put("Subject", subject);
-//        body.put("Name", name);
-//
-//        ApiInterface apiservice = RetrofitHandler.getService();
-//        Call<Contact> call =
-//
-//        Call<ContactUsResponse> call = apiservice.getEnquiry(body);
-//        call.enqueue(new Callback<ContactUsResponse>() { // from class: com.uvapay.activities.EnquiryForm.2
-//            @Override // retrofit2.Callback
-//            public void onResponse(Call<ContactUsResponse> call2, Response<ContactUsResponse> response) {
-//                ProgressDialog progressDialog2 = progressDialog;
-//                if (progressDialog2 != null && progressDialog2.isShowing()) {
-//                    progressDialog.dismiss();
-//                }
-//                if (response.body() != null) {
-//                    if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
-//                        ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", response.body().getMessage());
-//                        return;
-//                    } else {
-//                        ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", response.body().getMessage());
-//                        return;
-//                    }
-//                }
-//                ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", response.body().getMessage());
-//            }
-//
-//            @Override // retrofit2.Callback
-//            public void onFailure(Call<ContactUsResponse> call2, Throwable t) {
-//                ProgressDialog progressDialog2 = progressDialog;
-//                if (progressDialog2 != null && progressDialog2.isShowing()) {
-//                    progressDialog.dismiss();
-//                }
-//                ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", t.getMessage());
-//            }
-//        });
-//    }
+    public void getEnquiryNow(String name, String email, String mobile, String subject, String message) {
+        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
+        progressDialog.show();
+        String username = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
+        String password = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserPassword, "");
+        HashMap<String, String> body = new HashMap<>();
+        body.put(ConstantClass.PROFILEDETAILS.UserName_, username);
+        body.put("Password", password);
+        body.put("EmailID", email);
+        body.put("ContactNo", mobile);
+        body.put("Messge", message);
+        body.put("Subject", subject);
+        body.put("Name", name);
+
+        ApiInterface apiservice = RetrofitHandler.getService();
+
+        Call<ContactUsResponse> call = apiservice.getEnquiry(body);
+        call.enqueue(new Callback<ContactUsResponse>() {
+            @Override
+            public void onResponse(Call<ContactUsResponse> call2, Response<ContactUsResponse> response) {
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                if (response.body() != null) {
+                    if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
+                        ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", response.body().getMessage());
+                        return;
+                    } else {
+                        ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", response.body().getMessage());
+                        return;
+                    }
+                }
+                ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", response.body().getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<ContactUsResponse> call2, Throwable t) {
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                ApplicationConstant.DisplayMessageDialog(EnquiryForm.this, "Response", t.getMessage());
+            }
+        });
+    }
 
     public boolean onSupportNavigateUp() {
         onBackPressed();

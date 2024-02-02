@@ -36,10 +36,10 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
     private Calendar myCalendar;
     private RecyclerView recycle_transactions;
     private List<NetworkBalanceReceivedReport> reportList;
-    private EditText text_fromdate;
+    private TextView text_fromdate;
     private TextView text_no_content;
     private EditText text_search;
-    private EditText text_todate;
+    private TextView text_todate;
     private PaymentReceivedReportAdapter transactionBillAdapter;
 
     AlertDialog alertDialog;
@@ -59,7 +59,7 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
         getPaymentReceived(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
 
-        this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1
+        this.text_fromdate.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(PaymentReceivedReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.PaymentReceivedReportActivity.1.1
@@ -68,14 +68,6 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
                         PaymentReceivedReportActivity.this.text_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                         PaymentReceivedReportActivity.this.text_fromdate.setError(null);
                         PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
-
-//                        if (!PaymentReceivedReportActivity.this.text_todate.getText().toString().isEmpty()) {
-//                            if (!ConstantClass.isNetworkAvailable(PaymentReceivedReportActivity.this)) {
-//                                ConstantClass.displayMessageDialog(PaymentReceivedReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                            } else {
-//                                PaymentReceivedReportActivity.this.getPaymentReceived(PaymentReceivedReportActivity.this.text_fromdate.getText().toString(), PaymentReceivedReportActivity.this.text_todate.getText().toString());
-//                            }
-//                        }
                     }
                 }, PaymentReceivedReportActivity.this.mYear, PaymentReceivedReportActivity.this.mMonth, PaymentReceivedReportActivity.this.mDay);
                 datePickerDialog.show();
@@ -203,8 +195,8 @@ public class PaymentReceivedReportActivity extends AppCompatActivity {
         this.recycle_transactions = (RecyclerView) findViewById(R.id.recycle_transactions);
         this.layout_fromdate = (LinearLayout) findViewById(R.id.layout_fromdate);
         this.layout_todate = (LinearLayout) findViewById(R.id.layout_todate);
-        this.text_fromdate = (EditText) findViewById(R.id.text_fromdate);
-        this.text_todate = (EditText) findViewById(R.id.text_todate);
+        this.text_fromdate = (TextView) findViewById(R.id.text_fromdate);
+        this.text_todate = (TextView) findViewById(R.id.text_todate);
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
     }

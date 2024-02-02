@@ -164,8 +164,8 @@
    <string-array name="drwerpolicy">
 
        <item>User Agrement</item>
-       <item>Certificate</item>
-       <item>Saftey and Sercurity</item>
+       <item>Certificate</item>   // check it will take or remove
+       <item>Privacy Policy</item>
        <item>Terms and Condition</item>
 
    </string-array>

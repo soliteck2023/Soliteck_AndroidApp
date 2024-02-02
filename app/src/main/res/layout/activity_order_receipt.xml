@@ -1,30 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:padding="20dp" android:layout_width="match_parent" android:layout_height="match_parent">
     <androidx.cardview.widget.CardView android:id="@+id/card_receipt" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="5dp" app:cardElevation="5dp">
-        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="match_parent">
-<!--            <androidx.appcompat.widget.AppCompatCheckedTextView android:layout_gravity="center" android:id="@+id/check" android:visibility="gone" android:layout_width="130dp" android:layout_height="130dp"/>-->
 
-            <ImageView android:layout_gravity="center" android:id="@+id/image_failed" android:visibility="visible" android:layout_width="130dp" android:layout_height="130dp" android:src="@drawable/failed"/>
-            <ImageView android:layout_gravity="center" android:id="@+id/image_pending" android:visibility="gone" android:layout_width="130dp" android:layout_height="130dp" android:src="@drawable/failed"/>
-            <TextView android:textSize="17sp" android:textStyle="bold" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/text_remark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15dp"/>
-            <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/text_message" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp"/>
-            <TextView android:textSize="15sp" android:textColor="@color/theme_color" android:id="@+id/text_Data" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15dp"/>
-            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="15dp" android:layout_weight="3">
-                <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
-                    <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Operator: "/>
-                    <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Number: "/>
-                    <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Date: "/>
-                    <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:id="@+id/TextOID" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Operator ID: "/>
-                    <TextView android:textSize="16sp" android:textStyle="normal" android:textColor="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="Amount: "/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+            <!--            <androidx.appcompat.widget.AppCompatCheckedTextView android:layout_gravity="center" android:id="@+id/check" android:visibility="gone" android:layout_width="130dp" android:layout_height="130dp"/>-->
+
+            <ImageView
+                android:id="@+id/image_right"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:src="@drawable/image_right"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/image_pending"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:src="@drawable/failed"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/text_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/text_Data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/theme_color"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="3"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Operator: "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Number: "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Date: "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/TextOID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Operator ID: "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Amount: "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
                 </LinearLayout>
-                <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2">
-                    <TextView android:textSize="17sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_operator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Idea Recharge"/>
-                    <TextView android:textSize="17sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_customer_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="8381095693"/>
-                    <TextView android:textSize="15sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_date_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="28-01-2019, 12:30 Pm"/>
-                    <TextView android:textSize="15sp" android:textStyle="normal" android:textColor="@color/black" android:id="@+id/text_OperatorId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="58525"/>
-                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/violet_button_background" android:padding="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp">
-                        <ImageView android:layout_width="19dp" android:layout_height="19dp" android:src="@drawable/white_rupee"/>
-                        <TextView android:textSize="17sp" android:textStyle="bold" android:textColor="@color/white" android:id="@+id/text_amount_receipt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="250"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_operator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Idea Recharge"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/text_customer_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="8381095693"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/text_date_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="28-01-2019, 12:30 Pm"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/text_OperatorId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="58525"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="normal" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/violet_button_background"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="19dp"
+                            android:layout_height="19dp"
+                            android:src="@drawable/white_rupee" />
+
+                        <TextView
+                            android:id="@+id/text_amount_receipt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="250"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

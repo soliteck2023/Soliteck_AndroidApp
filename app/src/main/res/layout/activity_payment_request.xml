@@ -25,7 +25,7 @@
                     android:layout_width="150dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/payment_request"
+                    android:src="@drawable/payment_req2"
                     app:tint="@color/white" />
 
                 <LinearLayout
@@ -128,7 +128,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="25dp"
                                     android:layout_weight="0.4"
-                                    android:src="@drawable/amount_money" />
+                                    android:src="@drawable/earning_money" />
 
                                 <EditText
                                     android:id="@+id/edit_amount_"

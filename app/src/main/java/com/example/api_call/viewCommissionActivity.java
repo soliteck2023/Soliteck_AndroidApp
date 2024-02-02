@@ -43,17 +43,13 @@ public class viewCommissionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_commission);
 
-        // Initialize views
         this.layout_commission = findViewById(R.id.layout_commission);
         view_commissionlist = findViewById(R.id.view_commissions);
 
-        // Set up RecyclerView
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         view_commissionlist.setLayoutManager(layoutManager);
 
-        // Call the method to get and display commission data
         getCommissionMarginList(view_commissionlist);
-
 
     }
 
@@ -84,9 +80,7 @@ public class viewCommissionActivity extends AppCompatActivity {
                         if (!response.body().getCommissionData().isEmpty()){
                             viewCommissionActivity.this.view_commissionlist.setVisibility(View.VISIBLE);
                             viewCommissionActivity.this.list_margin = response.body().getCommissionData();
-                            viewCommissionActivity.this.viewCommissionAdapter = new ViewCommissionAdapter(
-                                    viewCommissionActivity.this, viewCommissionActivity.this.list_margin
-                            );
+                            viewCommissionActivity.this.viewCommissionAdapter = new ViewCommissionAdapter(viewCommissionActivity.this, viewCommissionActivity.this.list_margin);
                             viewCommissionActivity.this.view_commissionlist.setAdapter(viewCommissionActivity.this.viewCommissionAdapter);
 //                            viewCommissionActivity.this.view_commissionlist.setAdapter(viewCommissionActivity.this.viewCommissionAdapter);
 

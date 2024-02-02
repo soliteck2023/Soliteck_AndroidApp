@@ -1,5 +1,6 @@
 package com.example.api_call;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -56,14 +57,14 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
         initComponents();
         setTitle("DTH Recharge");
 
-        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.1
+        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 DTHRechargeActivity.this.startActivity(new Intent(DTHRechargeActivity.this, DthechargeInfoActivity.class));
             }
         });
 
-        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.1
+        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
               DTHRechargeActivity.this.startActivity(new Intent(DTHRechargeActivity.this, DthechargeInfoActivity.class));
@@ -75,7 +76,7 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
                         DTHRechargeActivity.this.edit_dth_operator.setError(null);
                         Intent intent = new Intent(DTHRechargeActivity.this, DthechargeInfoActivity.class);
                         intent.putExtra("MOBILE", DTHRechargeActivity.this.edit_consumer_id.getText().toString());
-                        intent.putExtra("OPERATOR", DTHRechargeActivity.this.edit_dth_operator.getText().toString());
+//                        intent.putExtra("OPERATOR", DTHRechargeActivity.this.edit_dth_operator.getText().toString());
                         intent.putExtra("AMT", DTHRechargeActivity.this.edit_dth_amount.getText().toString());
                         intent.putExtra("CALL", "DTH");
                         DTHRechargeActivity.this.startActivity(intent);
@@ -85,7 +86,7 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
 
             }
         });
-        this.btn_mobile_Recharge.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.2
+        this.btn_mobile_Recharge.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 if (DTHRechargeActivity.this.edit_dth_operator.getText().toString().trim().isEmpty()) {
@@ -103,19 +104,19 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
                         return;
                     }
                     DTHRechargeActivity.this.edit_dth_amount.setError(null);
-                    if (TextUtils.isEmpty(DTHRechargeActivity.this.mEditTPin.getText().toString().trim())) {
-                        DTHRechargeActivity.this.mEditTPin.setError("Enter TPIN");
-                        return;
-                    }
-                    DTHRechargeActivity.this.mEditTPin.setError(null);
+//                    if (TextUtils.isEmpty(DTHRechargeActivity.this.mEditTPin.getText().toString().trim())) {
+//                        DTHRechargeActivity.this.mEditTPin.setError("Enter TPIN");
+//                        return;
+//                    }
+//                    DTHRechargeActivity.this.mEditTPin.setError(null);
                     DTHRechargeActivity dTHRechargeActivity = DTHRechargeActivity.this;
                     dTHRechargeActivity.getDTHConformation(dTHRechargeActivity.edit_dth_amount.getText().toString(), DTHRechargeActivity.this.edit_dth_consumerid.getText().toString(), DTHRechargeActivity.this.edit_dth_operator.getText().toString(), DTHRechargeActivity.this.mEditTPin.getText().toString().trim());
                 }
             }
         });
 
-        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.3
-            @Override // android.view.View.OnClickListener
+        this.layout_dth_plans.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 if (DTHRechargeActivity.this.edit_dth_operator.getText().toString().trim().isEmpty()) {
                     DTHRechargeActivity.this.edit_dth_operator.setError("Select operator");
@@ -134,19 +135,49 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        this.edit_dth_operator.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DTHRechargeActivity.4
-            @Override // android.view.View.OnClickListener
+        this.edit_dth_operator.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DTHRechargeActivity.this, OperatorsActivity.class);
                 intent.putExtra("NUMBER", DTHRechargeActivity.this.edit_consumer_id.getText().toString());
                 intent.putExtra("AMT", DTHRechargeActivity.this.edit_dth_amount.getText().toString());
                 intent.putExtra("CALL", "DTH");
-                DTHRechargeActivity.this.startActivityForResult(intent, 2);
+                DTHRechargeActivity.this.startActivityForResult(intent, 1);
             }
         });
     }
 
-    @Override // android.view.View.OnClickListener
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == -1) {
+                try {
+                    if (data.getExtras() != null) {
+                        this.NUMBER = data.getExtras().getString("NUMBER");
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    if (ConstantClass.datum != null && ConstantClass.datum.getServiceName().equals("DTH")) {
+                        this.edit_dth_operator.setText(ConstantClass.datum.getName());
+                        this.opCode = ConstantClass.datum.getId();
+                    }
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            } else {
+                Toast.makeText(this, "Result Not Ok", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+    }
+
+    @Override
     public void onClick(View v) {
 
         int txtDetails = R.id.TxtDetails;
@@ -259,7 +290,7 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
         startActivityForResult(intent1, 102);
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
@@ -337,8 +368,7 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
         this.layout_dth_plans = (RelativeLayout) findViewById(R.id.layout_dth_plans);
         TextView textView = (TextView) findViewById(R.id.TxtSpecialPlan);
         this.TxtSpecialPlan = textView;
-
-//        textView.setOnClickListener(this);
+ //        textView.setOnClickListener(this);
         this.TxtROffer = (TextView) findViewById(R.id.TxtROffer);
         this.TxtDetails = (TextView) findViewById(R.id.TxtDetails);
 //        this.TxtROffer.setOnClickListener(this);
@@ -357,15 +387,17 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
 
             @Override // android.text.TextWatcher
             public void afterTextChanged(Editable s) {
-                if (DTHRechargeActivity.this.edit_consumer_id.getText().toString().trim().length() >= 9) {
+                if (DTHRechargeActivity.this.edit_consumer_id.getText().toString().trim().length() == 13) {
                     DTHRechargeActivity dTHRechargeActivity = DTHRechargeActivity.this;
-                    dTHRechargeActivity.callOperator(dTHRechargeActivity.edit_consumer_id.getText().toString().trim());
+                    dTHRechargeActivity.edit_consumer_id.getText().toString().trim();
+//                    dTHRechargeActivity.callOperator(dTHRechargeActivity.edit_consumer_id.getText().toString().trim());
                 }
             }
         });
     }
 
     public void callOperator(String number) {
+
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<OperatorWithCircleResponse> rechargeress = apiservice.getDTHOPT(PrefUtils.getFromPrefs(this, "userid", ""), PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserPassword, ""), number);
         rechargeress.enqueue(new Callback<OperatorWithCircleResponse>() { // from class: com.uvapay.activities.DTHRechargeActivity.8
@@ -376,7 +408,7 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
                     try {
                         for (Datum data : DTHRechargeActivity.this.DTHoperatorList) {
                             if (data.equals(dthCustInfo.getData().getOperator())) {
-                                DTHRechargeActivity.this.edit_dth_operator.setText(dthCustInfo.getData().getOperator());
+                                DTHRechargeActivity.this.edit_dth_operator.setText(ConstantClass.datum.getName());
                                 DTHRechargeActivity.this.opCode = data.getOurCode();
                             }
                         }
@@ -385,7 +417,7 @@ public class DTHRechargeActivity extends AppCompatActivity implements View.OnCli
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<OperatorWithCircleResponse> call, Throwable t) {
                 if (t instanceof IOException) {
                     Toast.makeText(DTHRechargeActivity.this, "Please turn on your internet connection ", Toast.LENGTH_LONG).show();

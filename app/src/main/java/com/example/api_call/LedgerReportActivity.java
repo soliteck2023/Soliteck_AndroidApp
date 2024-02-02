@@ -48,6 +48,7 @@ public class LedgerReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ledger_report);
         setTitle("Ledger Report");
         initComponents();
+
         Calendar calendar = Calendar.getInstance();
         this.myCalendar = calendar;
         this.mYear = calendar.get(1);
@@ -68,23 +69,16 @@ public class LedgerReportActivity extends AppCompatActivity {
                         LedgerReportActivity.this.text_fromdate.setError(null);
                         LedgerReportActivity.this.getTransactionReport(LedgerReportActivity.this.text_fromdate.getText().toString(), LedgerReportActivity.this.text_todate.getText().toString());
 
-//                        if (!LedgerReportActivity.this.text_todate.getText().toString().isEmpty()) {
-//                            if (!ConstantClass.isNetworkAvailable(LedgerReportActivity.this)) {
-//                                ConstantClass.displayMessageDialog(LedgerReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                            } else {
-//                                LedgerReportActivity.this.getTransactionReport(LedgerReportActivity.this.text_fromdate.getText().toString(), LedgerReportActivity.this.text_todate.getText().toString());
-//                            }
-//                        }
                     }
                 }, LedgerReportActivity.this.mYear, LedgerReportActivity.this.mMonth, LedgerReportActivity.this.mDay);
                 datePickerDialog.show();
             }
         });
 
-        this.text_todate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LedgerReportActivity.2
-            @Override // android.view.View.OnClickListener
+        this.text_todate.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(LedgerReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.LedgerReportActivity.2.1
+                DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(LedgerReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() {
                     @Override // android.app.DatePickerDialog.OnDateSetListener
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         if (LedgerReportActivity.this.text_fromdate.getText().toString().isEmpty()) {
@@ -95,28 +89,23 @@ public class LedgerReportActivity extends AppCompatActivity {
                         LedgerReportActivity.this.text_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                         LedgerReportActivity.this.getTransactionReport(LedgerReportActivity.this.text_fromdate.getText().toString(), LedgerReportActivity.this.text_todate.getText().toString());
 
-//                        if (!ConstantClass.isNetworkAvailable(LedgerReportActivity.this)) {
-//                            ConstantClass.displayMessageDialog(LedgerReportActivity.this, "No Internet Connection", "Please enable internet connection first to proceed");
-//                        } else {
-//                            LedgerReportActivity.this.getTransactionReport(LedgerReportActivity.this.text_fromdate.getText().toString(), LedgerReportActivity.this.text_todate.getText().toString());
-//                        }
                     }
                 }, LedgerReportActivity.this.mYear, LedgerReportActivity.this.mMonth, LedgerReportActivity.this.mDay);
                 datePickerDialog.show();
                 datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
             }
         });
-        this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.LedgerReportActivity.3
-            @Override // android.text.TextWatcher
+        this.text_search.addTextChangedListener(new TextWatcher() {
+            @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 LedgerReportActivity.this.filter(charSequence.toString());
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void afterTextChanged(Editable editable) {
             }
         });
@@ -134,25 +123,10 @@ public class LedgerReportActivity extends AppCompatActivity {
             }
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+
         }
 
-
     }
-
-//    private void filter(String s) {
-//        try {
-//            List<ledgerTransactionReport> listnew_Banks = new ArrayList<>();
-//            for (TransactionReport transHistoryData : this.reportList) {
-//                if (transHistoryData.getRefNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getStatus().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getRetailerNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getSenderMobile().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getOperatorName().toLowerCase().contains(s.toLowerCase())) {
-//                    listnew_Banks.add(transHistoryData);
-//                }
-//            }
-//            this.transactionBillAdapter.filter(listnew_Banks);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     private void getTransactionReport(String fromDate, String toDate) {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);

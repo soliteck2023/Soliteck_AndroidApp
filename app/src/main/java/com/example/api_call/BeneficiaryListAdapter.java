@@ -454,7 +454,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                 }
             });
             text_done.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.1.6
-                @Override // android.view.View.OnClickListener
+                @Override
                 public void onClick(View v2) {
                     alertDialog.dismiss();
                 }
@@ -477,8 +477,8 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
         body.put("TransactionType", type);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<List<MTransferFund>> call = apiservice.makeTransfer(body);
-        call.enqueue(new Callback<List<MTransferFund>>() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.5
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<List<MTransferFund>>() {
+            @Override
             public void onResponse(Call<List<MTransferFund>> call2, Response<List<MTransferFund>> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -489,7 +489,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                         ApplicationConstant.DisplayMessageDialog((Activity) BeneficiaryListAdapter.this.context, "Resposne", response.body().get(0).getMessage());
                         return;
                     } else {
-                        ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "Response", response.body().get(0).getMessage());
+                        ApplicationConstant.DisplayMessageDialog((Activity) BeneficiaryListAdapter.this.context, "Response", response.body().get(0).getMessage());
                         return;
                     }
                 }
@@ -504,7 +504,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<List<MTransferFund>> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {

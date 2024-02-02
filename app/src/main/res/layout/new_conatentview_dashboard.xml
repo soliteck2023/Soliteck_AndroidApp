@@ -758,6 +758,8 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/first_linear"
                     android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/padding_5"
+                    android:layout_marginRight="@dimen/padding_5"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -766,18 +768,9 @@
                         android:id="@+id/image_wallet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/bank_accountfinal" />
+                        android:src="@drawable/bankaccount" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="Bank-->
-<!--                        Account"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="12sp"-->
-<!--                        android:textStyle="bold"></TextView>-->
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -794,18 +787,8 @@
                         android:id="@+id/image_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/internalloadfinal" />
+                        android:src="@drawable/internaload" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="Internal-->
-<!--                        Load"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="12sp"-->
-<!--                        android:textStyle="bold"></TextView>-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -816,6 +799,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_marginRight="5dp"
+                    android:layout_marginLeft="@dimen/padding_5"
                     android:orientation="vertical">
 
 
@@ -823,18 +807,7 @@
                         android:id="@+id/image_account2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/aepssettlementfinal" />
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="AEPS-->
-<!--                        Settlement"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="12sp"-->
-<!--                        android:textStyle="bold"></TextView>-->
+                        android:src="@drawable/logo_aeps" />
 
 
                 </LinearLayout>
@@ -843,7 +816,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linerlayout"
+                android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="7dp"
@@ -853,169 +826,24 @@
                 android:background="@drawable/simple_border"
                 android:orientation="horizontal">
 
-                <androidx.recyclerview.widget.RecyclerView
+
+                <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/recyclerAd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:scrollbars="horizontal"
+                    android:fastScrollEnabled="true"
                     android:layout_below="@+id/containt1"
                     android:orientation="horizontal"
-                    tools:ignore="NotSibling">
+                    tools:listitem="@layout/item_image_horizontal"
+                    android:src="@drawable/defualt_test">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                </pl.droidsonroids.gif.GifImageView>
+
 
 
             </LinearLayout>
 
-
-
-            <!--                        <LinearLayout-->
-<!--                            android:id="@+id/cartview1"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="110dp"-->
-<!--                            android:layout_below="@+id/balanceLayout1"-->
-<!--                            android:layout_marginStart="12dp"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            android:layout_marginEnd="12dp"-->
-<!--                            android:background="@drawable/curveshape_background"-->
-<!--                            android:weightSum="4">-->
-
-<!--                            <LinearLayout-->
-<!--                                android:id="@+id/linear_paytransfe_rreport"-->
-<!--                                android:layout_width="85dp"-->
-<!--                                android:layout_height="90dp"-->
-<!--                                android:layout_marginStart="8dp"-->
-<!--                                android:layout_marginLeft="0dp"-->
-<!--                                android:layout_marginTop="10dp"-->
-<!--                                android:layout_marginEnd="3.5dp"-->
-<!--                                android:layout_marginBottom="2dp"-->
-<!--                                android:layout_weight="1.1"-->
-<!--                                android:background="@drawable/white_border"-->
-<!--                                android:gravity="center"-->
-<!--                                android:orientation="vertical">-->
-
-
-<!--                                <ImageView-->
-<!--                                    android:id="@+id/image_mobile1"-->
-<!--                                    android:layout_width="35dp"-->
-<!--                                    android:layout_height="35dp"-->
-<!--                                    android:layout_marginTop="2dp"-->
-<!--                                    android:src="@drawable/request_logo" />-->
-
-<!--                                <TextView-->
-<!--                                    android:layout_width="wrap_content"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_marginTop="5dp"-->
-<!--                                    android:gravity="center"-->
-<!--                                    android:text="Payment Request"-->
-<!--                                    android:textColor="@color/blue"-->
-<!--                                    android:textSize="13sp"-->
-<!--                                    android:textStyle="bold"></TextView>-->
-<!--                            </LinearLayout>-->
-
-<!--                            <LinearLayout-->
-<!--                                android:id="@+id/first_linear"-->
-<!--                                android:layout_width="85dp"-->
-<!--                                android:layout_height="90dp"-->
-<!--                                android:layout_marginStart="5dp"-->
-<!--                                android:layout_marginLeft="0dp"-->
-<!--                                android:layout_marginTop="10dp"-->
-<!--                                android:layout_marginEnd="3.5dp"-->
-<!--                                android:layout_marginBottom="2dp"-->
-<!--                                android:layout_toRightOf="@id/first_linear"-->
-<!--                                android:layout_weight="1.1"-->
-<!--                                android:background="@drawable/white_border"-->
-<!--                                android:gravity="center"-->
-<!--                                android:orientation="vertical">-->
-
-
-<!--                                <ImageView-->
-<!--                                    android:id="@+id/image_wallet"-->
-<!--                                    android:layout_width="40dp"-->
-<!--                                    android:layout_height="40dp"-->
-<!--                                    android:layout_marginTop="2dp"-->
-<!--                                    android:src="@drawable/bank_removebg" />-->
-
-<!--                                <TextView-->
-<!--                                    android:layout_width="wrap_content"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_marginTop="5dp"-->
-<!--                                    android:gravity="center"-->
-<!--                                    android:text="Bank Account"-->
-<!--                                    android:textColor="@color/blue"-->
-<!--                                    android:textSize="13sp"-->
-<!--                                    android:textStyle="bold"></TextView>-->
-<!--                            </LinearLayout>-->
-
-<!--                            <LinearLayout-->
-<!--                                android:id="@+id/pending_txn_report"-->
-<!--                                android:layout_width="85dp"-->
-<!--                                android:layout_height="90dp"-->
-<!--                                android:layout_marginStart="5dp"-->
-<!--                                android:layout_marginLeft="0dp"-->
-<!--                                android:layout_marginTop="10dp"-->
-<!--                                android:layout_marginEnd="3.5dp"-->
-<!--                                android:layout_marginBottom="2dp"-->
-<!--                                android:layout_toRightOf="@id/second_linier"-->
-<!--                                android:layout_weight="1.1"-->
-<!--                                android:background="@drawable/white_border"-->
-<!--                                android:gravity="center"-->
-<!--                                android:orientation="vertical">-->
-
-
-<!--                                <ImageView-->
-<!--                                    android:id="@+id/image_account"-->
-<!--                                    android:layout_width="40dp"-->
-<!--                                    android:layout_height="40dp"-->
-<!--                                    android:layout_marginTop="3dp"-->
-<!--                                    android:src="@drawable/colorful_network_pay" />-->
-
-<!--                                <TextView-->
-<!--                                    android:layout_width="75dp"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_marginTop="5dp"-->
-<!--                                    android:gravity="center"-->
-<!--                                    android:text="Internal Load"-->
-<!--                                    android:textColor="@color/blue"-->
-<!--                                    android:textSize="13sp"-->
-<!--                                    android:textStyle="bold"></TextView>-->
-<!--                            </LinearLayout>-->
-
-<!--                            <LinearLayout-->
-<!--                                android:id="@+id/linear_latestReport"-->
-<!--                                android:layout_width="85dp"-->
-<!--                                android:layout_height="90dp"-->
-<!--                                android:layout_marginStart="5dp"-->
-<!--                                android:layout_marginLeft="0dp"-->
-<!--                                android:layout_marginTop="10dp"-->
-<!--                                android:layout_marginEnd="8dp"-->
-<!--                                android:layout_marginBottom="2dp"-->
-<!--                                android:layout_toRightOf="@id/third_linear"-->
-<!--                                android:layout_weight="0.7"-->
-<!--                                android:background="@drawable/white_border"-->
-<!--                                android:gravity="center"-->
-<!--                                android:orientation="vertical">-->
-
-
-<!--                                <ImageView-->
-<!--                                    android:id="@+id/image_account2"-->
-<!--                                    android:layout_width="40dp"-->
-<!--                                    android:layout_height="40dp"-->
-<!--                                    android:src="@drawable/colorful_txn_reports3" />-->
-
-<!--                                <TextView-->
-<!--                                    android:layout_width="85dp"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_marginTop="5dp"-->
-<!--                                    android:gravity="center"-->
-<!--                                    android:text="AEPS     Settlment"-->
-<!--                                    android:textColor="@color/blue"-->
-<!--                                    android:textSize="12.5sp"-->
-<!--                                    android:textStyle="bold"></TextView>-->
-
-
-<!--                            </LinearLayout>-->
-
-<!--                        </LinearLayout>-->
 
             <include layout="@layout/newcontentdashboard"></include>
 

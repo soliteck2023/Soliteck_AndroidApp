@@ -1,5 +1,7 @@
 package com.example.api_call;
 
+import com.ContactUsResponse;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -104,7 +106,7 @@ public interface ApiInterface {
     Call<PaymentReceivedResponse> Getpendingreport(@Body HashMap<String, String> hashMap);
 
     @POST("MOBDailyNews")
-    Call<news> getnews(@Body HashMap<String, String> hashMap);
+    Call<NewsResponse> getnews(@Body HashMap<String, String> hashMap);
 
 
     @POST("MOBLedgerReport")
@@ -193,4 +195,35 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("Recharge/GetMobilePlan")
     Call<MobilePlanResponse> getMobilePlan(@Field("UserName") String str, @Field("Password") String str2, @Field("OperatorName") String str3, @Field("Circle") String str4);
+
+    @POST("Account/UpdatePassword")
+    Call<ChangePasswordResponse> ChangePasswordResponse(@Body HashMap<String, String> hashMap);
+
+    @POST("Account/UpdatePassword")
+    Call<ChangePasswordResponse> ChangeTpinResponse(@Body HashMap<String, String> hashMap);
+
+    @POST("MOBAggrementCertificate")
+    Call<AggrementCertificateclass> AggrementCertificatemethod(@Body HashMap<String, String> hashMap);
+    @POST("DMT/RemitterRegistration")
+    Call<RemitterRegResponse> getRemitterRegistered(@Body HashMap<String, String> hashMap);
+
+
+    @POST("MOBRaiseComplaint")
+    Call<ComplaintResponse > Getcomplaintraise(@Body HashMap<String, String> hashMap);
+
+    @POST("ContactUs/ContactUs")
+    Call<ContactUsResponse> getEnquiry(@Body HashMap<String, String> hashMap);
+
+    //send otp to mobile number Api
+    @POST("MOBOtpVerification")
+    Call<BalTransferResponse> GetMOBOtp(@Body HashMap<String, String> hashMap);
+
+    //verify mobile number OTP API
+    @POST("MOBVerifyOtp")
+    Call<OtpverifyResponse> otpSendmethod(@Body HashMap<String, String> hashMap);
+
+
+    @POST("MOBComplaintTypeList")
+    Call<compaint_typeList> compaint_typeList(@Body HashMap<String, String> hashMap);
+
 }

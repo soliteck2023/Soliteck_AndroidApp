@@ -3,6 +3,7 @@ package com.example.api_call;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -36,7 +37,6 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remitter_registration);
-
         setTitle("Remitter Registration");
         initComponents();
         String string = getIntent().getExtras().getString("MOBILE");
@@ -64,8 +64,78 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
             }
         });
 
+        this.btn_register_remitter.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.RemitterRegistrationActivity.3
+            @Override // android.view.View.OnClickListener
+            public void onClick(View v) {
+                if (RemitterRegistrationActivity.this.edit_name.getText().toString().isEmpty()) {
+                    RemitterRegistrationActivity.this.edit_name.setError("enter first name");
+                    RemitterRegistrationActivity.this.edit_name.requestFocus();
+                } else if (RemitterRegistrationActivity.this.edit_last_name.getText().toString().isEmpty()) {
+                    RemitterRegistrationActivity.this.edit_last_name.setError("enter last name");
+                    RemitterRegistrationActivity.this.edit_last_name.requestFocus();
+                } else if (RemitterRegistrationActivity.this.edit_mobile.getText().toString().length() != 10) {
+                    RemitterRegistrationActivity.this.edit_mobile.setText("enter correct number");
+                    RemitterRegistrationActivity.this.edit_mobile.requestFocus();
+                } else if (RemitterRegistrationActivity.this.edit_pincode.getText().toString().length() != 6) {
+                    RemitterRegistrationActivity.this.edit_pincode.setError("enter correct pincode");
+                    RemitterRegistrationActivity.this.edit_pincode.requestFocus();
+                } else if (RemitterRegistrationActivity.this.edit_otp.getText().toString().length() != 6) {
+                    RemitterRegistrationActivity.this.edit_otp.setError("enter correct Otp");
+                    RemitterRegistrationActivity.this.edit_otp.requestFocus();
+                } else {
+                    RemitterRegistrationActivity remitterRegistrationActivity = RemitterRegistrationActivity.this;
+                    remitterRegistrationActivity.remitterRegistration(remitterRegistrationActivity.edit_name.getText().toString(), RemitterRegistrationActivity.this.edit_last_name.getText().toString(), RemitterRegistrationActivity.this.mobile_no, RemitterRegistrationActivity.this.edit_pincode.getText().toString(), RemitterRegistrationActivity.this.edit_otp.getText().toString());
+                }
+            }
+        });
 
 
+
+
+    }
+
+    public void remitterRegistration(String fName, String lName, String mobile_no, String pincode, String otp) {
+        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue(this);
+        progressDialog.show();
+        HashMap<String, String> body = new HashMap<>();
+        body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+        body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
+        body.put("Mobile", mobile_no);
+        body.put("FirstName", fName);
+        body.put("LastName", lName);
+        body.put(ConstantClass.PROFILEDETAILS.PinCode, pincode);
+        body.put("Otp", otp);
+        ApiInterface apiservice = RetrofitHandler.getService();
+        Call<RemitterRegResponse> call = apiservice.getRemitterRegistered(body);
+        call.enqueue(new Callback<RemitterRegResponse>() { // from class: com.uvapay.transfer_money.activities.RemitterRegistrationActivity.4
+            @Override // retrofit2.Callback
+            public void onResponse(Call<RemitterRegResponse> call2, Response<RemitterRegResponse> response) {
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                if (response.body() != null) {
+                    if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
+                        ConstantClass.displayToastMessage(RemitterRegistrationActivity.this, response.body().getMessage());
+                        Intent intent = new Intent(RemitterRegistrationActivity.this, BeneficieryActivity.class);
+                        intent.putExtra("MOBILE", RemitterRegistrationActivity.this.mobile_no);
+                        RemitterRegistrationActivity.this.startActivity(intent);
+                        RemitterRegistrationActivity.this.finish();
+                        return;
+                    }
+                    ConstantClass.displayMessageDialog(RemitterRegistrationActivity.this, "", response.body().getMessage());
+                }
+            }
+
+            @Override // retrofit2.Callback
+            public void onFailure(Call<RemitterRegResponse> call2, Throwable t) {
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                ConstantClass.displayMessageDialog(RemitterRegistrationActivity.this, "Server Problem", t.getMessage());
+            }
+        });
     }
 
     private void sendOtptoRemitter(String mobile_no) {
@@ -77,8 +147,8 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
         body.put("Mobile", mobile_no);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<OTPResponse> call = apiservice.getOtp(body);
-        call.enqueue(new Callback<OTPResponse>() { // from class: com.uvapay.transfer_money.activities.RemitterRegistrationActivity.5
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<OTPResponse>() {
+            @Override
             public void onResponse(Call<OTPResponse> call2, Response<OTPResponse> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -88,13 +158,13 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
                     ApplicationConstant.displayToastMessage(RemitterRegistrationActivity.this,response.body().getMessage());
                     RemitterRegistrationActivity.this.linear_resend.setVisibility(View.VISIBLE);
                     RemitterRegistrationActivity.this.linear_Otp.setVisibility(View.VISIBLE);
-                    RemitterRegistrationActivity.this.btn_register_remitter.setVisibility(View.GONE);
+                    RemitterRegistrationActivity.this.btn_register_remitter.setVisibility(View.VISIBLE);
                     RemitterRegistrationActivity.this.btn_send_otp.setVisibility(View.GONE);
                     RemitterRegistrationActivity.this.resendOtpTimer();
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<OTPResponse> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -106,13 +176,13 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
     }
 
     private void resendOtpTimer() {
-        new CountDownTimer(60000L, 1000L) { // from class: com.uvapay.transfer_money.activities.RemitterRegistrationActivity.6
-            @Override // android.os.CountDownTimer
+        new CountDownTimer(60000L, 1000L) {
+            @Override
             public void onTick(long millisUntilFinished) {
                 RemitterRegistrationActivity.this.text_resend.setText("seconds: " + (millisUntilFinished / 1000));
             }
 
-            @Override // android.os.CountDownTimer
+            @Override
             public void onFinish() {
                 RemitterRegistrationActivity.this.text_resend.setText("RESEND OTP");
             }

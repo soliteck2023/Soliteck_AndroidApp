@@ -34,18 +34,19 @@ public class LatestReportActivity extends AppCompatActivity {
         setTitle("Latest Report");
         initComponents();
         getLatestReport();
+
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
-        this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.LatestReportActivity.1
-            @Override // android.text.TextWatcher
+        this.text_search.addTextChangedListener(new TextWatcher() {
+            @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void onTextChanged(CharSequence c, int i, int i1, int i2) {
                 LatestReportActivity.this.filter(c.toString());
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void afterTextChanged(Editable editable) {
             }
         });
@@ -59,7 +60,7 @@ public class LatestReportActivity extends AppCompatActivity {
         this.text_no_content = (TextView) findViewById(R.id.text_no_content);
         this.text_search = (EditText) findViewById(R.id.text_search);
     }
-    @Override // androidx.appcompat.app.AppCompatActivity
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
@@ -70,7 +71,13 @@ public class LatestReportActivity extends AppCompatActivity {
         try {
             List<LatestTransaction> list_new = new ArrayList<>();
             for (LatestTransaction transHistoryData : this.reportList) {
-                if (transHistoryData.getRefNumber() != null && transHistoryData.getStatus() != null && transHistoryData.getSenderMobile() != null && transHistoryData.getOperatorName() != null && (transHistoryData.getRefNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getStatus().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getSenderMobile().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getOperatorName().toLowerCase().contains(s.toLowerCase()))) {
+
+                if (transHistoryData.getRefNumber() != null &&
+                        transHistoryData.getStatus() != null &&
+                        transHistoryData.getSenderMobile() != null &&
+                        transHistoryData.getOperatorName() != null &&
+                        transHistoryData.getAmount() != null &&
+                        transHistoryData.getRefNumber() != null && transHistoryData.getStatus() != null && transHistoryData.getSenderMobile() != null && transHistoryData.getOperatorName() != null && (transHistoryData.getRefNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getStatus().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getSenderMobile().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getOperatorName().toLowerCase().contains(s.toLowerCase()))) {
                     list_new.add(transHistoryData);
                 }
             }
@@ -91,7 +98,7 @@ public class LatestReportActivity extends AppCompatActivity {
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<GetLatestReportBase> result = apiservice.getLatestReport(body);
         result.enqueue(new Callback<GetLatestReportBase>() { // from class: com.uvapay.activities.LatestReportActivity.2
-            @Override // retrofit2.Callback
+            @Override
             public void onResponse(Call<GetLatestReportBase> call, Response<GetLatestReportBase> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -119,7 +126,7 @@ public class LatestReportActivity extends AppCompatActivity {
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<GetLatestReportBase> call, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {

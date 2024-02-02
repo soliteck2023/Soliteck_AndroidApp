@@ -150,11 +150,11 @@
                                 android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
-                                android:phoneNumber="true"
-                                android:typeface="monospace" />
+                                android:typeface="monospace"
+                                android:inputType="number"/>
                             <ImageView
                                 android:layout_weight="0.5"
-                                android:visibility="invisible"
+                                android:visibility="gone"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
@@ -195,8 +195,8 @@
                                 android:hint="Password"
                                 android:maxLength="10"
                                 android:textSize="14sp"
-                                android:numeric="integer"
                                 android:paddingLeft="10dp"
+                                android:inputType="text"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:typeface="serif" />
@@ -226,6 +226,7 @@
                         android:weightSum="2">
 
                         <CheckBox
+
                             android:id="@+id/checkbox_remember"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -237,7 +238,7 @@
                             android:textSize="14sp"
                             android:textColor="@color/black"
                             android:textStyle="bold"
-                            android:visibility="visible" />
+                            android:visibility="invisible" />
 
 
                         <TextView

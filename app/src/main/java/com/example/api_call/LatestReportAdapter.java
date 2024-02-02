@@ -30,10 +30,14 @@ public class LatestReportAdapter extends RecyclerView.Adapter<LatestReportAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         LatestTransaction earnData = this.listSatetments.get(position);
+        String CreatedDate = earnData.getDateTime();
+        String[] part = CreatedDate.split("T");
+        String Date = part[0];
+
         try {
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionNumber());
             holder.text_status_.setText(earnData.getStatus());
-            holder.text_date_time_.setText(earnData.getDateTime());
+            holder.text_date_time_.setText(Date);
             holder.text_amount_.setText("Rs " + earnData.getAmount());
             holder.text_refid.setText("Ref No: " + earnData.getRefNumber());
             holder.text_mob_.setText("" + earnData.getSenderMobile());

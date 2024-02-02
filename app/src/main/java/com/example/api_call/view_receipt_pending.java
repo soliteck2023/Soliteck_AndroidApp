@@ -70,7 +70,12 @@ public class view_receipt_pending extends AppCompatActivity {
         this.Cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                view_receipt_pending.this.startActivity(new Intent(view_receipt_pending.this, TransactionsReportActivity.class));
+//                view_receipt_pending.this.startActivity(new Intent(view_receipt_pending.this, TransactionsReportActivity.class));
+                finish();
+                //or follow below proces
+//                Intent intent = new Intent(view_receipt_pending.this, TransactionsReportActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
 
             }
         });
@@ -140,6 +145,7 @@ public class view_receipt_pending extends AppCompatActivity {
             }
         });
     }
+
 
 
 }

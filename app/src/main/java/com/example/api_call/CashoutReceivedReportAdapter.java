@@ -60,6 +60,18 @@ public class CashoutReceivedReportAdapter extends  RecyclerView.Adapter<CashoutR
             e.printStackTrace();
         }
 
+        holder.Raise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context1 = v.getContext();
+                Intent intent = new Intent(context, raiseAepscompliant.class);
+                intent.putExtra("TxnId",earnData.getTransactionNumber());
+                intent.putExtra("Date",earnData.getTransactionDate());
+                intent.putExtra("amt",earnData.getAmount());
+                context1.startActivity(intent);
+            }
+        });
+
         holder.View.setOnClickListener(new View.OnClickListener() {
             private ProgressDialog progressDialog;
 

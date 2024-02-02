@@ -37,6 +37,8 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
     }
 
 
+
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -80,10 +82,12 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
             @Override
             public void onClick(View v) {
 
-                Context context = v.getContext();
+                Context context1 = v.getContext();
                 Intent intent = new Intent(context, raisecompliant.class);
-                intent.putExtra("transactionId","earnData.getTransactionNumber()");
-                context.startActivity(intent);
+                intent.putExtra("TxnId",earnData.getTransactionNumber());
+                intent.putExtra("Date",earnData.getTransactionDate());
+                intent.putExtra("amt",earnData.getAmount());
+                context1.startActivity(intent);
 
             }
         });
@@ -95,6 +99,8 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
                 PrefUtils.saveToPrefs(context, ConstantClass.USERDETAILS.TransactionIds, earnData.getTransactionNumber());
                 Intent intent = new Intent(TransactionReportAdapter.this.context, view_receipt_pending.class);
                 TransactionReportAdapter.this.context.startActivity(intent);
+//                ((AppCompatActivity) context).finish();
+
 
             }
         });
@@ -113,10 +119,6 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
         notifyDataSetChanged();
     }
 
-    public interface ItemClickListener {
-        void onItemClick(int position);
-
-    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text_amount_;
@@ -157,14 +159,17 @@ public class TransactionReportAdapter extends RecyclerView.Adapter<TransactionRe
             this.text_debitAmount = (TextView) itemView.findViewById(R.id.text_debitAmount);
             this.text_effecativeBal = (TextView) itemView.findViewById(R.id.text_effecativeBal);
             this.text_creditAmount = (TextView) itemView.findViewById(R.id.text_creditAmount);
-
-
         }
 
-
-
-
     }
+
+    public void updateList(List<TransactionReport> temp) {
+        this.listSatetments = temp;
+        notifyDataSetChanged();
+    }
+
+
+
 
 
 }

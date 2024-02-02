@@ -9,7 +9,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +32,7 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
     private TextView text_datetime;
     private TextView text_operator;
     private TextView text_wallet_balance;
+    private EditText edit_tpin;
     private String Amount = "";
     private String OPERATOR = "";
     private String MobileNumber = "";
@@ -62,7 +65,7 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
             String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
             this.text_datetime.setText(currentDateTimeString);
         }
-        this.btn_recharge_topay.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.RechargeConfirmationActivity.1
+        this.btn_recharge_topay.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 getRechargeDone(OPTID);
@@ -94,53 +97,60 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
         body.put("Number", this.MobileNumber);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<RechargeConfirmResponse> call = apiservice.getRechargeResponse(body);
-        call.enqueue(new Callback<RechargeConfirmResponse>() { // from class: com.uvapay.activities.RechargeConfirmationActivity.2
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<RechargeConfirmResponse>() {
+            @Override
             public void onResponse(Call<RechargeConfirmResponse> call2, Response<RechargeConfirmResponse> response) {
                 if (RechargeConfirmationActivity.this.progressDialog.isShowing() && RechargeConfirmationActivity.this.progressDialog != null) {
                     RechargeConfirmationActivity.this.progressDialog.dismiss();
                 }
-                if (response != null) {
-                    if (response.body().getResponseStatus().intValue()==2){
-                        Intent intent = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
-                        intent.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
-                        intent.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
-                        intent.putExtra("AMOUNT", RechargeConfirmationActivity.this.text_amount.getText().toString());
-                        intent.putExtra("REMARK", response.body().getRemarks());
-                        intent.putExtra("DATA", response.body().getData());
-                        intent.putExtra("OperatorID", response.body().getOperatorTxnNumber());
-                        intent.putExtra("STATUS_MESSAGE", response.body().getStatus());
-                        intent.putExtra("STATUS", 2);
-                        RechargeConfirmationActivity.this.startActivity(intent);
+                if (response != null && response.body() != null)
+                {
+                    RechargeConfirmResponse responseBody = response.body();
+                    if (responseBody.getResponseStatus() != null){
+
+                        int responseStatus = responseBody.getResponseStatus().intValue();
+                        if (responseStatus == 2){
+                            Intent intent = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
+                            intent.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
+                            intent.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
+                            intent.putExtra("AMOUNT", RechargeConfirmationActivity.this.text_amount.getText().toString());
+                            intent.putExtra("REMARK", response.body().getRemarks());
+                            intent.putExtra("DATA", response.body().getData());
+                            intent.putExtra("OperatorID", response.body().getOperatorTxnNumber());
+                            intent.putExtra("STATUS_MESSAGE", response.body().getStatus());
+                            intent.putExtra("STATUS", 2);
+                            RechargeConfirmationActivity.this.startActivity(intent);
+                            RechargeConfirmationActivity.this.finish();
+                        }
+                        if (responseStatus == 3) {
+                            Intent intent2 = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
+                            intent2.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
+                            intent2.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
+                            intent2.putExtra("AMOUNT", RechargeConfirmationActivity.this.text_amount.getText().toString());
+                            intent2.putExtra("REMARK", response.body().getRemarks());
+                            intent2.putExtra("DATA", response.body().getData());
+                            intent2.putExtra("OperatorID", response.body().getOperatorTxnNumber());
+                            intent2.putExtra("STATUS_MESSAGE", response.body().getStatus());
+                            intent2.putExtra("STATUS", "3");
+                            RechargeConfirmationActivity.this.startActivity(intent2);
+                            RechargeConfirmationActivity.this.finish();
+                            return;
+                        }
+                        if (RechargeConfirmationActivity.this.progressDialog.isShowing() && RechargeConfirmationActivity.this.progressDialog != null) {
+                            RechargeConfirmationActivity.this.progressDialog.dismiss();
+                        }
+                        Intent intent3 = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
+                        intent3.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
+                        intent3.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
+                        intent3.putExtra("AMOUNT", RechargeConfirmationActivity.this.text_amount.getText().toString());
+                        intent3.putExtra("REMARK", response.body().getRemarks());
+                        intent3.putExtra("STATUS_MESSAGE", response.body().getStatus());
+                        intent3.putExtra("DATA", response.body().getData());
+                        intent3.putExtra("STATUS", ConstantClass.MOBILESERVICEID);
+                        RechargeConfirmationActivity.this.startActivity(intent3);
                         RechargeConfirmationActivity.this.finish();
                     }
-                    if (response.body().getResponseStatus().intValue()==3) {
-                        Intent intent2 = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
-                        intent2.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
-                        intent2.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
-                        intent2.putExtra("AMOUNT", RechargeConfirmationActivity.this.text_amount.getText().toString());
-                        intent2.putExtra("REMARK", response.body().getRemarks());
-                        intent2.putExtra("DATA", response.body().getData());
-                        intent2.putExtra("OperatorID", response.body().getOperatorTxnNumber());
-                        intent2.putExtra("STATUS_MESSAGE", response.body().getStatus());
-                        intent2.putExtra("STATUS", "3");
-                        RechargeConfirmationActivity.this.startActivity(intent2);
-                        RechargeConfirmationActivity.this.finish();
-                        return;
-                    }
-                    if (RechargeConfirmationActivity.this.progressDialog.isShowing() && RechargeConfirmationActivity.this.progressDialog != null) {
-                        RechargeConfirmationActivity.this.progressDialog.dismiss();
-                    }
-                    Intent intent3 = new Intent(RechargeConfirmationActivity.this, OrderReceiptActivity.class);
-                    intent3.putExtra("OPERATOR", RechargeConfirmationActivity.this.text_operator.getText().toString());
-                    intent3.putExtra("MOB_NUMBER", RechargeConfirmationActivity.this.text_customer_id.getText().toString());
-                    intent3.putExtra("AMOUNT", RechargeConfirmationActivity.this.text_amount.getText().toString());
-                    intent3.putExtra("REMARK", response.body().getRemarks());
-                    intent3.putExtra("STATUS_MESSAGE", response.body().getStatus());
-                    intent3.putExtra("DATA", response.body().getData());
-                    intent3.putExtra("STATUS", ConstantClass.MOBILESERVICEID);
-                    RechargeConfirmationActivity.this.startActivity(intent3);
-                    RechargeConfirmationActivity.this.finish();
+
                 }
 
             }
@@ -163,6 +173,7 @@ public class RechargeConfirmationActivity extends AppCompatActivity {
         this.text_wallet_balance = (TextView) findViewById(R.id.text_wallet_balance);
         this.btn_recharge_topay = (Button) findViewById(R.id.btn_recharge_topay);
         this.text_datetime = (TextView) findViewById(R.id.text_datetime);
+        this.edit_tpin = (EditText)findViewById(R.id.edit_tpin);
     }
 
 

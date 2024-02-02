@@ -132,8 +132,11 @@ public class ProfileActivity extends AppCompatActivity {
         body.put("ConfirmPassword", confirm);
         body.put("OldPassword", old_password);
         body.put("PasswordType", ConstantClass.MOBILESERVICEID);
-        ProfileApiService apiservice = (ProfileApiService) RetrofitHandler.getService();
-        Call<ChangePasswordResponse> call = apiservice.ChangePasswordResponse(body);
+        ApiInterface apiInterface = RetrofitHandler.getService();
+        Call<ChangePasswordResponse> call = apiInterface.ChangePasswordResponse(body);
+
+//        ProfileApiService apiservice = (ProfileApiService) RetrofitHandler.getService();
+//        Call<ChangePasswordResponse> call = apiservice.ChangePasswordResponse(body);
         call.enqueue(new Callback<ChangePasswordResponse>() { // from class: com.uvapay.activities.ProfileActivity.8
             @Override // retrofit2.Callback
             public void onResponse(Call<ChangePasswordResponse> call2, Response<ChangePasswordResponse> response) {

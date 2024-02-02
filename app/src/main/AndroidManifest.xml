@@ -25,6 +25,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".user_raisecompliant"
+            android:exported="false" />
+        <activity
+            android:name=".UserRegistration_page"
+            android:exported="false" />
+        <activity
+            android:name=".raiseAepscompliant"
+            android:exported="false" />
+        <activity
+            android:name=".User_AgrementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Privacy_PolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PolicyDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".view_AEPSreceipt_pending"
             android:exported="false" />
         <activity
@@ -96,7 +114,8 @@
             android:exported="false" />
         <activity
             android:name=".Registration_page"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LedgerReportActivity"
             android:exported="false" />
@@ -105,19 +124,23 @@
             android:exported="false" />
         <activity
             android:name=".BeneficieryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RemitterRegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".OrderReceiptActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DthechargeInfoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".OperatorsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MobileRechargePlansActivity"
             android:exported="false" />
@@ -129,13 +152,15 @@
             android:exported="false" />
         <activity
             android:name=".MobileROfferActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RechargePlansActivity"
             android:exported="false" />
         <activity
             android:name=".MoneyTransferActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PayRequestHistoryActivity"
             android:exported="false" /> <!-- <activity -->

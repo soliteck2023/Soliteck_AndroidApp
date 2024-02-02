@@ -2,7 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
     <EditText android:id="@+id/text_search" android:background="@drawable/rectangle_background" android:padding="@dimen/dp_size_10" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/dp_size_10" android:hint="search" android:drawableLeft="@drawable/ic_search_black_24dp"/>
     <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
-        <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_no_content" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No content to display" android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/text_no_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="No content to display"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
         <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycle_transactions" android:background="@color/white" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent"/>
     </RelativeLayout>
 </LinearLayout>

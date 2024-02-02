@@ -45,12 +45,50 @@
                             </RelativeLayout>
                         </FrameLayout>
                         <FrameLayout android:id="@+id/linear_Otp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
-                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
-                                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
-                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pincode" android:layout_weight="0.4"/>
-                                    <EditText android:textSize="16sp" android:id="@+id/edit_otp" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:hint="Enter Otp" android:maxLength="6" android:layout_weight="2.6" android:inputType="number"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/border_edittext"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:weightSum="3">
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="25dp"
+                                        android:layout_weight="0.4"
+                                        android:src="@drawable/pincode" />
+
+                                    <EditText
+                                        android:id="@+id/edit_otp"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2.6"
+                                        android:background="@android:color/transparent"
+                                        android:hint="Enter Otp"
+                                        android:inputType="number"
+                                        android:maxLength="6"
+                                        android:paddingLeft="10dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingBottom="5dp"
+                                        android:textSize="16sp" />
                                 </LinearLayout>
-                                <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="Otp (Sent to your mobile)"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@color/white"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:text="Otp (Sent to your mobile)"
+                                    android:textColor="@color/black" />
                             </RelativeLayout>
                         </FrameLayout>
                         <LinearLayout android:orientation="horizontal" android:id="@+id/linear_resend" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp">
@@ -60,7 +98,7 @@
                         <FrameLayout android:visibility="gone" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginTop="15dp">
                             <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
                                 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/border_edittext" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:weightSum="3">
-                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pan_card" android:layout_weight="0.4"/>
+                                    <ImageView android:layout_width="0dp" android:layout_height="25dp" android:src="@drawable/pan_card" android:layout_weight="0.4"/>-->
                                     <EditText android:id="@+id/edit_remitter" android:background="@android:color/transparent" android:paddingLeft="10dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2.6" android:inputType="text"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/black" android:background="@color/white" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="RemitterID"/>

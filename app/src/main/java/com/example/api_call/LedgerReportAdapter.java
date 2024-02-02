@@ -31,11 +31,15 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ledgerTransactionReport earnData = this.listSatetments.get(position);
+        String CreatedDate = earnData.getTxnDate();
+        String[] part = CreatedDate.split("T");
+        String Date = part[0];
+
         try {
             holder.text_transid.setText("Txn Id: " + earnData.getTransactionId());
             holder.text_paymode.setText("Operator Name: " + earnData.getOperator());
             holder.text_status_.setText(earnData.getStatus());
-            holder.text_date_time_.setText(earnData.getTxnDate());
+            holder.text_date_time_.setText(Date);
             holder.text_amount_.setText("Rs " + earnData.getAmount());
             holder.text_refid.setText("Ref No: " + earnData.getRefNumber());
             holder.text_mob_.setText("" + earnData.getUniqueCode());

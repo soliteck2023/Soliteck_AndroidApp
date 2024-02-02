@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,9 +24,11 @@ public class viewCompaintActivity extends AppCompatActivity {
     private List<complaintData> list_margin2 = new ArrayList();
     private ViewCompiantAdapter viewCompiantAdapter;
     RecyclerView view_complaintlist;
+    TextView raise_cmpt;
 
     private ProgressDialog progressDialog;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +36,19 @@ public class viewCompaintActivity extends AppCompatActivity {
 
         view_complaintlist = findViewById(R.id.view_commissions);
 
-        // Set up RecyclerView
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         view_complaintlist.setLayoutManager(layoutManager);
 
-        // Call the method to get and display commission data
         getCompaintMarginList(view_complaintlist);
+
+        raise_cmpt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(viewCompaintActivity.this, user_raisecompliant.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

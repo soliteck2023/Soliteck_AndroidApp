@@ -39,8 +39,8 @@ public class PaymentReceivedReportAdapter extends RecyclerView.Adapter<PaymentRe
             holder.text_date_time_.setText(Date);
             holder.text_amount_.setText("Rs " + earnData.getCr());
             holder.text_type.setText("Credit");
-            holder.text_currentBal.setText("Rs " + earnData.getCurrentBal());
-            holder.text_newBal.setText("Rs " + earnData.getBalanceAfter());
+            holder.text_currentBal.setText("Opening Bal.Rs " + earnData.getCurrentBal());
+            holder.text_newBal.setText("Closing Bal.Rs " + earnData.getBalanceAfter());
             holder.text_transferBy.setText(earnData.getTransferdByName() + " " + earnData.getTransferBy());
             holder.text_transferTo.setText(earnData.getTransferTo());
         } catch (Exception e) {

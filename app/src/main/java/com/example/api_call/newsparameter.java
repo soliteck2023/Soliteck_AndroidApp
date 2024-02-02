@@ -3,33 +3,35 @@ package com.example.api_call;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class  newsparameter {
-    @SerializedName("NewsId")
+    @SerializedName("newsId")
     @Expose
-    private String NewsId;
+    private String newsId;
 
-    @SerializedName("Title")
+    @SerializedName("title")
     @Expose
-    private String Title;
+    private String title;
 
-    @SerializedName("Discription")
+    @SerializedName("discription")
     @Expose
-    private String Discription;
-    @SerializedName("NewsPath")
+    private String discription;
+    @SerializedName("newsPath")
     @Expose
-    private String NewsPath;
-    @SerializedName("IsActive")
+    private String newsPath;
+    @SerializedName("isActive")
     @Expose
-    private boolean IsActive;
-    @SerializedName("Role")
+    private boolean isActive;
+    @SerializedName("role")
     @Expose
-    private String Role;
-    @SerializedName("UserName")
+    private String role;
+    @SerializedName("userName")
     @Expose
-    private String UserName;
-    @SerializedName("UserId")
+    private String userName;
+    @SerializedName("userId")
     @Expose
-    private String UserId;
+    private String userId;
     @SerializedName("Users")
     @Expose
     private String Users;
@@ -37,91 +39,98 @@ public class  newsparameter {
     @SerializedName("RoleId")
     @Expose
     private String RoleId;
-    @SerializedName("Id")
+    @SerializedName("users")
     @Expose
-    private int Id;
-
-    @SerializedName("Type")
+    private String users;
+    @SerializedName("id")
     @Expose
-    private String Type;
+    private int id;
+    @SerializedName("roleId")
+    @Expose
+    private String roleId;
+    @SerializedName("type")
+    @Expose
+    private List<type> type;
 
-    public newsparameter(String newsId, String title, String discription, String newsPath, boolean isActive, String role, String userName, String userId, String users, String roleId, int id, String type) {
-        NewsId = newsId;
-        Title = title;
-        Discription = discription;
-        NewsPath = newsPath;
-        IsActive = isActive;
-        Role = role;
-        UserName = userName;
-        UserId = userId;
+    public newsparameter(String newsId, String title, String discription, String newsPath, boolean isActive, String role, String userName, String userId, String users, String roleId, String users1, int id, String roleId1, List<com.example.api_call.type> type) {
+        this.newsId = newsId;
+        this.title = title;
+        this.discription = discription;
+        this.newsPath = newsPath;
+        this.isActive = isActive;
+        this.role = role;
+        this.userName = userName;
+        this.userId = userId;
         Users = users;
         RoleId = roleId;
-        Id = id;
-        Type = type;
+        this.users = users1;
+        this.id = id;
+        this.roleId = roleId1;
+        this.type = type;
     }
 
     public String getNewsId() {
-        return NewsId;
+        return newsId;
     }
 
     public void setNewsId(String newsId) {
-        NewsId = newsId;
+        this.newsId = newsId;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDiscription() {
-        return Discription;
+        return discription;
     }
 
     public void setDiscription(String discription) {
-        Discription = discription;
+        this.discription = discription;
     }
 
     public String getNewsPath() {
-        return NewsPath;
+        return newsPath;
     }
 
     public void setNewsPath(String newsPath) {
-        NewsPath = newsPath;
+        this.newsPath = newsPath;
     }
 
     public boolean isActive() {
-        return IsActive;
+        return isActive;
     }
 
     public void setActive(boolean active) {
-        IsActive = active;
+        isActive = active;
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(String userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public String getUsers() {
@@ -132,6 +141,14 @@ public class  newsparameter {
         Users = users;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getRoleId() {
         return RoleId;
     }
@@ -140,19 +157,11 @@ public class  newsparameter {
         RoleId = roleId;
     }
 
-    public int getId() {
-        return Id;
+    public List<com.example.api_call.type> getType() {
+        return type;
     }
 
-    public void setId(int id) {
-        Id = id;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
-    public void setType(String type) {
-        Type = type;
+    public void setType(List<com.example.api_call.type> type) {
+        this.type = type;
     }
 }

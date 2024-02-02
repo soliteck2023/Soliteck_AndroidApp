@@ -109,7 +109,7 @@ public class ApplicationConstant {
             });
             AlertDialog alert11 = builder1.create();
             alert11.show();
-            alert11.getWindow().setLayout(1000,500);
+            alert11.getWindow().setLayout(1000,600);
         }
     }
 }

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 public class ConstantClass {
 
     public static final String IMAGEWEBSERVICEURL = "https://payin.co.in/images/Recharge/Operators/";
+    public static final int DTH_OPERATOR = 0;
     public static Operater datum = new  Operater();
     public static final String MOBILESERVICEID = "1";
     public static String circle = MOBILESERVICEID;
@@ -46,6 +47,11 @@ public class ConstantClass {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    public class Registration{
+        public static final String UniqueCode = "UniqueCode";
+        public static final String DeviceId = "DeviceId";
+        public static final String Token = "Token";
+    }
     public class PROFILEDETAILS {
         public static final String Aadhar = "aaadhar";
         public static final String AccountNo = "AccountNo";
@@ -97,15 +103,19 @@ public class ConstantClass {
 
     public class USERDETAILS {
         public static final String AEPSBalance = "AEPSBalance";
+        public static final String Notification = "Notification";
+        public static final String Banner = "Banner";
         public static final String APP_LOGO = "app_logo_";
         public static final String EncreptedUserPassword = "encript_password";
         public static final String First_Time_Login = "true";
         public static final String FlagRemember = "remember";
         public static final String TransactionIds = "TransactionIds";
+        public static final String Date = "Date";
         public static final String TransactionIds2 = "TransactionIds2";
         public static final String LastSeen = "LastSeen";
         public static final String LoginPassword = "login_password";
         public static final String MainBalance = "MainBalance";
+        public static final String discription = "discription";
         public static final String newsPath = "newsPath";
         public static final String News = "News";
         public static final String OwnerName = "OwnerName";
@@ -113,11 +123,14 @@ public class ConstantClass {
         public static final String Token = "token";
         public static final String FromDateTime = "FromDateTime";
         public static final String UserName = "username";
+        public static final String ComplaintType = "ComplaintType";
+        public static final String Description = "Description";
+        public static final String Shopname = "Shopname";
         public static final String type = "type";
         public static final String UserPassword = "password";
         public static final String Circle = "Circle";
         public static final String UserType = "usertype";
-        public static final String discription = "discription";
+        public static final String Discription = "discription";
 
         public USERDETAILS() {
 

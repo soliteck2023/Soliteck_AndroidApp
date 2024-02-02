@@ -15,11 +15,6 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link balance_reuest_fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class balance_reuest_fragment extends Fragment {
 
     private String request_type = "";

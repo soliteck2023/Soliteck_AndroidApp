@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="USER AGREEMENT"
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/agreement1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/start_sentence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/agreement2nd" />
+
+                <TextView
+                    android:id="@+id/text_distributor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="31dp"
+                    android:layout_marginLeft="-352dp"
+                    android:layout_marginBottom="84dp"
+                    android:layout_toRightOf="@+id/start_sentence"
+                    android:gravity="end"
+                    android:text=" (Distributor)" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp">
+
+                <TextView
+                    android:id="@+id/start_sentence3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/agreement3rd" />
+
+                <TextView
+                    android:id="@+id/text_distributor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="287dp"
+                    android:layout_marginLeft="-96dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginBottom="143dp"
+                    android:layout_toRightOf="@+id/start_sentence3"
+                    android:gravity="end"
+                    android:text=" (Distributor)" />
+
+                <TextView
+                    android:id="@+id/start_sentence4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/start_sentence3"
+                    android:gravity="end"
+                    android:text=" AND COMPANY." />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                >
+
+
+                <TextView
+                android:id="@+id/text_distributor3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                    android:layout_marginStart="60dp"
+                android:text="AGREEMENT FOR"
+                android:textColor="@color/blue"
+                android:gravity="center"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_distributor4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text=" DISTRIBUTOR"
+                    android:layout_toRightOf="@+id/text_distributor3"
+                    android:textColor="@color/blue"
+                    android:gravity="center"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_distributor5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="(CHANNEL PARTNER)"
+                    android:layout_below="@+id/text_distributor3"
+                    android:textColor="@color/blue"
+                    android:gravity="center_horizontal"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15.5dp"
+                    android:text="This Agreement is entered into on this Date" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15.5dp"
+                    android:text="This Agreement is entered into on this Date" />
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:background="@drawable/mobile_rchrg_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -64,7 +63,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:padding="5dp"
-                                android:src="@drawable/postpaid_mobile"></ImageView>
+                                android:src="@drawable/postpaid_logo"></ImageView>
 
                             <TextView
                                 android:layout_width="match_parent"

@@ -4,24 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/simple_border" android:orientation="vertical"  android:layout_width="match_parent" android:layout_height="wrap_content">
 
-<!--    <TextView-->
-<!--        android:id="@+id/text_remark"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:padding="10dp"-->
-<!--        android:text="Please enter Amount And TPIN"-->
-<!--        android:background="@drawable/bluebutton_color"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="17sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.493" />-->
-
 
     <LinearLayout
         android:id="@+id/text_remark2"

@@ -100,21 +100,6 @@ public class main_balance extends Fragment {
         textaepsBalance = view.findViewById(R.id.textaepsBalance);
 
 
-//        image_refresh = view.findViewById(R.id.image_refresh);
-
-
-//        linear_request.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                viewPaymentRequest();
-//            }
-//        });
-
-//        textbalance.setText(getArguments().getString("textbalance"));
-//        textaepsBalance.setText(getArguments().getString("textaepsBalance"));
-        getUserBalance(textbalance,textaepsBalance);
-        String name = PrefUtils.getFromPrefs(getContext(), ConstantClass.PROFILEDETAILS.Name, "");
-        String mobile = PrefUtils.getFromPrefs(getContext(), ConstantClass.PROFILEDETAILS.MobileNo, "");
 
         return view;
     }

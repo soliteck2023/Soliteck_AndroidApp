@@ -46,6 +46,8 @@ dependencies {
 //    implementation(project(mapOf("path" to ":app")))
 //    implementation ("com.bumptech.glide.request.RequestOptions")
    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     testImplementation("junit:junit:4.13.2")
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.23")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -128,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             this.checkbox_remember.setChecked(false);
         }
-        this.checkbox_remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: com.uvapay.activities.LoginActivity.2
+        this.checkbox_remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (MainActivity.this.checkbox_remember.isChecked()) {
@@ -141,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        this.text_forgot_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.3
+        this.text_forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 View view = MainActivity.this.getLayoutInflater().inflate(R.layout.layout_forgot_password, (ViewGroup) null);
@@ -160,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 btn_send_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.3.2
                     @Override // android.view.View.OnClickListener
                     public void onClick(View v2) {
-                        MainActivity.this.sendOtpToNumber();
+                        MainActivity.this.sendOtpToNumber(alertDialog);
 
                     }
                 });
@@ -268,29 +269,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sendOtpToNumber() {
+    private void sendOtpToNumber(final AlertDialog alertDialog) {
+        String username = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, "");
         ProgressDialog dialogue = CustomProgressDialog.getDialogue(this);
         this.progressDialog = dialogue;
         dialogue.show();
         HashMap<String, String> body = new HashMap<>();
-        body.put("UserName", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
+        body.put("UserName", username);
         body.put("DeviceId", PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.DeviceId, ""));
         ApiInterface apiInterface = RetrofitHandler.getService2();
         Call<OtpSentResponse> call = apiInterface.newforgotPassword(body);
-
-//        Call<OtpSentResponse> call = apiInterface.forgotPasswordMethod("ForgotPassword?username=" + mobile);
-
         call.enqueue(new Callback<OtpSentResponse>() {
             @Override
             public void onResponse(Call<OtpSentResponse> call, Response<OtpSentResponse> response) {
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
                 if (response.body() != null) {
-                    if (response.body().getStatusCode().equals("0")) {
+                    if (response.body().getStatusCode() != null && response.body().getStatusCode().equals("0")) {
                         if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
                             MainActivity.this.progressDialog.dismiss();
                         }
                         ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
+                        alertDialog.dismiss();
                         return;
-                    } else if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
+                    } else if (response.body().getStatusCode() != null && response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
                         if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
                             MainActivity.this.progressDialog.dismiss();
                         }
@@ -304,22 +308,29 @@ public class MainActivity extends AppCompatActivity {
                         if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
                             MainActivity.this.progressDialog.dismiss();
                         }
-                        ConstantClass.displayMessageDialog(MainActivity.this, "", response.body().getMessage());
+                        ConstantClass.displayMessageDialog(MainActivity.this, "Password Reset Successfully", response.body().getMessage());
+                        alertDialog.dismiss();
                         return;
                     }
-                }
-                if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
-                    MainActivity.this.progressDialog.dismiss();
-                }
-                try {
-                    ConstantClass.displayMessageDialog(MainActivity.this, "Response", response.errorBody().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } else {
+                    if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
+                        MainActivity.this.progressDialog.dismiss();
+                    }
+                    ConstantClass.displayMessageDialog(MainActivity.this, "Response", "Response body is null");
+                    alertDialog.dismiss();
+
                 }
             }
 
+
             @Override
             public void onFailure(Call<OtpSentResponse> call, Throwable t) {
+
+                ProgressDialog progressDialog2 = progressDialog;
+                if (progressDialog2 != null && progressDialog2.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                ApplicationConstant.DisplayMessageDialog(MainActivity.this, "", t.getMessage());
 
             }
         });
@@ -399,19 +410,31 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.progressDialog.dismiss();
                 }
                 if (response.body() != null) {
+
                     if (!response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
                         if (response.body().getStatusCode().equals("2")) {
-                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Error", response.body().getMessage());
+                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Response", response.body().getMessage());
                             return;
                         } else if (response.body().getData().equals("3")) {
-                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Error", response.body().getMessage());
+                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Response", response.body().getMessage());
                             return;
                         } else {
-                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Error", response.body().getMessage());
+                            ApplicationConstant.DisplayMessageDialog(MainActivity.this, "Response", response.body().getMessage());
                             return;
+                        }
+                    }else {
+                        if (response.body().getStatusCode().equals("1")){
+                            if (response.body().getMessage().equals("Success")){
+                                ApplicationConstant.displayToastMessage(MainActivity.this,response.body().getMessage());
+                            }else {
+                                ApplicationConstant.DisplayMessageDialog(MainActivity.this,"Access denid",response.body().getMessage());
+                            }
+
+
                         }
                     }
 //                    ApplicationConstant.displayToastMessage(MainActivity.this,response.body().getMessage());
+
                     String jsonString = response.body().getData();
 
                     try {
@@ -457,8 +480,12 @@ public class MainActivity extends AppCompatActivity {
                                         Integer roleId = Integer.valueOf(jsonObject.getInt("RoleId"));
                                         Integer Kyc_status = Integer.valueOf(jsonObject.getInt("KYCStatus"));
                                         if (roleId.intValue() == 2) {
+                                            Toast.makeText(MainActivity, "Login Suceessfully", Toast.LENGTH_SHORT).show();
                                             MainActivity.this.startActivity(new Intent(MainActivity.this, DashboardActivity.class));
                                             MainActivity.this.finish();
+                                        }else {
+                                            Toast.makeText(MainActivity, "Access Denid", Toast.LENGTH_SHORT).show();
+
                                         }
                                     } catch (JSONException e2) {
                                         e = e2;

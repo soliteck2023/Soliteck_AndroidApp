@@ -224,7 +224,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 BeneficieryActivity.this.add_ben.setVisibility(View.GONE);
-                new Handler().postDelayed(new Runnable() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.5.1
+                new Handler().postDelayed(new Runnable() {
                     @Override // java.lang.Runnable
                     public void run() {
                         BeneficieryActivity.this.view_beneficiary_list.setVisibility(View.VISIBLE);
@@ -233,7 +233,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 }, 600L);
             }
         });
-        this.btn_add_benef.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.6
+        this.btn_add_benef.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 if (BeneficieryActivity.this.edit_beneficiary.getText().toString().isEmpty()) {
@@ -250,7 +250,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 }
             }
         });
-        this.btn_verify.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.7
+        this.btn_verify.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 if (BeneficieryActivity.this.edit_bank.getText().toString().isEmpty()) {
@@ -263,6 +263,8 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                     BeneficieryActivity.this.edit_account.setError("enter account number");
                     BeneficieryActivity.this.edit_account.requestFocus();
                 } else {
+                    Intent intent = new Intent();
+                    intent.putExtra("verify",btn_verify.getText().toString());
                     BeneficieryActivity beneficieryActivity = BeneficieryActivity.this;
                     beneficieryActivity.verifyRecipient(beneficieryActivity.edit_account.getText().toString().trim(), BeneficieryActivity.this.edit_ifsc_code.getText().toString());
                 }
@@ -342,7 +344,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
             }
         });
     }
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
     public void onResume() {
         super.onResume();
         getUserDetails(this.mobile_no);
@@ -515,7 +517,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
         });
     }
 
-    @Override // com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.OnDeleteItemListener
+    @Override
     public void onDeleteItem() {
         getUserDetails(this.mobile_no);
     }

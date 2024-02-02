@@ -33,67 +33,78 @@ public class VRecipient  implements Serializable {
     @Expose
     private String status;
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMobileNo() {
-        return this.mobileNo;
-    }
-
-    public void setMobileNo(String mobileNo) {
+    public VRecipient(String accountNo, String bankName, String ifsc, String isValidate, String mobileNo, String name, String rptid, String status) {
+        this.accountNo = accountNo;
+        this.bankName = bankName;
+        this.ifsc = ifsc;
+        this.isValidate = isValidate;
         this.mobileNo = mobileNo;
-    }
-
-    public String getRptid() {
-        return this.rptid;
-    }
-
-    public void setRptid(String rptid) {
+        this.name = name;
         this.rptid = rptid;
+        this.status = status;
     }
 
     public String getAccountNo() {
-        return this.accountNo;
+        return accountNo;
     }
 
     public void setAccountNo(String accountNo) {
         this.accountNo = accountNo;
     }
 
-    public String getIfsc() {
-        return this.ifsc;
-    }
-
-    public void setIfsc(String ifsc) {
-        this.ifsc = ifsc;
-    }
-
     public String getBankName() {
-        return this.bankName;
+        return bankName;
     }
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }
 
-    public String getStatus() {
-        return this.status;
+    public String getIfsc() {
+        return ifsc;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setIfsc(String ifsc) {
+        this.ifsc = ifsc;
     }
 
     public String getIsValidate() {
-        return this.isValidate;
+        return isValidate;
     }
 
     public void setIsValidate(String isValidate) {
         this.isValidate = isValidate;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRptid() {
+        return rptid;
+    }
+
+    public void setRptid(String rptid) {
+        this.rptid = rptid;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

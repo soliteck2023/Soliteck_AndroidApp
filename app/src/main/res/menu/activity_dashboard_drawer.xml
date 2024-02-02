@@ -35,6 +35,7 @@
         android:id="@+id/nav_policy"
         android:icon="@drawable/policy_img"
         android:title="Information and Policy"
-        app:actionLayout="@layout/spinner"/>
+        app:actionLayout="@layout/spinner"
+        />
 
 </menu>

@@ -66,7 +66,7 @@ public class TransactionsReportActivity extends AppCompatActivity {
         this.recycle_transactions.setLayoutManager(new LinearLayoutManager(this));
         getTransactionReport(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
 
-        this.text_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.TransactionsReportActivity.1
+        this.text_fromdate.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(TransactionsReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.TransactionsReportActivity.1.1
@@ -119,11 +119,11 @@ public class TransactionsReportActivity extends AppCompatActivity {
         });
 
 
-        this.layout_todate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.TransactionsReportActivity.2
-            @Override // android.view.View.OnClickListener
+        this.layout_todate.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(new ContextThemeWrapper(TransactionsReportActivity.this, (int) R.style.DialogTheme), new DatePickerDialog.OnDateSetListener() { // from class: com.uvapay.activities.TransactionsReportActivity.2.1
-                    @Override // android.app.DatePickerDialog.OnDateSetListener
+                    @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         if (TransactionsReportActivity.this.text_fromdate.getText().toString().isEmpty()) {
                             TransactionsReportActivity.this.text_fromdate.setError("Select from date first");
@@ -141,17 +141,17 @@ public class TransactionsReportActivity extends AppCompatActivity {
         });
 
 
-        this.text_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.activities.TransactionsReportActivity.3
-            @Override // android.text.TextWatcher
+        this.text_search.addTextChangedListener(new TextWatcher() {
+            @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 TransactionsReportActivity.this.filter(charSequence.toString());
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void afterTextChanged(Editable editable) {
             }
         });
@@ -163,7 +163,13 @@ public class TransactionsReportActivity extends AppCompatActivity {
         try {
             List<TransactionReport> listnew_Banks = new ArrayList<>();
             for (TransactionReport transHistoryData : this.reportList) {
-                if (transHistoryData.getRefNumber() != null && transHistoryData.getStatus() != null && transHistoryData.getRetailerNumber() != null && transHistoryData.getSenderMobile() != null && transHistoryData.getOperatorName() != null && (transHistoryData.getRefNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getStatus().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getRetailerNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getSenderMobile().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getOperatorName().toLowerCase().contains(s.toLowerCase()))) {
+                if (transHistoryData.getRefNumber() != null &&
+                        transHistoryData.getStatus() != null &&
+                        transHistoryData.getRetailerNumber() != null &&
+                        transHistoryData.getSenderMobile() != null &&
+                        transHistoryData.getOperatorName() != null &&
+                        transHistoryData.getAmount() != null &&
+                        (transHistoryData.getRefNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getStatus().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getRetailerNumber().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getSenderMobile().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getOperatorName().toLowerCase().contains(s.toLowerCase()) || transHistoryData.getAmount().equals("amount"))) {
                     listnew_Banks.add(transHistoryData);
                 }
             }
@@ -182,14 +188,15 @@ public class TransactionsReportActivity extends AppCompatActivity {
         body.put("UniqueCode", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.UserName, ""));
         body.put("MobileNumber", "");
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
-        body.put("FromDateTime", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.FromDateTime, "" ));
+        body.put("FromDateTime", fromDate);
+        //PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.FromDateTime, "" )
         body.put("ToDateTime", toDate);
         body.put("Amount", "");
         body.put("StatusId", "0");
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<TransactionReportBase> result = apiservice.GetTransactionReport(body);
-        result.enqueue(new Callback<TransactionReportBase>() { // from class: com.uvapay.activities.TransactionsReportActivity.4
-            @Override // retrofit2.Callback
+        result.enqueue(new Callback<TransactionReportBase>() {
+            @Override
             public void onResponse(Call<TransactionReportBase> call, Response<TransactionReportBase> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -217,7 +224,7 @@ public class TransactionsReportActivity extends AppCompatActivity {
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<TransactionReportBase> call, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -238,14 +245,16 @@ public class TransactionsReportActivity extends AppCompatActivity {
         this.text_search = (EditText) findViewById(R.id.text_search);
         this.image_fromdate= (ImageView) findViewById(R.id.image_fromdate);
     }
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     @Override
     public void onResume() {
         super.onResume();
 
-
-
-//        getTransactionReport(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
+        getTransactionReport(this.text_fromdate.getText().toString(), this.text_todate.getText().toString());
 
 
     }
