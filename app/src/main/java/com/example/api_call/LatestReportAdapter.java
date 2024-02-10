@@ -40,7 +40,7 @@ public class LatestReportAdapter extends RecyclerView.Adapter<LatestReportAdapte
             holder.text_date_time_.setText(Date);
             holder.text_amount_.setText("Rs " + earnData.getAmount());
             holder.text_refid.setText("Ref No: " + earnData.getRefNumber());
-            holder.text_mob_.setText("" + earnData.getSenderMobile());
+            holder.text_mob_.setText("Sender No. : " + earnData.getSenderMobile());
         } catch (Exception e) {
             e.printStackTrace();
         }
