@@ -42,8 +42,8 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
         String string = getIntent().getExtras().getString("MOBILE");
         this.mobile_no = string;
         this.edit_mobile.setText(string);
-        this.btn_send_otp.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.RemitterRegistrationActivity.1
-            @Override // android.view.View.OnClickListener
+        this.btn_send_otp.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 if (RemitterRegistrationActivity.this.edit_name.getText().toString().isEmpty()) {
                     RemitterRegistrationActivity.this.edit_name.setError("enter first name");
@@ -64,8 +64,8 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        this.btn_register_remitter.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.RemitterRegistrationActivity.3
-            @Override // android.view.View.OnClickListener
+        this.btn_register_remitter.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 if (RemitterRegistrationActivity.this.edit_name.getText().toString().isEmpty()) {
                     RemitterRegistrationActivity.this.edit_name.setError("enter first name");
@@ -107,8 +107,8 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
         body.put("Otp", otp);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<RemitterRegResponse> call = apiservice.getRemitterRegistered(body);
-        call.enqueue(new Callback<RemitterRegResponse>() { // from class: com.uvapay.transfer_money.activities.RemitterRegistrationActivity.4
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<RemitterRegResponse>() {
+            @Override
             public void onResponse(Call<RemitterRegResponse> call2, Response<RemitterRegResponse> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -127,7 +127,7 @@ public class RemitterRegistrationActivity extends AppCompatActivity {
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<RemitterRegResponse> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {

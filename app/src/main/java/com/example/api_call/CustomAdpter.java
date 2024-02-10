@@ -50,7 +50,6 @@ public class CustomAdpter extends BaseAdapter {
         if (mobile.equals("Windows")){
             imageView.setImageResource(R.drawable.pravasi_divas_9th_jan);
         } else if (mobile.equals("ios")) {
-            imageView.setImageResource(R.drawable.world_braille_day);
         }
         return gridView;
     }

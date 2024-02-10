@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             this.checkbox_remember.setChecked(false);
         }
         this.checkbox_remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (MainActivity.this.checkbox_remember.isChecked()) {
                     PrefUtils.saveToPrefs(MainActivity.this, ConstantClass.USERDETAILS.FlagRemember, ConstantClass.USERDETAILS.First_Time_Login);
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         this.text_forgot_password.setOnClickListener(new View.OnClickListener() {
-            @Override // android.view.View.OnClickListener
+            @Override
             public void onClick(View v) {
                 View view = MainActivity.this.getLayoutInflater().inflate(R.layout.layout_forgot_password, (ViewGroup) null);
                 ImageView image_cancel = (ImageView) view.findViewById(R.id.image_cancel);
@@ -152,14 +152,14 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 final AlertDialog alertDialog = builder.create();
                 alertDialog.setView(view);
-                image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.3.1
-                    @Override // android.view.View.OnClickListener
+                image_cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
                     public void onClick(View v2) {
                         alertDialog.dismiss();
                     }
                 });
-                btn_send_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.3.2
-                    @Override // android.view.View.OnClickListener
+                btn_send_password.setOnClickListener(new View.OnClickListener() {
+                    @Override
                     public void onClick(View v2) {
                         MainActivity.this.sendOtpToNumber(alertDialog);
 
@@ -205,13 +205,13 @@ public class MainActivity extends AppCompatActivity {
         mText_policy_link.setMovementMethod(LinkMovementMethod.getInstance());
         alertDialog.setView(view);
         alertDialog.setCanceledOnTouchOutside(false);
-        mImage_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.16
+        mImage_cancel.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 alertDialog.dismiss();
             }
         });
-        mButton_proceed.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.17
+        mButton_proceed.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View view2) {
                 if (!mCheck_policy.isChecked()) {
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                 builder1.setMessage("Thank you for going through our privacy policy details and accepting it");
                 builder1.setCancelable(true);
                 builder1.setTitle("Privacy Policy");
-                builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.17.1
+                builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     @Override // android.content.DialogInterface.OnClickListener
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -244,16 +244,16 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Permissions Needed");
                 builder.setMessage("Want to access your camera and storage to set your profile");
-                builder.setPositiveButton(HttpHeaders.ALLOW, new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.6
-                    @Override // android.content.DialogInterface.OnClickListener
+                builder.setPositiveButton(HttpHeaders.ALLOW, new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         MainActivity.this.alertDialog.dismiss();
                         MainActivity loginActivity = MainActivity.this;
                         ActivityCompat.requestPermissions(loginActivity, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.CAMERA", "android.permission.READ_PHONE_STATE", "android.permission.READ_CONTACTS"}, MainActivity.this.READ_PHONE_REQUEST);
                     }
                 });
-                builder.setNegativeButton("Deny", new DialogInterface.OnClickListener() { // from class: com.uvapay.activities.LoginActivity.7
-                    @Override // android.content.DialogInterface.OnClickListener
+                builder.setNegativeButton("Deny", new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         MainActivity.this.alertDialog.dismiss();
                     }
@@ -347,8 +347,8 @@ public class MainActivity extends AppCompatActivity {
         body.put("KYCStatus", KYC_status);
         ApiInterface apiInterface = RetrofitHandler.getService();
         Call<DeviceIdResponse> call = apiInterface.getStoreDeviceId(body);
-        call.enqueue(new Callback<DeviceIdResponse>() { // from class: com.uvapay.activities.LoginActivity.5
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<DeviceIdResponse>() {
+            @Override
             public void onResponse(Call<DeviceIdResponse> call2, Response<DeviceIdResponse> response) {
                 if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
                     MainActivity.this.progressDialog.dismiss();
@@ -378,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<DeviceIdResponse> call2, Throwable t) {
                 if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
                     MainActivity.this.progressDialog.dismiss();
@@ -402,8 +402,8 @@ public class MainActivity extends AppCompatActivity {
         ApiInterface apiInterface = RetrofitHandler.getService();
         Call<LoginResponse> call = apiInterface.getLoginInfo(body);
 
-        call.enqueue(new Callback<LoginResponse>() { // from class: com.uvapay.activities.LoginActivity.10
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
             public void onResponse(Call<LoginResponse> call2, Response<LoginResponse> response) {
                 JSONException e;
                 if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
@@ -515,7 +515,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<LoginResponse> call2, Throwable t) {
                 if (MainActivity.this.progressDialog != null && MainActivity.this.progressDialog.isShowing()) {
                     MainActivity.this.progressDialog.dismiss();

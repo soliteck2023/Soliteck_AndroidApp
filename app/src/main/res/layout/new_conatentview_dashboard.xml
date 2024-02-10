@@ -271,446 +271,10 @@
                 android:text="Welcome To SoliTeck User Portal"></TextView>
 
 
-            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:id="@+id/balanceLayout1"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="180dp"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:elevation="@dimen/margin_15dp"-->
-<!--                android:orientation="vertical">-->
-
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:id="@+id/card1"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="180dp"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    app:cardCornerRadius="15dp"-->
-<!--                    tools:ignore="MissingConstraints">-->
-
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="69dp">-->
-
-
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/newfirst"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="30dp"-->
-<!--                            android:orientation="vertical">-->
-
-<!--                                                     <ImageView&ndash;&gt;-->
-                            <!--                               android:id="@+id/logos"-->
-                            <!--                               android:layout_width="255dp"-->
-                            <!--                               android:layout_height="40dp"-->
-                            <!--                               android:layout_gravity="center"-->
-                            <!--                                  android:padding="30dp"-->
-                            <!--                               android:scaleType="centerCrop"-->
-                            <!--                               android:src="@drawable/latest_logo5" />-->
-
-<!--                            <TextView-->
-<!--                                android:id="@+id/TextName1"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="30dp"-->
-<!--                                android:layout_marginStart="20dp"-->
-<!--                                android:layout_marginTop="10dp"-->
-<!--                                android:text="Vishal , "-->
-<!--                                android:textColor="@color/blue"-->
-<!--                                android:textSize="15dp"-->
-<!--                                android:textStyle="bold"></TextView>-->
-
-
-                            <!--                            <LinearLayout-->
-                            <!--                                android:layout_width="match_parent"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:orientation="horizontal">-->
-
-
-                            <!--                                <RelativeLayout-->
-                            <!--                                    android:layout_width="170dp"-->
-                            <!--                                    android:layout_height="47dp"-->
-                            <!--                                    android:layout_marginLeft="@dimen/margin20dp"-->
-                            <!--                                    android:layout_marginTop="10dp"-->
-                            <!--                                    android:orientation="horizontal">-->
-
-
-                            <!--                                    <ImageView-->
-                            <!--                                        android:id="@+id/image1"-->
-                            <!--                                        android:layout_width="55dp"-->
-                            <!--                                        android:layout_height="match_parent"-->
-                            <!--                                        android:src="@drawable/main_balance_logo2">-->
-
-
-                            <!--                                    </ImageView>-->
-
-
-                            <!--                                    <LinearLayout-->
-                            <!--                                        android:id="@+id/main_liner1"-->
-                            <!--                                        android:layout_width="wrap_content"-->
-                            <!--                                        android:layout_height="wrap_content"-->
-                            <!--                                        android:layout_marginLeft="10dp"-->
-                            <!--                                        android:layout_toRightOf="@+id/image1">-->
-
-                            <!--                                        <TextView-->
-                            <!--                                            android:layout_width="match_parent"-->
-                            <!--                                            android:layout_height="wrap_content"-->
-                            <!--                                            android:layout_gravity="center"-->
-                            <!--                                            android:text="Main Balance"-->
-                            <!--                                            android:textColor="@color/medium_grey_color">-->
-
-                            <!--                                        </TextView>-->
-
-
-<!--                                                             </LinearLayout>
-
-
-                            <!-                                    <LinearLayout-->
-                            <!--                                        android:id="@+id/liner1"-->
-                            <!--                                        android:layout_width="match_parent"-->
-                            <!--                                        android:layout_height="30dp"-->
-                            <!--                                        android:layout_below="@+id/main_liner1"-->
-                            <!--                                        android:layout_marginLeft="10dp"-->
-                            <!--                                        android:layout_toRightOf="@+id/image1"-->
-                            <!--                                        android:gravity="center"-->
-                            <!--                                        android:orientation="horizontal">-->
-
-
-                            <!--                                        <ImageView-->
-                            <!--                                            android:layout_width="20dp"-->
-                            <!--                                            android:layout_height="12dp"-->
-                            <!--                                            android:src="@drawable/rupya_sign"-->
-                            <!--                                            android:textColor="@color/blue"-->
-                            <!--                                            android:textStyle="bold"></ImageView>-->
-
-                            <!--                                        <TextView-->
-                            <!--                                            android:id="@+id/view_balance"-->
-                            <!--                                            android:layout_width="match_parent"-->
-                            <!--                                            android:layout_height="match_parent"-->
-                            <!--                                            android:layout_marginTop="3dp"-->
-                            <!--                                            android:gravity="left"-->
-                            <!--                                            android:text="78787. "-->
-                            <!--                                            android:textColor="@color/blue"-->
-                            <!--                                            android:textStyle="bold"></TextView>-->
-
-                            <!--                                    </LinearLayout>-->
-
-
-                            <!--                                </RelativeLayout>-->
-
-                            <!--                                <RelativeLayout-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="47dp"-->
-                            <!--                                    android:layout_marginLeft="@dimen/margin20dp"-->
-                            <!--                                    android:layout_marginTop="10dp"-->
-                            <!--                                    android:orientation="horizontal">-->
-
-                            <!--                                    <ImageView-->
-                            <!--                                        android:id="@+id/image2"-->
-                            <!--                                        android:layout_width="55dp"-->
-                            <!--                                        android:layout_height="50dp"-->
-                            <!--                                        android:padding="3dp"-->
-                            <!--                                        android:src="@drawable/cashout_balance_logo2">-->
-
-
-                            <!--                                    </ImageView>-->
-
-                            <!--                                    <LinearLayout-->
-                            <!--                                        android:id="@+id/main_liner3"-->
-                            <!--                                        android:layout_width="wrap_content"-->
-                            <!--                                        android:layout_height="wrap_content"-->
-                            <!--                                        android:layout_marginLeft="10dp"-->
-                            <!--                                        android:layout_toRightOf="@+id/image2">-->
-
-                            <!--                                        <TextView-->
-                            <!--                                            android:layout_width="match_parent"-->
-                            <!--                                            android:layout_height="wrap_content"-->
-                            <!--                                            android:layout_gravity="center"-->
-                            <!--                                            android:text="Cashout Bal."-->
-                            <!--                                            android:textColor="@color/medium_grey_color">-->
-
-                            <!--                                        </TextView>-->
-
-
-                            <!--                                    </LinearLayout>-->
-
-
-                            <!--                                    <LinearLayout-->
-                            <!--                                        android:id="@+id/liner2"-->
-                            <!--                                        android:layout_width="match_parent"-->
-                            <!--                                        android:layout_height="30dp"-->
-                            <!--                                        android:layout_below="@+id/main_liner3"-->
-                            <!--                                        android:layout_marginLeft="10dp"-->
-                            <!--                                        android:layout_toRightOf="@+id/image2"-->
-                            <!--                                        android:gravity="center"-->
-                            <!--                                        android:orientation="horizontal">-->
-
-
-                            <!--                                        <ImageView-->
-                            <!--                                            android:layout_width="20dp"-->
-                            <!--                                            android:layout_height="12dp"-->
-                            <!--                                            android:src="@drawable/rupya_sign"-->
-                            <!--                                            android:textColor="@color/blue"-->
-                            <!--                                            android:textStyle="bold"></ImageView>-->
-
-                            <!--                                        <TextView-->
-                            <!--                                            android:id="@+id/textaepsBalance"-->
-                            <!--                                            android:layout_width="match_parent"-->
-                            <!--                                            android:layout_height="match_parent"-->
-                            <!--                                            android:layout_marginTop="3dp"-->
-                            <!--                                            android:gravity="left"-->
-                            <!--                                            android:text="78787. "-->
-                            <!--                                            android:textColor="@color/blue"-->
-                            <!--                                            android:textStyle="bold"></TextView>-->
-
-<!--                            &lt;!&ndash;                                    </LinearLayout>
-
-
-<                          &lt;!&ndash;                                </RelativeLayout>
-
-
-<                          &lt;!&ndash;                            </LinearLayout>
-
-
-<!-                        </LinearLayout>-->
-
-
-<!--                        &lt;!&ndash;                        <androidx.viewpager.widget.ViewPager&ndash;&gt;-->
-<!--                        &lt;!&ndash;                            android:id="@+id/reuqst_logout"&ndash;&gt;-->
-<!--                        &lt;!&ndash;                            android:layout_width="match_parent"&ndash;&gt;-->
-<!--                        &lt;!&ndash;                            android:layout_height="150dp"&ndash;&gt;-->
-<!--                        &lt;!&ndash;                            android:layout_below="@+id/newfirst"&ndash;&gt;-->
-<!--                        &lt;!&ndash;                            android:layout_marginTop="-2dp">&ndash;&gt;-->
-
-<!--                        &lt;!&ndash;                        </androidx.viewpager.widget.ViewPager>&ndash;&gt;-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="30dp"-->
-<!--                            android:layout_alignParentEnd="true"-->
-<!--                            android:layout_alignParentBottom="true"-->
-<!--                            android:layout_marginTop="7dp"-->
-<!--                            android:layout_marginEnd="6dp"-->
-<!--                            android:layout_marginBottom="158dp"-->
-<!--                            android:layout_weight="0.5"-->
-<!--                            android:src="@drawable/refresh_imge"></ImageView>-->
-
-<!--                    </RelativeLayout>-->
-
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:id="@+id/card3"-->
-<!--                        android:layout_width="301dp"-->
-<!--                        android:layout_height="119dp">-->
-
-<!--                    </androidx.cardview.widget.CardView>-->
-
-
-<!--                </androidx.cardview.widget.CardView>-->
-
-<!--&lt;!&ndash;                <androidx.cardview.widget.CardView&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:id="@+id/cardView2"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_width="350dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_height="0dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:cardCornerRadius="20dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_marginTop="5dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@id/card1"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@id/card1">&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                    <LinearLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                        android:layout_height="90dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                        &ndash;&gt;-->
-<!--&lt;!&ndash;                        android:orientation="horizontal">&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                        <RelativeLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_width="150dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_height="47dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_marginLeft="@dimen/margin20dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_marginTop="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:orientation="horizontal">&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:id="@+id/image1"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_width="55dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:src="@drawable/main_balance_logo2">&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            </ImageView>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            <LinearLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:id="@+id/main_liner1"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_marginLeft="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_toRightOf="@+id/image1">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:text="Main Balance"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textColor="@color/medium_grey_color">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                </TextView>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            </LinearLayout>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            <LinearLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:id="@+id/liner1"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_height="30dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_below="@+id/main_liner1"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_marginLeft="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_toRightOf="@+id/image1"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:orientation="horizontal">&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                                <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_width="20dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_height="12dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:src="@drawable/rupya_sign"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textColor="@color/blue"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textStyle="bold"></ImageView>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:id="@+id/view_balance"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_marginTop="3dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:gravity="left"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:text="78787. "&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textColor="@color/blue"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textStyle="bold"></TextView>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                            </LinearLayout>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                        <RelativeLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_width="150dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_height="47dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_marginLeft="@dimen/margin20dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:layout_marginTop="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                            android:orientation="horizontal">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:id="@+id/image2"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_width="55dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_height="50dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:padding="3dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:src="@drawable/cashout_balance_logo2">&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            </ImageView>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                            <LinearLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:id="@+id/main_liner3"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_marginLeft="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_toRightOf="@+id/image2">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:text="Cashout Bal."&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textColor="@color/medium_grey_color">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                </TextView>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            </LinearLayout>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                            <LinearLayout&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:id="@+id/liner2"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_height="30dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_below="@+id/main_liner3"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_marginLeft="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:layout_toRightOf="@+id/image2"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;                                android:orientation="horizontal">&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                                <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_width="20dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_height="12dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:src="@drawable/rupya_sign"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textColor="@color/blue"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textStyle="bold"></ImageView>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:id="@+id/textaepsBalance"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:layout_marginTop="3dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:gravity="left"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:text="78787. "&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textColor="@color/blue"&ndash;&gt;-->
-<!--&lt;!&ndash;                                    android:textStyle="bold"></TextView>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                            </LinearLayout>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                    </LinearLayout>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                </androidx.cardview.widget.CardView>&ndash;&gt;-->
-
-
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginLeft="7dp"-->
-<!--                android:layout_marginRight="7dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:background="@drawable/simple_border"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <androidx.recyclerview.widget.RecyclerView-->
-<!--                    android:id="@+id/recyclerAd"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@+id/containt1"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    tools:ignore="NotSibling">-->
-
-<!--                </androidx.recyclerview.widget.RecyclerView>-->
-
-
-<!--            </LinearLayout>-->
-
-            <!--            <androidx.viewpager.widget.ViewPager-->
-            <!--                android:id="@+id/menu_option"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="110dp"-->
-            <!--                android:layout_below="@+id/newfirst">-->
-
-            <!--            </androidx.viewpager.widget.ViewPager>-->
-
             <LinearLayout
                 android:id="@+id/cartview1"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_below="@+id/balanceLayout1"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
@@ -736,20 +300,23 @@
 
                     <ImageView
                         android:id="@+id/menu_bank_logo1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/paymentrequestfinal" />
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:paddingLeft="@dimen/dp_size_10"
+                        android:paddingTop="@dimen/dp_size_10"
+                        android:paddingRight="@dimen/dp_size_10"
+                        android:src="@drawable/pay_request" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="Payment-->
-<!--                        Request"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="12sp"-->
-<!--                        android:textStyle="bold"></TextView>-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Payment\nRequest"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -766,9 +333,22 @@
 
                     <ImageView
                         android:id="@+id/image_wallet"
-                        android:layout_width="match_parent"
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:paddingLeft="@dimen/dp_size_10"
+                        android:paddingTop="@dimen/dp_size_10"
+                        android:paddingRight="@dimen/dp_size_10"
+                        android:src="@drawable/bank_list" />
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/bankaccount" />
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Bank\nList"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
 
 
                 </LinearLayout>
@@ -785,9 +365,23 @@
 
                     <ImageView
                         android:id="@+id/image_account"
-                        android:layout_width="match_parent"
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:paddingLeft="@dimen/dp_size_10"
+                        android:paddingTop="@dimen/dp_size_10"
+                        android:paddingRight="@dimen/dp_size_10"
+                        android:src="@drawable/internal_load" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/internaload" />
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Internal\nLoad"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
 
                 </LinearLayout>
 
@@ -805,9 +399,22 @@
 
                     <ImageView
                         android:id="@+id/image_account2"
-                        android:layout_width="match_parent"
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:paddingLeft="@dimen/dp_size_10"
+                        android:paddingTop="@dimen/dp_size_10"
+                        android:paddingRight="@dimen/dp_size_10"
+                        android:src="@drawable/aeps_settlement" />
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/logo_aeps" />
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="AEPS\nSettlement"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"></TextView>
 
 
                 </LinearLayout>
@@ -836,11 +443,9 @@
                     android:layout_below="@+id/containt1"
                     android:orientation="horizontal"
                     tools:listitem="@layout/item_image_horizontal"
-                    android:src="@drawable/defualt_test">
+                    android:src="@drawable/banner_8thfeb">
 
                 </pl.droidsonroids.gif.GifImageView>
-
-
 
             </LinearLayout>
 

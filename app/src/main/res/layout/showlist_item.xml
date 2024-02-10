@@ -14,6 +14,6 @@
         android:layout_marginStart="4dp"
         android:background="@color/blue"
         android:layout_height="150dp"
-        android:src="@drawable/world_braille_day"
+        android:src="@drawable/banner_8thfeb"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

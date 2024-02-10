@@ -1,24 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView android:id="@+id/card_transfer" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp" app:cardCornerRadius="10dp" app:cardElevation="3dp">
-        <LinearLayout android:orientation="vertical" android:padding="15dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@+id/delete_beneficiary" android:visibility="visible" android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_cancel_black_24dp"/>
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
-                <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@+id/text_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MANIAR ASSOCIATES"/>
-                <ImageView android:layout_gravity="right" android:id="@+id/btn_send" android:visibility="visible" android:layout_width="@dimen/size40dp" android:layout_height="@dimen/size40dp" android:layout_marginRight="0dp" android:src="@drawable/share1" android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/delete_beneficiary"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_cancel_black_24dp"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MANIAR ASSOCIATES"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/btn_send"
+                    android:layout_width="@dimen/size40dp"
+                    android:layout_height="@dimen/size40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="0dp"
+                    android:src="@drawable/share1"
+                    android:visibility="visible" />
             </RelativeLayout>
-            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@+id/text_bank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="HDFC Bank"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_bank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="HDFC Bank"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
             </RelativeLayout>
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp"/>
-            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2">
-                <LinearLayout android:gravity="bottom" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.3" android:elevation="5dp">
-                    <ImageView android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/bank"/>
-                    <TextView android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/text_account" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="Acc: 50200016882603"/>
-                    <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/black" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delete"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.3"
+                    android:elevation="5dp"
+                    android:gravity="bottom">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/bank" />
+
+                    <TextView
+                        android:id="@+id/text_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:text="Acc: 50200016882603"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delete"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
                 </LinearLayout>
-                <LinearLayout android:gravity="right" android:visibility="visible" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.7" android:elevation="5dp">
-                    <Button android:textSize="13sp" android:textColor="@color/white" android:id="@+id/btn_verify" android:background="@color/dark_green" android:layout_width="wrap_content" android:layout_height="35dp" android:text="Verify"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:elevation="5dp"
+                    android:gravity="right"
+                    android:visibility="visible">
+
+                    <Button
+                        android:id="@+id/btn_verify"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@color/dark_green"
+                        android:text="Verify"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

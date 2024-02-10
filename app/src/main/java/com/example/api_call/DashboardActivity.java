@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
@@ -77,6 +78,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     MyofferAdapter myofferAdapter;
     TextView continuetext;
     ImageView mainbalance, cashoutbalance;
+    ImageView eye1,eye2,eye3;
     LinearLayout linermain_blance, linearcashout_balance, compaint_rpt;
     AlertDialog alertDialog;
     Bitmap bitmap;
@@ -324,8 +326,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         linear_request.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
-//                DashboardActivity.this.viewPaymentRequest();
-
+//               DashboardActivity.this.viewPaymentRequest();
                 DashboardActivity.this.startActivity(new Intent(DashboardActivity.this, PaymentRequestActivity.class));
 
 
@@ -644,10 +645,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void run() {
                 handler.post(update);
             }
-        }, 3000, 3000); // Adjust the timing as needed (e.g., every 2000 milliseconds)
+        }, 3000, 3000);
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -754,7 +755,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     }
 
-
     private void viewSettelmentFragment() {
         View view_types = getLayoutInflater().inflate(R.layout.layout_walletsettelment_fragment, (ViewGroup) null);
         TextView mText_remark = (TextView) view_types.findViewById(R.id.text_remark);
@@ -847,11 +847,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         super.onResume();
         continuetestmethod();
         getUserBalance(this.textbalance, this.textaepsBalance);
-
-//        String news = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.News, "");
+ //        String news = PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.News, "");
         String name = PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.Name, "");
         String mobile = PrefUtils.getFromPrefs(this, ConstantClass.PROFILEDETAILS.MobileNo, "");
-
         this.TextName.setText(name);
         this.text_name.setText(name);
 //        this.text_mobile.setText(mobile);  /// HERE NEED TO SHOW MOBILE NO
@@ -883,7 +881,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                             String Banner = ConstantClass.USERDETAILS.Banner;
                             String newsPath = dataItem.getNewsPath();
 
-                            if (type.equals("Notification")){
+                            if (type.equals("Notification")) {
 
                                 if (Notification.equals(type)) {
                                     continuetext.setText("" + description);
@@ -893,24 +891,37 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                                     PrefUtils.saveToPrefs(DashboardActivity.this, "Continue Text description", description);
                                 }
                             } else if (type.equals("Banner")) {
-                                //gif wcall code succeesfully
+                                // gif wcall code successfully
                                 if (newsPath != null) {
-//                                    for (int i =0;i<imageList.size();i++){
-//                                        byte[] decodedBytes = Base64.decode(newsPath, Base64.DEFAULT);
-//                                        Bitmap bitmap1 = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
-//                                        horizontalScrollView.addView(advertiseing);
-//                                        advertiseing.setImageBitmap(bitmap1);
-//                                    }
+                                    // Your existing code to handle the image when newsPath is not null
                                     byte[] decodedBytes = Base64.decode(newsPath, Base64.DEFAULT);
                                     Bitmap bitmap1 = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
                                     advertiseing.setImageBitmap(bitmap1);
                                     Glide.with(DashboardActivity.this).load(decodedBytes).into(advertiseing);
-
                                 } else {
-                                    List<add> list = new ArrayList<>();
-                                    list.add(new add(R.drawable.banner_7thfeb));
+                                    // Default image when newsPath is null
+                                    advertiseing.setImageResource(R.drawable.banner_8thfeb); // Replace with your default image resource
                                 }
                             }
+//                            } else if (type.equals("Banner")) {
+//                                //gif wcall code succeesfully
+//                                if (newsPath != null) {
+////                                    for (int i =0;i<imageList.size();i++){
+////                                        byte[] decodedBytes = Base64.decode(newsPath, Base64.DEFAULT);
+////                                        Bitmap bitmap1 = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+////                                        horizontalScrollView.addView(advertiseing);
+////                                        advertiseing.setImageBitmap(bitmap1);
+////                                    }
+//                                    byte[] decodedBytes = Base64.decode(newsPath, Base64.DEFAULT);
+//                                    Bitmap bitmap1 = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+//                                    advertiseing.setImageBitmap(bitmap1);
+//                                    Glide.with(DashboardActivity.this).load(decodedBytes).into(advertiseing);
+//
+//                                } else {
+//                                    List<add> list = new ArrayList<>();
+//                                    list.add(new add(R.drawable.banner_7thfeb));
+//                                }
+//                            }
 
                         }
 
@@ -1074,9 +1085,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         body.put("PasswordType", "2");
         ApiInterface apiInterface = RetrofitHandler.getService();
         Call<ChangePasswordResponse> call = apiInterface.ChangeTpinResponse(body);
-
-//        ProfileApiService apiServiceGenerator3 = (ProfileApiService) RetrofitHandler.getService();
-//        Call<ChangePasswordResponse> call = apiServiceGenerator3.ChangeTpinResponse(body);
         call.enqueue(new Callback<ChangePasswordResponse>() { // from class: com.uvapay.activities.DashboardActivity.31
             @Override // retrofit2.Callback
             public void onResponse(Call<ChangePasswordResponse> call2, Response<ChangePasswordResponse> response) {
@@ -1234,10 +1242,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         } else if (id == R.id.nav_policy) {
             showPolicyOptionsDialog(item);
             return true;
-
         } else if (id == R.id.nav_password) {
             View view = getLayoutInflater().inflate(R.layout.layout_change_password, (ViewGroup) null);
             ImageView image_cancel = (ImageView) view.findViewById(R.id.image_cancel);
+             @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView eye_logo1 = (ImageView) view.findViewById(R.id.eye1);
+            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView eye_logo2 = (ImageView) view.findViewById(R.id.eye2);
+            @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView eye_logo3 = (ImageView) view.findViewById(R.id.eye3);
             final EditText edit_old_password = (EditText) view.findViewById(R.id.edit_old_password);
             final TextView forgot_tpin = (TextView) view.findViewById(R.id.forgot_tpin);
             final EditText edit_new_password = (EditText) view.findViewById(R.id.edit_new_password);
@@ -1250,14 +1260,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             AlertDialog alertDialog = builder.create();
             alertDialog.setView(view);
             AlertDialog finalAlertDialog = alertDialog;
-            image_cancel.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.25
-                @Override // android.view.View.OnClickListener
+            image_cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
                 public void onClick(View v) {
                     finalAlertDialog.dismiss();
                 }
             });
             AlertDialog finalAlertDialog1 = alertDialog;
-            btn_change_password.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.DashboardActivity.26
+            btn_change_password.setOnClickListener(new View.OnClickListener() {
                 @Override // android.view.View.OnClickListener
                 public void onClick(View v) {
                     forgot_tpin.setVisibility(View.GONE);
@@ -1392,7 +1402,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         View actionView = menuItem.getActionView();
         if (actionView != null) {
             Spinner spinner = actionView.findViewById(R.id.menuspinner);
-
             // Set a click listener for the Spinner
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override

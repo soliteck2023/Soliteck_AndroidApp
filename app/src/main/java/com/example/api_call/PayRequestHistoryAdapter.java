@@ -71,20 +71,20 @@ public class PayRequestHistoryAdapter extends RecyclerView.Adapter<PayRequestHis
             holder.text_amount_.setTextColor(this.context.getResources().getColor(R.color.colorAccent));
             holder.linear_status.setVisibility(8);
         }
-        holder.btn_approve.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.adapters.PayRequestHistoryAdapter.1
-            @Override // android.view.View.OnClickListener
+        holder.btn_approve.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PayRequestHistoryAdapter.this.context);
                 builder.setTitle("Approve");
                 builder.setMessage("Are you want to Approve request?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() { // from class: com.uvapay.adapters.PayRequestHistoryAdapter.1.1
-                    @Override // android.content.DialogInterface.OnClickListener
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         PayRequestHistoryAdapter.this.SendStatusRequest("Approved", holder.text_refNo.getText().toString().split(":")[1].trim(), position);
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() { // from class: com.uvapay.adapters.PayRequestHistoryAdapter.1.2
-                    @Override // android.content.DialogInterface.OnClickListener
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
@@ -117,7 +117,7 @@ public class PayRequestHistoryAdapter extends RecyclerView.Adapter<PayRequestHis
         });
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override
     public int getItemCount() {
         return this.list_requests.size();
     }
@@ -190,7 +190,7 @@ public class PayRequestHistoryAdapter extends RecyclerView.Adapter<PayRequestHis
                 ConstantClass.displayMessageDialog(PayRequestHistoryAdapter.this.context, "Response", balanceResponse.getMessage());
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<UpdatePaymentRequestResponse> call, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {

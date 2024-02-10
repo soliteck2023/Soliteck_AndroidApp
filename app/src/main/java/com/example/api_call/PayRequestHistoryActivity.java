@@ -49,19 +49,18 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pay_request_history);
         bindViews();
         setTitle("Pay Request History");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
         Calendar calendar = Calendar.getInstance();
         this.myCalendar = calendar;
         this.mYear = calendar.get(1);
         this.mMonth = this.myCalendar.get(2);
         this.mDay = this.myCalendar.get(5);
         this.mText_fromdate.setText(this.mYear + "/" + this.mDay + "/" + (this.mMonth + 1));
-        this.mText_todate.setText(this.mYear + "/" + this.mDay + "/" + (this.mMonth + 1));
+        this.mText_todate.setText(this.mYear + "/" + this.mDay + "/" + (this.mMonth + 2));
+        myCalendar.add(Calendar.DAY_OF_MONTH, 1);
         getAllHistoryRequests(mText_fromdate.getText().toString(), PayRequestHistoryActivity.this.mText_todate.getText().toString());
 
-        this.mImage_fromdate.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PayRequestHistoryActivity.1
-            @Override // android.view.View.OnClickListener
+        this.mImage_fromdate.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
 
                 PayRequestHistoryActivity.this.fromDateSelection();
@@ -93,7 +92,7 @@ public class PayRequestHistoryActivity extends AppCompatActivity {
         body.put("StatusId", "0");
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<PaymentRequestHistoryResponse> result = apiservice.GetPaymentRequestHistory(body);
-        result.enqueue(new Callback<PaymentRequestHistoryResponse>() { // from class: com.uvapay.activities.PayRequestHistoryActivity.5
+        result.enqueue(new Callback<PaymentRequestHistoryResponse>() {
             @SuppressLint("WrongConstant")
             @Override // retrofit2.Callback
             public void onResponse(Call<PaymentRequestHistoryResponse> call, Response<PaymentRequestHistoryResponse> response) {

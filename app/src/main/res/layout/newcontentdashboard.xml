@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="215dp"
+    android:layout_height="245dp"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="MissingDefaultResource">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
         app:cardElevation="20dp"
         app:cardCornerRadius="15dp"
         android:layout_margin="10dp"
@@ -47,51 +47,58 @@
                     <LinearLayout
                         android:id="@+id/linear_mobile"
                         android:layout_width="0dp"
-                        android:layout_height="78dp"
+                        android:layout_height="98dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/image_mobile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/mobile_logo" />
+                            android:layout_width="70dp"
+                            android:layout_height="60dp"
+                            android:paddingLeft="@dimen/dp_size_10"
+                            android:paddingTop="@dimen/dp_size_10"
+                            android:paddingRight="@dimen/dp_size_10"
+                            android:src="@drawable/mobile_rchrge" />
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:padding="2dp"-->
-<!--                            android:text="MOBILE"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textSize="12sp"-->
-<!--                            android:textStyle="bold" />-->
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="5dp"
+                                                    android:text="MOBILE"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="12sp"
+                                                    android:textStyle="bold" />
+
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linear_dth"
                         android:layout_width="0dp"
-                        android:layout_height="78dp"
+                        android:layout_height="98dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/image_dth"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/dth_logo" />
+                            android:layout_width="70dp"
+                            android:layout_height="60dp"
+                            android:paddingLeft="@dimen/dp_size_10"
+                            android:paddingTop="@dimen/dp_size_10"
+                            android:paddingRight="@dimen/dp_size_10"
+                            android:src="@drawable/dth_rchrge" />
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:padding="2dp"-->
-<!--                            android:text="DTH"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textSize="12sp"-->
-<!--                            android:textStyle="bold" />-->
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="DTH"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -124,7 +131,7 @@
                     <LinearLayout
                         android:id="@+id/linear_transferdmt"
                         android:layout_width="0dp"
-                        android:layout_height="78dp"
+                        android:layout_height="98dp"
                         android:layout_weight="1"
                         android:background="@color/white"
                         android:gravity="center"
@@ -132,28 +139,32 @@
                         android:visibility="visible">
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/dmt_logo" />
+                            android:layout_width="70dp"
+                            android:layout_height="60dp"
+                            android:paddingLeft="@dimen/dp_size_10"
+                            android:paddingTop="@dimen/dp_size_10"
+                            android:paddingRight="@dimen/dp_size_10"
+                            android:src="@drawable/money_trsfer" />
 
-                        <!--                        <TextView-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginTop="4dp"-->
-                        <!--                            android:padding="2dp"-->
-                        <!--                            android:paddingLeft="5dp"-->
-                        <!--                            android:paddingRight="5dp"-->
-                        <!--                            android:text="DMT"-->
-                        <!--                            android:textColor="@color/black"-->
-                        <!--                            android:textSize="12sp"-->
-                        <!--                            android:textStyle="bold" />-->
+                                                <TextView
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="4dp"
+                                                    android:padding="2dp"
+                                                    android:paddingLeft="5dp"
+                                                    android:paddingRight="5dp"
+                                                    android:text="DMT"
+                                                    android:gravity="center"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="12sp"
+                                                    android:textStyle="bold" />
                     </LinearLayout>
 
 
                     <LinearLayout
                         android:id="@+id/linear_aeps"
                         android:layout_width="0dp"
-                        android:layout_height="78dp"
+                        android:layout_height="98dp"
                         android:layout_weight="1"
                         android:background="@color/white"
                         android:gravity="center"
@@ -164,20 +175,23 @@
 
                         <ImageView
                             android:id="@+id/AEPS_image"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/aeps_logo" />
+                            android:layout_width="70dp"
+                            android:layout_height="60dp"
+                            android:paddingLeft="@dimen/dp_size_10"
+                            android:paddingTop="@dimen/dp_size_10"
+                            android:paddingRight="@dimen/dp_size_10"
+                            android:src="@drawable/aeps_img" />
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:padding="2dp"-->
-<!--                            android:paddingLeft="5dp"-->
-<!--                            android:text="AEPS"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:textSize="12sp"-->
-<!--                            android:textStyle="bold" />-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="2dp"
+                            android:paddingLeft="5dp"
+                            android:text="AEPS"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
 
@@ -194,25 +208,29 @@
                     <LinearLayout
                         android:id="@+id/linear_bbps"
                         android:layout_width="0dp"
-                        android:layout_height="78dp"
+                        android:layout_height="98dp"
                         android:layout_weight="1"
                         android:background="@color/white"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="visible">
-                        <!--src -@mipmap/payin_bbps"-->
+
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/bbps_logo"></ImageView>
+                            android:layout_width="70dp"
+                            android:layout_height="60dp"
+                            android:paddingLeft="@dimen/dp_size_10"
+                            android:paddingTop="@dimen/dp_size_10"
+                            android:paddingRight="@dimen/dp_size_10"
+                            android:src="@drawable/bbps_img"></ImageView>
                         />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:padding="2dp"
+                            android:gravity="center"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
                             android:text="BBPS"

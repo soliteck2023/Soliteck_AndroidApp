@@ -1,6 +1,7 @@
 package com.example.api_call;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
@@ -34,7 +35,14 @@ public class ConstantClass {
             builder1.setPositiveButton("Okay", new DialogInterface.OnClickListener() { // from class: com.uvapay.ConstantClass.1
                 @Override // android.content.DialogInterface.OnClickListener
                 public void onClick(DialogInterface dialog, int id) {
-                    dialog.cancel();
+
+//                    dialog.cancel();
+
+                    dialog.dismiss();
+                    // Add refresh/reload action here
+                    if (context instanceof Activity) {
+                        ((Activity) context).recreate(); // Refresh the current activity
+                    }
                 }
             });
             AlertDialog alert11 = builder1.create();

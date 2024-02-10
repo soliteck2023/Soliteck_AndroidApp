@@ -5,7 +5,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
 
 
     <RelativeLayout
@@ -13,473 +14,380 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout android:orientation="vertical" android:background="@color/colorPrimary" android:layout_width="match_parent" android:layout_height="120dp">
-            <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="@color/white" android:layout_gravity="center" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25dp" android:text="Contact Us"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:text="Mobile Recharge"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:visibility="visible" />
         </LinearLayout>
 
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true"
+            android:layout_height="661dp"
             android:layout_marginBottom="20dp"
+            android:fillViewport="true"
             android:scrollbars="none">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_marginTop="70dp"
-                android:layout_marginRight="@dimen/margin20dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/margin20dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="20dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginRight="@dimen/margin20dp"
+                android:layout_marginBottom="20dp"
                 android:outlineAmbientShadowColor="@color/colorAccent"
                 android:translationZ="5dp"
-                android:layout_marginBottom="20dp"
-                android:layout_height="wrap_content">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                >
-
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/newcard"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/white"
-                    >
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp">
 
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/newcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white">
 
-                        >
 
-                        <ImageView
-
-                            android:layout_width="50dp"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="50dp"
-                            android:padding="5dp"
-                            android:src="@drawable/colorful_mobile"></ImageView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.5"
-                            android:gravity="fill"
-                            android:text="Mobile Recharge"
-                            android:textColor="@color/blue"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
 
                             >
 
-                        </TextView>
+                            <ImageView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:padding="5dp"
+                                android:layout_marginBottom="@dimen/dp_size_10"
+                                android:src="@drawable/app_logo1"></ImageView>
+
+                            <!--                        <TextView-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="50dp"-->
+                            <!--                            android:layout_gravity="center"-->
+                            <!--                            android:layout_weight="0.5"-->
+                            <!--                            android:gravity="fill"-->
+                            <!--                            android:text="Mobile Recharge"-->
+                            <!--                            android:textColor="@color/blue"-->
+                            <!--                            android:textSize="20dp"-->
+                            <!--                            android:textStyle="bold"-->
+
+                            <!--                            >-->
+
+                            <!--                        </TextView>-->
 
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="50dp"
-                        android:background="@color/white"
-                        android:orientation="vertical"
-                        android:padding="15dp">
+                        </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_width="311dp"
+                            android:layout_height="393dp"
+                            android:layout_marginTop="50dp"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:padding="15dp">
 
-                            <FrameLayout
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:layout_marginTop="10dp">
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
-                                <RelativeLayout
+                                <FrameLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp">
 
-                                    <LinearLayout
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginTop="10dp"
-                                        android:background="@drawable/border_edittext"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal"
-                                        android:weightSum="3">
+                                        android:layout_height="match_parent">
 
-                                        <EditText
-                                            android:id="@+id/edit_mobile"
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="2.3"
-                                            android:background="@android:color/transparent"
-                                            android:inputType="number"
-                                            android:maxLength="10"
-                                            android:paddingLeft="10dp"
-                                            android:paddingTop="5dp"
-                                            android:paddingBottom="5dp" />
-
-                                        <View
-                                            android:layout_width="0dp"
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/edit_mobile_layout"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="0.01"
-                                            android:background="@color/colorPrimaryDark"
-                                            android:visibility="visible" />
+                                            android:hint="Mobile Number"
+                                            app:boxStrokeColor="@color/black">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/edit_mobile"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="50dp"
+                                                android:inputType="number"
+                                                android:maxLength="10"
+                                                android:textColor="@color/black"
+                                                android:textSize="15dp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                    </RelativeLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="Select Operator">
+
+
+                                        </com.google.android.material.textfield.TextInputLayout>
 
                                         <TextView
-                                            android:id="@+id/TxtROffer"
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_margin="@dimen/margin_5dp"
-                                            android:layout_marginRight="@dimen/dp_size_10"
-                                            android:layout_weight="0.7"
-                                            android:background="@color/white"
-                                            android:gravity="center"
-                                            android:inputType="number"
-                                            android:text="R Offer"
-                                            android:textColor="@color/colorAccent"
-                                            android:textStyle="bold"
-                                            android:visibility="visible" />
-                                    </LinearLayout>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="20dp"
-                                        android:background="@color/white"
-                                        android:inputType="number"
-                                        android:paddingLeft="10dp"
-                                        android:paddingRight="10dp"
-                                        android:text="Mobile Number"
-                                        android:textColor="@color/black" />
-                                </RelativeLayout>
-                            </FrameLayout>
-
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:layout_marginTop="15dp">
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginTop="10dp"
-                                        android:background="@drawable/border_edittext"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal"
-                                        android:weightSum="3">
-
-                                        <EditText
                                             android:id="@+id/edit_operator"
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_gravity="center_vertical"
-                                            android:layout_marginLeft="15dp"
-                                            android:layout_weight="2"
-                                            android:background="@android:color/transparent"
-                                            android:entries="@array/operator"
-                                            android:focusableInTouchMode="false"
-                                            android:gravity="left"
-                                            android:hint="Operator"
-                                            android:inputType="textNoSuggestions"
-                                            android:maxLines="1"
-                                            android:padding="5dp"
-                                            android:textColor="@color/black"
-                                            android:textSize="16sp" />
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:background="@drawable/background_outlined_box"
+                                            android:gravity="center_vertical"
+                                            android:hint="   Select Operator"
+                                            android:padding="@dimen/dp_size_10"
+                                            android:text="   Select Operator"
+                                            android:textSize="15dp">
 
-                                        <TextView
-                                            android:id="@+id/textView"
-                                            android:layout_width="70dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="0.3"
-                                            android:text="TxtMobilePlan"
-                                            android:visibility="gone" />
+                                        </TextView>
 
-                                        <View
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="0.01"
-                                            android:background="@color/colorPrimaryDark"
-                                            android:visibility="gone" />
+                                    </RelativeLayout>
+                                </FrameLayout>
 
-                                        <TextView
-                                            android:id="@+id/TxtMobilePlan"
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_margin="@dimen/margin_5dp"
-                                            android:layout_marginRight="@dimen/dp_size_10"
-                                            android:layout_weight="0.7"
-                                            android:background="@color/white"
-                                            android:gravity="center"
-                                            android:inputType="number"
-                                            android:text="R-Plan"
-                                            android:textColor="@color/colorAccent"
-                                            android:textStyle="bold"
-                                            android:visibility="visible" />
-                                    </LinearLayout>
+                                <FrameLayout
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="20dp"
-                                        android:background="@color/white"
-                                        android:inputType="number"
-                                        android:paddingLeft="10dp"
-                                        android:paddingRight="10dp"
-                                        android:text="Select Operator"
-                                        android:textColor="@color/black" />
-                                </RelativeLayout>
-                            </FrameLayout>
-
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:layout_marginTop="10dp">
-
-                                <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp">
 
-                                    <LinearLayout
+                                    <RelativeLayout
+                                        android:id="@+id/stateframe"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_marginTop="10dp"
-                                        android:background="@drawable/border_edittext"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal"
-                                        android:weightSum="3">
+                                        android:visibility="visible">
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="Select Operator">
+
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                        <TextView
+                                            android:id="@+id/edit_state"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:background="@drawable/background_outlined_box"
+                                            android:gravity="center_vertical"
+                                            android:hint="   Select State"
+                                            android:text="   Select State"
+                                            android:textSize="15dp">
+
+                                        </TextView>
+
+                                    </RelativeLayout>
+                                </FrameLayout>
+
+
+                                <FrameLayout
+                                    android:id="@+id/spinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:visibility="gone">
+
+                                    <RelativeLayout
+
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="48dp">
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="Select Operator">
+
+
+                                        </com.google.android.material.textfield.TextInputLayout>
 
                                         <Spinner
                                             android:id="@+id/spinnerCircleListList"
                                             android:layout_width="match_parent"
                                             android:layout_height="50dp"
-                                            android:layout_marginLeft="15dp"
-                                            android:layout_weight="2.8"
-                                            android:entries="@array/circle"
-                                            android:textSize="16sp"
-                                            tools:ignore="MissingClass" />
+                                            android:background="@drawable/background_outlined_box"
+                                            android:gravity="center_vertical"
+                                            android:text="Select Operator"></Spinner>
+
+                                    </RelativeLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:layout_marginTop="11dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/edit_amount_layout"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="Enter Amount"
+                                            app:boxStrokeColor="@color/black">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/edit_amount"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="50dp"
+                                                android:inputType="number"
+                                                android:maxLength="4"
+                                                android:textSize="15dp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                                        <!--                                <androidx.appcompat.widget.AppCompatSpinner-->
-                                        <!--                                    android:id="@+id/spinnerCircleListList"-->
-                                        <!--                                    android:layout_width="0dp"-->
-                                        <!--                                    android:layout_height="48dp"-->
-                                        <!--                                    android:layout_marginLeft="15dp"-->
-                                        <!--                                    android:layout_weight="2.8"-->
-                                        <!--                                    android:entries="@array/circle"-->
-                                        <!--                                    android:dropDownSelector="@drawable/downarrow"-->
-                                        <!--                                    android:textSize="16sp"-->
-                                        <!--                                    tools:ignore="MissingClass" />-->
+                                    </RelativeLayout>
+                                </FrameLayout>
 
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:visibility="gone">
 
-                                    </LinearLayout>
+                                    <RelativeLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
 
-                                    <TextView
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/border_edittext"
+                                            android:gravity="center_vertical"
+                                            android:orientation="horizontal"
+                                            android:weightSum="3">
+
+                                            <EditText
+
+                                                android:id="@+id/edit_tpin"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="15dp"
+                                                android:layout_weight="2.4"
+                                                android:background="@android:color/transparent"
+                                                android:gravity="left"
+                                                android:inputType="numberPassword"
+                                                android:maxLength="4"
+                                                android:maxLines="1"
+                                                android:padding="5dp"
+                                                android:textColor="@color/black"
+                                                android:textSize="16sp" />
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@color/white"
+                                            android:inputType="number"
+                                            android:paddingLeft="10dp"
+                                            android:paddingRight="10dp"
+                                            android:text="Enter TPIN"
+                                            android:textColor="@color/black" />
+                                    </RelativeLayout>
+                                </FrameLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="right"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                    <RelativeLayout
+                                        android:id="@+id/layout_plans"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginLeft="20dp"
-                                        android:background="@color/white"
-                                        android:inputType="number"
-                                        android:paddingLeft="10dp"
-                                        android:paddingRight="10dp"
-                                        android:text="Select Circle"
-                                        android:textColor="@color/black" />
-                                </RelativeLayout>
-                            </FrameLayout>
-
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:layout_marginTop="15dp">
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
+                                        android:layout_alignParentRight="true"
                                         android:layout_marginTop="10dp"
-                                        android:background="@drawable/border_edittext"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal"
-                                        android:weightSum="3">
+                                        android:background="@drawable/circle_background"
+                                        android:elevation="5dp"
+                                        android:padding="10dp"
+                                        android:visibility="visible">
 
                                         <ImageView
-                                            android:layout_width="0dp"
-                                            android:layout_height="25dp"
-                                            android:layout_weight="0.4"
-                                            android:src="@drawable/rupaya" />
+                                            android:id="@+id/image_offer"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:src="@drawable/offers" />
 
-                                        <EditText
-                                            android:id="@+id/edit_amount"
-                                            android:layout_width="0dp"
+                                        <TextView
+                                            android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="center_vertical"
-                                            android:layout_marginLeft="15dp"
-                                            android:layout_weight="2.4"
-                                            android:background="@android:color/transparent"
-                                            android:gravity="left"
-                                            android:inputType="number"
-                                            android:maxLength="4"
-                                            android:hint="Enter a 4-digit amount"
-                                            android:padding="5dp"
-                                            android:textColor="@color/black"
-                                            android:textSize="16sp" />
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_toRightOf="@+id/image_offer"
+                                            android:text="Offers"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="15sp" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                            </LinearLayout>
 
-                                        <RelativeLayout
-                                            android:layout_width="60dp"
-                                            android:layout_height="50dp"
-                                            android:visibility="gone">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_centerInParent="true"
-                                                android:text="R-offer"
-                                                android:textColor="@color/theme_color"
-                                                android:textSize="16sp"
-                                                android:textStyle="normal" />
-                                        </RelativeLayout>
-                                    </LinearLayout>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="20dp"
-                                        android:background="@color/white"
-                                        android:inputType="number"
-                                        android:paddingLeft="10dp"
-                                        android:paddingRight="10dp"
-                                        android:text="Enter Amount"
-                                        android:textColor="@color/black" />
-                                </RelativeLayout>
-                            </FrameLayout>
+                            <Button
+                                android:id="@+id/btn_mobile_Recharge"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@drawable/violet_button_background"
+                                android:text="SUBMIT"
+                                android:textColor="@color/white"
+                                android:textSize="17sp"
+                                android:visibility="visible" />
 
                             <FrameLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
-                                android:visibility="gone"
-                                android:layout_marginTop="15dp">
-
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    >
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginTop="10dp"
-                                        android:background="@drawable/border_edittext"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal"
-                                        android:weightSum="3">
-
-                                        <EditText
-
-                                            android:id="@+id/edit_tpin"
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_vertical"
-                                            android:layout_marginLeft="15dp"
-                                            android:layout_weight="2.4"
-                                            android:background="@android:color/transparent"
-                                            android:gravity="left"
-                                            android:inputType="numberPassword"
-                                            android:maxLength="4"
-                                            android:maxLines="1"
-                                            android:padding="5dp"
-                                            android:textColor="@color/black"
-                                            android:textSize="16sp" />
-                                    </LinearLayout>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="20dp"
-                                        android:background="@color/white"
-                                        android:inputType="number"
-                                        android:paddingLeft="10dp"
-                                        android:paddingRight="10dp"
-                                        android:text="Enter TPIN"
-                                        android:textColor="@color/black" />
-                                </RelativeLayout>
-                            </FrameLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:gravity="right"
-                                android:orientation="horizontal">
-
-                                <RelativeLayout
-                                    android:id="@+id/layout_plans"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_marginTop="10dp"
-                                    android:background="@drawable/circle_background"
-                                    android:elevation="5dp"
-                                    android:padding="10dp"
-                                    android:visibility="visible">
-
-                                    <ImageView
-                                        android:id="@+id/image_offer"
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:src="@drawable/offers" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_toRightOf="@+id/image_offer"
-                                        android:text="Offers"
-                                        android:textColor="@color/colorPrimary"
-                                        android:textSize="15sp" />
-                                </RelativeLayout>
-                            </LinearLayout>
+                                android:layout_height="30dp" />
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                        <Button
-                            android:id="@+id/btn_mobile_Recharge"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginTop="20dp"
-                            android:background="@drawable/violet_button_background"
-                            android:text="SUBMIT"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"
-                            android:visibility="visible" />
-
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
 
         </ScrollView>

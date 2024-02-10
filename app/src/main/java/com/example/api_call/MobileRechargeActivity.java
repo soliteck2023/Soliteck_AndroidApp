@@ -1,30 +1,27 @@
 package com.example.api_call;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,23 +30,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MobileRechargeActivity extends AppCompatActivity  implements View.OnClickListener{
+public class MobileRechargeActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int PLANPLANREQUESTCODE = 110;
     private static final int PLANREQUESTCODE = 101;
     private Button btn_mobile_Recharge;
-    private EditText edit_amount;
-    private EditText edit_mobile;
-    private EditText edit_operator;
+    private TextInputEditText edit_amount;
+    private TextInputEditText edit_mobile;
+    private TextInputLayout edit_mobile_layout;
+    private TextView edit_operator;
     private GetOperatorByNum getOperatorByNum;
     private RelativeLayout layout_plans;
     TextView mTxtMobilePlan;
-    TextView mTxtROffer;
+//    TextView mTxtROffer;
     private EditText medit_tpin;
     Spinner stateSpinner;
     private String NUMBER = "";
@@ -75,6 +72,11 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
     MyofferAdapter myofferAdapter;
     private Timer timer;
     private int currentPage = 0;
+    private String selectedState;
+
+    RelativeLayout stateframe;
+
+    FrameLayout spinner;
 
 
 
@@ -84,11 +86,22 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_recharge);
+
         initComponents();
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//       getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         setTitle("Mobile Recharge");
+        stateframe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stateframe.setVisibility(View.GONE);
+                spinner.setVisibility(View.VISIBLE);
+            }
+        });
+
         Spinner stateSpinner = findViewById(R.id.spinnerCircleListList);
+//        stateSpinner.setTitle("Select ");
+
+        stateSpinner.setPrompt("Select State");
         String[] states = getResources().getStringArray(R.array.circle);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, states);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -98,6 +111,8 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Handle the selected state here
                 String selectedState = states[position];
+
+
             }
 
             @Override
@@ -107,7 +122,7 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
         });
 
 
-        this.mTxtROffer.setOnClickListener(new View.OnClickListener() {
+    /*    mTxtROffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(MobileRechargeActivity.this.edit_operator.getText().toString().trim())) {
@@ -128,22 +143,22 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
 
 
             }
-        });
+        });*/
 
-        this.mTxtMobilePlan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MobileRechargeActivity.this, RechargePlansActivity.class);
-//                intent.putExtra("circleName", MobileRechargeActivity.this.mspinnerCircleListList.getSelectedItem().toString().trim());
-                intent.putExtra("operatorName", MobileRechargeActivity.this.edit_operator.getText().toString().trim());
-                startActivityForResult(intent, 110);
-
-            }
-        });
+//        mTxtMobilePlan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(MobileRechargeActivity.this, RechargePlansActivity.class);
+////                intent.putExtra("circleName", MobileRechargeActivity.this.mspinnerCircleListList.getSelectedItem().toString().trim());
+//                intent.putExtra("operatorName", MobileRechargeActivity.this.edit_operator.getText().toString().trim());
+//                startActivityForResult(intent, 110);
+//
+//            }
+//        });
 
         this.layout_plans.setOnClickListener(new View.OnClickListener() {
-            @Override // android.view.View.OnClickListener
+            @Override
             public void onClick(View v) {
                 if (MobileRechargeActivity.this.edit_mobile.getText().toString().trim().isEmpty()) {
                     MobileRechargeActivity.this.edit_mobile.setError("Enter number");
@@ -202,16 +217,20 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
 
 
     private void initComponents() {
+        edit_mobile = (TextInputEditText) findViewById(R.id.edit_mobile);
+        edit_mobile_layout = (TextInputLayout) findViewById(R.id.edit_mobile_layout);
         this.medit_tpin = (EditText) findViewById(R.id.edit_tpin);
-        this.edit_mobile = (EditText) findViewById(R.id.edit_mobile);
-        this.edit_amount = (EditText) findViewById(R.id.edit_amount);
-        this.edit_operator = (EditText) findViewById(R.id.edit_operator);
+        this.edit_amount = (TextInputEditText) findViewById(R.id.edit_amount);
+        this.edit_operator = (TextView) findViewById(R.id.edit_operator);
         this.btn_mobile_Recharge = (Button) findViewById(R.id.btn_mobile_Recharge);
         this.layout_plans = (RelativeLayout) findViewById(R.id.layout_plans);
-        this.mTxtROffer = (TextView) findViewById(R.id.TxtROffer);
+//        this.mTxtROffer = (TextView) findViewById(R.id.TxtROffer);
         this.mTxtMobilePlan = (TextView) findViewById(R.id.TxtMobilePlan);
-        this.stateSpinner  = (Spinner) findViewById(R.id.spinnerCircleListList);
-        this.edit_mobile.addTextChangedListener(new TextWatcher() {
+        this.stateSpinner = (Spinner) findViewById(R.id.spinnerCircleListList);
+        this.stateframe = (RelativeLayout) findViewById(R.id.stateframe);
+        this.spinner = (FrameLayout) findViewById(R.id.spinner);
+
+      /*  this.edit_mobile.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -227,7 +246,7 @@ public class MobileRechargeActivity extends AppCompatActivity  implements View.O
                     mobileRechargeActivity.callOperator(mobileRechargeActivity.edit_mobile.getText().toString().trim());
                 }
             }
-        });
+        });*/
         getAssetsCircle();
         callCircleAdapter();
 

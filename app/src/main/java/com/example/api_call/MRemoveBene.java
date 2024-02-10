@@ -14,27 +14,29 @@ public class MRemoveBene {
     @Expose
     private String statusCode;
 
-    public String getStatusCode() {
-        return this.statusCode;
+    public Object getData() {
+        return data;
     }
 
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
+    public void setData(Object data) {
+        this.data = data;
     }
 
     public String getMessage() {
-        return this.message;
+        return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
     }
 
-    public Object getData() {
-        return this.data;
+    public String getStatusCode() {
+        return statusCode;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
     }
 }
+
+

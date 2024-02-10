@@ -160,8 +160,6 @@ public class PaymentRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment_request);
         setTitle("Payment Request");
         initComponents();
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
         Calendar calendar = Calendar.getInstance();
         this.myCalendar = calendar;
         this.mYear = calendar.get(1);
@@ -238,7 +236,7 @@ public class PaymentRequestActivity extends AppCompatActivity {
         this.btn_payment_request.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.7
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
-                UploadImage(bitmap);
+//                UploadImage(bitmap);
                 makeMoneyRequest();
             }
         });
@@ -418,7 +416,6 @@ public class PaymentRequestActivity extends AppCompatActivity {
         body.put("UniqueCode", Uid);
         body.put("Base64Encode", Base64_Image);
         body.put("Flag", flag);
-
 
         ApiInterface apiservice = RetrofitHandler.getService2();
         Call<RequestPaymentResponse> call = apiservice.getuplodeimage(body);
@@ -616,8 +613,8 @@ public class PaymentRequestActivity extends AppCompatActivity {
         search_edit.setVisibility(View.VISIBLE);
         dialog.show();
         listView.setAdapter((ListAdapter) adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() { // from class: com.uvapay.activities.PaymentRequestActivity.20
-            @Override // android.widget.AdapterView.OnItemClickListener
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PaymentRequestActivity.this.edit_cashtype.setText((String) listView.getItemAtPosition(position));
                 dialog.cancel();
@@ -638,8 +635,8 @@ public class PaymentRequestActivity extends AppCompatActivity {
         dialog.show();
         listView.setAdapter((ListAdapter) adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            // from class: com.uvapay.activities.PaymentRequestActivity.19
-            @Override // android.widget.AdapterView.OnItemClickListener
+
+            @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PaymentRequestActivity.this.edit_paymentmode.setText((String) listView.getItemAtPosition(position));
                 PaymentRequestActivity paymentRequestActivity = PaymentRequestActivity.this;
@@ -653,8 +650,8 @@ public class PaymentRequestActivity extends AppCompatActivity {
     }
 
     private void handleBackPressed(final Dialog mDialog) {
-        mDialog.setOnKeyListener(new DialogInterface.OnKeyListener() { // from class: com.uvapay.activities.PaymentRequestActivity.21
-            @Override // android.content.DialogInterface.OnKeyListener
+        mDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
             public boolean onKey(DialogInterface arg0, int keyCode, KeyEvent event) {
                 if (keyCode == 4) {
                     mDialog.dismiss();
@@ -674,8 +671,8 @@ public class PaymentRequestActivity extends AppCompatActivity {
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
         ApiInterface apiservice = (ApiInterface) RetrofitHandler.getService();
         Call<PaymentModeResponse> call = apiservice.GetPaymentMode(body);
-        call.enqueue(new Callback<PaymentModeResponse>() { // from class: com.uvapay.activities.PaymentRequestActivity.12
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<PaymentModeResponse>() {
+            @Override
             public void onResponse(Call<PaymentModeResponse> call2, Response<PaymentModeResponse> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -709,7 +706,7 @@ public class PaymentRequestActivity extends AppCompatActivity {
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<PaymentModeResponse> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {

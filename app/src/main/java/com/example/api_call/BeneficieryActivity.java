@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -80,8 +81,6 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beneficiery);
         setTitle("Beneficiary List");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.add_ben = (FrameLayout) findViewById(R.id.add_ben);
         this.add_beneficiary = (CardView) findViewById(R.id.add_beneficiary);
         this.image_delete = (ImageView) findViewById(R.id.image_delete);
@@ -114,22 +113,22 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
 
         this.linear_txt = (LinearLayout) findViewById(R.id.linear_txt);
         this.view_beneficiary_list.setLayoutManager(new LinearLayoutManager(this));
-        this.edit_search.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.1
-            @Override // android.text.TextWatcher
+        this.edit_search.addTextChangedListener(new TextWatcher() {
+            @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 BeneficieryActivity.this.filterBeneficiary(s.toString());
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void afterTextChanged(Editable s) {
             }
         });
-        this.add_beneficiary.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.2
-            @Override // android.view.View.OnClickListener
+        this.add_beneficiary.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 BeneficieryActivity.this.getAllBankData();
                 BeneficieryActivity.this.edit_beneficiary.setText("");
@@ -160,20 +159,8 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 BeneficieryActivity.this.text_acc_count.setVisibility(View.GONE);
             }
         });
-
-//        this.edit_bank.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(BeneficieryActivity.this,layout_banklist.class);
-//                intent.putExtra("NUMBER", BeneficieryActivity.this.edit_mobile.getText().toString());
-//               intent.putExtra("CALL", "MOBILE");
-//                BeneficieryActivity.this.startActivityForResult(intent, 1);
-//
-//            }
-//        });
         this.edit_bank.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4
-            @Override // android.view.View.OnClickListener
+            @Override
             public void onClick(View v) {
                 View view = BeneficieryActivity.this.getLayoutInflater().inflate(R.layout.layout_banklist, (ViewGroup) null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(BeneficieryActivity.this);
@@ -202,7 +189,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                     public void afterTextChanged(Editable s) {
                     }
                 });
-                image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.4.3
+                image_delete.setOnClickListener(new View.OnClickListener() {
                     @Override // android.view.View.OnClickListener
                     public void onClick(View v2) {
                         BeneficieryActivity.this.alertDialog.dismiss();
@@ -220,7 +207,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
 
             }
         });
-        this.image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.5
+        this.image_delete.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 BeneficieryActivity.this.add_ben.setVisibility(View.GONE);
@@ -234,7 +221,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
             }
         });
         this.btn_add_benef.setOnClickListener(new View.OnClickListener() {
-            @Override // android.view.View.OnClickListener
+            @Override
             public void onClick(View v) {
                 if (BeneficieryActivity.this.edit_beneficiary.getText().toString().isEmpty()) {
                     BeneficieryActivity.this.edit_beneficiary.setError("enter beneficiary name");
@@ -251,7 +238,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
             }
         });
         this.btn_verify.setOnClickListener(new View.OnClickListener() {
-            @Override // android.view.View.OnClickListener
+            @Override
             public void onClick(View v) {
                 if (BeneficieryActivity.this.edit_bank.getText().toString().isEmpty()) {
                     BeneficieryActivity.this.edit_bank.setError("enter bank name for further process");
@@ -271,7 +258,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
             }
         });
 
-
+        getUserDetails(this.mobile_no);
     }
 
     private void filterBeneficiary(String s) {
@@ -281,7 +268,10 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 list_new.add(recipientsItem);
             }
         }
-        this.transactionBillAdapter.setNewList(list_new);
+//        this.transactionBillAdapter.setNewList(list_new);
+        if (transactionBillAdapter != null) {
+            transactionBillAdapter.setNewList(list_new);
+        }
     }
 
     private void filter(String s) {
@@ -308,8 +298,8 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
         body.put("senderId", this.remitter_id);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<MBeneficiary> call = apiservice.addBeneficiary(body);
-        call.enqueue(new Callback<MBeneficiary>() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.8
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<MBeneficiary>() {
+            @Override
             public void onResponse(Call<MBeneficiary> call2, Response<MBeneficiary> response) {
                 if (BeneficieryActivity.this.progressDialog != null && BeneficieryActivity.this.progressDialog.isShowing()) {
                     BeneficieryActivity.this.progressDialog.dismiss();
@@ -335,7 +325,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<MBeneficiary> call2, Throwable t) {
                 if (BeneficieryActivity.this.progressDialog != null && BeneficieryActivity.this.progressDialog.isShowing()) {
                     BeneficieryActivity.this.progressDialog.dismiss();
@@ -347,7 +337,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
     @Override
     public void onResume() {
         super.onResume();
-        getUserDetails(this.mobile_no);
+//      getUserDetails(this.mobile_no);
     }
 
     private void getUserDetails(final String userName) {
@@ -360,8 +350,8 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
         body.put("MobileNumber", userName);
         ApiInterface apiservice =RetrofitHandler.getService();
         Call<ValidateRemitter> call = apiservice.getValidate(body);
-        call.enqueue(new Callback<ValidateRemitter>() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.11
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<ValidateRemitter>() {
+            @Override
             public void onResponse(Call<ValidateRemitter> call2, Response<ValidateRemitter> response) {
                 if (response.body() != null) {
                     if (BeneficieryActivity.this.progressDialog != null && BeneficieryActivity.this.progressDialog.isShowing()) {
@@ -402,7 +392,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<ValidateRemitter> call2, Throwable t) {
                 if (BeneficieryActivity.this.progressDialog != null && BeneficieryActivity.this.progressDialog.isShowing()) {
                     BeneficieryActivity.this.progressDialog.dismiss();
@@ -430,14 +420,15 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
         body.put("Token", PrefUtils.getFromPrefs(this, ConstantClass.USERDETAILS.Token, ""));
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<List<MBankListResponse>> call = apiservice.getBanks(body);
-        call.enqueue(new Callback<List<MBankListResponse>>() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.9
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<List<MBankListResponse>>() {
+            @Override
             public void onResponse(Call<List<MBankListResponse>> call2, Response<List<MBankListResponse>> response) {
                 if (BeneficieryActivity.this.progressDialog != null && BeneficieryActivity.this.progressDialog.isShowing()) {
                     BeneficieryActivity.this.progressDialog.dismiss();
                 }
                 if (response.body() != null) {
                     BeneficieryActivity.this.listBanks = response.body();
+                    Log.d("API_RESPONSE", "Response: " + response.body().toString());
                     return;
                 }
                 if (BeneficieryActivity.this.progressDialog != null && BeneficieryActivity.this.progressDialog.isShowing()) {
@@ -450,7 +441,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<List<MBankListResponse>> call2, Throwable t) {
                 if (BeneficieryActivity.this.progressDialog != null && BeneficieryActivity.this.progressDialog.isShowing()) {
                     BeneficieryActivity.this.progressDialog.dismiss();
@@ -471,8 +462,8 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
         body.put(ConstantClass.PROFILEDETAILS.IFSCCode, ifsc);
         ApiInterface apiservice =RetrofitHandler.getService();
         Call<MAccVerify> call = apiservice.getVerify(body);
-        call.enqueue(new Callback<MAccVerify>() { // from class: com.uvapay.transfer_money.activities.BeneficieryActivity.12
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<MAccVerify>() {
+            @Override
             public void onResponse(Call<MAccVerify> call2, Response<MAccVerify> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -506,7 +497,7 @@ public class BeneficieryActivity extends AppCompatActivity implements BankListAd
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<MAccVerify> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {

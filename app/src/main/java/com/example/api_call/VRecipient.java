@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class VRecipient  implements Serializable {
+public class VRecipient implements Serializable {
     @SerializedName("accountNo")
     @Expose
     private String accountNo;
@@ -19,7 +19,7 @@ public class VRecipient  implements Serializable {
     private String ifsc;
     @SerializedName("isValidate")
     @Expose
-    private String isValidate;
+    private boolean isValidate;
     @SerializedName("mobileNo")
     @Expose
     private String mobileNo;
@@ -33,7 +33,7 @@ public class VRecipient  implements Serializable {
     @Expose
     private String status;
 
-    public VRecipient(String accountNo, String bankName, String ifsc, String isValidate, String mobileNo, String name, String rptid, String status) {
+    public VRecipient(String accountNo, String bankName, String ifsc, boolean isValidate, String mobileNo, String name, String rptid, String status) {
         this.accountNo = accountNo;
         this.bankName = bankName;
         this.ifsc = ifsc;
@@ -68,12 +68,12 @@ public class VRecipient  implements Serializable {
         this.ifsc = ifsc;
     }
 
-    public String getIsValidate() {
+    public boolean isValidate() {
         return isValidate;
     }
 
-    public void setIsValidate(String isValidate) {
-        this.isValidate = isValidate;
+    public void setValidate(boolean validate) {
+        isValidate = validate;
     }
 
     public String getMobileNo() {

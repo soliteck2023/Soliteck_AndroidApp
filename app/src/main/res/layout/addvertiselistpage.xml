@@ -15,7 +15,6 @@
         android:layout_marginStart="4dp"
         android:background="@color/blue"
         android:layout_height="150dp"
-        android:src="@drawable/world_braille_day"
         tools:ignore="MissingClass" />
 
 

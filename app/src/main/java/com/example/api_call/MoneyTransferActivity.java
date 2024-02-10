@@ -27,6 +27,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.window.OnBackInvokedDispatcher;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +39,7 @@ import retrofit2.Response;
 
 public class MoneyTransferActivity extends AppCompatActivity {
     private RelativeLayout btn_transfer_proceed;
-    private EditText edit_mobile_number;
+    private TextInputEditText edit_mobile_number;
     private ImageView image_select_contact;
     private ProgressDialog progressDialog;
     private TextView text_bank_downs;
@@ -51,16 +53,16 @@ public class MoneyTransferActivity extends AppCompatActivity {
         setTitle("Money Transfer");
         setupWindowAnimations();
         this.btn_transfer_proceed = (RelativeLayout) findViewById(R.id.btn_transfer_proceed);
-        this.edit_mobile_number = (EditText) findViewById(R.id.edit_mobile_number);
-        this.text_bank_downs = (TextView) findViewById(R.id.text_bank_downs);
-        this.image_select_contact = (ImageView) findViewById(R.id.image_select_contact);
-        this.text_bank_downs.setSelected(true);
+        this.edit_mobile_number = (TextInputEditText) findViewById(R.id.edit_mobile_number);
+//        this.text_bank_downs = (TextView) findViewById(R.id.text_bank_downs);
+//        this.image_select_contact = (ImageView) findViewById(R.id.image_select_contact);
+//        this.text_bank_downs.setSelected(true);
         this.edit_mobile_number.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.1
-            @Override // android.text.TextWatcher
+            @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() == 10) {
                     MoneyTransferActivity moneyTransferActivity = MoneyTransferActivity.this;
@@ -68,7 +70,7 @@ public class MoneyTransferActivity extends AppCompatActivity {
                 }
             }
 
-            @Override // android.text.TextWatcher
+            @Override
             public void afterTextChanged(Editable s) {
             }
         });
@@ -89,50 +91,50 @@ public class MoneyTransferActivity extends AppCompatActivity {
 
 
 
-        this.image_select_contact.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.3
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                MoneyTransferActivity.this.GetContactsIntoArrayList();
-                View view_recents = MoneyTransferActivity.this.getLayoutInflater().inflate(R.layout.layout_contact_list, (ViewGroup) null);
-                ListView listview1 = (ListView) view_recents.findViewById(R.id.listview1);
-                EditText search_edit = (EditText) view_recents.findViewById(R.id.search_edit);
-                AlertDialog.Builder builder = new AlertDialog.Builder(MoneyTransferActivity.this);
-                builder.setView(view_recents);
-                final AlertDialog alertDialog = builder.create();
-                MoneyTransferActivity moneyTransferActivity = MoneyTransferActivity.this;
-                @SuppressLint("ResourceType") final ArrayAdapter arrayAdapter = new ArrayAdapter(moneyTransferActivity, 17367043, moneyTransferActivity.StoreContacts);
-                listview1.setAdapter((ListAdapter) arrayAdapter);
-                alertDialog.show();
-                search_edit.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.3.1
-                    @Override // android.text.TextWatcher
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-
-                    @Override // android.text.TextWatcher
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        arrayAdapter.getFilter().filter(charSequence);
-                    }
-
-                    @Override // android.text.TextWatcher
-                    public void afterTextChanged(Editable editable) {
-                    }
-                });
-                listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.3.2
-                    @Override // android.widget.AdapterView.OnItemClickListener
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String num = parent.getItemAtPosition(position).toString().trim().split(":")[1].replace(" ", "");
-                        if (num.contains("+")) {
-                            int len = num.length();
-                            String update_num = num.substring(3, len).trim();
-                            MoneyTransferActivity.this.edit_mobile_number.setText(update_num);
-                        } else {
-                            MoneyTransferActivity.this.edit_mobile_number.setText(num);
-                        }
-                        alertDialog.dismiss();
-                    }
-                });
-            }
-        });
+//        this.image_select_contact.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.3
+//            @Override // android.view.View.OnClickListener
+//            public void onClick(View v) {
+//                MoneyTransferActivity.this.GetContactsIntoArrayList();
+//                View view_recents = MoneyTransferActivity.this.getLayoutInflater().inflate(R.layout.layout_contact_list, (ViewGroup) null);
+//                ListView listview1 = (ListView) view_recents.findViewById(R.id.listview1);
+//                EditText search_edit = (EditText) view_recents.findViewById(R.id.search_edit);
+//                AlertDialog.Builder builder = new AlertDialog.Builder(MoneyTransferActivity.this);
+//                builder.setView(view_recents);
+//                final AlertDialog alertDialog = builder.create();
+//                MoneyTransferActivity moneyTransferActivity = MoneyTransferActivity.this;
+//                @SuppressLint("ResourceType") final ArrayAdapter arrayAdapter = new ArrayAdapter(moneyTransferActivity, 17367043, moneyTransferActivity.StoreContacts);
+//                listview1.setAdapter((ListAdapter) arrayAdapter);
+//                alertDialog.show();
+//                search_edit.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.3.1
+//                    @Override // android.text.TextWatcher
+//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                    }
+//
+//                    @Override // android.text.TextWatcher
+//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                        arrayAdapter.getFilter().filter(charSequence);
+//                    }
+//
+//                    @Override // android.text.TextWatcher
+//                    public void afterTextChanged(Editable editable) {
+//                    }
+//                });
+//                listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() { // from class: com.uvapay.transfer_money.activities.MoneyTransferActivity.3.2
+//                    @Override // android.widget.AdapterView.OnItemClickListener
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        String num = parent.getItemAtPosition(position).toString().trim().split(":")[1].replace(" ", "");
+//                        if (num.contains("+")) {
+//                            int len = num.length();
+//                            String update_num = num.substring(3, len).trim();
+//                            MoneyTransferActivity.this.edit_mobile_number.setText(update_num);
+//                        } else {
+//                            MoneyTransferActivity.this.edit_mobile_number.setText(num);
+//                        }
+//                        alertDialog.dismiss();
+//                    }
+//                });
+//            }
+//        });
 
 
     }

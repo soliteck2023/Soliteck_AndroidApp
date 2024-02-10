@@ -8,15 +8,17 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -24,10 +26,11 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.EnquiryForm;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,6 +51,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
     private TextView txtDesc_text;
     String transaction_type = "";
     String previousText = "";
+
 
     public void setOnDeleteItemListener(OnDeleteItemListener listener) {
         this.listener =listener;
@@ -81,48 +85,94 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
         holder.text_name.setText(this.list_beneficiary.get(position).getName());
         holder.text_bank.setText(this.list_beneficiary.get(position).getBankName() + "(" + this.list_beneficiary.get(position).getIfsc() + ")");
         holder.text_account.setText(this.list_beneficiary.get(position).getAccountNo());
-        if (this.list_beneficiary.get(position).getIsValidate().equals(false)) {
-            holder.btn_verify.setBackgroundColor(this.context.getResources().getColor(R.color.orange));
+        if (this.list_beneficiary.get(position).isValidate() == true) {
             holder.btn_verify.setText("Verify");
         } else {
-            holder.btn_verify.setBackgroundColor(this.context.getResources().getColor(R.color.dark_green));
-            holder.btn_verify.setText("Verified");
+            holder.btn_verify.setText("Need to Verify");
         }
+
+//        if (this.list_beneficiary.get(position).getIsValidate().equals(false)) {
+//            holder.btn_verify.setBackgroundColor(this.context.getResources().getColor(R.color.orange));
+//            holder.btn_verify.setText("Verify");
+//        } else {
+//            holder.btn_verify.setBackgroundColor(this.context.getResources().getColor(R.color.dark_green));
+//            holder.btn_verify.setText("Verified");
+//        }
         holder.btn_send.setOnClickListener(new AnonymousClass1(position));
-        holder.card_transfer.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.2
+        holder.card_transfer.setOnClickListener(new View.OnClickListener() {
             @Override // android.view.View.OnClickListener
             public void onClick(View v) {
                 holder.btn_send.performClick();
             }
         });
-        holder.btn_verify.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.3
-            @Override // android.view.View.OnClickListener
+        holder.btn_verify.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                if (!holder.btn_verify.getText().toString().toLowerCase().equals("verified")) {
+                if (!holder.btn_verify.getText().toString().equals("Verify")) {
                     BeneficiaryListAdapter beneficiaryListAdapter = BeneficiaryListAdapter.this;
-                    beneficiaryListAdapter.verifyRecipient(((VRecipient) beneficiaryListAdapter.list_beneficiary.get(position)).getAccountNo(), ((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(position)).getIfsc(), ((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(position)).getMobileNo(), holder.btn_verify);
-                    return;
+                    beneficiaryListAdapter.verifyRecipient(list_beneficiary.get(position).getAccountNo(), list_beneficiary.get(position).getIfsc(), list_beneficiary.get(position).getMobileNo());
+
+                } else {
+                    ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "", "Already verified beneficiary");
+
                 }
-                ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "", "Already verified beneficiary");
+
+//                else if (holder.btn_verify.getText().toString().equals("Need to Verify")) {
+//                    verifyRecipient(list_beneficiary.get(position).getAccountNo(), list_beneficiary.get(position).getIfsc(), list_beneficiary.get(position).getMobileNo());
+//                } else {
+//                    Toast.makeText(context, "Something is wrong", Toast.LENGTH_SHORT).show();
+//                }
+
+//                if (!holder.btn_verify.getText().toString().toLowerCase().equals("Need to Verify")){
+//                    BeneficiaryListAdapter beneficiaryListAdapter = BeneficiaryListAdapter.this;
+//                    beneficiaryListAdapter.verifyRecipient(((VRecipient) beneficiaryListAdapter.list_beneficiary.get(position)).getAccountNo(), ((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(position)).getIfsc(), ((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(position)).getMobileNo(), holder.btn_verify);
+//
+//
+//                }else {
+//                    ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "", "Already verified beneficiary");
+//
+//                }
+
+//                if (!holder.btn_verify.getText().toString().toLowerCase().equals("verified")) {
+//                    BeneficiaryListAdapter beneficiaryListAdapter = BeneficiaryListAdapter.this;
+//                    beneficiaryListAdapter.verifyRecipient(((VRecipient) beneficiaryListAdapter.list_beneficiary.get(position)).getAccountNo(), ((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(position)).getIfsc(), ((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(position)).getMobileNo(), holder.btn_verify);
+//                    return;
+//                }
+//                ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "", "Already verified beneficiary");
             }
         });
-        holder.delete_beneficiary.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.4
-            @Override // android.view.View.OnClickListener
+//        holder.delete_beneficiary.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Toast.makeText(context, "Close Response", Toast.LENGTH_SHORT).show();
+//
+//                removeaccountReceient();//RPT0484169
+//
+//            }
+//        });
+
+        //old code
+        holder.delete_beneficiary.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(BeneficiaryListAdapter.this.context);
                 builder.setTitle("Delete Beneficiary");
                 builder.setMessage("Are you sure to delete beneficiary?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.4.1
-                    @Override // android.content.DialogInterface.OnClickListener
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         VRecipient itemToDelete = (VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(position);
                         BeneficiaryListAdapter.this.list_beneficiary.remove(position);
                         BeneficiaryListAdapter.this.notifyDataSetChanged();
-                        BeneficiaryListAdapter.this.removeRecipient(itemToDelete.getRptid());
+                        BeneficiaryListAdapter.this.layoutotp(itemToDelete.getRptid());
+//                        BeneficiaryListAdapter.this.removeRecipient(itemToDelete.getRptid());
+////                        BeneficiaryListAdapter.this.removeaccountReceient();
+//                        removeaccountReceient();
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.4.2
-                    @Override // android.content.DialogInterface.OnClickListener
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
@@ -132,6 +182,153 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
             }
         });
     }
+
+    private void layoutotp(final String rptid) {
+        removeRecipient(rptid);
+        View view = ((Activity) BeneficiaryListAdapter.this.context).getLayoutInflater().inflate(R.layout.layout_otp_beneficiary, (ViewGroup) null);
+        final EditText edit_otp_number = (EditText) view.findViewById(R.id.edit_otp_number);
+        Button btn_send_otp = (Button) view.findViewById(R.id.btn_send_otp);
+        ImageView image_delete = (ImageView) view.findViewById(R.id.image_cancel);
+        AlertDialog.Builder builder = new AlertDialog.Builder(BeneficiaryListAdapter.this.context);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.setView(view);
+        alertDialog.show();
+        alertDialog.setCancelable(false);
+        alertDialog.setCanceledOnTouchOutside(false);
+        image_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        btn_send_otp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                BeneficiaryListAdapter.this.confirmRemoveBeneficiary(rptid, edit_otp_number.getText().toString());
+            }
+        });
+        return;
+
+    }
+
+    private void removeaccountReceient() {
+
+
+        HashMap<String, String> body = new HashMap<>();
+        body.put("DeviceId", PrefUtils.getFromPrefs(this.context, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+        body.put("Token", PrefUtils.getFromPrefs(this.context, ConstantClass.USERDETAILS.Token, ""));
+        body.put("RecipientId", "RT8517994");
+        body.put("senderId", this.remitterID);
+        ApiInterface apiInterface = RetrofitHandler.getService();
+        Call<MRemoveBene> call = apiInterface.removeBene(body);
+
+        call.enqueue(new Callback<MRemoveBene>() {
+            @Override
+            public void onResponse(Call<MRemoveBene> call, Response<MRemoveBene> response) {
+               if (response.body() != null){
+                   if (!response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)){
+                       if (response.body().getStatusCode().equals("1")){
+                           String message = response.message();
+                           Log.d("ApiResponse", "Message: " + message);
+                           Toast.makeText(context, "message", Toast.LENGTH_SHORT).show();
+
+                       }
+
+                   }
+
+                }
+
+//                if (response.isSuccessful()) {
+//                    MRemoveBene mRemoveBene = response.body();
+//                    if (mRemoveBene != null) {
+//                        // Handle the response
+//                        int statusCode = mRemoveBene.getStatusCode();
+//                        String message = mRemoveBene.getMessage();
+//                        Object data = mRemoveBene.getData();
+//                        Log.d("ApiResponse", "Message: " + message);
+//                        Toast.makeText(context, "message", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    // Handle unsuccessful response (HTTP error)
+//                    // ...
+//                }
+            }
+
+            @Override
+            public void onFailure(Call<MRemoveBene> call, Throwable t) {
+                // Handle failure (e.g., network error)
+                // ...
+            }
+        });
+    }
+
+
+//    private void removeaccountReceient(){
+//        final ProgressDialog progressDialog = CustomProgressDialog.getDialogue((Activity) this.context);
+//        progressDialog.show();
+//        HashMap<String, String> body = new HashMap<>();
+//        body.put("DeviceId", PrefUtils.getFromPrefs(this.context, ConstantClass.PROFILEDETAILS.DeviceId, ""));
+//        body.put("Token", PrefUtils.getFromPrefs(this.context, ConstantClass.USERDETAILS.Token, ""));
+//        body.put("RecipientId", "RT8517994");
+//        body.put("senderId", this.remitterID);
+//        ApiInterface apiInterface = RetrofitHandler.getService();
+//        Call<MRemoveBene> call = apiInterface.removeBene(body);
+//        call.enqueue(new Callback<MRemoveBene>() {
+//            @Override
+//            public void onResponse(Call<MRemoveBene> call, Response<MRemoveBene> response) {
+////                Toast.makeText(context, "Response", Toast.LENGTH_SHORT).show();
+//                if (response.isSuccessful() && response.body() != null) {
+////                    int statusCode = response.body().getStatusCode();
+//                    Toast.makeText(context, "Sucess: " + response.message(), Toast.LENGTH_SHORT).show();
+//
+////                    if (statusCode == 1) {
+////                        ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "Success", response.body().getMessage());
+////                    } else {
+////                        ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "Error", response.body().getMessage());
+////                    }
+//                } else {
+//
+//                    Toast.makeText(context, "Error: " + response.message(), Toast.LENGTH_SHORT).show();
+//                }
+//
+////                if (response.body()!= null){
+////                    ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "Sucess", response.body().getMessage());
+////                    return;
+////                }else {
+////                    ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "Error", response.body().getMessage());
+////                    return;
+////                }
+////                if (response.body().getData() != null){
+////                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+////
+////                }else {
+////                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+////
+////                }
+////                if (!(response.body().getStatusCode() == 1)){
+////                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+////                }else {
+////                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+////
+////                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<MRemoveBene> call, Throwable t) {
+//                ProgressDialog progressDialog2 = progressDialog;
+//                if (progressDialog2 != null && progressDialog2.isShowing()) {
+//                    progressDialog.dismiss();
+//                }
+//            }
+//        });
+//
+//
+//    }
+
+
+
 
     private void removeRecipient(final String rptid) {
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue((Activity) this.context);
@@ -143,18 +340,17 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
         body.put("senderId", this.remitterID);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<MRemoveBene> call = apiservice.removeBene(body);
-        call.enqueue(new Callback<MRemoveBene>() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.6
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<MRemoveBene>() {
+            @Override
             public void onResponse(Call<MRemoveBene> call2, Response<MRemoveBene> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
                     progressDialog.dismiss();
                 }
                 if (response.body() != null) {
-                    if (response.body().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
-
-
-//                        ApplicationConstant.displayToastMessage(BeneficiaryListAdapter.this.context, response.body().getMessage());
+                    if (response.body().getStatusCode().equals(1)) {
+                        ApplicationConstant.displayToastMessage(BeneficiaryListAdapter.this.context, response.body().getMessage());
+                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         View view = ((Activity) BeneficiaryListAdapter.this.context).getLayoutInflater().inflate(R.layout.layout_otp_beneficiary, (ViewGroup) null);
                         final EditText edit_otp_number = (EditText) view.findViewById(R.id.edit_otp_number);
                         Button btn_send_otp = (Button) view.findViewById(R.id.btn_send_otp);
@@ -165,14 +361,14 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                         alertDialog.show();
                         alertDialog.setCancelable(false);
                         alertDialog.setCanceledOnTouchOutside(false);
-                        image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.6.1
-                            @Override // android.view.View.OnClickListener
+                        image_delete.setOnClickListener(new View.OnClickListener() {
+                            @Override
                             public void onClick(View v) {
                                 alertDialog.dismiss();
                             }
                         });
-                        btn_send_otp.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.6.2
-                            @Override // android.view.View.OnClickListener
+                        btn_send_otp.setOnClickListener(new View.OnClickListener() {
+                            @Override
                             public void onClick(View v) {
                                 alertDialog.dismiss();
                                 BeneficiaryListAdapter.this.confirmRemoveBeneficiary(rptid, edit_otp_number.getText().toString());
@@ -194,7 +390,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<MRemoveBene> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -216,8 +412,8 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
         body.put("otp", otp);
         ApiInterface apiservice =RetrofitHandler.getService();
         Call<MConfirmRemoveBene> call = apiservice.removeConfirmBene(body);
-        call.enqueue(new Callback<MConfirmRemoveBene>() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.8
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<MConfirmRemoveBene>() {
+            @Override
             public void onResponse(Call<MConfirmRemoveBene> call2, Response<MConfirmRemoveBene> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -246,7 +442,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<MConfirmRemoveBene> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -257,19 +453,20 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
         });
     }
 
-    private void verifyRecipient(String account, String ifsc, String mobile, Button verify) {
+    private void verifyRecipient(String account, String ifsc, String mobile) {
+
         final ProgressDialog progressDialog = CustomProgressDialog.getDialogue((Activity) this.context);
         progressDialog.show();
         HashMap<String, String> body = new HashMap<>();
-        body.put("DeviceId", PrefUtils.getFromPrefs(this.context, ConstantClass.USERDETAILS.UserName, ""));
+        body.put("DeviceId", PrefUtils.getFromPrefs(this.context, ConstantClass.PROFILEDETAILS.DeviceId, ""));
         body.put("Token", PrefUtils.getFromPrefs(this.context, ConstantClass.USERDETAILS.Token, ""));
         body.put("MobileNumber", mobile);
         body.put(ConstantClass.PROFILEDETAILS.AccountNo, account);
         body.put(ConstantClass.PROFILEDETAILS.IFSCCode, ifsc);
         ApiInterface apiservice = RetrofitHandler.getService();
         Call<MAccVerify> call = apiservice.getVerify(body);
-        call.enqueue(new Callback<MAccVerify>() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.7
-            @Override // retrofit2.Callback
+        call.enqueue(new Callback<MAccVerify>() {
+            @Override
             public void onResponse(Call<MAccVerify> call2, Response<MAccVerify> response) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -278,19 +475,10 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                 if (response.body() != null) {
                     if (response.body().getResponse().getStatusCode().equals(ConstantClass.MOBILESERVICEID)) {
                         ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "", response.body().getResponse().getMessage());
-                        if (Build.VERSION.SDK_INT >= 23) {
-                            verify.setBackgroundColor(BeneficiaryListAdapter.this.context.getColor(R.color.dark_green));
-                            verify.setText("Verified");
-                            return;
-                        }
+
                         return;
                     }
                     ConstantClass.displayMessageDialog(BeneficiaryListAdapter.this.context, "", response.body().getResponse().getMessage());
-                    if (Build.VERSION.SDK_INT >= 23) {
-                        verify.setBackgroundColor(BeneficiaryListAdapter.this.context.getColor(R.color.orange));
-                        verify.setText("Verify");
-                        return;
-                    }
                     return;
                 }
                 ProgressDialog progressDialog3 = progressDialog;
@@ -304,7 +492,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                 }
             }
 
-            @Override // retrofit2.Callback
+            @Override
             public void onFailure(Call<MAccVerify> call2, Throwable t) {
                 ProgressDialog progressDialog2 = progressDialog;
                 if (progressDialog2 != null && progressDialog2.isShowing()) {
@@ -323,7 +511,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
             this.val$position = i;
         }
 
-        @Override // android.view.View.OnClickListener
+        @Override
         public void onClick(View v) {
             View view = LayoutInflater.from(BeneficiaryListAdapter.this.context).inflate(R.layout.layout_transfer_money, (ViewGroup) null);
             ImageView image_delete = (ImageView) view.findViewById(R.id.image_delete);
@@ -361,17 +549,18 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
             text_bank_.setText(((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(this.val$position)).getBankName());
             text_ifsc_.setText(((VRecipient) BeneficiaryListAdapter.this.list_beneficiary.get(this.val$position)).getIfsc());
             image_delete.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.1.1
-                @Override // android.view.View.OnClickListener
+                @Override
                 public void onClick(View v2) {
                     alertDialog.dismiss();
                 }
             });
-            text_amount.addTextChangedListener(new TextWatcher() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.1.2
-                @Override // android.text.TextWatcher
+
+            text_amount.addTextChangedListener(new TextWatcher() {
+                @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 }
 
-                @Override // android.text.TextWatcher
+                @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     String text = text_amount.getText().toString().trim();
                     if (text.startsWith("0")) {
@@ -379,19 +568,21 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                     }
                 }
 
-                @Override // android.text.TextWatcher
+                @Override
                 public void afterTextChanged(Editable s) {
-                    String text = text_amount.getText().toString().trim();
-                    if (!text.isEmpty()) {
-                        String AmountWord = BeneficiaryListAdapter.this.numToWords(Integer.parseInt(text));
-                        TextWordAmount.setText(AmountWord + " Rupees");
-                        return;
+                    try {
+                        int amount = Integer.parseInt(s.toString());
+                        if (amount > 1000000) {
+                            Toast.makeText(context, "Amount cannot be greater than 1000000", Toast.LENGTH_SHORT).show();
+                            s.delete(7, s.length());
+                        }
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
                     }
-                    TextWordAmount.setText("");
                 }
             });
-            type_imps.setOnClickListener(new View.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.1.3
-                @Override // android.view.View.OnClickListener
+            type_imps.setOnClickListener(new View.OnClickListener() {
+                @Override
                 public void onClick(View v2) {
                     if (Build.VERSION.SDK_INT >= 16) {
                         type_imps.setBackground(BeneficiaryListAdapter.this.context.getResources().getDrawable(R.drawable.violet_button_background));
@@ -422,13 +613,13 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
                     builder1.setTitle("Transfer Confirmation");
                     builder1.setMessage("Are you sure to transfer Rs " + text_amount.getText().toString() + " ? ");
                     builder1.setNegativeButton("No", new DialogInterface.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.1.5.1
-                        @Override // android.content.DialogInterface.OnClickListener
+                        @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                         }
                     });
                     builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() { // from class: com.uvapay.transfer_money.adapter.BeneficiaryListAdapter.1.5.2
-                        @Override // android.content.DialogInterface.OnClickListener
+                        @Override
                         public void onClick(DialogInterface dialog, int which) {
                             String bankname;
                             if (edit_tpin.getText().toString().isEmpty()) {
@@ -535,7 +726,7 @@ public class BeneficiaryListAdapter extends RecyclerView.Adapter<BeneficiaryList
             private TextView text_bank;
             private TextView text_name;
 
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+
             public MyViewHolder(View itemView) {
                 super(itemView);
 //                BeneficiaryListAdapter.this = this$0;

@@ -64,6 +64,7 @@ public class user_raisecompliant extends AppCompatActivity {
         raise_cmpt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 compaint_type();
             }
         });

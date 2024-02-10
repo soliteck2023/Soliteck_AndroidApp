@@ -177,7 +177,7 @@ public interface ApiInterface {
     Call<MAccVerify> getVerify(@Body HashMap<String, String> hashMap);
 
     @POST("Beneficiary/RemoveBeneficiary")
-    Call<MRemoveBene> removeBene(@Body HashMap<String, String> hashMap);
+    Call<MRemoveBene> removeBene(@Body HashMap<String, String> body);
 
     @POST("Beneficiary/ConfirmRemoveBeneficiary")
     Call<MConfirmRemoveBene> removeConfirmBene(@Body HashMap<String, String> hashMap);
